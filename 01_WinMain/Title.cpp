@@ -8,10 +8,12 @@
 
 void Title::Init()
 {
-	Background* background = new Background("Background", 0,0);
+	Background* background = new Background("Background", L"Title");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
-	UI* ui = new UI()
+	UI* ui = new UI("titleUI", "titleUI");
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
+
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;

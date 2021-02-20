@@ -6,7 +6,10 @@ class Champ : public GameObject
 	Image* mImage;
 
 	Animation* mCurrentAnm;
+
 	float mAlpha;
+	
+
 public:
 	Champ(const string& name, float x, float y);
 
@@ -15,4 +18,5 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
+	
 };
