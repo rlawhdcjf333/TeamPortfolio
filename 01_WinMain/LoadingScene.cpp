@@ -15,7 +15,7 @@ void LoadingScene::Init()
 	IMAGEMANAGER->LoadFromFile(L"LoadingScene", Resources(L"LoadingScene.bmp"), 300, 233, false);
 	mImage = IMAGEMANAGER->FindImage(L"LoadingScene");
 
-	AddLoadFunc([]() {SceneManager::GetInstance()->GetScene(L"Title")->Init();});
+
 	for (int i = 0; i < 50; i++) {AddLoadFunc([](){});} //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
 	for (int i = 0; i < 50; i++) { AddLoadFunc([]() {}); } //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
 
