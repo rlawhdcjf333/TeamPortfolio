@@ -11,7 +11,7 @@ Background::Background(const string& name, const wstring& fileName)
 
 void Background::Init()
 {
-	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName+L".bmp"), 936, 624, false);
+	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName+L".bmp"),1280,720, false);
 	mImage = IMAGEMANAGER->FindImage(mFileName);
 
 }

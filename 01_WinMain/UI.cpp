@@ -20,13 +20,22 @@ void UI::Release()
 void UI::Update()
 {
 
-	if (PtInRect(&mButtonList[0], _mousePosition)) {
+	if (mFileName == "titleUI") {
+		if (PtInRect(&mButtonList[0], _mousePosition)) {
 
-		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
+			if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
 
-			SceneManager::GetInstance()->LoadScene(L"Home");
+				SceneManager::GetInstance()->LoadScene(L"Home");
+			}
 		}
 	}
+
+	if (mFileName == "homeUI") {
+
+
+	}
+
+
 
 }
 

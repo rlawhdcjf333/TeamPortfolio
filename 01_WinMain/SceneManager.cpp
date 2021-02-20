@@ -63,6 +63,7 @@ void SceneManager::LoadScene(const wstring & sceneName)
 	if (mCurrentScene) 
 		mCurrentScene->Release();
 
+	
 	targetScene->Init();
 
 	mCurrentScene = targetScene;
