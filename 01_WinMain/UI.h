@@ -10,6 +10,7 @@ class UI : public GameObject
 	Image* mImage;
 	bool mTrigger;
 
+
 public:
 	UI(const string& name, const string& fileName);
 
@@ -19,6 +20,9 @@ public:
 	void Render(HDC hdc)override;
 	void LoadFromFile(const string& fileName);
 
+	void mToggleButton(int index, string UIName);
 	void mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent =false, function <void(void)> func = []() {});
+
+	void homeUIInit();
 };
 

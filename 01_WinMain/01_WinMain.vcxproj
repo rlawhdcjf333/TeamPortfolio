@@ -218,6 +218,7 @@
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UI.cpp" />
+    <ClCompile Include="homeUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />

@@ -14,12 +14,16 @@ void UI::Init()
 
 	if (mFileName == "homeUI") {
 
-
+		homeUIInit();
 	}
+
+	
+
 }
 
 void UI::Release()
 {
+	
 }
 
 void UI::Update()
@@ -33,6 +37,10 @@ void UI::Update()
 	}
 
 	if (mFileName == "homeUI") {
+
+
+		mToggleButton(0, "TeamToggle");
+
 
 		mSceneChangeButton(5, L"Pick_Battle");
 
@@ -95,6 +103,18 @@ void UI::LoadFromFile(const string& fileName)
 	}
 
 	fin.close();
+}
+
+void UI::mToggleButton(int index, string UIName)
+{
+	if (PtInRect(&mButtonList[index], _mousePosition)) {
+
+		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
+
+			GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
+			hptr->SetIsActive(!hptr->GetIsActive());
+		}
+	}
 }
 
 void UI::mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent, function <void(void)> func)

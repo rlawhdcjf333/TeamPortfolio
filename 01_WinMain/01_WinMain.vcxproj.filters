@@ -91,6 +91,9 @@
     <Filter Include="FrameWork\SoundPlayer">
       <UniqueIdentifier>{7f521796-4aad-41fc-8407-b89913d2b466}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI">
+      <UniqueIdentifier>{2ca6ac4d-3d37-41f7-aa11-98b691ca0ef4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -189,11 +192,11 @@
     <ClInclude Include="Home.h">
       <Filter>MainGame\Scene\Home</Filter>
     </ClInclude>
-    <ClInclude Include="TeamToggle.h">
-      <Filter>MainGame\Object\UI</Filter>
-    </ClInclude>
     <ClInclude Include="SoundPlayer.h">
       <Filter>FrameWork\SoundPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamToggle.h">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -281,11 +284,14 @@
     <ClCompile Include="Home.cpp">
       <Filter>MainGame\Scene\Home</Filter>
     </ClCompile>
-    <ClCompile Include="TeamToggle.cpp">
-      <Filter>MainGame\Object\UI</Filter>
-    </ClCompile>
     <ClCompile Include="SoundPlayer.cpp">
       <Filter>FrameWork\SoundPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="homeUI.cpp">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
