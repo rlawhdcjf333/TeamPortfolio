@@ -17,9 +17,7 @@ void LoadingScene::Init()
 
 	AddLoadFunc([]() {SceneManager::GetInstance()->GetScene(L"Title")->Init();});
 	for (int i = 0; i < 50; i++) {AddLoadFunc([](){});} //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
-	AddLoadFunc([]() {SceneManager::GetInstance()->GetScene(L"Home")->Init();});
 	for (int i = 0; i < 50; i++) { AddLoadFunc([]() {}); } //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
-	AddLoadFunc([]() {SceneManager::GetInstance()->GetScene(L"Pick_Battle")->Init();});
 
 
 }

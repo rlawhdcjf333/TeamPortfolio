@@ -11,7 +11,8 @@ void Home::Init()
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
-
+	UI* ui = new UI("homeUI", "homeUI");
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;
