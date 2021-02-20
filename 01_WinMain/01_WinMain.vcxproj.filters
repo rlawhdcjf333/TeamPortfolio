@@ -43,9 +43,6 @@
     <Filter Include="FrameWork\Camera">
       <UniqueIdentifier>{d52a9290-4164-4636-89a3-4c2bffdd3c23}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\SoundManager">
-      <UniqueIdentifier>{e2a38dc5-4980-41b4-b73a-d784af0dc78d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FrameWork\Time">
       <UniqueIdentifier>{c320e730-2234-46c8-bdc1-828700d121ea}</UniqueIdentifier>
     </Filter>
@@ -90,6 +87,9 @@
     </Filter>
     <Filter Include="MainGame\Scene\Title">
       <UniqueIdentifier>{d91a4a7b-f209-4441-ad31-c623c3e0345e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\SoundPlayer">
+      <UniqueIdentifier>{7f521796-4aad-41fc-8407-b89913d2b466}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -144,9 +144,6 @@
     <ClInclude Include="Time.h">
       <Filter>FrameWork\Time</Filter>
     </ClInclude>
-    <ClInclude Include="SoundPlayer.h">
-      <Filter>FrameWork\SoundManager</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>FrameWork\ObjectManager</Filter>
     </ClInclude>
@@ -192,6 +189,12 @@
     <ClInclude Include="Home.h">
       <Filter>MainGame\Scene\Home</Filter>
     </ClInclude>
+    <ClInclude Include="TeamToggle.h">
+      <Filter>MainGame\Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundPlayer.h">
+      <Filter>FrameWork\SoundPlayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -229,9 +232,6 @@
     </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>FrameWork\Time</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundPlayer.cpp">
-      <Filter>FrameWork\SoundManager</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>FrameWork\ObjectManager</Filter>
@@ -280,6 +280,12 @@
     </ClCompile>
     <ClCompile Include="Home.cpp">
       <Filter>MainGame\Scene\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamToggle.cpp">
+      <Filter>MainGame\Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundPlayer.cpp">
+      <Filter>FrameWork\SoundPlayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

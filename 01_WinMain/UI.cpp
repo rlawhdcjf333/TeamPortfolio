@@ -11,6 +11,11 @@ UI::UI(const string& name, const string& fileName)
 void UI::Init()
 {
 	LoadFromFile(mFileName);
+
+	if (mFileName == "homeUI") {
+
+
+	}
 }
 
 void UI::Release()
@@ -59,9 +64,6 @@ void UI::Render(HDC hdc)
 	SelectObject(hdc, oldb);
 	DeleteObject(newp);
 	DeleteObject(newb);
-
-
-
 
 }
 

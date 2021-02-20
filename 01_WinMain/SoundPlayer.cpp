@@ -28,6 +28,8 @@ SoundPlayer::~SoundPlayer()
 	mSystem->release();
 }
 
+
+
 void SoundPlayer::Update()
 {
 	mSystem->update();
@@ -48,7 +50,7 @@ void SoundPlayer::Update()
 	}
 }
 
-void SoundPlayer::LoadFromFile(const wstring & keyName, const wstring & fileName, bool isLoop)
+void SoundPlayer::LoadFromFile(const wstring& keyName, const wstring& fileName, bool isLoop)
 {
 	// {{ 이미 불러온적이 있는 파일인지 검사
 	SoundIter iter = mSoundList.find(keyName);
@@ -76,7 +78,7 @@ void SoundPlayer::LoadFromFile(const wstring & keyName, const wstring & fileName
 	}
 }
 
-void SoundPlayer::Play(const wstring & keyName, float volume)
+void SoundPlayer::Play(const wstring& keyName, float volume)
 {
 
 	//일시정지 되어 있는 사운드 인지 판단
@@ -84,7 +86,7 @@ void SoundPlayer::Play(const wstring & keyName, float volume)
 	{
 		if (mActiveChannels[i].SoundName == keyName)
 		{
-			bool isPaused; 
+			bool isPaused;
 			mActiveChannels[i].Channel->getPaused(&isPaused);
 			if (isPaused)
 			{
@@ -114,7 +116,7 @@ void SoundPlayer::Play(const wstring & keyName, float volume)
 	mActiveChannels.push_back(channelInfo);
 }
 
-void SoundPlayer::Pause(const wstring & keyName)
+void SoundPlayer::Pause(const wstring& keyName)
 {
 	for (int i = 0; i < mActiveChannels.size(); ++i)
 	{
@@ -126,7 +128,7 @@ void SoundPlayer::Pause(const wstring & keyName)
 	}
 }
 
-void SoundPlayer::Stop(const wstring & keyName)
+void SoundPlayer::Stop(const wstring& keyName)
 {
 	for (int i = 0; i < mActiveChannels.size(); ++i)
 	{
@@ -137,4 +139,19 @@ void SoundPlayer::Stop(const wstring & keyName)
 			break;
 		}
 	}
+}
+
+void SoundPlayer::Release()
+{
+	for (int i = 0; i < mActiveChannels.size(); ++i)
+	{
+		mActiveChannels[i].Channel->stop();
+	}
+
+	for (SoundIter iter = mSoundList.begin(); iter != mSoundList.end(); ++iter)
+	{
+		iter->second->release();
+	}
+	mSoundList.clear();
+
 }

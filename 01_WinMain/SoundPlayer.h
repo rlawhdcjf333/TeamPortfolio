@@ -11,6 +11,7 @@ Channel : 사운드 재생해주는 녀석
 class SoundPlayer final
 {
 	Singleton(SoundPlayer)
+
 private:
 	struct ChannelInfo
 	{
@@ -26,16 +27,16 @@ private:
 	SoundPlayer();
 	~SoundPlayer();
 public:
+
+	void Init();
 	void Update();
+	void Release();
 	void LoadFromFile(const wstring& keyName, const wstring& fileName, bool isLoop);
 	void Play(const wstring& keyName, float volume);
 	void Pause(const wstring& keyName);
 	void Stop(const wstring& keyName);
 
-	//과제~ MP3플레이어 만들어오기
-	//void SetVolume(const wstring& keyName, float volume);
-	//float GetVolume(const wstring& keyName);  
-	//void SetPosition(const wstring& keyName, float time);
-	//float GetPosition(const wstring& keyName);
+
 };
 
+#define SOUNDPLAYER SoundPlayer::GetInstance() 
