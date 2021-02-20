@@ -22,7 +22,8 @@ void UI::Update()
 
 	if (mFileName == "titleUI") {
 
-		mSceneChangeButton(0, L"Home");
+		auto func = []() {GameEventManager::GetInstance()->Update();};
+		mSceneChangeButton(0, L"Home", true, func);
 	
 	}
 
@@ -94,14 +95,32 @@ void UI::LoadFromFile(const string& fileName)
 	fin.close();
 }
 
-void UI::mSceneChangeButton( int index, wstring nextSceneName )
+void UI::mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent, function <void(void)> func)
 {
-	if (PtInRect(&mButtonList[index], _mousePosition)) {
 
-		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
+	if (sceneEvent == false) {
+		if (PtInRect(&mButtonList[index], _mousePosition)) {
 
+			if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
+
+				SceneManager::GetInstance()->LoadScene(nextSceneName);
+			}
+		}
+	}
+	else {
+		if (PtInRect(&mButtonList[index], _mousePosition)) {
+
+			if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
+
+				mTrigger = true;
+			}
+		}
+		if (mTrigger)
+		{
+			func();
+		}
+		if (!GameEventManager::GetInstance()->IsPlaying()) {
 			SceneManager::GetInstance()->LoadScene(nextSceneName);
 		}
 	}
-
 }

@@ -10,29 +10,6 @@ public:
 	virtual bool Update() = 0;	//이벤트 업데이트 함수
 };
 
-class EndEvent : public IEvent
-{
-	class GameObject* mNpc;
-	class GameObject* mPlayer;
-	float CameraX = CameraManager::GetInstance()->GetMainCamera()->GetRect().left;
-	float CameraY = CameraManager::GetInstance()->GetMainCamera()->GetRect().top;
-
-public:
-	void Start()override;
-	bool Update()override;
-	EndEvent(class GameObject* target1, class GameObject* target2);
-};
-
-class IChangeCameraTargetEvent : public IEvent
-{
-	class GameObject* mTarget;
-public:
-	IChangeCameraTargetEvent(class GameObject* target);
-
-	void Start()override;
-	bool Update()override;
-};
-
 class IDelayEvent : public IEvent
 {
 	float mCurrentTime;
@@ -42,4 +19,23 @@ public:
 
 	void Start()override;
 	bool Update()override;
+};
+
+class IPrologueEvent : public IEvent {
+
+	float mCurrentTime;
+	float mTime;
+	RECT mRect;
+	wstring mDialogue;
+	wstring mDialogue1;
+	wstring mDialogue2;
+	wstring mDialogue3;
+	wstring mEndRequest;
+	HDC hdc;
+
+public:
+	IPrologueEvent();
+	void Start()override;
+	bool Update()override;
+
 };

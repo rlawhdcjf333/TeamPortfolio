@@ -15,7 +15,11 @@ void Title::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
 	ObjectManager::GetInstance()->Init();
-	EventCount = 0;
+
+	GameEventManager::GetInstance()->RemoveAllEvent();
+	IPrologueEvent* event1 = new IPrologueEvent();
+	GameEventManager::GetInstance()->PushEvent(event1);
+
 }
 
 void Title::Release()
@@ -26,8 +30,6 @@ void Title::Release()
 void Title::Update()
 {
 	ObjectManager::GetInstance()->Update();
-	GameEventManager::GetInstance()->Update();
-	
 }
 
 

@@ -1,11 +1,14 @@
 #pragma once
 #include "GameObject.h"
+#include <functional>
+
 
 class UI : public GameObject
 {
 	vector <RECT> mButtonList;
 	string mFileName;
 	Image* mImage;
+	bool mTrigger;
 
 public:
 	UI(const string& name, const string& fileName);
@@ -16,6 +19,6 @@ public:
 	void Render(HDC hdc)override;
 	void LoadFromFile(const string& fileName);
 
-	void mSceneChangeButton(int index, wstring nextSceneName);
+	void mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent =false, function <void(void)> func = []() {});
 };
 
