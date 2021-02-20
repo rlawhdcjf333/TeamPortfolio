@@ -10,7 +10,7 @@ UI::UI(const string& name, const string& fileName)
 
 void UI::Init()
 {
-	LoadFromFile("title");
+	LoadFromFile(mFileName);
 }
 
 void UI::Release()

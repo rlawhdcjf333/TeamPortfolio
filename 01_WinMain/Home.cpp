@@ -8,9 +8,10 @@
 
 void Home::Init()
 {
-	Background* background = new Background("Home", 0, 0);
+	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
-	
+
+
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;

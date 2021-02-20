@@ -2,17 +2,17 @@
 #include "Background.h"
 #include "Image.h"
 
-Background::Background(const string& name, float x, float y)
+Background::Background(const string& name, const wstring& fileName)
 
 	: GameObject(name) 
 {
-	mX = x, mY = y;
+	mFileName = fileName;
 }
 
 void Background::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"BackGround", Resources(L"Title.bmp"), 936, 624, false);
-	mImage = IMAGEMANAGER->FindImage(L"BackGround");
+	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName+L".bmp"), 936, 624, false);
+	mImage = IMAGEMANAGER->FindImage(mFileName);
 
 }
 

@@ -3,10 +3,12 @@
 
 class Background : public GameObject
 {
+
+	wstring mFileName;
 	Image* mImage;
 
 public:
-	Background(const string& name, float x, float y);
+	Background(const string& name, const wstring& fileName);
 
 	void Init()override;
 	void Release()override;
