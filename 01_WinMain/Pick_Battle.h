@@ -4,11 +4,24 @@ class Pick_Battle : public Scene
 {
 	int EventCount;
 
+	int mLevel;		//단계 제어 변수
+	bool mLevelEnd;	//단계 변경 변수
 
+	//1단계 : 선수 선발 + 상대팀 표시
 public:
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void Update1();
+	void Update2();
+	void Update3();
+	void Update4();
+
+	void Render1();
+	void Render2();
+	void Render3();
+	void Render4();
 };
 
