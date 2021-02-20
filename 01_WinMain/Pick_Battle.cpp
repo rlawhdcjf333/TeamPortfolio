@@ -1,11 +1,18 @@
 #include "pch.h"
 #include "Pick_Battle.h"
 
+#include "UI.h"
 #include "BackGround.h"
 #include "GameEvent.h"
 
 void Pick_Battle::Init()
 {
+
+	Background* background = new Background("Audiences", L"Audiences");
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
+
+	UI* ui = new UI("pick_battleUI", "pick_battleUI");
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, ui);
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;

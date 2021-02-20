@@ -15,5 +15,7 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 	void LoadFromFile(const string& fileName);
+
+	void mSceneChangeButton(int index, wstring nextSceneName);
 };
 

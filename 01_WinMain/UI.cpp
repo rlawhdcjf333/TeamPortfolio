@@ -21,17 +21,20 @@ void UI::Update()
 {
 
 	if (mFileName == "titleUI") {
-		if (PtInRect(&mButtonList[0], _mousePosition)) {
 
-			if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
-
-				SceneManager::GetInstance()->LoadScene(L"Home");
-			}
-		}
+		mSceneChangeButton(0, L"Home");
+	
 	}
 
 	if (mFileName == "homeUI") {
 
+		mSceneChangeButton(5, L"Pick_Battle");
+
+	}
+
+	if (mFileName == "pick_battleUI") {
+
+		mSceneChangeButton(0, L"Home");
 
 	}
 
@@ -89,4 +92,16 @@ void UI::LoadFromFile(const string& fileName)
 	}
 
 	fin.close();
+}
+
+void UI::mSceneChangeButton( int index, wstring nextSceneName )
+{
+	if (PtInRect(&mButtonList[index], _mousePosition)) {
+
+		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
+
+			SceneManager::GetInstance()->LoadScene(nextSceneName);
+		}
+	}
+
 }

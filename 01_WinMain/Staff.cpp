@@ -11,7 +11,7 @@ void Staff::Init()
 	//champ들의 name중에서 랜덤 2개 < champ완성되거나 몇개 만들어지면 넣어야할듯?
 	wstring champName = L"챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기
 	mMostChamp.insert(make_pair(champName, 3));
-	wstring champName = L"챔프이름2";
+	champName = L"챔프이름2";
 	mMostChamp.insert(make_pair(champName, 3));
 
 	mChar1 = (Character)Random::GetInstance()->RandomInt(8);
