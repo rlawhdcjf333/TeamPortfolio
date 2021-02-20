@@ -11,8 +11,6 @@ void Title::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
 	
-	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.0f));
-
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;
 }

@@ -21,6 +21,10 @@ public:
 	void Render(HDC hdc);
 
 	void AddScene(const wstring& sceneName,Scene* scene);
+
+	Scene* GetScene(const wstring& sceneName);
+
+
 	//로딩없이 로드하는 함수
 	void LoadScene(const wstring& sceneName);
 	void LoadScene(const wstring& targetSceneName, const wstring& loadingSceneName);

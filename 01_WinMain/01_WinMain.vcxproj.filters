@@ -82,14 +82,14 @@
     <Filter Include="MainGame\Object\Background">
       <UniqueIdentifier>{4bdb83e6-c055-4dcd-a5a0-346cc9d3e584}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Scene\title">
-      <UniqueIdentifier>{d91a4a7b-f209-4441-ad31-c623c3e0345e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Scene\Pick_Battle">
       <UniqueIdentifier>{0bc5f813-fbdc-46fc-9dfa-c2dbf74b9d17}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainGame\Scene\Home">
       <UniqueIdentifier>{4100774f-d6e8-4a9a-9305-e248ba5a747c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Scene\Title">
+      <UniqueIdentifier>{d91a4a7b-f209-4441-ad31-c623c3e0345e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -184,7 +184,7 @@
       <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
-      <Filter>MainGame\Scene\title</Filter>
+      <Filter>MainGame\Scene\Title</Filter>
     </ClInclude>
     <ClInclude Include="Pick_Battle.h">
       <Filter>MainGame\Scene\Pick_Battle</Filter>
@@ -273,7 +273,7 @@
       <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp">
-      <Filter>MainGame\Scene\title</Filter>
+      <Filter>MainGame\Scene\Title</Filter>
     </ClCompile>
     <ClCompile Include="Pick_Battle.cpp">
       <Filter>MainGame\Scene\Pick_Battle</Filter>

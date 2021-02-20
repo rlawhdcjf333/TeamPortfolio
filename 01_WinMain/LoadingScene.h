@@ -6,6 +6,12 @@ class LoadingScene : public Scene
 	vector<function<void(void)>> mLoadList;
 	int mLoadIndex;
 	bool mIsEndLoading;
+
+	Image* mImage;
+	float mAlpha;
+
+	wstring mLoadingMessage;
+
 public:
 	void AddLoadFunc(const function<void(void)>& func);
 
