@@ -60,8 +60,8 @@ void SceneManager::LoadScene(const wstring & sceneName)
 	
 	Scene* targetScene = iter->second;
 
-	//if (mCurrentScene) 
-	//	mCurrentScene->Release(); 프로세스 종료에 모두 해제하므로 신전환마다 할 필요 없음
+	if (mCurrentScene) 
+		mCurrentScene->Release();
 
 	targetScene->Init();
 

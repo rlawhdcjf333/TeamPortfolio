@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Title.h"
 
+#include "UI.h"
 #include "BackGround.h"
 #include "GameEvent.h"
 
@@ -10,7 +11,8 @@ void Title::Init()
 	Background* background = new Background("Background", 0,0);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
-	
+	UI* ui = new UI()
+
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;
 }
@@ -23,8 +25,6 @@ void Title::Release()
 void Title::Update()
 {
 	ObjectManager::GetInstance()->Update();
-
-
 	GameEventManager::GetInstance()->Update();
 	
 }

@@ -27,8 +27,6 @@ void MainGame::Release()
 	Random::ReleaseInstance();
 
 	SafeDelete(mBackBuffer);
-	
-
 }
 
 void MainGame::Update()

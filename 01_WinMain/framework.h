@@ -32,6 +32,7 @@ using namespace std;
 #include "Random.h"
 #include "Input.h"
 #include "Math.h"
+#include "Image.h"
 #include "ImageManager.h"
 #include "CameraManager.h"
 #include "Time.h"
