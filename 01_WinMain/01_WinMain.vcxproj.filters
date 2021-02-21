@@ -91,8 +91,29 @@
     <Filter Include="FrameWork\SoundPlayer">
       <UniqueIdentifier>{7f521796-4aad-41fc-8407-b89913d2b466}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Storage">
+      <UniqueIdentifier>{ce709905-d4a9-4e5f-b851-eec05d37dbe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch">
+      <UniqueIdentifier>{c2018a95-a773-45ae-b7ce-56038cb8e1ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\TitleUI">
+      <UniqueIdentifier>{69d932ff-4da9-4231-beee-b3fec23b3984}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MainGame\Object\UI\homeUI">
       <UniqueIdentifier>{2ca6ac4d-3d37-41f7-aa11-98b691ca0ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\GameToggle">
+      <UniqueIdentifier>{e318b164-400c-4239-8ca2-c30357a0d575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\GameToggle\ChampInfo">
+      <UniqueIdentifier>{5cc7b14c-bd12-4178-8b96-4b7022638209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\HomeToBattle">
+      <UniqueIdentifier>{ba31257d-5f87-4efa-bb56-321bb50f4df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\SystemToggle">
+      <UniqueIdentifier>{a807e896-025a-49da-94c8-edccbd8d47d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +219,33 @@
     <ClInclude Include="TeamToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
+    <ClInclude Include="OperationToggle.h">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClInclude>
+    <ClInclude Include="LeagueToggle.h">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampInfo.h">
+      <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="GameToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\GameToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeToBattle.h">
+      <Filter>MainGame\Object\UI\homeUI\HomeToBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>FrameWork\Storage</Filter>
+    </ClInclude>
+    <ClInclude Include="OnPatch.h">
+      <Filter>MainGame\Object\UI\OnPatch</Filter>
+    </ClInclude>
+    <ClInclude Include="Creators.h">
+      <Filter>MainGame\Object\UI\TitleUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -292,6 +340,36 @@
     </ClCompile>
     <ClCompile Include="homeUI.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="OperationToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="LeagueToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ChampInfo.cpp">
+      <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="GameToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\GameToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeToBattle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\HomeToBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>FrameWork\Storage</Filter>
+    </ClCompile>
+    <ClCompile Include="OnPatch.cpp">
+      <Filter>MainGame\Object\UI\OnPatch</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleUI.cpp">
+      <Filter>MainGame\Object\UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Creators.cpp">
+      <Filter>MainGame\Object\UI\TitleUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

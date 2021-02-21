@@ -1,24 +1,37 @@
 #include "pch.h"
 #include "UI.h"
-#include <fstream>
+#include "OnPatch.h"
+
+UI::UI(const string& name)
+	:GameObject(name) 
+{
+	mIsActive = false;
+}
 
 UI::UI(const string& name, const string& fileName)
-	:GameObject(name)
-{
-	mFileName = fileName;
-}
+	: GameObject(name), mFileName(fileName) {}
 
 void UI::Init()
 {
 	LoadFromFile(mFileName);
 
-	if (mFileName == "homeUI") {
+	if (mFileName == "titleUI")
+	{
+		TitleUIInit();
+	}
 
+	if (mFileName == "homeUI") 
+	{
 		homeUIInit();
 	}
 
-	
+	if (mFileName == "pick_battleUI")
+	{
+		//pick_BattleUIInit();
+	}
 
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OnPatch("OnPatch"));
+	ObjectManager::GetInstance()->FindObject("OnPatch")->Init();
 }
 
 void UI::Release()
@@ -28,31 +41,20 @@ void UI::Release()
 
 void UI::Update()
 {
-
-	if (mFileName == "titleUI") {
-
-		auto func = []() {GameEventManager::GetInstance()->Update();};
-		mSceneChangeButton(0, L"Home", true, func);
-	
+	if (mFileName == "titleUI") 
+	{
+		TitleUIUpdate();
 	}
 
-	if (mFileName == "homeUI") {
-
-
-		mToggleButton(0, "TeamToggle");
-
-
-		mSceneChangeButton(5, L"Pick_Battle");
-
+	if (mFileName == "homeUI") 
+	{
+		homeUIUpdate();
 	}
 
-	if (mFileName == "pick_battleUI") {
-
-		mSceneChangeButton(0, L"Home");
-
+	if (mFileName == "pick_battleUI")
+	{
+		//pick_BattleUIUpdate();
 	}
-
-
 
 }
 
@@ -105,14 +107,19 @@ void UI::LoadFromFile(const string& fileName)
 	fin.close();
 }
 
-void UI::mToggleButton(int index, string UIName)
+void UI::mToggleButton(int index, string UIName, function <void(void)> func)
 {
 	if (PtInRect(&mButtonList[index], _mousePosition)) {
 
 		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
 
-			GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
-			hptr->SetIsActive(!hptr->GetIsActive());
+			if (UIName != "None")
+			{
+				GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
+				hptr->SetIsActive(!hptr->GetIsActive());
+			}
+			func();
+			
 		}
 	}
 }
@@ -142,6 +149,7 @@ void UI::mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent, f
 			func();
 		}
 		if (!GameEventManager::GetInstance()->IsPlaying()) {
+			mTrigger = false;
 			SceneManager::GetInstance()->LoadScene(nextSceneName);
 		}
 	}

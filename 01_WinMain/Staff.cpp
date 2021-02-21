@@ -7,7 +7,7 @@ vector<string> Staff::Name;
 void Staff::Init()
 {
 	mName = RandomName();
-
+	mIsActive = true;
 	mAtk = Random::GetInstance()->RandomInt(20);
 	mDef = Random::GetInstance()->RandomInt(20);
 

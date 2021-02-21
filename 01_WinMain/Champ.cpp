@@ -2,9 +2,7 @@
 #include "Champ.h"
 #include "Animation.h"
 
-Champ::Champ(const string& name, float x, float y)
-
-	: GameObject(name)
+Champ::Champ(const string& name, float x, float y) : GameObject(name)
 {
 	mX = x, mY = y;
 }
@@ -15,6 +13,7 @@ void Champ::Init()
 	mSizeX = mImage->GetFrameWidth();
 	mSizeY = mImage->GetFrameHeight();
 	RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
 }
 
 void Champ::Release()
@@ -25,6 +24,11 @@ void Champ::Update()
 {
 
 	//Champ∞° «“¿œ
+
+
+
+
+
 }
 
 void Champ::Render(HDC hdc)

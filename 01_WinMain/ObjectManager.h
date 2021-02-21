@@ -19,7 +19,7 @@ enum class ObjectLayer : int
 class ObjectManager
 {
 	Singleton(ObjectManager)
-private:
+protected:
 	typedef map<ObjectLayer, vector<class GameObject*>>::iterator ObjectIter;
 	map<ObjectLayer, vector<class GameObject*>> mObjectList;
 public:
@@ -33,11 +33,11 @@ public:
 
 	bool IsCollision(ObjectLayer layer,RECT &hitbox);
 
-	void AddObject(ObjectLayer layer, class GameObject* object);
-	class GameObject* FindObject(const string& name);
-	class GameObject* FindObject(ObjectLayer layer, const string& name);
-	vector<class GameObject*> FindObjects(const string& name);
-	vector<class GameObject*> FindObjects(ObjectLayer layer, const string& name);
-	vector<class GameObject*> GetObjectList(ObjectLayer layer);
+	virtual void AddObject(ObjectLayer layer, class GameObject* object);
+	virtual class GameObject* FindObject(const string& name);
+	virtual class GameObject* FindObject(ObjectLayer layer, const string& name);
+	virtual vector<class GameObject*> FindObjects(const string& name);
+	virtual vector<class GameObject*> FindObjects(ObjectLayer layer, const string& name);
+	virtual vector<class GameObject*> GetObjectList(ObjectLayer layer);
 };
 

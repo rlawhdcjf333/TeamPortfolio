@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include <functional>
 
 
 class UI : public GameObject
@@ -12,17 +11,26 @@ class UI : public GameObject
 
 
 public:
+	UI(const string& name);
 	UI(const string& name, const string& fileName);
 
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-	void LoadFromFile(const string& fileName);
-
-	void mToggleButton(int index, string UIName);
-	void mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent =false, function <void(void)> func = []() {});
+	virtual void LoadFromFile(const string& fileName);
+	
+	//Scene 전환이 일어나지 않는 버튼 토글;
+	virtual void mToggleButton(int index, string UIName, function <void(void)> func = []() {});
+	//LoadScene 불러오는 버튼 토글; 이걸 쓸때는 Update의 >>최하단부<<에 쓴다.
+	virtual void mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent =false, function <void(void)> func = []() {});
+	
+	void TitleUIInit();
+	void TitleUIUpdate();
 
 	void homeUIInit();
+	void homeUIUpdate();
+
+
 };
 

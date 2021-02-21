@@ -1,15 +1,14 @@
 #pragma once
-#include "GameObject.h"
+#include "UI.h"
 
-class TeamToggle :public GameObject
+class SystemToggle :public UI
 {
 	Image* mActive;
 	Image* mImage;
-	// mIsActive 변수가 조상님께 있으니 잘 받아쓰자
 
 public:
 
-	TeamToggle();
+	SystemToggle(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

@@ -8,7 +8,7 @@
 
 void Home::Init()
 {
-	
+
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
