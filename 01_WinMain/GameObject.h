@@ -18,11 +18,12 @@ public:
 	GameObject();
 	GameObject(const string& name);
 
-	//순수가상함수 : 반드시 자식에서 해당 함수를 오버라이딩 해야함
-	virtual void Init() = 0;
-	virtual void Release() = 0;
-	virtual void Update() = 0;
-	virtual void Render(HDC hdc) = 0;
+	//순수가상함수 였던 것. 추상 클래스는 인스턴스를 생성할 수 없어서 순수가상함수로 만들 수 없음. (Storage 최초 등록에 필요함)
+	//그르니까 얘 자손들은 이하 함수를 반드시 override ㄱ;
+	virtual void Init();
+	virtual void Release();
+	virtual void Update();
+	virtual void Render(HDC hdc);
 public:
 	inline string GetName()const { return mName; }
 	inline void SetName(const string& name) { mName = name; }

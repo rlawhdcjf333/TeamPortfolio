@@ -106,6 +106,9 @@
     <Filter Include="MainGame\Object\UI\homeUI\SystemToggle">
       <UniqueIdentifier>{a807e896-025a-49da-94c8-edccbd8d47d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Storage">
+      <UniqueIdentifier>{ce709905-d4a9-4e5f-b851-eec05d37dbe3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -228,6 +231,9 @@
     <ClInclude Include="SystemToggle.h">
       <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
     </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>FrameWork\Storage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -340,6 +346,9 @@
     </ClCompile>
     <ClCompile Include="SystemToggle.cpp">
       <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>FrameWork\Storage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -8,11 +8,7 @@
 
 void Home::Init()
 {
-	
 
-
-	ObjectManager::GetInstance()->FindObject(ObjectLayer::Director, "dir");
-	
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
