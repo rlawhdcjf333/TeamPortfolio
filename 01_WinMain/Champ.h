@@ -17,6 +17,5 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
 	
 };

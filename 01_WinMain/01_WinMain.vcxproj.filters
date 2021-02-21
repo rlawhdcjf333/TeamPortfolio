@@ -100,6 +100,12 @@
     <Filter Include="MainGame\Object\UI\homeUI\GameToggle\ChampInfo">
       <UniqueIdentifier>{5cc7b14c-bd12-4178-8b96-4b7022638209}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\HomeToBattle">
+      <UniqueIdentifier>{ba31257d-5f87-4efa-bb56-321bb50f4df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\SystemToggle">
+      <UniqueIdentifier>{a807e896-025a-49da-94c8-edccbd8d47d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -204,16 +210,10 @@
     <ClInclude Include="TeamToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
-    <ClInclude Include="HomeToBattle.h">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClInclude>
     <ClInclude Include="OperationToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
     <ClInclude Include="LeagueToggle.h">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
     <ClInclude Include="ChampInfo.h">
@@ -221,6 +221,12 @@
     </ClInclude>
     <ClInclude Include="GameToggle.h">
       <Filter>MainGame\Object\UI\homeUI\GameToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeToBattle.h">
+      <Filter>MainGame\Object\UI\homeUI\HomeToBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -317,16 +323,10 @@
     <ClCompile Include="homeUI.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
-    <ClCompile Include="HomeToBattle.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClCompile>
     <ClCompile Include="OperationToggle.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="LeagueToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemToggle.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="ChampInfo.cpp">
@@ -334,6 +334,12 @@
     </ClCompile>
     <ClCompile Include="GameToggle.cpp">
       <Filter>MainGame\Object\UI\homeUI\GameToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeToBattle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\HomeToBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
