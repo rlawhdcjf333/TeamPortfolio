@@ -42,7 +42,7 @@ void UI::Update()
 		mToggleButton(0, "TeamToggle");
 
 
-		mSceneChangeButton(5, L"Pick_Battle");
+		mToggleButton(5, "HomeToBattle");
 
 	}
 

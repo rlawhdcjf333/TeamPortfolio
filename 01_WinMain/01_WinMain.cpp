@@ -131,6 +131,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 		}
 	}
 
+	SceneManager::GetInstance()->Relesae();
+
 	//여기까지 왔다면 프로그램이 끝났다는 얘기
 	_mainGame->Release();
 	delete _mainGame;

@@ -10,6 +10,11 @@ mIsLoadingEnd(false){}
 
 SceneManager::~SceneManager()
 {
+
+}
+
+void SceneManager::Relesae()
+{
 	SceneIter iter = mSceneList.begin();
 	for (; iter != mSceneList.end(); ++iter)
 	{

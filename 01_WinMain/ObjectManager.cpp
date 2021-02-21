@@ -10,6 +10,8 @@ ObjectManager::ObjectManager()
 		mObjectList.insert(make_pair((ObjectLayer)i, emptyVector));
 	}
 }
+
+
 void ObjectManager::Init()
 {
 	ObjectIter iter = mObjectList.begin();

@@ -17,6 +17,7 @@ public:
 	SceneManager();
 	~SceneManager();
 
+	void Relesae();
 	void Update();
 	void Render(HDC hdc);
 

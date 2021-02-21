@@ -198,6 +198,9 @@
     <ClInclude Include="TeamToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
+    <ClInclude Include="HomeToBattle.h">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -291,6 +294,9 @@
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="homeUI.cpp">
+      <Filter>MainGame\Object\UI\homeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeToBattle.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
   </ItemGroup>
