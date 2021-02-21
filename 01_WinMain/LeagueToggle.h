@@ -1,14 +1,14 @@
 #pragma once
 #include "GameObject.h"
 
-class OperationToggle :public GameObject
+class LeagueToggle :public GameObject
 {
 	Image* mActive;
 	Image* mImage;
 
 public:
 
-	OperationToggle();
+	LeagueToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;

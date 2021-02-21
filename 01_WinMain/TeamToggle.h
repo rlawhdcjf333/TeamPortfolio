@@ -3,6 +3,7 @@
 
 class TeamToggle :public GameObject
 {
+	Image* mActive;
 	Image* mImage;
 	// mIsActive 변수가 조상님께 있으니 잘 받아쓰자
 
