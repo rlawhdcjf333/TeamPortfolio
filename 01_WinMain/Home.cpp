@@ -12,11 +12,7 @@ void Home::Init()
 
 
 	ObjectManager::GetInstance()->FindObject(ObjectLayer::Director, "dir");
-	if (Storage::GetInstance->FindObject()) {
-		ObjectManager::GetInstance()->FindObject(ObjectLayer::Director, "dir") = Storage::GetInstance->FindObject();
-
-	}
-
+	
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 

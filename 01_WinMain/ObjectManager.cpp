@@ -22,10 +22,10 @@ void ObjectManager::Init()
 			iter->second[i]->Init();
 
 
-			if (Storage::GetInstance()->FindObject(iter->second[i]->GetName())) {
-
-				iter->second[i] = Storage::GetInstance()->FindObject(iter->second[i]->GetName();
-			}
+			//if (Storage::GetInstance()->FindObject(iter->second[i]->GetName())) {
+			//
+			//	*iter->second[i] = Storage::GetInstance()->*FindObject(iter->second[i]->GetName();
+			//}
 
 		}
 	}
