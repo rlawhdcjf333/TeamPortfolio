@@ -8,4 +8,6 @@ class Storage : public ObjectManager
 public:
 	Storage();
 
+	void Clear();
+
 };

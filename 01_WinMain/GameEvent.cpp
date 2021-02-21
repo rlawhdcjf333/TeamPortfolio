@@ -68,6 +68,7 @@ bool IPrologueEvent::Update()
 
 	if (mCurrentTime > 2.f and Input::GetInstance()->GetKeyUp(VK_RETURN)) 
 	{
+		IMAGEMANAGER->FindImage(L"TitleClearBuffer")->Render(hdc, 0, 0);
 		return true;
 	}
 	return false;

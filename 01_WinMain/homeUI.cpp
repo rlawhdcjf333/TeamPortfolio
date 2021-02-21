@@ -26,7 +26,7 @@ void UI::homeUIInit()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new GameToggle);
 	ObjectManager::GetInstance()->FindObject("GameToggle")->Init();
 
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new SystemToggle);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new SystemToggle("SystemToggle"));
 	ObjectManager::GetInstance()->FindObject("SystemToggle")->Init();
 }
 

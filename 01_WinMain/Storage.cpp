@@ -11,4 +11,19 @@ Storage::Storage()
 	}
 }
 
+void Storage::Clear()
+{
+	ObjectIter iter = mObjectList.begin();
+	for (; iter != mObjectList.end(); ++iter)
+	{
+		for (int i = 0; i < iter->second.size(); ++i)
+		{
+			iter->second[i]->Release();
+			SafeDelete(iter->second[i]);
+		}
+		iter->second.clear();
+		iter->second.shrink_to_fit();
+	}
+}
+
 
