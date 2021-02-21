@@ -4,12 +4,18 @@
 
 vector<string> Staff::Name;
 
+Staff::Staff(const string& name, const wstring& fileName) 
+	:GameObject(name)
+{
+	mFileName = fileName;
+}
+
 void Staff::Init()
 {
 	mName = RandomName();
 
-	mAtk = Random::GetInstance()->RandomInt(20);
-	mDef = Random::GetInstance()->RandomInt(20);
+	mAtk = Random::GetInstance()->RandomInt(3, 7);
+	mDef = Random::GetInstance()->RandomInt(3, 7);
 
 	//champ들의 name중에서 랜덤 2개 < champ완성되거나 몇개 만들어지면 넣어야할듯?, 자료형 나중에 맞추지 뭐
 	wstring champName = L"챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기, 
@@ -22,17 +28,39 @@ void Staff::Init()
 
 	mTraningPoint = 0;
 
-	//mImage = IMAGEMANAGER->FindImage();	//랜덤하게 넣기
-	
+	// 가로 10 세로 8
+	mRandomIndexX = Random::GetInstance()->RandomInt(10);
+	mRandomIndexY = Random::GetInstance()->RandomInt(8);
+
+	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 960, 512, 30, 16, true);
+	mImage = IMAGEMANAGER->FindImage(mFileName);	//랜덤하게 넣기
+		
 	//이미지 작업한 다음에 애니메이션 모션 만들어서 넣기
-	/*
-	Animation* tempAnm = new Animation();
-	tempAnm->InitFrameByStartEnd(min, Y, max, Y, true);
-	tempAnm->SetIsLoop(true);
-	tempAnm->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftIdle", tempAnm));
-	mCurrentAnm = tempAnm;
-	*/
+	
+	Animation* RightIdle = new Animation();
+	RightIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3, mRandomIndexY * 2, true);
+	RightIdle->SetIsLoop(true);
+	RightIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
+	mCurrentAnm = RightIdle;
+
+	Animation* LeftIdle = new Animation();
+	LeftIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3, mRandomIndexY * 2 + 1, true);
+	LeftIdle->SetIsLoop(true);
+	LeftIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
+
+	Animation* RightRun = new Animation();
+	RightRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3 + 2, mRandomIndexY * 2, true);
+	RightRun->SetIsLoop(true);
+	RightRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightRun", RightRun));
+
+	Animation* LeftRun = new Animation();
+	LeftRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3 + 2, mRandomIndexY * 2 + 1, true);
+	LeftRun->SetIsLoop(true);
+	LeftRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 }
 
 void Staff::Release()
@@ -45,12 +73,13 @@ void Staff::Release()
 
 void Staff::Update()
 {
-	//??뭘 업데이트 해야하지?
+	//??뭘 업데이트 해야하지
+	mCurrentAnm->Update();
 }
 
 void Staff::Render(HDC hdc)
 {
-	//mImage->FrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY());
+	mImage->ScaleFrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), mImage->GetFrameWidth() * 2, mImage->GetFrameHeight() * 2);
 }
 
 string Staff::RandomName()

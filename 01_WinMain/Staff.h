@@ -34,6 +34,8 @@ class Staff : public GameObject
 	map <wstring, Animation*> mAnimationList;
 	Animation* mCurrentAnm;
 
+	wstring mFileName;
+
 	float mAtk;	//공격력
 	float mDef;	//방어력
 	float mHeal;//회복력
@@ -44,9 +46,13 @@ class Staff : public GameObject
 	Character mChar2;	//if(Character::None) 표시 안함
 
 	int mTraningPoint;	//Scene1:Home 에서 훈련에 쓰일 변수, 여기 있어야하나? Scene1::Home에서 쓰는거라 필요없으면 없애도 됨
+	int mRandomIndexX;	//이미지 랜덤 변수
+	int mRandomIndexY;	//이미지 랜덤 변수
 
 	Condition mCondition;	//컨디션
 public:
+	Staff(const string& name, const wstring& fileName);
+
 	void Init() override;
 	void Release() override;
 	void Update() override;

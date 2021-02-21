@@ -13,5 +13,5 @@ void UI::homeUIInit()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new HomeToBattle);
 	ObjectManager::GetInstance()->FindObject("HomeToBattle")->Init();
 
-
+	
 }

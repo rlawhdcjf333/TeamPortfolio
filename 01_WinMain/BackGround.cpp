@@ -3,7 +3,6 @@
 #include "Image.h"
 
 Background::Background(const string& name, const wstring& fileName)
-
 	: GameObject(name) 
 {
 	mFileName = fileName;
