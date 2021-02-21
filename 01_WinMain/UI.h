@@ -20,9 +20,10 @@ public:
 	void Render(HDC hdc)override;
 	void LoadFromFile(const string& fileName);
 
-	void mToggleButton(int index, string UIName);
+	void mToggleButton(int index, string UIName, function <void(void)> func = []() {});
 	void mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent =false, function <void(void)> func = []() {});
 
 	void homeUIInit();
+	void homeUIUpdate();
 };
 

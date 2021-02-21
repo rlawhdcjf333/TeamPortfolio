@@ -2,9 +2,7 @@
 #include "Champ.h"
 #include "Animation.h"
 
-Champ::Champ(const string& name, float x, float y)
-
-	: GameObject(name)
+Champ::Champ(const string& name, float x, float y) : GameObject(name)
 {
 	mX = x, mY = y;
 }

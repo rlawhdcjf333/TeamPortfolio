@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "UI.h"
-#include <fstream>
 
 UI::UI(const string& name, const string& fileName)
 	:GameObject(name)
@@ -38,22 +37,9 @@ void UI::Update()
 
 	if (mFileName == "homeUI") {
 
-
-		mToggleButton(0, "TeamToggle");
-
-
-		mToggleButton(5, "HomeToBattle");
+		homeUIUpdate();
 
 	}
-
-	if (mFileName == "pick_battleUI") {
-
-		mSceneChangeButton(0, L"Home");
-
-	}
-
-
-
 }
 
 void UI::Render(HDC hdc)
@@ -105,7 +91,7 @@ void UI::LoadFromFile(const string& fileName)
 	fin.close();
 }
 
-void UI::mToggleButton(int index, string UIName)
+void UI::mToggleButton(int index, string UIName, function <void(void)> func)
 {
 	if (PtInRect(&mButtonList[index], _mousePosition)) {
 
@@ -113,6 +99,9 @@ void UI::mToggleButton(int index, string UIName)
 
 			GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
 			hptr->SetIsActive(!hptr->GetIsActive());
+
+			func();
+			
 		}
 	}
 }
