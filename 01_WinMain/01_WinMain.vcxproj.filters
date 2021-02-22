@@ -118,6 +118,7 @@
     <Filter Include="MainGame\Scene\PickBattle">
       <UniqueIdentifier>{0bc5f813-fbdc-46fc-9dfa-c2dbf74b9d17}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="MainGame\Object\UI\PickBattelUI\StaffSelect">
       <UniqueIdentifier>{6b3bc7ad-a3e5-4bfb-aa04-472d87e15de3}</UniqueIdentifier>
     </Filter>
@@ -130,6 +131,8 @@
     <Filter Include="MainGame\Object\UI\PickBattelUI\FeedBack">
       <UniqueIdentifier>{4609b6d1-3c7c-4f72-918e-c7bfa82b6432}</UniqueIdentifier>
     </Filter>
+=======
+>>>>>>> parent of 68c6b97 (sadf)
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -261,9 +264,12 @@
     <ClInclude Include="PickBattle.h">
       <Filter>MainGame\Scene\PickBattle</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="StaffSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\StaffSelect</Filter>
     </ClInclude>
+=======
+>>>>>>> parent of 68c6b97 (sadf)
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -392,9 +398,12 @@
     <ClCompile Include="PickBattle.cpp">
       <Filter>MainGame\Scene\PickBattle</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="StaffSelect.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\StaffSelect</Filter>
     </ClCompile>
+=======
+>>>>>>> parent of 68c6b97 (sadf)
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc">
