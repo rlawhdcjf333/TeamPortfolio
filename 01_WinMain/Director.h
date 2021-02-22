@@ -19,4 +19,3 @@ public:
 	void Render(HDC hdc)override;
 	void LoadFromFile(const wstring& fileName);
 };
-

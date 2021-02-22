@@ -4,6 +4,7 @@
 #include "UI.h"
 #include "BackGround.h"
 #include "GameEvent.h"
+#include "Staff.h"
 
 
 void Home::Init()
@@ -12,9 +13,10 @@ void Home::Init()
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff("Staff1", L"Staff"));
+
 	UI* ui = new UI("homeUI", "homeUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-
 
 
 
@@ -31,8 +33,8 @@ void Home::Release()
 
 void Home::Update()
 {
-	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
+	ObjectManager::GetInstance()->Update();
 
 }
 

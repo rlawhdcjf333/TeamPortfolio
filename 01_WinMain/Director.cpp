@@ -8,23 +8,27 @@ Director::Director(const string& name, const wstring& fileName)
 	mFileName = fileName;
 }
 
-// 열정만수르, joy room, 김복남소머리국밥
+// 굳이 감독 캐릭터가 필요할까??
+// 팀이름
+// TeamMansu, TeamJoyRoom, TeamCowHead
 void Director::Init()
 {
 	LoadFromFile(mFileName);
-	mName;
 }
 
 void Director::Release()
 {
+	SafeDelete(mTeamImage);
 }
 
 void Director::Update()
 {
+
 }
 
 void Director::Render(HDC hdc)
 {
+	//mTeamImage->Redner();
 }
 
 void Director::LoadFromFile(const wstring& fileName)

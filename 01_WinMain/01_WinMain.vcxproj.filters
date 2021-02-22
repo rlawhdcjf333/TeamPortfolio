@@ -79,9 +79,6 @@
     <Filter Include="MainGame\Object\Background">
       <UniqueIdentifier>{4bdb83e6-c055-4dcd-a5a0-346cc9d3e584}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Scene\Pick_Battle">
-      <UniqueIdentifier>{0bc5f813-fbdc-46fc-9dfa-c2dbf74b9d17}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Scene\Home">
       <UniqueIdentifier>{4100774f-d6e8-4a9a-9305-e248ba5a747c}</UniqueIdentifier>
     </Filter>
@@ -114,6 +111,21 @@
     </Filter>
     <Filter Include="MainGame\Object\UI\homeUI\SystemToggle">
       <UniqueIdentifier>{a807e896-025a-49da-94c8-edccbd8d47d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI">
+      <UniqueIdentifier>{1076f13c-20e7-4d40-9fab-cca48c899749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Scene\PickBattle">
+      <UniqueIdentifier>{0bc5f813-fbdc-46fc-9dfa-c2dbf74b9d17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle">
+      <UniqueIdentifier>{d7835167-2315-4de9-9b81-00dcb903ffa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\Training">
+      <UniqueIdentifier>{1db1fd46-d15f-442c-97b2-d191f009551e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level1_StaffSelect">
+      <UniqueIdentifier>{0fc7c1c9-b069-476a-a562-c61b7d299465}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -207,17 +219,11 @@
     <ClInclude Include="Title.h">
       <Filter>MainGame\Scene\Title</Filter>
     </ClInclude>
-    <ClInclude Include="Pick_Battle.h">
-      <Filter>MainGame\Scene\Pick_Battle</Filter>
-    </ClInclude>
     <ClInclude Include="Home.h">
       <Filter>MainGame\Scene\Home</Filter>
     </ClInclude>
     <ClInclude Include="SoundPlayer.h">
       <Filter>FrameWork\SoundPlayer</Filter>
-    </ClInclude>
-    <ClInclude Include="TeamToggle.h">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
     <ClInclude Include="OperationToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
@@ -246,8 +252,20 @@
     <ClInclude Include="Creators.h">
       <Filter>MainGame\Object\UI\TitleUI</Filter>
     </ClInclude>
-    <ClInclude Include="Ranger.h">
-      <Filter>MainGame\Object\Champ</Filter>
+    <ClInclude Include="PickBattle.h">
+      <Filter>MainGame\Scene\PickBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="Training.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffSelect.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="PickBattleUI.h">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -329,17 +347,11 @@
     <ClCompile Include="Title.cpp">
       <Filter>MainGame\Scene\Title</Filter>
     </ClCompile>
-    <ClCompile Include="Pick_Battle.cpp">
-      <Filter>MainGame\Scene\Pick_Battle</Filter>
-    </ClCompile>
     <ClCompile Include="Home.cpp">
       <Filter>MainGame\Scene\Home</Filter>
     </ClCompile>
     <ClCompile Include="SoundPlayer.cpp">
       <Filter>FrameWork\SoundPlayer</Filter>
-    </ClCompile>
-    <ClCompile Include="TeamToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="homeUI.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
@@ -374,8 +386,20 @@
     <ClCompile Include="Creators.cpp">
       <Filter>MainGame\Object\UI\TitleUI</Filter>
     </ClCompile>
-    <ClCompile Include="Ranger.cpp">
-      <Filter>MainGame\Object\Champ</Filter>
+    <ClCompile Include="PickBattleUI.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PickBattle.cpp">
+      <Filter>MainGame\Scene\PickBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="Training.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffSelect.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

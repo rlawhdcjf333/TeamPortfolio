@@ -4,7 +4,7 @@
 #include "BackGround.h"
 #include "Title.h"
 #include "Home.h"
-#include "Pick_Battle.h"
+#include "PickBattle.h"
 #include "LoadingScene.h"
 
 void MainGame::Init()
@@ -14,7 +14,7 @@ void MainGame::Init()
 
 	SceneManager::GetInstance()->AddScene(L"Title", new Title);
 	SceneManager::GetInstance()->AddScene(L"Home", new Home);
-	SceneManager::GetInstance()->AddScene(L"Pick_Battle", new Pick_Battle);
+	SceneManager::GetInstance()->AddScene(L"PickBattle", new PickBattle);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene", new LoadingScene);
 
 	SceneManager::GetInstance()->LoadScene(L"LoadingScene");
@@ -39,6 +39,9 @@ void MainGame::Render(HDC hdc)
 	PatBlt(backDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	{
 		SceneManager::GetInstance()->Render(backDC);
+		//Image* image = IMAGEMANAGER->FindImage(L"Title");
+		//if(image)
+		//	image->ScaleRender(backDC, 0, 0, 300, 300);
 	}
 	mBackBuffer->Render(hdc, 0, 0);
 }
