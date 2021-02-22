@@ -28,7 +28,6 @@ enum class Condition : int
 };
 class Staff : public GameObject
 {
-	static vector<string>Name;
 
 	Image* mImage;
 	map <wstring, Animation*> mAnimationList;
@@ -51,14 +50,13 @@ class Staff : public GameObject
 
 	Condition mCondition;	//ÄÁµð¼Ç
 public:
+	Staff(const string& name);
 	Staff(const string& name, const wstring& fileName);
 
 	void Init() override;
 	void Release() override;
 	void Update() override;
 	void Render(HDC hdc) override;
-
-	string RandomName();
 
 	inline float GetAtk()const { return mAtk; }
 	inline void SetAtk(float atk) { mAtk = atk; }
