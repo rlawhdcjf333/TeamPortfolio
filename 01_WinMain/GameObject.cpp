@@ -6,3 +6,19 @@ GameObject::GameObject()
 
 GameObject::GameObject(const string & name)
 	: mName(name), mIsActive(true), mIsDestroy(false) {}
+
+void GameObject::Init()
+{
+}
+
+void GameObject::Release()
+{
+}
+
+void GameObject::Update()
+{
+}
+
+void GameObject::Render(HDC hdc)
+{
+}

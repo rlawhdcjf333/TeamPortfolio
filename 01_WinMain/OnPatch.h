@@ -1,19 +1,18 @@
 #pragma once
 #include "UI.h"
-
-class SystemToggle :public UI
+class OnPatch : public UI
 {
-	Image* mActive;
 	Image* mImage;
+	float mDuration;
+	float mCurrentTime;
 
 public:
 
-	SystemToggle(const string& name);
+	OnPatch(const string& name);
 	void Init()override;
-	void Release()override;
 	void Update()override;
+	void Release()override;
 	void Render(HDC hdc)override;
-
 
 };
 
