@@ -246,6 +246,9 @@
     <ClInclude Include="Creators.h">
       <Filter>MainGame\Object\UI\TitleUI</Filter>
     </ClInclude>
+    <ClInclude Include="Ranger.h">
+      <Filter>MainGame\Object\Champ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -370,6 +373,9 @@
     </ClCompile>
     <ClCompile Include="Creators.cpp">
       <Filter>MainGame\Object\UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranger.cpp">
+      <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

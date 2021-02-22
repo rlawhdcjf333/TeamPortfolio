@@ -178,6 +178,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Pick_Battle.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="Ranger.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SoundPlayer.h" />
@@ -226,6 +227,7 @@
     </ClCompile>
     <ClCompile Include="Pick_Battle.cpp" />
     <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Ranger.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="Storage.cpp" />
