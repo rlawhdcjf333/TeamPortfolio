@@ -8,19 +8,25 @@ Staff::Staff(const string& name, const wstring& fileName)
 	:GameObject(name)
 {
 	mFileName = fileName;
+	mIsActive = false;
 }
 
 void Staff::Init()
 {
+	mX = WINSIZEX / 2;
+	mY = WINSIZEY / 2;
+
 	mName = RandomName();
-	mIsActive = true;
 	mAtk = Random::GetInstance()->RandomInt(3, 7);
 	mDef = Random::GetInstance()->RandomInt(3, 7);
 
+
+
+
 	//champ들의 name중에서 랜덤 2개 < champ완성되거나 몇개 만들어지면 넣어야할듯?, 자료형 나중에 맞추지 뭐
-	wstring champName = L"챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기, 
+	string champName = "챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기, 
 	mMostChamp.insert(make_pair(champName, 3));
-	wstring champName2 = L"챔프이름2";
+	string champName2 = "챔프이름2";
 	mMostChamp.insert(make_pair(champName2, 3));
 
 	mChar1 = (Character)Random::GetInstance()->RandomInt(8);
@@ -33,6 +39,9 @@ void Staff::Init()
 
 	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 960, 512, 30, 16, true);
 	mImage = IMAGEMANAGER->FindImage(mFileName);
+
+	mRenderSizeX = mImage->GetFrameWidth() * 2;
+	mRenderSizeY = mImage->GetFrameHeight() * 2;
 
 	Animation* RightIdle = new Animation();
 	RightIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3, mRandomIndexY * 2, true);
@@ -76,7 +85,10 @@ void Staff::Update()
 
 void Staff::Render(HDC hdc)
 {
-	mImage->ScaleFrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), mImage->GetFrameWidth() * 2, mImage->GetFrameHeight() * 2);
+	if (mIsActive)
+	{
+		mImage->ScaleFrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), mRenderSizeX, mRenderSizeY);
+	}
 }
 
 string Staff::RandomName()
