@@ -28,12 +28,14 @@ void Director::Init()
 		mStaffNameList.push_back(RandomName());
 	}
 
-	for (string name : mStaffNameList)
-		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(name, mName));
+	//for (string name : mStaffNameList)
+	//	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(name, mName));
+	// Staff 클래스의 생성자를 확인하기 바랍니다. -CTO
 	
-	for (string name : mStaffNameList) {
-		ObjectManager::GetInstance()->FindObject(name)->Init();
-	}
+	//for (string name : mStaffNameList) {
+	//	ObjectManager::GetInstance()->FindObject(name)->Init();
+	//}
+	// AddObject돌리셨으면 굳이 Init() 돌릴 필요가 음슴니다. scene init에서 일괄적으로 돌리기 때문이죠. 이러면 Init()이 두번 돕니다 -CTO
 
 	//ObjectManager::GetInstance()->FindObject(str1)->Init();
 	//ObjectManager::GetInstance()->FindObject(str2)->Init();

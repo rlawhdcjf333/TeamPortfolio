@@ -37,7 +37,7 @@ void UI::PickBattleUIInit()
 
 		fin.close();
 	};
-	func("staffSelect", Level1Rect);
+	func("staffSelect", Level1Rect); //?? 무여 이거시 ...김종철 LoadFromFile() 이거 안씀?
 	//func("",Level2Rect);
 	//func("",Level3Rect);
 	//func("",Level4Rect);
@@ -63,6 +63,7 @@ void UI::PickBattleUIUpdate()
 		//다음 레벨로 넘어갈때... (PickBattleUI cpp에서만 접근 가능한)mLevel을 (GameObject)Level안에서 변경해야하는데.... 어떻게하지
 		//(GameObject)Level안에서 다음 단계로 넘어갈때 다음단계의 mIsActive = true 로 하고,
 		//넘어간 다음에 이전단계 mIsActive = false ? 이러면 이상할거같은데
+		//다운캐스팅해서 접근해라.. 김종철 UI* tmp = (UI*)ObjectManager::GetInstance()->FindObject("pickbattleUI")
 		break;
 	default:
 		break;

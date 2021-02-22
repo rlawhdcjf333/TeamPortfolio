@@ -20,7 +20,6 @@ void TeamToggle::Init()
 	mActive= IMAGEMANAGER->FindImage(L"TeamToggleClick");
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Training);
-	ObjectManager::GetInstance()->FindObject("Training")->Init();
 
 }
 

@@ -21,7 +21,6 @@ void GameToggle::Init()
 	mActive = IMAGEMANAGER->FindImage(L"GameToggleClick");
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampInfo);
-	ObjectManager::GetInstance()->FindObject("ChampInfo")->Init();
 
 }
 

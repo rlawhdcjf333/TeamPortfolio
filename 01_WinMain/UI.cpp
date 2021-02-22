@@ -31,7 +31,6 @@ void UI::Init()
 	}
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OnPatch("OnPatch"));
-	ObjectManager::GetInstance()->FindObject("OnPatch")->Init();
 }
 
 void UI::Release()
