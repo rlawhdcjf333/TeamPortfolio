@@ -34,6 +34,7 @@ class Staff : public GameObject
 	Animation* mCurrentAnm;
 
 	wstring mFileName;
+	string mTeamColor;
 
 	float mAtk;	//공격력
 	float mDef;	//방어력
@@ -50,7 +51,7 @@ class Staff : public GameObject
 
 	Condition mCondition;	//컨디션
 public:
-	Staff(const string& name);
+	Staff(const string& name, const string& teamColor);
 	Staff(const string& name, const wstring& fileName);
 
 	void Init() override;

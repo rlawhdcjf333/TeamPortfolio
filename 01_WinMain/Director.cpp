@@ -20,12 +20,12 @@ void Director::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 60, 60, true);
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName()));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName()));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName()));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName(), mName));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName(), mName));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName(), mName));
 
 	if (mName == "TeamNuguri") {
-		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName()));
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(RandomName(), mName));
 	}
 
 	ObjectManager::GetInstance()->Init();

@@ -2,10 +2,11 @@
 #include "Staff.h"
 #include "Animation.h"
 
-Staff::Staff(const string& name)
+Staff::Staff(const string& name, const string& teamColor)
 	:GameObject(name)
 {
 	mFileName = L"Staff";
+	mTeamColor = teamColor;
 }
 
 Staff::Staff(const string& name, const wstring& fileName)
@@ -17,7 +18,6 @@ Staff::Staff(const string& name, const wstring& fileName)
 
 void Staff::Init()
 {
-
 	mAtk = Random::GetInstance()->RandomInt(3, 7);
 	mDef = Random::GetInstance()->RandomInt(3, 7);
 
