@@ -176,7 +176,8 @@
     <ClInclude Include="OnPatch.h" />
     <ClInclude Include="OperationToggle.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Pick_Battle.h" />
+    <ClInclude Include="PickBattle.h" />
+    <ClInclude Include="PickBattleUI.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
@@ -224,7 +225,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Pick_Battle.cpp" />
+    <ClCompile Include="PickBattle.cpp" />
+    <ClCompile Include="PickBattleUI.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
