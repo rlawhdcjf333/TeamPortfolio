@@ -4,7 +4,7 @@
 #include "BackGround.h"
 #include "Title.h"
 #include "Home.h"
-#include "PickBattle.h"
+#include "Pick_Battle.h"
 #include "LoadingScene.h"
 
 void MainGame::Init()
@@ -14,7 +14,7 @@ void MainGame::Init()
 
 	SceneManager::GetInstance()->AddScene(L"Title", new Title);
 	SceneManager::GetInstance()->AddScene(L"Home", new Home);
-	SceneManager::GetInstance()->AddScene(L"PickBattle", new PickBattle);
+	SceneManager::GetInstance()->AddScene(L"Pick_Battle", new Pick_Battle);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene", new LoadingScene);
 
 	SceneManager::GetInstance()->LoadScene(L"LoadingScene");

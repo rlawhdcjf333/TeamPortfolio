@@ -191,7 +191,6 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="UI.h" />
-    <ClInclude Include="Training.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -242,7 +241,6 @@
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="homeUI.cpp" />
     <ClCompile Include="TitleUI.cpp" />
-    <ClCompile Include="Training.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />
