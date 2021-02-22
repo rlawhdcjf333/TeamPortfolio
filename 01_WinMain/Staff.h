@@ -40,7 +40,7 @@ class Staff : public GameObject
 	float mDef;	//방어력
 	float mHeal;//회복력
 
-	map<wstring, int>mMostChamp;	//first = champName, second = 숙련도 가중치?	//만약에 모스트픽이면 능력치를 second(숙련도 가중치)만큼 증가 시킴
+	map<string, int>mMostChamp;	//first = champName, second = 숙련도 가중치?	//만약에 모스트픽이면 능력치를 second(숙련도 가중치)만큼 증가 시킴
 
 	Character mChar1;	//if(Character::None) 표시 안함
 	Character mChar2;	//if(Character::None) 표시 안함
@@ -50,6 +50,12 @@ class Staff : public GameObject
 	int mRandomIndexY;	//이미지 랜덤 변수
 
 	Condition mCondition;	//컨디션
+
+	int mRenderSizeX;
+	int mRenderSizeY;
+
+	int mStatPoint;
+
 public:
 	Staff(const string& name, const wstring& fileName);
 
@@ -64,14 +70,19 @@ public:
 	inline void SetAtk(float atk) { mAtk = atk; }
 	inline float GetDef()const { return mDef; }
 	inline void SetDef(float def) { mDef = def; }
+	void UpAtk(int n = 2) { mAtk += n; }
+	void UpDef(int n = 2) { mAtk += n; }
 
 	void SetChar1(Character c) { mChar1 = c; }
 	void SetChar2(Character c) { mChar2 = c; }
 	Character GetChar1() { return mChar1; }
 	Character GetChar2() { return mChar2; }
 
-	void SetProficiency(wstring key, int value) { mMostChamp.find(key)->second = value; }
-	int GetProficiency(wstring key)const { return mMostChamp.find(key)->second; }
-	void AddProficiency(wstring key, int value) { mMostChamp.find(key)->second += value; }	//scene1::Home 에서 쓰면 될듯?
+	void SetProficiency(string key, int value) { mMostChamp.find(key)->second = value; }
+	int GetProficiency(string key)const { return mMostChamp.find(key)->second; }
+	void UpProficiency(string key, int value) { mMostChamp.find(key)->second += value; }	//scene1::Home 에서 쓰면 될듯?
+
+	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
+
 };
 

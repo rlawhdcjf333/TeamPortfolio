@@ -4,6 +4,7 @@
 #include "UI.h"
 #include "BackGround.h"
 #include "GameEvent.h"
+#include "Staff.h"
 
 
 void Home::Init()
@@ -15,7 +16,7 @@ void Home::Init()
 	UI* ui = new UI("homeUI", "homeUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
-
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff("Staff1", L"Staff"));
 
 
 
