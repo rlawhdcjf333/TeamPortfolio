@@ -11,7 +11,6 @@ private:
 	Image* mImage;
 	bool mTrigger;
 
-
 public:
 	UI(const string& name);
 	UI(const string& name, const string& fileName);
@@ -33,6 +32,8 @@ public:
 	void homeUIInit();
 	void homeUIUpdate();
 
-
+	//PickBattle Á¦¾î
+	void PickBattleUIInit();
+	void PickBattleUIUpdate();
 };
 

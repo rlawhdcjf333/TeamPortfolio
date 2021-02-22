@@ -27,7 +27,7 @@ void UI::Init()
 
 	if (mFileName == "pickbattleUI")
 	{
-		//pick_BattleUIInit();
+		PickBattleUIInit();
 	}
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OnPatch("OnPatch"));
@@ -53,7 +53,7 @@ void UI::Update()
 
 	if (mFileName == "pickbattleUI")
 	{
-		//pick_BattleUIUpdate();
+		//PickBattleUIUpdate();
 	}
 
 }
