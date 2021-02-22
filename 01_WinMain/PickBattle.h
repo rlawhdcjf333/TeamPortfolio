@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-class Pick_Battle : public Scene
+class PickBattle : public Scene
 {
 	int EventCount;
 

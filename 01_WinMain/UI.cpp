@@ -25,7 +25,7 @@ void UI::Init()
 		homeUIInit();
 	}
 
-	if (mFileName == "pick_battleUI")
+	if (mFileName == "pickbattleUI")
 	{
 		//pick_BattleUIInit();
 	}
@@ -51,7 +51,7 @@ void UI::Update()
 		homeUIUpdate();
 	}
 
-	if (mFileName == "pick_battleUI")
+	if (mFileName == "pickbattleUI")
 	{
 		//pick_BattleUIUpdate();
 	}
