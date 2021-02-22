@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainGame.h"
 
+#include "BackGround.h"
 #include "Title.h"
 #include "Home.h"
 #include "Pick_Battle.h"

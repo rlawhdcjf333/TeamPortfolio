@@ -16,6 +16,7 @@ void Title::Init()
 
 	ObjectManager::GetInstance()->Init();
 
+
 	IPrologueEvent* event1 = new IPrologueEvent();
 	GameEventManager::GetInstance()->PushEvent(event1);
 

@@ -20,6 +20,14 @@ void ObjectManager::Init()
 		for (int i = 0; i < iter->second.size(); ++i)
 		{	
 			iter->second[i]->Init();
+
+			if (Storage::GetInstance()->FindObject(iter->second[i]->GetName())!=nullptr) 
+			{
+				if (iter->first == ObjectLayer::Champ) continue;
+				if (iter->first == ObjectLayer::Background) continue;
+				*iter->second[i] = *Storage::GetInstance()->FindObject(iter->second[i]->GetName());
+			}
+
 		}
 	}
 }
@@ -29,6 +37,23 @@ void ObjectManager::Release()
 	ObjectIter iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); ++iter)
 	{
+		for (int i = 0; i < iter->second.size(); ++i) {
+
+			if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) == nullptr)
+			{
+				if (iter->first == ObjectLayer::Champ) continue;
+				if (iter->first == ObjectLayer::Background) continue;
+				Storage::GetInstance()->AddObject(iter->first, new GameObject(iter->second[i]->GetName()));
+				*(Storage::GetInstance()->FindObject(iter->second[i]->GetName())) = *iter->second[i];
+			}
+			else
+			{
+				if (iter->first == ObjectLayer::Champ) continue;
+				if (iter->first == ObjectLayer::Background) continue;
+				*(Storage::GetInstance()->FindObject(iter->second[i]->GetName())) = *iter->second[i];
+			}
+		}
+
 		for (int i = 0; i < iter->second.size(); ++i)
 		{
 			iter->second[i]->Release();

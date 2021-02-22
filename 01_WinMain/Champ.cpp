@@ -13,6 +13,7 @@ void Champ::Init()
 	mSizeX = mImage->GetFrameWidth();
 	mSizeY = mImage->GetFrameHeight();
 	RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
 }
 
 void Champ::Release()
@@ -23,6 +24,11 @@ void Champ::Update()
 {
 
 	//Champ∞° «“¿œ
+
+
+
+
+
 }
 
 void Champ::Render(HDC hdc)

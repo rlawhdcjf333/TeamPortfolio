@@ -1,19 +1,17 @@
 #pragma once
 #include "UI.h"
 
-class SystemToggle :public UI
+class Creators : public UI
 {
-	Image* mActive;
 	Image* mImage;
-
+	
 public:
 
-	SystemToggle(const string& name);
+	Creators(const string& name);
 	void Init()override;
-	void Release()override;
 	void Update()override;
+	void Release()override;
 	void Render(HDC hdc)override;
-
 
 };
 

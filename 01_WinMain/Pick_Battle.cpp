@@ -15,6 +15,9 @@ void Pick_Battle::Init()
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;
+
+
+
 }
 
 void Pick_Battle::Release()
