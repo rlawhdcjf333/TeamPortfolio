@@ -34,6 +34,7 @@ class Staff : public GameObject
 	Animation* mCurrentAnm;
 
 	wstring mFileName;
+	string mTeamName;
 	string mTeamColor;
 
 	float mAtk;	//공격력
@@ -51,7 +52,7 @@ class Staff : public GameObject
 
 	Condition mCondition;	//컨디션
 public:
-	Staff(const string& name, const string& teamColor);
+	Staff(const string& name, const string& teamName);
 	Staff(const string& name, const wstring& fileName);
 
 	void Init() override;
@@ -72,5 +73,9 @@ public:
 	void SetProficiency(wstring key, int value) { mMostChamp.find(key)->second = value; }
 	int GetProficiency(wstring key)const { return mMostChamp.find(key)->second; }
 	void AddProficiency(wstring key, int value) { mMostChamp.find(key)->second += value; }	//scene1::Home 에서 쓰면 될듯?
-};
 
+	void SetTeamName(string teamName) { mTeamName = teamName; }
+	void SetTeamColor(string teamColor) { mTeamColor = teamColor; }
+	string GetTeamName() { return mTeamName; }
+	string GetTeamColor() { return mTeamColor; }
+};

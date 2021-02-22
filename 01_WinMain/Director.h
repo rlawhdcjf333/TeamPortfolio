@@ -10,8 +10,7 @@ class Director : public GameObject
 	Image* mTeamImage;
 	wstring mFileName;
 
-	//vector<Image*> mTeamList;
-	//map<wstring, Staff*> mStaffList;
+	vector<string> mStaffNameList;
 public:
 	Director(const string& name, const wstring& fileName);
 
@@ -21,4 +20,7 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void SetStaffNameList(vector<string> staffNameList) { mStaffNameList = staffNameList; }
+	vector<string> GetStaffNameList() { return mStaffNameList; }
 };

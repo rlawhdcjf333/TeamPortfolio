@@ -2,11 +2,11 @@
 #include "Staff.h"
 #include "Animation.h"
 
-Staff::Staff(const string& name, const string& teamColor)
+Staff::Staff(const string& name, const string& teamName)
 	:GameObject(name)
 {
 	mFileName = L"Staff";
-	mTeamColor = teamColor;
+	mTeamName = teamName;
 }
 
 Staff::Staff(const string& name, const wstring& fileName)
