@@ -20,13 +20,6 @@ void ObjectManager::Init()
 		for (int i = 0; i < iter->second.size(); ++i)
 		{	
 			iter->second[i]->Init();
-
-
-			if (Storage::GetInstance()->FindObject(iter->second[i]->GetName())) {
-
-				iter->second[i] = Storage::GetInstance()->FindObject(iter->second[i]->GetName();
-			}
-
 		}
 	}
 }

@@ -9,6 +9,8 @@ class Champ : public GameObject
 
 	float mAlpha;
 	
+	GameObject* mTarget;
+	GameObject* mFriend;
 
 public:
 	Champ(const string& name, float x, float y);
@@ -18,4 +20,5 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 	
+
 };
