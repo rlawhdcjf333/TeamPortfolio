@@ -268,7 +268,7 @@
       <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
     <ClInclude Include="Ranger.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -405,7 +405,7 @@
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClCompile>
     <ClCompile Include="Ranger.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

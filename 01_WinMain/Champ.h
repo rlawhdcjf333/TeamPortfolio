@@ -23,6 +23,7 @@ protected:
 
 	float mAttackCool;		//공격 쿨 타임
 	float mSkill1Cool;		//스킬1 쿨 타임
+	float mDeathCool;		//데스 쿨 타임
 
 
 	float mAlpha;

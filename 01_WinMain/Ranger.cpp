@@ -21,6 +21,7 @@ void Ranger::Init()
 	mRange = 100;
 	mAttackCool = 2;
 	mSkill1Cool = 5;
+	mDeathCool = 3;
 
 	mDistance1 = 0;
 	mDistance2 = 0;
@@ -36,70 +37,70 @@ void Ranger::Init()
 	RightIdle->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
 
-	Animation* LeftIdle = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 0, 3, 0, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
-
 	Animation* RightRun = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 3, 4, 3, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
+	RightRun->InitFrameByStartEnd(0, 3, 4, 3, true);
+	RightRun->SetIsLoop(true);
+	RightRun->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightRun", RightRun));
 
-	Animation* LeftRun = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
-
 	Animation* RightAttack = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
+	RightAttack->InitFrameByStartEnd(0, 2, 4, 2, true);
+	RightAttack->SetIsLoop(true);
+	RightAttack->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightAttack", RightAttack));
 
-	Animation* LeftAttack = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
-
 	Animation* RightSkill1 = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
+	RightSkill1->InitFrameByStartEnd(0, 2, 4, 2, true);
+	RightSkill1->SetIsLoop(true);
+	RightSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill1", RightSkill1));
 
-	Animation* LeftSkill1 = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
-
 	Animation* RightSkill2 = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
+	RightSkill2->InitFrameByStartEnd(0, 2, 4, 2, true);
+	RightSkill2->SetIsLoop(true);
+	RightSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
 
-	Animation* LeftSkill2 = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
-
 	Animation* RightDeath = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
+	RightDeath->InitFrameByStartEnd(0, 2, 4, 2, true);
+	RightDeath->SetIsLoop(true);
+	RightDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
+	
+	Animation* LeftIdle = new Animation();
+	LeftIdle->InitFrameByStartEnd(0, 0, 3, 0, true);
+	LeftIdle->SetIsLoop(true);
+	LeftIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
+	
+	Animation* LeftRun = new Animation();
+	LeftRun->InitFrameByStartEnd(0, 2, 4, 2, true);
+	LeftRun->SetIsLoop(true);
+	LeftRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 
+	Animation* LeftAttack = new Animation();
+	LeftAttack->InitFrameByStartEnd(0, 2, 4, 2, true);
+	LeftAttack->SetIsLoop(true);
+	LeftAttack->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
+	
+	Animation* LeftSkill1 = new Animation();
+	LeftSkill1->InitFrameByStartEnd(0, 2, 4, 2, true);
+	LeftSkill1->SetIsLoop(true);
+	LeftSkill1->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
+
+	Animation* LeftSkill2 = new Animation();
+	LeftSkill2->InitFrameByStartEnd(0, 2, 4, 2, true);
+	LeftSkill2->SetIsLoop(true);
+	LeftSkill2->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
+	
 	Animation* LeftDeath = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 2, 4, 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
+	LeftDeath->InitFrameByStartEnd(0, 2, 4, 2, true);
+	LeftDeath->SetIsLoop(true);
+	LeftDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
 
 
@@ -111,16 +112,27 @@ void Ranger::Release()
 }
 void Ranger::Update()
 {
+	if (mIsActive == false && mDeathCool <= 0)
+	{
+		mDeathCool = 3;
+		mIsActive = true;
+	}
 
 	if (mHP <= 0)
 	{
 		mIsActive = false;
 	}
+
+	if (mIsActive == false)
+	{
+		mDeathCool -= Time::GetInstance()->DeltaTime();
+		return;
+	}
 	//각각의 적들의 상태가 엑티브인 애들의 거리를 찾아서 가까운 애가 타겟이 되게 설정한다.
 	//우선 엑티브가 트루인지 폴스인지 확인후 트루면 값을 넣어주고 아니면 0을 넣어서 거리값을 비교하게 한다.
 	//비교했을 때 거리가 가까운 애를 타겟으로 한다.
 
-	mMP += Time::GetInstance()->DeltaTime();	//MP 1씩 깎아주기
+	mMP += Time::GetInstance()->DeltaTime();	//MP 1씩 더해주기
 	mSkill1Cool -= Time::GetInstance()->DeltaTime(); //스킬 쿨 돌아가게 해주기
 	mAttackCool -= Time::GetInstance()->DeltaTime(); //공격 쿨 돌아가게 해주기
 
@@ -154,7 +166,7 @@ void Ranger::Update()
 		mTarget = mEnemyList[2];
 		mTargetDistance = mDistance3;
 	}
-	//Champ* tmp = (Champ*)mTarget;		//타겟이 확정됐으니 적 체력세팅을 위해 다운캐스팅해버림
+	Champ* tmp = (Champ*)mTarget;		//타겟이 확정됐으니 적 체력세팅을 위해 다운캐스팅해버림
 	mAngle = Math::GetAngle(mX, mY, mTarget->GetX(), mTarget->GetY());
 	//}}
 
@@ -171,7 +183,6 @@ void Ranger::Update()
 
 				if (mCurrentAnm->GetCurrentFrameIndex() == 6)//궁극기 스킬의 끝프레임 까지 갔다면 타겟의 HP를 복합적인 연산으로 깎고 모션을 아이들로 바꾼다.
 				{
-					Champ* tmp = (Champ*)mTarget;			//타겟을 챔프로 다운캐스팅
 					tmp->SetHP(tmp->GetHP() - 100);			//HP를 깎는다.
 					mMP = 0;								//마나를 0으로 초기화
 					mCurrentAnm->Stop();
@@ -189,7 +200,6 @@ void Ranger::Update()
 
 					if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
 					{
-						Champ* tmp = (Champ*)mTarget;	//타겟을 챔프로 다운캐스팅
 						tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
 						mSkill1Cool = 5;				//쿨타임을 원래대로 초기화
 						mCurrentAnm->Stop();
@@ -207,7 +217,6 @@ void Ranger::Update()
 
 						if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
 						{
-							Champ* tmp = (Champ*)mTarget;	//타겟을 챔프로 다운캐스팅
 							tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
 							mAttackCool = 5;				//쿨타임을 원래대로 초기화
 							mCurrentAnm->Stop();
@@ -235,7 +244,6 @@ void Ranger::Update()
 
 				if (mCurrentAnm->GetCurrentFrameIndex() == 6)//궁극기 스킬의 끝프레임 까지 갔다면 타겟의 HP를 복합적인 연산으로 깎고 모션을 아이들로 바꾼다.
 				{
-					Champ* tmp = (Champ*)mTarget;			//타겟을 챔프로 다운캐스팅
 					tmp->SetHP(tmp->GetHP() - 100);			//HP를 깎는다.
 					mMP = 0;								//마나를 0으로 초기화
 					mCurrentAnm->Stop();
@@ -253,7 +261,6 @@ void Ranger::Update()
 
 					if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
 					{
-						Champ* tmp = (Champ*)mTarget;	//타겟을 챔프로 다운캐스팅
 						tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
 						mSkill1Cool = 5;				//쿨타임을 원래대로 초기화
 						mCurrentAnm->Stop();
@@ -271,7 +278,6 @@ void Ranger::Update()
 
 						if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
 						{
-							Champ* tmp = (Champ*)mTarget;	//타겟을 챔프로 다운캐스팅
 							tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
 							mAttackCool = 5;				//쿨타임을 원래대로 초기화
 							mCurrentAnm->Stop();
