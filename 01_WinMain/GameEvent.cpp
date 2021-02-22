@@ -60,11 +60,15 @@ bool IPrologueEvent::Update()
 
 	mCurrentTime += Time::GetInstance()->DeltaTime();
 
-	if (mCurrentTime > 0.5f) TextOut(hdc, 100, 150, mDialogue1.c_str(), mDialogue1.size());
-	if (mCurrentTime > 1.f) TextOut(hdc, 100, 200, mDialogue2.c_str(), mDialogue2.size());
-	if (mCurrentTime > 1.5f) TextOut(hdc, 100, 250, mDialogue3.c_str(), mDialogue3.size());
+	if (mCurrentTime > 0.5f) 
+		TextOut(hdc, 100, 150, mDialogue1.c_str(), mDialogue1.size());
+	if (mCurrentTime > 1.f) 
+		TextOut(hdc, 100, 200, mDialogue2.c_str(), mDialogue2.size());
+	if (mCurrentTime > 1.5f) 
+		TextOut(hdc, 100, 250, mDialogue3.c_str(), mDialogue3.size());
 
-	if(mCurrentTime > 2.f) TextOut(hdc, 800, 500, mEndRequest.c_str(), mEndRequest.size());
+	if(mCurrentTime > 2.f) 
+		TextOut(hdc, 800, 500, mEndRequest.c_str(), mEndRequest.size());
 
 	if (mCurrentTime > 2.f and Input::GetInstance()->GetKeyUp(VK_RETURN)) 
 	{

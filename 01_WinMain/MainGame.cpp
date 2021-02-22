@@ -39,6 +39,9 @@ void MainGame::Render(HDC hdc)
 	PatBlt(backDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	{
 		SceneManager::GetInstance()->Render(backDC);
+		//Image* image = IMAGEMANAGER->FindImage(L"Title");
+		//if(image)
+		//	image->ScaleRender(backDC, 0, 0, 300, 300);
 	}
 	mBackBuffer->Render(hdc, 0, 0);
 }
