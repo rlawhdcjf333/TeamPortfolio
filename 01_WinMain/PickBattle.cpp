@@ -16,9 +16,6 @@ void PickBattle::Init()
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;
-
-	mLevel = NULL;
-	func = nullptr;
 }
 
 void PickBattle::Release()
@@ -37,8 +34,6 @@ void PickBattle::Render(HDC hdc)
 	ObjectManager::GetInstance()->Render(hdc);
 
 }
-
-//mLevel에 따라 실행할 함수들 > UI에서 해야할듯
 
 void PickBattle::Update1()
 {

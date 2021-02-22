@@ -9,9 +9,7 @@ class UI : public GameObject
 	Image* mImage;
 	bool mTrigger;
 
-	//Scene3에서 쓸 변수들...
-	int mLevel;
-	string mTeam;	//이걸 Home->LeagueToggle?에 있는 대진표 정보를 뽑아야함
+
 public:
 	UI(const string& name);
 	UI(const string& name, const string& fileName);
@@ -33,7 +31,6 @@ public:
 	void homeUIInit();
 	void homeUIUpdate();
 
-	void PickBattleUIInit();
-	void PickBattleUIUpdate();
+
 };
 
