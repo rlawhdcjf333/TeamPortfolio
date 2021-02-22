@@ -177,11 +177,11 @@
     <ClInclude Include="OperationToggle.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PickBattle.h" />
-    <ClInclude Include="PickBattleUI.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SoundPlayer.h" />
+    <ClInclude Include="StaffSelect.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="SystemToggle.h" />
     <ClInclude Include="TeamToggle.h" />
@@ -230,6 +230,7 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
+    <ClCompile Include="StaffSelect.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="SystemToggle.cpp" />
     <ClCompile Include="TeamToggle.cpp" />
