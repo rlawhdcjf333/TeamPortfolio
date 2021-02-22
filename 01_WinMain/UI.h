@@ -4,7 +4,9 @@
 
 class UI : public GameObject
 {
-	vector <RECT> mButtonList;
+protected: vector <RECT> mButtonList;
+
+private:
 	string mFileName;
 	Image* mImage;
 	bool mTrigger;

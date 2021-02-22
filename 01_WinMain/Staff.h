@@ -28,10 +28,13 @@ enum class Condition : int
 };
 class Staff : public GameObject
 {
-	static vector<string>Name;
+	static vector<string> Name;
 
-	string mStaffName;
+protected:	string mStaffName;
 
+public: string GetStaffName() { return mStaffName; }
+
+protected:
 	Image* mImage;
 	map <wstring, Animation*> mAnimationList;
 	Animation* mCurrentAnm;
@@ -57,6 +60,7 @@ class Staff : public GameObject
 	int mRenderSizeY;
 
 	int mStatPoint;
+	
 
 public:
 	Staff(const string& name, const wstring& fileName);
@@ -86,6 +90,8 @@ public:
 	void UpProficiency(string key, int value) { mMostChamp.find(key)->second += value; }	//scene1::Home 에서 쓰면 될듯?
 
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
+
+
 
 };
 

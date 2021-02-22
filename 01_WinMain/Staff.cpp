@@ -77,7 +77,10 @@ void Staff::Release()
 void Staff::Update()
 {
 	//??뭘 업데이트 해야하지?
-	mCurrentAnm->Update();
+	if (mIsActive)
+	{
+		mCurrentAnm->Update();
+	}
 }
 
 void Staff::Render(HDC hdc)
@@ -104,9 +107,9 @@ string Staff::RandomName()
 		Name.push_back("Sam");
 		Name.push_back("HobakGoguma");
 		Name.push_back("Lockman");
-		Name.push_back("Wa");
+		Name.push_back("Wa!");
 		Name.push_back("Maple");
-		Name.push_back("Mr.Kyugil");
+		Name.push_back("Mr.Kyungil");
 		Name.push_back("Ppangkkuttongkku");
 		Name.push_back("Gonjaless");
 		Name.push_back("Mario");
@@ -126,12 +129,12 @@ string Staff::RandomName()
 		Name.push_back("NuguryMaster");
 		Name.push_back("Bryndi");
 		Name.push_back("Eksomess");
-		Name.push_back("Gwawle");
+		Name.push_back("Hwajin");
 		Name.push_back("Igandir");
 		Name.push_back("Iteric");
 		Name.push_back("Jarrite");
 		Name.push_back("Korten");
-		Name.push_back("cidy sizer makes my feel hight");
+		Name.push_back("Synthesizer makes me feel high");
 		Name.push_back("Umilum");
 		Name.push_back("Webbitus");
 		Name.push_back("Nugu");
