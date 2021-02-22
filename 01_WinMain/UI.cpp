@@ -25,13 +25,12 @@ void UI::Init()
 		homeUIInit();
 	}
 
-	if (mFileName == "pick_battleUI")
+	if (mFileName == "pickbattleUI")
 	{
-		//pick_BattleUIInit();
+		PickBattleUIInit();
 	}
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OnPatch("OnPatch"));
-	ObjectManager::GetInstance()->FindObject("OnPatch")->Init();
 }
 
 void UI::Release()
@@ -51,9 +50,9 @@ void UI::Update()
 		homeUIUpdate();
 	}
 
-	if (mFileName == "pick_battleUI")
+	if (mFileName == "pickbattleUI")
 	{
-		//pick_BattleUIUpdate();
+		//PickBattleUIUpdate();
 	}
 
 }

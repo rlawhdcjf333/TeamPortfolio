@@ -6,7 +6,6 @@
 void UI::TitleUIInit ()
 {
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Creators("Creators"));
-	ObjectManager::GetInstance()->FindObject("Creators")->Init();
 }
 
 void UI::TitleUIUpdate ()

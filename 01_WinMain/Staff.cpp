@@ -4,17 +4,26 @@
 
 vector<string> Staff::Name;
 
+Staff::Staff(const string& name, const wstring& fileName)
+	:GameObject(name)
+{
+	mFileName = fileName;
+	mIsActive = false;
+}
+
 void Staff::Init()
 {
-	mName = RandomName();
-	mIsActive = true;
-	mAtk = Random::GetInstance()->RandomInt(20);
-	mDef = Random::GetInstance()->RandomInt(20);
+	mX = WINSIZEX / 2;
+	mY = WINSIZEY / 2;
+
+	mStaffName = RandomName();
+	mAtk = Random::GetInstance()->RandomInt(3, 7);
+	mDef = Random::GetInstance()->RandomInt(3, 7);
 
 	//champ들의 name중에서 랜덤 2개 < champ완성되거나 몇개 만들어지면 넣어야할듯?, 자료형 나중에 맞추지 뭐
-	wstring champName = L"챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기, 
+	string champName = "챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기, 
 	mMostChamp.insert(make_pair(champName, 3));
-	wstring champName2 = L"챔프이름2";
+	string champName2 = "챔프이름2";
 	mMostChamp.insert(make_pair(champName2, 3));
 
 	mChar1 = (Character)Random::GetInstance()->RandomInt(8);
@@ -22,17 +31,39 @@ void Staff::Init()
 
 	mTraningPoint = 0;
 
-	//mImage = IMAGEMANAGER->FindImage();	//랜덤하게 넣기
-	
-	//이미지 작업한 다음에 애니메이션 모션 만들어서 넣기
-	/*
-	Animation* tempAnm = new Animation();
-	tempAnm->InitFrameByStartEnd(min, Y, max, Y, true);
-	tempAnm->SetIsLoop(true);
-	tempAnm->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftIdle", tempAnm));
-	mCurrentAnm = tempAnm;
-	*/
+	mRandomIndexX = Random::GetInstance()->RandomInt(10);
+	mRandomIndexY = Random::GetInstance()->RandomInt(8);
+
+	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 960, 512, 30, 16, true);
+	mImage = IMAGEMANAGER->FindImage(mFileName);
+
+	mRenderSizeX = mImage->GetFrameWidth() * 2;
+	mRenderSizeY = mImage->GetFrameHeight() * 2;
+
+	Animation* RightIdle = new Animation();
+	RightIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3, mRandomIndexY * 2, true);
+	RightIdle->SetIsLoop(true);
+	RightIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
+	mCurrentAnm = RightIdle;
+
+	Animation* LeftIdle = new Animation();
+	LeftIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3, mRandomIndexY * 2 + 1, true);
+	LeftIdle->SetIsLoop(true);
+	LeftIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
+
+	Animation* RightRun = new Animation();
+	RightRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3 + 2, mRandomIndexY * 2, true);
+	RightRun->SetIsLoop(true);
+	RightRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightRun", RightRun));
+
+	Animation* LeftRun = new Animation();
+	LeftRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3 + 2, mRandomIndexY * 2 + 1, true);
+	LeftRun->SetIsLoop(true);
+	LeftRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 }
 
 void Staff::Release()
@@ -46,11 +77,23 @@ void Staff::Release()
 void Staff::Update()
 {
 	//??뭘 업데이트 해야하지?
+	if (mIsActive)
+	{
+		mCurrentAnm->Update();
+	}
 }
 
 void Staff::Render(HDC hdc)
 {
-	//mImage->FrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY());
+	if (mIsActive)
+	{
+		mImage->ScaleFrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), mRenderSizeX, mRenderSizeY);
+	}
+}
+
+void Staff::UIRender(HDC hdc, int startX, int startY, int width, int height)
+{
+	mImage->ScaleFrameRender(hdc, startX, startY, mRandomIndexX*3, mRandomIndexY*2, width, height);
 }
 
 string Staff::RandomName()
@@ -64,9 +107,9 @@ string Staff::RandomName()
 		Name.push_back("Sam");
 		Name.push_back("HobakGoguma");
 		Name.push_back("Lockman");
-		Name.push_back("Wa");
+		Name.push_back("Wa!");
 		Name.push_back("Maple");
-		Name.push_back("Mr.Kyugil");
+		Name.push_back("Mr.Kyungil");
 		Name.push_back("Ppangkkuttongkku");
 		Name.push_back("Gonjaless");
 		Name.push_back("Mario");
@@ -86,12 +129,12 @@ string Staff::RandomName()
 		Name.push_back("NuguryMaster");
 		Name.push_back("Bryndi");
 		Name.push_back("Eksomess");
-		Name.push_back("Gwawle");
+		Name.push_back("Hwajin");
 		Name.push_back("Igandir");
 		Name.push_back("Iteric");
 		Name.push_back("Jarrite");
 		Name.push_back("Korten");
-		Name.push_back("cidy sizer makes my feel hight");
+		Name.push_back("Synthesizer makes me feel high");
 		Name.push_back("Umilum");
 		Name.push_back("Webbitus");
 		Name.push_back("Nugu");

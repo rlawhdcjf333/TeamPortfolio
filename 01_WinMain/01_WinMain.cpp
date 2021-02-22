@@ -130,7 +130,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 			_mainGame->Render(hdc);
 		}
 	}
-
+	
+	Storage::GetInstance()->Clear();
 	SceneManager::GetInstance()->Relesae();
 	
 

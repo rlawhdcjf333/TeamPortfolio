@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "SystemToggle.h"
 
-SystemToggle::SystemToggle(const string& name)
-	:UI(name) {}
+SystemToggle::SystemToggle()
+	:UI("SystemToggle")  
+{
+	mIsActive = false;
+}
 
 void SystemToggle::Init()
 {

@@ -7,7 +7,6 @@
 
 void Pick_Battle::Init()
 {
-
 	Background* background = new Background("Audiences", L"Audiences");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
@@ -16,6 +15,9 @@ void Pick_Battle::Init()
 
 	ObjectManager::GetInstance()->Init();
 	EventCount = 0;
+
+
+
 }
 
 void Pick_Battle::Release()
