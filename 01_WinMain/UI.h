@@ -9,7 +9,8 @@ class UI : public GameObject
 	Image* mImage;
 	bool mTrigger;
 
-
+	//pickbattle에서 쓸변수임
+	int mLevel;
 public:
 	UI(const string& name);
 	UI(const string& name, const string& fileName);
@@ -31,6 +32,7 @@ public:
 	void homeUIInit();
 	void homeUIUpdate();
 
-
+	void PickBattleUIInit();
+	void PickBattleUIUpdate();
 };
 

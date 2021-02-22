@@ -1,2 +1,11 @@
 #include "pch.h"
-#include "PickBattleUI.h"
+#include "UI.h"
+
+void UI::PickBattleUIInit()
+{
+
+}
+void UI::PickBattleUIUpdate()
+{
+
+}
