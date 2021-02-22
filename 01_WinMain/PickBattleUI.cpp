@@ -8,6 +8,8 @@ void UI::PickBattleUIInit()
 
 	function<void(string, vector<RECT>)> func = [](string fileName, vector<RECT>rcList)
 	{
+		if (rcList.size() > 0)
+			return;
 		ifstream fin("../rectList/" + fileName + ".txt");
 		if (fin.is_open()) {
 
