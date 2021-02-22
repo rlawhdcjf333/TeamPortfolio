@@ -35,10 +35,7 @@ void TeamToggle::Update()
 		auto func = []()
 		{
 			ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
-			ObjectManager::GetInstance()->FindObject("Staff1")->SetIsActive(true);
-
 		};
-
 		mToggleButton(1, "Training", func);
 
 	}

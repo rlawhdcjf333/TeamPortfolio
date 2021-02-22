@@ -13,10 +13,11 @@ void Home::Init()
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff("Staff1", L"Staff"));
+
 	UI* ui = new UI("homeUI", "homeUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff("Staff1", L"Staff"));
 
 
 

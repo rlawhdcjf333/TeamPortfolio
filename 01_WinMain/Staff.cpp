@@ -16,12 +16,9 @@ void Staff::Init()
 	mX = WINSIZEX / 2;
 	mY = WINSIZEY / 2;
 
-	mName = RandomName();
+	mStaffName = RandomName();
 	mAtk = Random::GetInstance()->RandomInt(3, 7);
 	mDef = Random::GetInstance()->RandomInt(3, 7);
-
-
-
 
 	//champ들의 name중에서 랜덤 2개 < champ완성되거나 몇개 만들어지면 넣어야할듯?, 자료형 나중에 맞추지 뭐
 	string champName = "챔프이름1";//champ이름 아무거나 뽑아오는 함수? < objectmanager에서 ObjectLayer::Champ인데에서 뽑아오는거 만들기, 
@@ -89,6 +86,11 @@ void Staff::Render(HDC hdc)
 	{
 		mImage->ScaleFrameRender(hdc, mX, mY, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), mRenderSizeX, mRenderSizeY);
 	}
+}
+
+void Staff::UIRender(HDC hdc, int startX, int startY, int width, int height)
+{
+	mImage->ScaleFrameRender(hdc, startX, startY, mRandomIndexX*3, mRandomIndexY*2, width, height);
 }
 
 string Staff::RandomName()
