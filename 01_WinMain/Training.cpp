@@ -114,6 +114,10 @@ void Training::RenderCurrentStaff(HDC hdc)
 	TextOut(hdc, 74, 225, to_wstring(mCurrentStaffAtk).c_str(), to_wstring(mCurrentStaffAtk).size());
 	TextOut(hdc, 162, 225, to_wstring(mCurrentStaffDef).c_str(), to_wstring(mCurrentStaffDef).size());
 
+	RECT CharRc = RectMake(108, 182, 47, 21);
+	DrawText(hdc, mCurrentStaff->GetCharComment(1).c_str(), mCurrentStaff->GetCharComment(1).size(), &CharRc, DT_VCENTER | DT_SINGLELINE | DT_CENTER);
+
+	//TextOut(hdc, 108, 184, mCurrentStaff->GetCharComment(1).c_str(), mCurrentStaff->GetCharComment(1).size());
 
 
 }

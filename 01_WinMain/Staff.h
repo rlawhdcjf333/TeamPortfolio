@@ -12,7 +12,7 @@ enum class Character : int	//0 ~ 8, 9는 표시안함
 	Thorn,	//가시 : 상대방의 회복력 -10
 	Winner,	//승리자 : 처치관여(assist)시 체력 +10
 	Distraction,//주의산만 : 공격대상이 5초마다 무작위로 변경
-	Fest,	//빠름 : 스킬 시전속도 10% 증가
+	Fest,	//쾌속 : 스킬 시전속도 10% 증가
 	Spear,	//꿰뚫는 창 : 방어력 관통효과 +10(상대방의 방어력을 10 무시한다)
 
 	None	//비어있는 특성(표시 안하는 상태)
@@ -85,6 +85,7 @@ public:
 	void SetChar2(Character c) { mChar2 = c; }
 	Character GetChar1() { return mChar1; }
 	Character GetChar2() { return mChar2; }
+	wstring GetCharComment(int Charnum);
 
 	void SetProficiency(string key, int value) { mMostChamp.find(key)->second = value; }
 	int GetProficiency(string key)const { return mMostChamp.find(key)->second; }
