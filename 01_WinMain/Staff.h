@@ -37,6 +37,8 @@ protected:
 	map <wstring, Animation*> mAnimationList;
 	Animation* mCurrentAnm;
 
+	Champ* mPickChamp;
+
 	wstring mFileName;
 	wstring mTeamName;
 
@@ -87,6 +89,9 @@ public:
 	void UpProficiency(string key, int value) { mMostChamp.find(key)->second += value; }	//scene1::Home 에서 쓰면 될듯?
 
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
+
+	Champ* GetPickChamp() { return mPickChamp; }
+	void SetPickChamp(Champ* champ) { mPickChamp = champ; }
 
 
 
