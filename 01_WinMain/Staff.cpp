@@ -33,15 +33,10 @@ void Staff::Init()
 	mRandomIndexX = Random::GetInstance()->RandomInt(10);
 	mRandomIndexY = Random::GetInstance()->RandomInt(8);
 
-<<<<<<< Updated upstream
-	mCondition = (Condition)Random::GetInstance()->RandomInt(1, 4);
-	
-	IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"Condition.bmp"), 150, 30, 5, 1, true);
-=======
+
 	mCondition = (Condition)Random::GetInstance()->RandomInt(4);
 	//컨디션 이미지 작업하면 아래 세 줄 주석 제거
-	IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"Condition"), 150, 30, 5, 1, true);
->>>>>>> Stashed changes
+	IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"Condition.bmp"), 150, 30, 5, 1, true);
 	mConditionImage = IMAGEMANAGER->FindImage(L"Condition");
 	SetConditionImage();
 
