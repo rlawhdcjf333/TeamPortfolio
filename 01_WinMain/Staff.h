@@ -60,7 +60,8 @@ protected:
 
 	int mStatPoint;
 	
-
+	Image* mConditionImage;
+	int mConditionX;
 public:
 	Staff(const string& name, const string& staffName, const wstring& teamName);
 
@@ -69,6 +70,7 @@ public:
 	void Update() override;
 	void Render(HDC hdc) override;
 	void UIRender(HDC hdc, int startX, int startY, int width, int height);
+	void ConditionRender(HDC hdc, int startX, int startY);
 
 	inline float GetAtk()const { return mAtk; }
 	inline void SetAtk(float atk) { mAtk = atk; }
@@ -88,7 +90,7 @@ public:
 
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
 
-
+	void SetConditionImage();
 
 };
 

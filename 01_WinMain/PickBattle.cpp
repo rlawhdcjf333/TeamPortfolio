@@ -15,7 +15,7 @@ void PickBattle::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, ui);
 
 	ObjectManager::GetInstance()->Init();
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new UIDelayEvent("StaffSelect",2.f));
 }
 
 void PickBattle::Release()

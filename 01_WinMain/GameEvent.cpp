@@ -18,7 +18,6 @@ bool IDelayEvent::Update()
 
 	if (mCurrentTime >= mDelayTime)
 	{
-		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		return true;
 	}
 
@@ -74,6 +73,30 @@ bool IPrologueEvent::Update()
 	if (mCurrentTime > 2.f and Input::GetInstance()->GetKeyUp(VK_RETURN)) 
 	{
 		IMAGEMANAGER->FindImage(L"TitleClearBuffer")->Render(hdc, 0, 0);
+		return true;
+	}
+	return false;
+}
+
+//UI딜레이이벤트
+UIDelayEvent::UIDelayEvent(string objectname,float delayTime)
+{
+	targetUI = objectname;
+	mDelayTime = delayTime;
+	mCurrentTime = 0.f;
+}
+
+void UIDelayEvent::Start()
+{
+}
+
+bool UIDelayEvent::Update()
+{
+	mCurrentTime += Time::GetInstance()->DeltaTime();
+
+	if (mCurrentTime >= mDelayTime)
+	{
+		ObjectManager::GetInstance()->FindObject(targetUI)->SetIsActive(true);
 		return true;
 	}
 	return false;

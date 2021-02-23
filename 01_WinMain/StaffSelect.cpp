@@ -26,7 +26,8 @@ void StaffSelect::Update()
 	//-
 	if (mIsActive)
 	{
-		mToggleButton(51, "다음단계이름나중에넣고", []() {ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false); });	//다음버튼... 맨아래에 둘거임
+		mToggleButton(51, "StaffSelect", []() 
+			{ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false); });	//다음버튼... 자기자신은 false로 하고 다음걸 true
 	}
 }
 

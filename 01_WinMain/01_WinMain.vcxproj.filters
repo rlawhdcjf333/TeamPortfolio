@@ -130,6 +130,9 @@
     <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\StaffList">
       <UniqueIdentifier>{25a07aff-843d-403f-bf45-822144f7e7f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level2_PickBan">
+      <UniqueIdentifier>{ab0882ba-d620-45a8-a65c-f0b74c8d90eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -273,6 +276,9 @@
     <ClInclude Include="StaffList.h">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
     </ClInclude>
+    <ClInclude Include="BanPick.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_PickBan</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -412,6 +418,9 @@
     </ClCompile>
     <ClCompile Include="StaffList.cpp">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+    </ClCompile>
+    <ClCompile Include="BanPick.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_PickBan</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
