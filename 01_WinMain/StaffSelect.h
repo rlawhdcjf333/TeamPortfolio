@@ -1,7 +1,9 @@
 #pragma once
-#include "GameObject.h"
-class StaffSelect : public GameObject
+#include "UI.h"
+class PickBattleUI;
+class StaffSelect : public UI
 {
+	PickBattleUI* mPickBattleUI;
 	vector <RECT> mButtonList;
 	Image* mImage;
 
@@ -12,7 +14,6 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-	void LoadFromFile(const string& fileName);
-	void mToggleButton(int index, string UIName);
+	void SetUIptr(PickBattleUI* ptr) { mPickBattleUI = ptr; }
 };
 

@@ -13,3 +13,11 @@ static vector<RECT>Level2Rect;
 static vector<RECT>Level3Rect;
 static vector<RECT>Level4Rect;
 static int mLevel;
+
+class PickBattleUI {
+	friend class UI;
+	vector<class Staff*>mSelectStaff;
+	vector<class Staff*>mEnemyStaff;
+public:
+	void GetMyStaff() {}
+};
