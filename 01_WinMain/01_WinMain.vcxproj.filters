@@ -127,6 +127,21 @@
     <Filter Include="MainGame\Object\UI\PickBattelUI\Level1_StaffSelect">
       <UniqueIdentifier>{0fc7c1c9-b069-476a-a562-c61b7d299465}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Champ\Hiller">
+      <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Champ\Assassin">
+      <UniqueIdentifier>{11185ea8-b4b3-4d01-9ab0-8a666bdfca54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Champ\Tanker">
+      <UniqueIdentifier>{d1dbd6a6-d1d6-4c3e-997b-6a515fd1c18b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Champ\Magician">
+      <UniqueIdentifier>{36011a3a-79d5-4821-8c87-1117d43e59da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Champ\LongDiller">
+      <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -267,8 +282,32 @@
     <ClInclude Include="PickBattleUI.h">
       <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
-    <ClInclude Include="Ranger.h">
-      <Filter>MainGame\Object\Champ</Filter>
+    <ClInclude Include="StarPixie.h">
+      <Filter>MainGame\Object\Champ\Magician</Filter>
+    </ClInclude>
+    <ClInclude Include="Yeti.h">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClInclude>
+    <ClInclude Include="HelmetPepe.h">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieMonkey.h">
+      <Filter>MainGame\Object\Champ\Hiller</Filter>
+    </ClInclude>
+    <ClInclude Include="BabyMonkey.h">
+      <Filter>MainGame\Object\Champ\Hiller</Filter>
+    </ClInclude>
+    <ClInclude Include="Cornian.h">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClInclude>
+    <ClInclude Include="MistKnight.h">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleTea.h">
+      <Filter>MainGame\Object\Champ\LongDiller</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank.h">
+      <Filter>MainGame\Object\Champ\LongDiller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -404,8 +443,32 @@
     <ClCompile Include="StaffSelect.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClCompile>
-    <ClCompile Include="Ranger.cpp">
-      <Filter>MainGame\Object\Champ</Filter>
+    <ClCompile Include="StarPixie.cpp">
+      <Filter>MainGame\Object\Champ\Magician</Filter>
+    </ClCompile>
+    <ClCompile Include="Yeti.cpp">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClCompile>
+    <ClCompile Include="HelmetPepe.cpp">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieMonkey.cpp">
+      <Filter>MainGame\Object\Champ\Hiller</Filter>
+    </ClCompile>
+    <ClCompile Include="BabyMonkey.cpp">
+      <Filter>MainGame\Object\Champ\Hiller</Filter>
+    </ClCompile>
+    <ClCompile Include="Cornian.cpp">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClCompile>
+    <ClCompile Include="MistKnight.cpp">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleTea.cpp">
+      <Filter>MainGame\Object\Champ\LongDiller</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank.cpp">
+      <Filter>MainGame\Object\Champ\LongDiller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -49,7 +49,7 @@ void Time::Tick(float lockFPS)
 		//아니라면 밀리세컨드 단위로 현제타임을 받아온다.
 		else
 			this->mCurrentTime = timeGetTime();
-		//deltaTimedms = (현재 시간 - 지난 프레임에 체킹한 시간) * mTimeScale;
+		//deltaTimes = (현재 시간 - 지난 프레임에 체킹한 시간) * mTimeScale;
 		this->mDeltaTime = (this->mCurrentTime - this->mLastTime) * mTimeScale;
 		//프레임 락이 설정 되어 있다면
 		if (lockFPS > 0.0f)
