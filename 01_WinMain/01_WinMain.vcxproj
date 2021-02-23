@@ -177,7 +177,6 @@
     <ClInclude Include="OperationToggle.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PickBattle.h" />
-    <ClInclude Include="PickBattleUI.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Ranger.h" />
     <ClInclude Include="Resource.h" />

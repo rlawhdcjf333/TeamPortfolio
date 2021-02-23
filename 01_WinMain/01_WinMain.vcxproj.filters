@@ -264,9 +264,6 @@
     <ClInclude Include="StaffSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClInclude>
-    <ClInclude Include="PickBattleUI.h">
-      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
-    </ClInclude>
     <ClInclude Include="Ranger.h">
       <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>

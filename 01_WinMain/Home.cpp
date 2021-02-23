@@ -22,12 +22,8 @@ void Home::Init()
 	UI* ui = new UI("homeUI", "homeUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
-
-
-
 	ObjectManager::GetInstance()->Init();
 
-	
 }
 
 void Home::Release()

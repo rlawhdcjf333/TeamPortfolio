@@ -18,6 +18,7 @@ bool IDelayEvent::Update()
 
 	if (mCurrentTime >= mDelayTime)
 	{
+		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		return true;
 	}
 
