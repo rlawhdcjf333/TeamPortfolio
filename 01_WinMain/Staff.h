@@ -38,6 +38,7 @@ protected:
 	Animation* mCurrentAnm;
 
 	wstring mFileName;
+	string mTeamName;
 
 	float mAtk;	//공격력
 	float mDef;	//방어력
@@ -61,7 +62,7 @@ protected:
 	
 
 public:
-	Staff(const string& name, const string& fileName);
+	Staff(const string& name, const string& teamName);
 
 	void Init() override;
 	void Release() override;

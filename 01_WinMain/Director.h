@@ -5,6 +5,8 @@
 class Staff;
 class Director : public GameObject
 {
+	vector<string> mRandomNameList; //GameObject가 핸들하는 mName 변수와 헷갈립니다. 이름 바꾸세요 -CTO
+
 	Image* mTeamImage;
 	wstring mFileName;
 
