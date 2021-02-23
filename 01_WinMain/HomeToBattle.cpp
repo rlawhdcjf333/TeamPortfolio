@@ -28,7 +28,7 @@ void HomeToBattle::Update()
 
 			if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
 
-				SceneManager::GetInstance()->LoadScene(L"Pick_Battle");
+				SceneManager::GetInstance()->LoadScene(L"PickBattle");
 				return;
 			}
 		}
