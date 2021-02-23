@@ -10,6 +10,13 @@ class Director : public GameObject
 	Image* mTeamImage;
 	wstring mFileName;
 	wstring mTeamName;
+	int mMonth;
+	int mWeek;
+	int mGold;
+
+	int mWin;
+	int mLose;
+	int mLeagueScore;
 
 	vector<string> mStaffNameList;
 public:
@@ -21,6 +28,9 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void UIRender(HDC hdc, int startX, int startY, int width, int height);
+
 
 	void SetStaffNameList(vector<string> staffNameList) { mStaffNameList = staffNameList; }
 	vector<string> GetStaffNameList() { return mStaffNameList; }
