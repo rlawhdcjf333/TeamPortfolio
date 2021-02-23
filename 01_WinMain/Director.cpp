@@ -4,9 +4,10 @@
 
 //vector<string> Director::Name;
 
-Director::Director(const string& name, const wstring& fileName)
+Director::Director(const string& name, const wstring& fileName, const wstring& teamName)
 	:GameObject(name)
 {
+	mTeamName = teamName;
 	mFileName = fileName;
 	mIsActive = false;
 }
@@ -16,7 +17,6 @@ Director::Director(const string& name, const wstring& fileName)
 // TeamNuguri, TeamMansu, TeamJoyRoom, TeamCowHead
 void Director::Init()
 {
-
 	IMAGEMANAGER->GetInstance()->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 60, 60, true);
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
@@ -28,8 +28,10 @@ void Director::Init()
 		mStaffNameList.push_back(RandomName());
 	}
 
-	for (string name : mStaffNameList)
-		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(name, mName));
+	for (int i=0; i<mStaffNameList.size(); i++)
+	{
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(mStaffNameList[i], mStaffNameList[i], mTeamName));
+	}
 	// Staff 클래스의 생성자를 확인하기 바랍니다. -CTO
 	
 	//for (string name : mStaffNameList) {
@@ -44,20 +46,17 @@ void Director::Init()
 
 void Director::Release()
 {
-	SafeDelete(mTeamImage);
-	ObjectManager::GetInstance()->Release();
+
 }
 
 void Director::Update()
 {
-	ObjectManager::GetInstance()->Update();
 }
 
 void Director::Render(HDC hdc)
 {
 	if (mIsActive) {
 		mTeamImage->ScaleRender(hdc, mX, mY, mTeamImage->GetFrameWidth(), mTeamImage->GetFrameHeight());
-		ObjectManager::GetInstance()->Render(hdc);
 	}
 }
 

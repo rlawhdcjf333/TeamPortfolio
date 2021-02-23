@@ -1,11 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "UI.h"
 
-class GameToggle :public GameObject
+class GameToggle :public UI
 {
 	Image* mActive;
 	Image* mImage;
-	vector <RECT> mButtonList;
 
 
 public:
@@ -15,8 +14,5 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
-	void mToggleButton(int index, string UIName, function <void(void)> func = []() {});
-
 
 };

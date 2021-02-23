@@ -38,10 +38,13 @@ void MainGame::Render(HDC hdc)
 	HDC backDC = mBackBuffer->GetHDC();
 	PatBlt(backDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	{
+		HFONT newF = (HFONT)GetStockObject(OEM_FIXED_FONT);
+		HFONT oldF = (HFONT)SelectObject(hdc, newF);
 		SceneManager::GetInstance()->Render(backDC);
-		//Image* image = IMAGEMANAGER->FindImage(L"Title");
-		//if(image)
-		//	image->ScaleRender(backDC, 0, 0, 300, 300);
+		SelectObject(hdc, oldF);
+		DeleteObject(newF);
+
+
 	}
 	mBackBuffer->Render(hdc, 0, 0);
 }

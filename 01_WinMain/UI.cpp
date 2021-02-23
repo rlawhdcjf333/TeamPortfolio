@@ -60,19 +60,7 @@ void UI::Update()
 void UI::Render(HDC hdc)
 {
 	
-	HBRUSH newb = (HBRUSH)GetStockObject(NULL_BRUSH);
-	HBRUSH oldb = (HBRUSH)SelectObject(hdc, newb);
-	
-	HPEN newp = CreatePen(PS_DASHDOT, 1, RGB(255, 0, 0));
-	HPEN oldp = (HPEN)SelectObject(hdc, newp);
-
-	for (RECT elem : mButtonList)
-		RenderRect(hdc, elem);
-
-	SelectObject(hdc, oldp);
-	SelectObject(hdc, oldb);
-	DeleteObject(newp);
-	DeleteObject(newb);
+	MouseOver(hdc);
 
 }
 
@@ -104,6 +92,27 @@ void UI::LoadFromFile(const string& fileName)
 	}
 
 	fin.close();
+}
+
+void UI::MouseOver(HDC hdc)
+{
+	for (int index = 0; index < mButtonList.size(); index++)
+	{
+
+		HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
+		HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
+		HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
+		HPEN oldP = (HPEN)SelectObject(hdc, newP);
+		if (PtInRect(&mButtonList[index], _mousePosition)) {
+	
+			RenderRect(hdc, mButtonList[index]);
+		}
+		SelectObject(hdc, oldB);
+		DeleteObject(newB);
+		SelectObject(hdc, oldP);
+		DeleteObject(newP);
+	}
+
 }
 
 void UI::mToggleButton(int index, string UIName, function <void(void)> func)

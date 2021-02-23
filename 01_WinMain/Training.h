@@ -1,6 +1,7 @@
 #pragma once
 #include "UI.h"
 #include "Staff.h"
+#include "Director.h"
 
 class Training : public UI
 {
@@ -9,6 +10,7 @@ class Training : public UI
 
 	vector <GameObject*> mStaffList;
 
+	Director* mDirector;
 	Staff* mCurrentStaff;
 	wstring mCurrentStaffName;
 	int mCurrentStaffAtk;

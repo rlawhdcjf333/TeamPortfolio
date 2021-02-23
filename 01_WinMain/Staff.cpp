@@ -2,12 +2,13 @@
 #include "Staff.h"
 #include "Animation.h"
 
-Staff::Staff(const string& name, const string& teamName)
+Staff::Staff(const string& name, const string& staffName, const wstring& teamName)
 	:GameObject(name)
 {
+	mIsActive = false;
+	mStaffName = staffName;
 	mTeamName = teamName;
 	mFileName = L"Staff";
-	mIsActive = false;
 }
 
 void Staff::Init()

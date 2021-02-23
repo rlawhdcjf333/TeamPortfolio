@@ -9,10 +9,11 @@ class Director : public GameObject
 
 	Image* mTeamImage;
 	wstring mFileName;
+	wstring mTeamName;
 
 	vector<string> mStaffNameList;
 public:
-	Director(const string& name, const wstring& fileName);
+	Director(const string& name, const wstring& fileName, const wstring& teamName);
 
 	string RandomName();
 

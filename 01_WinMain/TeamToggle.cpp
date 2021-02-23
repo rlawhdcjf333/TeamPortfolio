@@ -47,6 +47,7 @@ void TeamToggle::Render(HDC hdc)
 	if (mIsActive)
 	{
 		mImage->Render(hdc, 17, 502);
+		MouseOver(hdc);
 		mActive->Render(hdc, 17, 648);
 	}
 

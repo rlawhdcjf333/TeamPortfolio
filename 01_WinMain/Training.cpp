@@ -15,6 +15,13 @@ void Training::Init()
 	mImage = IMAGEMANAGER->FindImage(L"Training");
 
 	LoadStaffList();
+
+	if (mStaffList.size() > 0)
+	{
+		Staff* tmp = (Staff*)mStaffList[0];
+		mCurrentStaff = tmp;
+
+	}
 }
 
 void Training::Release()
@@ -34,16 +41,21 @@ void Training::Update()
 		ObjectManager::GetInstance()->FindObject("OperationToggle")->SetIsActive(false);
 		ObjectManager::GetInstance()->FindObject("SystemToggle")->SetIsActive(false);
 
-		mCurrentStaff = (Staff*)mStaffList[0];
-
 		string tmp = mCurrentStaff->GetStaffName();
 		mCurrentStaffName.assign(tmp.begin(), tmp.end());
 
 		mCurrentStaffAtk = mCurrentStaff->GetAtk();
 		mCurrentStaffDef = mCurrentStaff->GetDef();
 
+		for (int i = 0; i < mStaffList.size(); i++)
+		{
+			if (PtInRect(&mButtonList[i], _mousePosition))
+			{
+				Staff* tmp = (Staff*)mStaffList[i];
+				mCurrentStaff = tmp;
+			}
 
-
+		}
 
 
 		auto func = []()
@@ -62,6 +74,7 @@ void Training::Render(HDC hdc)
 	if (mIsActive)
 	{
 		mImage->Render(hdc, 17, 53);
+		MouseOver(hdc);
 
 		RenderCurrentStaff(hdc);
 
@@ -78,15 +91,17 @@ void Training::Render(HDC hdc)
 void Training:: LoadStaffList() 
 {
 	
-	for (int i = 0; i < 5; i++) 
+	mDirector = (Director*)ObjectManager::GetInstance()->FindObject("Director1");
+	auto list = mDirector->GetStaffNameList();
+
+	for (string elem : list)
 	{
-		if (ObjectManager::GetInstance()->FindObject("Staff" + to_string(i + 1)) != nullptr)
+		if (ObjectManager::GetInstance()->FindObject(elem) != nullptr)
 		{
-			mStaffList.push_back(ObjectManager::GetInstance()->FindObject("Staff" + to_string(i + 1)));
+			mStaffList.push_back(ObjectManager::GetInstance()->FindObject(elem));
 		}
 
 	}
-
 
 }
 
@@ -110,5 +125,7 @@ void Training::DrawStaffList(HDC hdc, int i)
 	wstring str;
 	str.assign(tmpStaffName.begin(), tmpStaffName.end());
 	DrawText(hdc, str.c_str(), str.length(), &mButtonList[i], DT_SINGLELINE | DT_VCENTER | DT_LEFT);
+
+
 }
 

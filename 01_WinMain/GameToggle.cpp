@@ -3,7 +3,7 @@
 #include "ChampInfo.h"
 
 GameToggle::GameToggle()
-	:GameObject("GameToggle")
+	:UI("GameToggle")
 {
 	mIsActive = false;
 }
@@ -47,22 +47,9 @@ void GameToggle::Render(HDC hdc)
 	if (mIsActive)
 	{
 		mImage->Render(hdc, 544, 596);
+		MouseOver(hdc);
 		mActive->Render(hdc, 544, 648);
 	}
 
 }
 
-void GameToggle::mToggleButton(int index, string UIName, function <void(void)> func)
-{
-	if (PtInRect(&mButtonList[index], _mousePosition)) {
-
-		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
-
-			GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
-			hptr->SetIsActive(!hptr->GetIsActive());
-
-			func();
-
-		}
-	}
-}

@@ -45,6 +45,7 @@ void SystemToggle::Render(HDC hdc)
 	if (mIsActive)
 	{
 		mImage->Render(hdc, 720, 502);
+		MouseOver(hdc);
 		mActive->Render(hdc, 720, 648);
 	}
 

@@ -1,10 +1,9 @@
 #pragma once
-#include "GameObject.h"
+#include "UI.h"
 
-class ChampInfo :public GameObject
+class ChampInfo :public UI
 {
 	Image* mImage;
-	vector <RECT> mButtonList;
 
 
 public:
@@ -15,8 +14,5 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
-	void mToggleButton(int index, string UIName, function <void(void)> func = []() {});
-
-	void LoadFromFile(const string& fileName);
 
 };
