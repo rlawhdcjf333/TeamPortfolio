@@ -16,6 +16,9 @@ void PickBattle::Init()
 
 	ObjectManager::GetInstance()->Init();
 	GameEventManager::GetInstance()->PushEvent(new UIDelayEvent("StaffSelect",2.f));
+
+	SoundPlayer::GetInstance()->AllPause();
+	SoundPlayer::GetInstance()->Play(L"BanPick", 0.2f);
 }
 
 void PickBattle::Release()

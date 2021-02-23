@@ -44,7 +44,7 @@ void ObjectManager::Release()
 				if (iter->first == ObjectLayer::Champ) continue;
 				if (iter->first == ObjectLayer::Background) continue;
 				Storage::GetInstance()->AddObject(iter->first, new GameObject(iter->second[i]->GetName()));
-				*(Storage::GetInstance()->FindObject(iter->second[i]->GetName())) = *iter->second[i];
+				*Storage::GetInstance()->FindObject(iter->second[i]->GetName()) = *iter->second[i];
 			}
 			else
 			{

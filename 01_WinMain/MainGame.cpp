@@ -24,6 +24,7 @@ void MainGame::Init()
 void MainGame::Release()
 {
 	Random::ReleaseInstance();
+	SoundPlayer::GetInstance()->Release();
 
 	SafeDelete(mBackBuffer);
 }

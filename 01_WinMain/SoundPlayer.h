@@ -28,13 +28,13 @@ private:
 	~SoundPlayer();
 public:
 
-	void Init();
 	void Update();
 	void Release();
 	void LoadFromFile(const wstring& keyName, const wstring& fileName, bool isLoop);
 	void Play(const wstring& keyName, float volume);
 	void Pause(const wstring& keyName);
 	void Stop(const wstring& keyName);
+	void AllPause();
 
 
 };

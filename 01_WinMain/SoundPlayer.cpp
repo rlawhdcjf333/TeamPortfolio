@@ -128,6 +128,14 @@ void SoundPlayer::Pause(const wstring& keyName)
 	}
 }
 
+void SoundPlayer::AllPause()
+{
+	for (int i = 0; i < mActiveChannels.size(); ++i)
+	{
+		mActiveChannels[i].Channel->setPaused(true);
+	}
+}
+
 void SoundPlayer::Stop(const wstring& keyName)
 {
 	for (int i = 0; i < mActiveChannels.size(); ++i)

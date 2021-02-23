@@ -279,9 +279,6 @@
     <ClInclude Include="StaffSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClInclude>
-    <ClInclude Include="PickBattleUI.h">
-      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
-    </ClInclude>
     <ClInclude Include="StarPixie.h">
       <Filter>MainGame\Object\Champ\Magician</Filter>
     </ClInclude>
@@ -308,6 +305,12 @@
     </ClInclude>
     <ClInclude Include="Tank.h">
       <Filter>MainGame\Object\Champ\LongDiller</Filter>
+    </ClInclude>
+    <ClInclude Include="BanPick.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffList.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -469,6 +472,12 @@
     </ClCompile>
     <ClCompile Include="Tank.cpp">
       <Filter>MainGame\Object\Champ\LongDiller</Filter>
+    </ClCompile>
+    <ClCompile Include="BanPick.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffList.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
