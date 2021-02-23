@@ -34,35 +34,3 @@ void PickBattle::Render(HDC hdc)
 	ObjectManager::GetInstance()->Render(hdc);
 
 }
-
-void PickBattle::Update1()
-{
-}
-
-void PickBattle::Update2()
-{
-}
-
-void PickBattle::Update3()
-{
-}
-
-void PickBattle::Update4()
-{
-}
-
-void PickBattle::Render1()
-{
-}
-
-void PickBattle::Render2()
-{
-}
-
-void PickBattle::Render3()
-{
-}
-
-void PickBattle::Render4()
-{
-}

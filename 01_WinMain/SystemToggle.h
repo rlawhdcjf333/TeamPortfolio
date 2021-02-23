@@ -8,7 +8,7 @@ class SystemToggle :public UI
 
 public:
 
-	SystemToggle(const string& name);
+	SystemToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;

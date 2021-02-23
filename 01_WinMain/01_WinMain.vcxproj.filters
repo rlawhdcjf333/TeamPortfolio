@@ -118,6 +118,15 @@
     <Filter Include="MainGame\Scene\PickBattle">
       <UniqueIdentifier>{0bc5f813-fbdc-46fc-9dfa-c2dbf74b9d17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle">
+      <UniqueIdentifier>{d7835167-2315-4de9-9b81-00dcb903ffa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\Training">
+      <UniqueIdentifier>{1db1fd46-d15f-442c-97b2-d191f009551e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level1_StaffSelect">
+      <UniqueIdentifier>{0fc7c1c9-b069-476a-a562-c61b7d299465}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -216,9 +225,6 @@
     <ClInclude Include="SoundPlayer.h">
       <Filter>FrameWork\SoundPlayer</Filter>
     </ClInclude>
-    <ClInclude Include="TeamToggle.h">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClInclude>
     <ClInclude Include="OperationToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
@@ -246,11 +252,23 @@
     <ClInclude Include="Creators.h">
       <Filter>MainGame\Object\UI\TitleUI</Filter>
     </ClInclude>
+    <ClInclude Include="PickBattle.h">
+      <Filter>MainGame\Scene\PickBattle</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="Training.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffSelect.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
+    </ClInclude>
     <ClInclude Include="PickBattleUI.h">
       <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
-    <ClInclude Include="PickBattle.h">
-      <Filter>MainGame\Scene\PickBattle</Filter>
+    <ClInclude Include="Ranger.h">
+      <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,9 +356,6 @@
     <ClCompile Include="SoundPlayer.cpp">
       <Filter>FrameWork\SoundPlayer</Filter>
     </ClCompile>
-    <ClCompile Include="TeamToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClCompile>
     <ClCompile Include="homeUI.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
@@ -379,6 +394,18 @@
     </ClCompile>
     <ClCompile Include="PickBattle.cpp">
       <Filter>MainGame\Scene\PickBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="Training.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffSelect.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranger.cpp">
+      <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

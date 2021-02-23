@@ -1,7 +1,7 @@
 #pragma once
-#include "GameObject.h"
+#include "UI.h"
 
-class TeamToggle :public GameObject
+class TeamToggle :public UI
 {
 	Image* mActive;
 	Image* mImage;

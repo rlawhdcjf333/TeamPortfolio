@@ -4,11 +4,12 @@
 
 class UI : public GameObject
 {
-	vector <RECT> mButtonList;
+protected: vector <RECT> mButtonList;
+
+private:
 	string mFileName;
 	Image* mImage;
 	bool mTrigger;
-
 
 public:
 	UI(const string& name);
@@ -31,6 +32,8 @@ public:
 	void homeUIInit();
 	void homeUIUpdate();
 
-
+	//PickBattle Á¦¾î
+	void PickBattleUIInit();
+	void PickBattleUIUpdate();
 };
 

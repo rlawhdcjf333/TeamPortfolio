@@ -12,22 +12,16 @@ void UI::homeUIInit()
 {
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new TeamToggle);
-	ObjectManager::GetInstance()->FindObject("TeamToggle")->Init();
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new HomeToBattle);
-	ObjectManager::GetInstance()->FindObject("HomeToBattle")->Init();
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OperationToggle);
-	ObjectManager::GetInstance()->FindObject("OperationToggle")->Init();
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new LeagueToggle);
-	ObjectManager::GetInstance()->FindObject("LeagueToggle")->Init();
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new GameToggle);
-	ObjectManager::GetInstance()->FindObject("GameToggle")->Init();
 
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new SystemToggle("SystemToggle"));
-	ObjectManager::GetInstance()->FindObject("SystemToggle")->Init();
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new SystemToggle);
 }
 
 void UI::homeUIUpdate()
