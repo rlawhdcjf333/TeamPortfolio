@@ -1,13 +1,12 @@
 #pragma once
 #include "Champ.h"
-class Ranger: public Champ
+class Tank : public Champ
 {
 public:
 
-	Ranger();
+	Tank();
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
 };
-
