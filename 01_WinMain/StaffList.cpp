@@ -43,6 +43,7 @@ void StaffList::Render(HDC hdc)
 
 		for (int i = 0; i < mStaffList.size(); i++) {
 			mStaffList[i]->UIRender(hdc, 53, 187 + ( i * 70), 48, 48);
+			mStaffList[i]->ConditionRender(hdc, 425, 195 + ( i * 70 ), 30, 30);
 			RECT nameRc = RectMake(113, 187 + (i * 70), 320, 25);
 			RECT atkRc = RectMake(550, 187 + (i * 70), 50, 50);
 			RECT defRc = RectMake(665, 187 + (i * 70), 50, 50);

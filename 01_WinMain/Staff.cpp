@@ -33,11 +33,11 @@ void Staff::Init()
 	mRandomIndexX = Random::GetInstance()->RandomInt(10);
 	mRandomIndexY = Random::GetInstance()->RandomInt(8);
 
-	mCondition = (Condition)Random::GetInstance()->RandomInt(4);
-	//컨디션 이미지 작업하면 아래 세 줄 주석 제거
-	//IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"이미지이름"), 0, 0, 5, 1, true);
-	//mConditionImage = IMAGEMANAGER->FindImage(L"Condition");
-	//SetConditionImage();
+	mCondition = (Condition)Random::GetInstance()->RandomInt(1, 4);
+	
+	IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"Condition.bmp"), 150, 30, 5, 1, true);
+	mConditionImage = IMAGEMANAGER->FindImage(L"Condition");
+	SetConditionImage();
 
 	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 960, 512, 30, 16, true);
 	mImage = IMAGEMANAGER->FindImage(mFileName);
@@ -102,9 +102,9 @@ void Staff::UIRender(HDC hdc, int startX, int startY, int width, int height)
 	mImage->ScaleFrameRender(hdc, startX, startY, mRandomIndexX*3, mRandomIndexY*2, width, height);
 }
 
-void Staff::ConditionRender(HDC hdc, int startX, int startY)
+void Staff::ConditionRender(HDC hdc, int startX, int startY, int width, int height)
 {
-	mConditionImage->FrameRender(hdc, startX, startY, mConditionX, 0);
+	mConditionImage->ScaleFrameRender(hdc, startX, startY, mConditionX, 0, width, height);
 }
 
 void Staff::SetConditionImage()
