@@ -9,7 +9,7 @@ void Tank::Init()
 {
 	mHP;
 	mMP;
-	mMPtmp;
+	//mMPtmp;
 	mAtk;
 	mDef;
 	mDistance1;
