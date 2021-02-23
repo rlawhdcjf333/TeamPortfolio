@@ -62,6 +62,11 @@ void UI::Render(HDC hdc)
 	
 	MouseOver(hdc);
 
+	if (mFileName == "homeUI")
+	{
+		homeUIRender(hdc);
+	}
+
 }
 
 void UI::LoadFromFile(const string& fileName)

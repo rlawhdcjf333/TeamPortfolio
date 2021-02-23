@@ -193,6 +193,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Training.h" />
+    <ClInclude Include="StaffList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -245,6 +246,7 @@
     <ClCompile Include="homeUI.cpp" />
     <ClCompile Include="TitleUI.cpp" />
     <ClCompile Include="Training.cpp" />
+    <ClCompile Include="StaffList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />

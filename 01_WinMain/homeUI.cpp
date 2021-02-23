@@ -6,6 +6,7 @@
 #include "LeagueToggle.h"
 #include "GameToggle.h"
 #include "SystemToggle.h"
+#include "Director.h"
 
 
 void UI::homeUIInit() 
@@ -91,5 +92,13 @@ void UI::homeUIUpdate()
 
 
 	mToggleButton(5, "HomeToBattle");
+
+}
+
+void UI::homeUIRender(HDC hdc) 
+{
+
+	Director* tmp = (Director*)ObjectManager::GetInstance()->FindObject("Director1");
+	tmp->UIRender(hdc, 20, 5, 55, 55);
 
 }

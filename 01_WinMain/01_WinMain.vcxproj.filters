@@ -127,6 +127,9 @@
     <Filter Include="MainGame\Object\UI\PickBattelUI\Level1_StaffSelect">
       <UniqueIdentifier>{0fc7c1c9-b069-476a-a562-c61b7d299465}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\StaffList">
+      <UniqueIdentifier>{25a07aff-843d-403f-bf45-822144f7e7f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -267,6 +270,9 @@
     <ClInclude Include="Ranger.h">
       <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>
+    <ClInclude Include="StaffList.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -403,6 +409,9 @@
     </ClCompile>
     <ClCompile Include="Ranger.cpp">
       <Filter>MainGame\Object\Champ</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffList.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
