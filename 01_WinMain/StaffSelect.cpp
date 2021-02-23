@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "StaffSelect.h"
-#include "PickBattleUI.h"
 StaffSelect::StaffSelect()
 	: UI("StaffSelect")
 {
-
+	mIsActive = false;
 }
 
 void StaffSelect::Init()
 {
+	LoadFromFile("staffSelect");
 	//여기서 Director의 team?을 받아서 해당 색깔의 이미지를 Load/Find
 	IMAGEMANAGER->LoadFromFile(L"BlueSelect", Resources(L"StaffSelect_blue.bmp"), 1080, 560, true);
 	IMAGEMANAGER->LoadFromFile(L"RedSelect", Resources(L"StaffSelect_red.bmp"), 1080, 560, true);
@@ -22,15 +22,19 @@ void StaffSelect::Release()
 void StaffSelect::Update()
 {
 	//-
+
 	//-
-	mToggleButton(1, "다음단계이름나중에넣고", []() {mLevel = 2;});	//다음버튼... 맨아래에 둘거임
+	if (mIsActive)
+	{
+		mToggleButton(51, "다음단계이름나중에넣고", []() {ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false); });	//다음버튼... 맨아래에 둘거임
+	}
 }
 
 void StaffSelect::Render(HDC hdc)
 {
 	if (mIsActive)
 	{
-		mImage->Render(hdc, mButtonList[0].left, mButtonList[0].top);
+		mImage->Render(hdc, mButtonList[50].left, mButtonList[50].top);
 		//프로필이랑 뭐 아무튼 글씨들어갈 자리 출력... 뭐로하던 70줄정도
 	}
 }

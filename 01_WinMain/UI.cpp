@@ -52,7 +52,7 @@ void UI::Update()
 
 	if (mFileName == "pickbattleUI")
 	{
-		//PickBattleUIUpdate();
+		PickBattleUIUpdate();
 	}
 
 }
