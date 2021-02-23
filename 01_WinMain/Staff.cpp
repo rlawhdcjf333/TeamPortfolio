@@ -33,6 +33,13 @@ void Staff::Init()
 	mRandomIndexX = Random::GetInstance()->RandomInt(10);
 	mRandomIndexY = Random::GetInstance()->RandomInt(8);
 
+
+	mCondition = (Condition)Random::GetInstance()->RandomInt(4);
+	//컨디션 이미지 작업하면 아래 세 줄 주석 제거
+	IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"Condition.bmp"), 150, 30, 5, 1, true);
+	mConditionImage = IMAGEMANAGER->FindImage(L"Condition");
+	SetConditionImage();
+
 	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 960, 512, 30, 16, true);
 	mImage = IMAGEMANAGER->FindImage(mFileName);
 
@@ -78,6 +85,7 @@ void Staff::Update()
 	//??뭘 업데이트 해야하지?
 	if (mIsActive)
 	{
+		SetConditionImage();
 		mCurrentAnm->Update();
 	}
 }
@@ -93,4 +101,79 @@ void Staff::Render(HDC hdc)
 void Staff::UIRender(HDC hdc, int startX, int startY, int width, int height)
 {
 	mImage->ScaleFrameRender(hdc, startX, startY, mRandomIndexX*3, mRandomIndexY*2, width, height);
+}
+
+void Staff::ConditionRender(HDC hdc, int startX, int startY, int width, int height)
+{
+	mConditionImage->ScaleFrameRender(hdc, startX, startY, mConditionX, 0, width, height);
+}
+
+wstring Staff::GetCharComment(int Charnum)
+{
+	wstring comment = L" ";
+	Character ch;
+	if (Charnum == 1)
+		ch = mChar1;
+	else if (Charnum == 2)
+		ch = mChar2;
+	else
+		return comment;	//다른인덱스 넣으면 공백
+
+	switch (ch)
+	{
+	case Character::Nomal:
+		comment = L"평범";	// 아무 특성 없음
+		break;
+	case Character::Hero:	//영웅 : 이기고 있을때 모든 능력치 -10, 지고 있을때 +10
+		comment = L"영웅";
+		break;
+	case Character::Glass:	//유리멘탈 : 이기고 있을때 모든 능력치 +10, 지고 있을때 -10
+		comment = L"유리";
+		break;
+	case Character::Mother:	//엄마 : 회복력 + 10
+		comment = L"엄마";
+		break;
+	case Character::Thorn:	//가시 : 상대방의 회복력 -10
+		comment = L"가시";
+		break;
+	case Character::Winner:	//승리자 : 처치관여(assist)시 체력 +10
+		comment = L"승자";
+		break;
+	case Character::Distraction://주의산만 : 공격대상이 5초마다 무작위로 변경
+		comment = L"산만";
+		break;
+	case Character::Fest:	//쾌속 : 스킬 시전속도 10% 증가
+		comment = L"쾌속";
+		break;
+	case Character::Spear:	//꿰뚫는 창 : 방어력 관통효과 +10(상대방의 방어력을 10 무시한다)
+		comment = L"죽창";
+		break;
+	case Character::None:	//비어있는 특성(표시 안하는 상태)
+		break;
+	default:
+		break;
+	}
+	return comment;
+}
+
+void Staff::SetConditionImage()
+{
+	switch (mCondition)
+	{
+	case Condition::Bad:
+		mConditionX = 4;	//임시로 넣은 인덱스, 이미지보고 조정
+		break;
+	case Condition::LittleBad:
+		mConditionX = 3;	//임시로 넣은 인덱스, 이미지보고 조정
+		break;
+	case Condition::Nomal:
+		mConditionX = 2;	//임시로 넣은 인덱스, 이미지보고 조정
+		break;
+	case Condition::Good:
+		mConditionX = 1;	//임시로 넣은 인덱스, 이미지보고 조정
+		break;
+	case Condition::Best:
+		mConditionX = 0;	//임시로 넣은 인덱스, 이미지보고 조정
+		break;
+	}
 }

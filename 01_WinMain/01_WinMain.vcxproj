@@ -152,6 +152,7 @@
     <ClInclude Include="Cornian.h" />
     <ClInclude Include="MistKnight.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BanPick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Champ.h" />
@@ -183,7 +184,6 @@
     <ClInclude Include="OperationToggle.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PickBattle.h" />
-    <ClInclude Include="PickBattleUI.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="BubbleTea.h" />
     <ClInclude Include="Resource.h" />
@@ -202,6 +202,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Training.h" />
+    <ClInclude Include="StaffList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Cornian.cpp" />
     <ClCompile Include="MistKnight.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BanPick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Champ.cpp" />
@@ -262,6 +264,7 @@
     <ClCompile Include="homeUI.cpp" />
     <ClCompile Include="TitleUI.cpp" />
     <ClCompile Include="Training.cpp" />
+    <ClCompile Include="StaffList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />

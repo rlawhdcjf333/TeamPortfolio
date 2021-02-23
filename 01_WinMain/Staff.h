@@ -12,7 +12,7 @@ enum class Character : int	//0 ~ 8, 9는 표시안함
 	Thorn,	//가시 : 상대방의 회복력 -10
 	Winner,	//승리자 : 처치관여(assist)시 체력 +10
 	Distraction,//주의산만 : 공격대상이 5초마다 무작위로 변경
-	Fest,	//빠름 : 스킬 시전속도 10% 증가
+	Fest,	//쾌속 : 스킬 시전속도 10% 증가
 	Spear,	//꿰뚫는 창 : 방어력 관통효과 +10(상대방의 방어력을 10 무시한다)
 
 	None	//비어있는 특성(표시 안하는 상태)
@@ -40,9 +40,9 @@ protected:
 	wstring mFileName;
 	wstring mTeamName;
 
-	float mAtk;	//공격력
-	float mDef;	//방어력
-	float mHeal;//회복력
+	int mAtk;	//공격력
+	int mDef;	//방어력
+	int mHeal;//회복력
 
 	map<string, int>mMostChamp;	//first = champName, second = 숙련도 가중치?	//만약에 모스트픽이면 능력치를 second(숙련도 가중치)만큼 증가 시킴
 
@@ -60,7 +60,10 @@ protected:
 
 	int mStatPoint;
 	
+	Image* mConditionImage;
+	int mConditionX;
 
+	int mCost; // 재계약 비용 만들떄 사용
 public:
 	Staff(const string& name, const string& staffName, const wstring& teamName);
 
@@ -69,10 +72,11 @@ public:
 	void Update() override;
 	void Render(HDC hdc) override;
 	void UIRender(HDC hdc, int startX, int startY, int width, int height);
+	void ConditionRender(HDC hdc, int startX, int startY, int width, int height);
 
-	inline float GetAtk()const { return mAtk; }
+	inline int GetAtk()const { return mAtk; }
 	inline void SetAtk(float atk) { mAtk = atk; }
-	inline float GetDef()const { return mDef; }
+	inline int GetDef()const { return mDef; }
 	inline void SetDef(float def) { mDef = def; }
 	void UpAtk(int n = 2) { mAtk += n; }
 	void UpDef(int n = 2) { mAtk += n; }
@@ -81,6 +85,7 @@ public:
 	void SetChar2(Character c) { mChar2 = c; }
 	Character GetChar1() { return mChar1; }
 	Character GetChar2() { return mChar2; }
+	wstring GetCharComment(int Charnum);
 
 	void SetProficiency(string key, int value) { mMostChamp.find(key)->second = value; }
 	int GetProficiency(string key)const { return mMostChamp.find(key)->second; }
@@ -88,7 +93,7 @@ public:
 
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
 
-
+	void SetConditionImage();
 
 };
 

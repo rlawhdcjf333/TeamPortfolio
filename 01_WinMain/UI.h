@@ -32,6 +32,7 @@ public:
 
 	void homeUIInit();
 	void homeUIUpdate();
+	void homeUIRender(HDC hdc);
 
 	//PickBattle Á¦¾î
 	void PickBattleUIInit();

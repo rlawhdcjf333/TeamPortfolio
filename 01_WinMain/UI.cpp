@@ -52,7 +52,7 @@ void UI::Update()
 
 	if (mFileName == "pickbattleUI")
 	{
-		//PickBattleUIUpdate();
+		PickBattleUIUpdate();
 	}
 
 }
@@ -61,6 +61,11 @@ void UI::Render(HDC hdc)
 {
 	
 	MouseOver(hdc);
+
+	if (mFileName == "homeUI")
+	{
+		homeUIRender(hdc);
+	}
 
 }
 

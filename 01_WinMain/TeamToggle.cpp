@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "TeamToggle.h"
+#include "StaffList.h"
 #include "Training.h"
 #include "Staff.h"
 
@@ -19,6 +20,7 @@ void TeamToggle::Init()
 	IMAGEMANAGER->LoadFromFile(L"TeamToggleClick", Resources(L"TeamToggleClick.bmp"), 162, 50, true);
 	mActive= IMAGEMANAGER->FindImage(L"TeamToggleClick");
 
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new StaffList);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Training);
 
 }
@@ -35,6 +37,8 @@ void TeamToggle::Update()
 		{
 			ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
 		};
+
+		mToggleButton(0, "StaffList", func);
 		mToggleButton(1, "Training", func);
 
 	}

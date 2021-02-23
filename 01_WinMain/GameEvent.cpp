@@ -77,3 +77,27 @@ bool IPrologueEvent::Update()
 	}
 	return false;
 }
+
+//UI딜레이이벤트
+UIDelayEvent::UIDelayEvent(string objectname,float delayTime)
+{
+	targetUI = objectname;
+	mDelayTime = delayTime;
+	mCurrentTime = 0.f;
+}
+
+void UIDelayEvent::Start()
+{
+}
+
+bool UIDelayEvent::Update()
+{
+	mCurrentTime += Time::GetInstance()->DeltaTime();
+
+	if (mCurrentTime >= mDelayTime)
+	{
+		ObjectManager::GetInstance()->FindObject(targetUI)->SetIsActive(true);
+		return true;
+	}
+	return false;
+}

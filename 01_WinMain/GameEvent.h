@@ -21,6 +21,18 @@ public:
 	bool Update()override;
 };
 
+class UIDelayEvent : public IEvent
+{
+	float mCurrentTime;
+	float mDelayTime;
+	string targetUI;
+public:
+	UIDelayEvent(string objectname, float delayTime);
+
+	void Start()override;
+	bool Update()override;
+};
+
 class IPrologueEvent : public IEvent {
 
 	float mCurrentTime;
