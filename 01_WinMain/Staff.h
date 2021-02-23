@@ -28,8 +28,6 @@ enum class Condition : int
 };
 class Staff : public GameObject
 {
-	static vector<string> Name;
-
 protected:	string mStaffName;
 
 public: string GetStaffName() { return mStaffName; }
@@ -63,15 +61,13 @@ protected:
 	
 
 public:
-	Staff(const string& name, const wstring& fileName);
+	Staff(const string& name, const string& fileName);
 
 	void Init() override;
 	void Release() override;
 	void Update() override;
 	void Render(HDC hdc) override;
 	void UIRender(HDC hdc, int startX, int startY, int width, int height);
-
-	string RandomName();
 
 	inline float GetAtk()const { return mAtk; }
 	inline void SetAtk(float atk) { mAtk = atk; }

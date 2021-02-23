@@ -28,8 +28,8 @@ void Director::Init()
 		mStaffNameList.push_back(RandomName());
 	}
 
-	//for (string name : mStaffNameList)
-	//	ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(name, mName));
+	for (string name : mStaffNameList)
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(name, mName));
 	// Staff 클래스의 생성자를 확인하기 바랍니다. -CTO
 	
 	//for (string name : mStaffNameList) {
@@ -63,62 +63,62 @@ void Director::Render(HDC hdc)
 
 string Director::RandomName()
 {
-	if (mNameList.size() == 0)
+	if (mRandomNameList.size() == 0)
 	{
-		mNameList.push_back("KSW");
-		mNameList.push_back("Banana");
-		mNameList.push_back("Crom");
-		mNameList.push_back("Jake");
-		mNameList.push_back("Sam");
-		mNameList.push_back("HobakGoguma");
-		mNameList.push_back("Lockman");
-		mNameList.push_back("Wa");
-		mNameList.push_back("Maple");
-		mNameList.push_back("Mr.Kyugil");
-		mNameList.push_back("Ppangkkuttongkku");
-		mNameList.push_back("Gonjaless");
-		mNameList.push_back("Mario");
-		mNameList.push_back("MG the God");
-		mNameList.push_back("Takara");
-		mNameList.push_back("Kakao");
-		mNameList.push_back("Lion");
-		mNameList.push_back("Zelda");
-		mNameList.push_back("Github");
-		mNameList.push_back("Donggass");
-		mNameList.push_back("Erum");
-		mNameList.push_back("Jerry");
-		mNameList.push_back("Tom");
-		mNameList.push_back("Kwangsub");
-		mNameList.push_back("GHAAA");
-		mNameList.push_back("Vecx");
-		mNameList.push_back("NuguryMaster");
-		mNameList.push_back("Bryndi");
-		mNameList.push_back("Eksomess");
-		mNameList.push_back("Gwawle");
-		mNameList.push_back("Igandir");
-		mNameList.push_back("Iteric");
-		mNameList.push_back("Jarrite");
-		mNameList.push_back("Korten");
-		mNameList.push_back("cidy sizer makes my feel hight");
-		mNameList.push_back("Umilum");
-		mNameList.push_back("Webbitus");
-		mNameList.push_back("Nugu");
-		mNameList.push_back("Emetshelk");
-		mNameList.push_back("Danice");
-		mNameList.push_back("Edward Elic");
-		mNameList.push_back("CommitPushij-jima");
-		mNameList.push_back("Jumsimnagasumukulgugodhea");
-		mNameList.push_back("Laliho");
-		mNameList.push_back("Cloy");
-		mNameList.push_back("Bob");
-		mNameList.push_back("Brave Cookie");
-		mNameList.push_back("Gardian");
-		mNameList.push_back("Faker");
-		mNameList.push_back("Last");
+		mRandomNameList.push_back("KSW");
+		mRandomNameList.push_back("Banana");
+		mRandomNameList.push_back("Crom");
+		mRandomNameList.push_back("Jake");
+		mRandomNameList.push_back("Sam");
+		mRandomNameList.push_back("HobakGoguma");
+		mRandomNameList.push_back("Lockman");
+		mRandomNameList.push_back("Wa");
+		mRandomNameList.push_back("Maple");
+		mRandomNameList.push_back("Mr.Kyugil");
+		mRandomNameList.push_back("Ppangkkuttongkku");
+		mRandomNameList.push_back("Gonjaless");
+		mRandomNameList.push_back("Mario");
+		mRandomNameList.push_back("MG the God");
+		mRandomNameList.push_back("Takara");
+		mRandomNameList.push_back("Kakao");
+		mRandomNameList.push_back("Lion");
+		mRandomNameList.push_back("Zelda");
+		mRandomNameList.push_back("Github");
+		mRandomNameList.push_back("Donggass");
+		mRandomNameList.push_back("Erum");
+		mRandomNameList.push_back("Jerry");
+		mRandomNameList.push_back("Tom");
+		mRandomNameList.push_back("Kwangsub");
+		mRandomNameList.push_back("GHAAA");
+		mRandomNameList.push_back("Vecx");
+		mRandomNameList.push_back("NuguryMaster");
+		mRandomNameList.push_back("Bryndi");
+		mRandomNameList.push_back("Eksomess");
+		mRandomNameList.push_back("Gwawle");
+		mRandomNameList.push_back("Igandir");
+		mRandomNameList.push_back("Iteric");
+		mRandomNameList.push_back("Jarrite");
+		mRandomNameList.push_back("Korten");
+		mRandomNameList.push_back("cidy sizer makes my feel hight");
+		mRandomNameList.push_back("Umilum");
+		mRandomNameList.push_back("Webbitus");
+		mRandomNameList.push_back("Nugu");
+		mRandomNameList.push_back("Emetshelk");
+		mRandomNameList.push_back("Danice");
+		mRandomNameList.push_back("Edward Elic");
+		mRandomNameList.push_back("CommitPushij-jima");
+		mRandomNameList.push_back("Jumsimnagasumukulgugodhea");
+		mRandomNameList.push_back("Laliho");
+		mRandomNameList.push_back("Cloy");
+		mRandomNameList.push_back("Bob");
+		mRandomNameList.push_back("Brave Cookie");
+		mRandomNameList.push_back("Gardian");
+		mRandomNameList.push_back("Faker");
+		mRandomNameList.push_back("Last");
 	}
 
-	int index = Random::GetInstance()->RandomInt(mNameList.size());
-	string name = mNameList[index];
-	mNameList.erase(mNameList.begin() + index);
+	int index = Random::GetInstance()->RandomInt(mRandomNameList.size());
+	string name = mRandomNameList[index];
+	mRandomNameList.erase(mRandomNameList.begin() + index);
 	return name;
 }
