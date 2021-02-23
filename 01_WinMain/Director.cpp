@@ -31,7 +31,7 @@ void Director::Init()
 		mStaffNameList.push_back(RandomName());
 	}
 	
-	if (mName == "TeamNuguri") {
+	if (mTeamName == L"TeamNuguri") {
 		mStaffNameList.push_back(RandomName());
 	}
 
@@ -68,7 +68,8 @@ void Director::Render(HDC hdc)
 		mTeamImage->ScaleRender(hdc, mX, mY, mTeamImage->GetFrameWidth(), mTeamImage->GetFrameHeight());
 	}
 }
-
+
+
 void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
 {
 
