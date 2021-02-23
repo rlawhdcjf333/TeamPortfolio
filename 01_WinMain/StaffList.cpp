@@ -43,7 +43,26 @@ void StaffList::Render(HDC hdc)
 
 		for (int i = 0; i < mStaffList.size(); i++) {
 			mStaffList[i]->UIRender(hdc, 53, 187 + ( i * 70), 48, 48);
+			RECT nameRc = RectMake(113, 187 + (i * 70), 320, 25);
+			RECT atkRc = RectMake(550, 187 + (i * 70), 50, 50);
+			RECT defRc = RectMake(665, 187 + (i * 70), 50, 50);
+			string temp = mStaffList[i]->GetStaffName();
+			wstring nameStr;
+			wstring atkStr = to_wstring(mStaffList[i]->GetAtk());
+			wstring defStr = to_wstring(mStaffList[i]->GetDef());
+			nameStr.assign(temp.begin(), temp.end());
+
+			HFONT newF = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+			HFONT oldF = (HFONT)SelectObject(hdc, newF);
+
+			DrawText(hdc, nameStr.c_str(), nameStr.length(), &nameRc, DT_VCENTER | DT_LEFT | DT_SINGLELINE);
+			DrawText(hdc, atkStr.c_str(), atkStr.length(), &atkRc, DT_VCENTER | DT_LEFT | DT_SINGLELINE);
+			DrawText(hdc, defStr.c_str(), defStr.length(), &defRc, DT_VCENTER | DT_LEFT | DT_SINGLELINE);
+
+			SelectObject(hdc, oldF);
+			DeleteObject(newF);
 		}
+
 	}
 
 }

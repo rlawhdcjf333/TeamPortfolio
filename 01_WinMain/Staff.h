@@ -42,9 +42,9 @@ protected:
 	wstring mFileName;
 	wstring mTeamName;
 
-	float mAtk;	//공격력
-	float mDef;	//방어력
-	float mHeal;//회복력
+	int mAtk;	//공격력
+	int mDef;	//방어력
+	int mHeal;//회복력
 
 	map<string, int>mMostChamp;	//first = champName, second = 숙련도 가중치?	//만약에 모스트픽이면 능력치를 second(숙련도 가중치)만큼 증가 시킴
 
@@ -62,7 +62,7 @@ protected:
 
 	int mStatPoint;
 	
-
+	int mCost; // 만약 재계약 비용 만들때 쓸꺼
 public:
 	Staff(const string& name, const string& staffName, const wstring& teamName);
 
@@ -72,9 +72,9 @@ public:
 	void Render(HDC hdc) override;
 	void UIRender(HDC hdc, int startX, int startY, int width, int height);
 
-	inline float GetAtk()const { return mAtk; }
+	inline int GetAtk()const { return mAtk; }
 	inline void SetAtk(float atk) { mAtk = atk; }
-	inline float GetDef()const { return mDef; }
+	inline int GetDef()const { return mDef; }
 	inline void SetDef(float def) { mDef = def; }
 	void UpAtk(int n = 2) { mAtk += n; }
 	void UpDef(int n = 2) { mAtk += n; }
