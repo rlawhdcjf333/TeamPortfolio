@@ -348,6 +348,9 @@
     <ClInclude Include="BanPickGuide.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClInclude>
+    <ClInclude Include="ChampList.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -528,6 +531,9 @@
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Ranking</Filter>
     </ClCompile>
     <ClCompile Include="BanPickGuide.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
+    <ClCompile Include="ChampList.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
   </ItemGroup>
