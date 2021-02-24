@@ -160,6 +160,9 @@
     <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Ranking">
       <UniqueIdentifier>{c2ff32f3-1e3a-4582-9bbb-279e075e33b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Schedule">
+      <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -351,6 +354,9 @@
     <ClInclude Include="ChampList.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClInclude>
+    <ClInclude Include="Schedule.h">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -427,9 +433,6 @@
     </ClCompile>
     <ClCompile Include="Champ.cpp">
       <Filter>MainGame\Object\Champ</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>MainGame\Scene\Title</Filter>
     </ClCompile>
     <ClCompile Include="Home.cpp">
       <Filter>MainGame\Scene\Home</Filter>
@@ -535,6 +538,12 @@
     </ClCompile>
     <ClCompile Include="ChampList.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Schedule.cpp">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
