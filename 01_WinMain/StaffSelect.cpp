@@ -21,13 +21,19 @@ void StaffSelect::Release()
 
 void StaffSelect::Update()
 {
+	if (mIsActive)
+	{
 	//-
 
 	//-
-	if (mIsActive)
-	{
+		if (Input::GetInstance()->GetKeyDown('F'))
+		{
+			ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false);
+			ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true);
+			//ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
+		}
 		mToggleButton(51, "StaffSelect", []() 
-			{ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false); });	//다음버튼... 자기자신은 false로 하고 다음걸 true
+			{ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true); });	//다음버튼... 자기자신은 false로 하고 다음걸 true
 	}
 }
 

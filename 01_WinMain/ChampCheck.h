@@ -1,12 +1,12 @@
 #pragma once
 #include "UI.h"
 
-class BanPick : public UI
+class ChampCheck : public UI
 {
 	Image* mImage;
-	string mNowState;
+
 public:
-	BanPick();
+	ChampCheck();
 
 	void Init()override;
 	void Release()override;
