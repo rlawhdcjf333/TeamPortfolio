@@ -10,7 +10,6 @@ public:
 
 	void Clear();
 	void CopyToStorage(map <ObjectLayer, vector <GameObject*>> list);
-	void CopyFromStorage(map <ObjectLayer, vector <GameObject*>> list);
 
 
 	void ElemSwap(ObjectLayer layerName, GameObject* origin);

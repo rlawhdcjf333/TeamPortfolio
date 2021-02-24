@@ -40,7 +40,7 @@ public:
 	virtual vector<class GameObject*> FindObjects(ObjectLayer layer, const string& name);
 	virtual vector<class GameObject*> GetObjectList(ObjectLayer layer);
 
-	void OriginSwap(ObjectLayer layerName, GameObject* newPtr);
+	void OriginSwap(ObjectLayer layerName, GameObject* old);
 
 };
 

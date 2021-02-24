@@ -98,8 +98,9 @@ public:
 
 
 public:
-	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요 변수 생기면 여기다가도 추가해야 복사됨
-	Staff& operator= (const Staff& copy); //복사 연산자 오버로딩 변수가 생기면 여기다가도 추가해야 복사됨
+	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요. 새로운 변수 생기면 반드시 여기다가도 추가해야함
+	Staff& operator= (const Staff& copy); //복사 연산자 오버로딩. 이 클래스에 새로운 변수가 생기면 반드시 여기다가도 추가해야함
+
 
 };
 

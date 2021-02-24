@@ -41,16 +41,7 @@ void Director::Init()
 	{
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(mStaffNameList[i], mStaffNameList[i], mTeamName));
 	}
-	// Staff 클래스의 생성자를 확인하기 바랍니다. -CTO
-	
-	//for (string name : mStaffNameList) {
-	//	ObjectManager::GetInstance()->FindObject(name)->Init();
-	//}
-	// AddObject돌리셨으면 굳이 Init() 돌릴 필요가 음슴니다. scene init에서 일괄적으로 돌리기 때문이죠. 이러면 Init()이 두번 돕니다 -CTO
 
-	//ObjectManager::GetInstance()->FindObject(str1)->Init();
-	//ObjectManager::GetInstance()->FindObject(str2)->Init();
-	//ObjectManager::GetInstance()->FindObject(str3)->Init();
 }
 
 void Director::Release()
@@ -100,7 +91,7 @@ void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
 Director::Director(const Director & copy)
 	:GameObject(copy)
 {
-	mRandomNameList = copy.mRandomNameList;
+	mRandomNameList.assign(copy.mRandomNameList.begin(), copy.mRandomNameList.end());
 
 	mTeamImage = copy.mTeamImage;
 	mFileName = copy.mFileName;
@@ -112,14 +103,14 @@ Director::Director(const Director & copy)
 	mWin = copy.mWin;
 	mLose = copy.mLose;
 	mLeagueScore = copy.mLeagueScore;
-
-	mStaffNameList = copy.mStaffNameList;
+	
+	mStaffNameList.assign(copy.mStaffNameList.begin(), copy.mStaffNameList.end());
 
 }
 
 Director & Director::operator=(const Director & copy)
 {
-	mRandomNameList = copy.mRandomNameList;
+	mRandomNameList.assign(copy.mRandomNameList.begin(), copy.mRandomNameList.end());
 
 	mTeamImage = copy.mTeamImage;
 	mFileName = copy.mFileName;
@@ -132,8 +123,7 @@ Director & Director::operator=(const Director & copy)
 	mLose = copy.mLose;
 	mLeagueScore = copy.mLeagueScore;
 
-	mStaffNameList = copy.mStaffNameList;
-
+	mStaffNameList.assign(copy.mStaffNameList.begin(), copy.mStaffNameList.end());
 
 
 	return *this;

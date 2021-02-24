@@ -17,23 +17,28 @@ ObjectManager::ObjectManager()
 void ObjectManager::Init()
 {
 	ObjectIter iter = mObjectList.begin();
+
 	for (; iter != mObjectList.end(); ++iter)
 	{
-		for (int i = 0; i < iter->second.size(); ++i)
-		{	
-			iter->second[i]->Init();
+		{
+			for (int i = 0; i < iter->second.size(); ++i)
+			{
+				iter->second[i]->Init();
+			}
 		}
 	}
 
+	iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); iter++)
 	{
 		if (iter->first == ObjectLayer::Director)
 		{
 			for (int i = 0; i < iter->second.size(); ++i) {
-
+				GameObject* tmpo = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
 				if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) != nullptr) // 저장소에 같은 이름으로 된 데이터가 존재하면
 				{
-					OriginSwap(ObjectLayer::Director, Storage::GetInstance()->FindObject(iter->second[i]->GetName()));
+					GameObject* tmp = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
+					OriginSwap(ObjectLayer::Director, tmp);
 				}
 			}
 
@@ -42,13 +47,17 @@ void ObjectManager::Init()
 		if (iter->first == ObjectLayer::Staff)
 		{
 			for (int i = 0; i < iter->second.size(); ++i) {
+				GameObject* tmpo = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
 				if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) != nullptr) // 저장소에 같은 이름으로 된 데이터가 존재하면
 				{
-					OriginSwap(ObjectLayer::Staff, Storage::GetInstance()->FindObject(iter->second[i]->GetName()));
+					GameObject* tmp = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
+					OriginSwap(ObjectLayer::Staff, tmp);
 				}
 			}
 		}
 	}
+
+
 }
 
 void ObjectManager::Release()
@@ -187,35 +196,34 @@ vector<class GameObject*> ObjectManager::GetObjectList(ObjectLayer layer)
 	return mObjectList[layer];
 }
 
-void ObjectManager::OriginSwap(ObjectLayer layerName, GameObject * newPtr)
+void ObjectManager::OriginSwap(ObjectLayer layerName, GameObject * old)
 {
-	ObjectIter iter = mObjectList.begin();
 
 	auto& tmp = mObjectList[layerName];
 
 	for (GameObject*& elem : tmp)
 	{
-		if (elem->GetName() == newPtr->GetName())
+		if (elem->GetName() == old->GetName())
 		{
+
+			elem->Release();
+			SafeDelete(elem); //비워주고
+
 			if (layerName == ObjectLayer::Director)
 			{
-				Director* pTmp = (Director*) newPtr; // 다운캐스팅
-				Director copy = *pTmp; // 복사 ㄱㄱ
-
-				elem->Release();
-				SafeDelete(elem);
-				elem = &copy;
-
+				Director* pTmp = (Director*) old; // 다운캐스팅
+				Director *copy = new Director(*pTmp); // 복사 ㄱㄱ
+			
+				elem = copy;
+				
 			}
 		
 			if (layerName == ObjectLayer::Staff)
 			{
-				Staff* pTmp = (Staff*)newPtr; // 다운캐스팅
-				Staff copy = *pTmp; // 복사 ㄱㄱ
+				Staff* pTmp = (Staff*)old; // 다운캐스팅
+				Staff *copy = new Staff(*pTmp); // 복사 ㄱㄱ
 
-				elem->Release();
-				SafeDelete(elem);
-				elem = &copy;
+				elem = copy;
 
 			}
 		}
