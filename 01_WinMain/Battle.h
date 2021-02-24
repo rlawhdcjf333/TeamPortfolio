@@ -4,7 +4,8 @@
 class Battle : public UI
 {
 	Image* mImage;
-
+	int mTime;
+	float mDeltaTime;
 public:
 	Battle();
 
