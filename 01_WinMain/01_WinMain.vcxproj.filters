@@ -142,6 +142,9 @@
     <Filter Include="MainGame\Object\Champ\LongDiller">
       <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\BulletManager">
+      <UniqueIdentifier>{401026e0-0d45-46c8-bf89-1bb7ac0769ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -312,6 +315,9 @@
     <ClInclude Include="StaffList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>FrameWork\BulletManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -478,6 +484,9 @@
     </ClCompile>
     <ClCompile Include="StaffList.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>FrameWork\BulletManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

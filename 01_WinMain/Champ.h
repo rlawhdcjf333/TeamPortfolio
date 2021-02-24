@@ -18,9 +18,9 @@ protected:
 
 	float mHP;				//나의 HP
 	float mMP;				//나의 MP
-	float mMPSecGet;
-	float mMPAtkGet;
-	float mMPDefGet;
+	float mMPSecGet;		//초당 얻을 마나
+	float mMPAtkGet;		//공격시 얻을 마나
+	float mMPHitGet;		//피격시 얻을 마나			굳이 이렇게 3개가 필요할까 한개의 변수로 돌려서 쓸수도 있을것 같은데...
 	float mAtk;				//나의 공격력
 	float mDef;				//나의 방어력
 	float mDistance1;		//적1과의 거리
@@ -45,7 +45,7 @@ protected:
 	vector<GameObject*> mEnemyList;
 
 	
-
+	float mFullHP;
 public:
 	Champ(const string& name);
 	Champ(const string& name, float x, float y);
@@ -58,9 +58,12 @@ public:
 
 	void SetStaff(GameObject* staff) { mStaff = staff; } //staff 불러오기
 	void SetHP(float hp) { mHP = hp; } //HP값 불러오기
-
 	float GetHP() { return mHP; } //HP값 조정
+
 	GameObject* GetStaff() { return mStaff; } //staff값 조정
 	vector<GameObject*> GetPlayerList() { return mPlayerList; }
 	vector<GameObject*> GetEnemyList() { return mEnemyList; }
+	
+	float GetFullHP() { return mFullHP; }			//UI표시
+	void Recover() { mHP = mFullHP;  }	//죽었을때 이걸 쓰면 다시 풀체력
 };

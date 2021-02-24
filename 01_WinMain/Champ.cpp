@@ -2,6 +2,15 @@
 #include "Champ.h"
 #include "Animation.h"
 
+enum class Motion
+{
+	Idle = 1,
+	Run,
+	Attack,
+	Hit,
+	Death
+};
+
 Champ::Champ(const string & name)
 	:GameObject(name) {}
 
@@ -95,6 +104,7 @@ void Champ::Init()
 	mAngle = Math::GetAngle(mX, mY, mTarget->GetX(), mTarget->GetY());
 
 	mMPSecGet = 0;
+	mDeathCool = 3;
 }
 
 void Champ::Release()
@@ -106,9 +116,34 @@ void Champ::Update()
 {
 	if (!mIsActive) return;
 
-
 	Champ* tmp = (Champ*)mTarget;		//타겟이 확정됐으니 적 체력세팅을 위해 다운캐스팅해버림
 	mAngle = Math::GetAngle(mX, mY, mTarget->GetX(), mTarget->GetY());
+	
+	if (mHP <= 0)											//죽었을 때 알고리즘 
+	{
+		mIsActive = false;
+		if (mIsActive == false)
+		{
+			mDeathCool -= Time::GetInstance()->DeltaTime();
+			if (mIsActive == false && mDeathCool <= 0)				//
+			{
+				mDeathCool = 3;
+				mIsActive = true;
+				//if(mName=="")
+				//{ 
+				//
+				//}
+				//else if (mName == "")
+				//{
+				//
+				//}
+				mHP = mFullHP;				//자 그런데 모든 캐릭터의 HP는 똑같지 않을 터이니 mHP = mCharacterHPMAX라는 예시 변수를 사용해서 받아올 수 있게 만들어보자
+			}							//그럼 Init 매개변수에 float CharacterHPMAX라는 것을 선언해줘야 하는데 오버라이드가 되어 사용할 수 없다. 
+		}								//어떻게 받아오는게 좋을까? 어제 지원동생이 생성자를 이용해보라고 했었다 이것이 힌트일 것 같다.
+
+	}
+
+
 
 	//{{설정된 타겟이 사거리 안에 들어 온다면 궁극기 > 스킬 > 공격 순으로 행동을 하게한다.
 	if (mRange <= mTargetDistance)	//타겟이 사거리 안에 있다.
@@ -260,14 +295,28 @@ void Champ::Update()
 	}
 
 	//마나 얻는 알고리즘
-	
 	mMPSecGet += Time::GetInstance()->DeltaTime();
 	if (mMPSecGet >= 5)
 	{
 		mMPSecGet = 0;
 		mMP += 20;
 	}
+
+	//mPlayerList가 있고 mEnemyList
+
+	// 공격을 하였을 시 마나 N개를 얻게 하는 알고리즘
+	//if(Range범위 안에 mEnemyList가 들어왔을 경우.)
+	//AtkCool -= Time::GetInstance()->DeltaTime();			//Ex) AtkCool = 1.23f다.
+	//if(AtkCool <= 0)
+	//mMP += N;
+	//mHP -= mAtk					//다만 누구껏의 mHP고 mAtk인지 명시해줘야 할 것이다. (플레이어 것인가 적의 것인가)
+	//AtkCool = 1.23f				//단 여기에 있는 숫자도, 각 챔프들마다 공격속도가 다를 터이니 매개변수로 받을 수 있게 해줘야할것 같다.
+
+	//원거리 알고리즘
 	
+	
+
+
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mCurrentAnm->Update();
 	

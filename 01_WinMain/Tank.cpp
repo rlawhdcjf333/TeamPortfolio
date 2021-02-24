@@ -7,6 +7,7 @@ Tank::Tank()
 
 void Tank::Init()
 {
+	mFullHP;
 	mHP;
 	mMP;
 	//mMPtmp;

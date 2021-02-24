@@ -7,7 +7,8 @@ StarPixie::StarPixie()
 
 void StarPixie::Init()
 {
-	mHP = 100;
+	mFullHP = 100;
+	mHP = mFullHP;
 	mMP = 0;
 	mAtk = 100;
 	mDef = 100;
