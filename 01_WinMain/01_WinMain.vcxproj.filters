@@ -142,6 +142,15 @@
     <Filter Include="MainGame\Object\Champ\LongDiller">
       <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level2_BanPick">
+      <UniqueIdentifier>{de64d368-f6b1-4a55-924b-9113fd8f056e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level3_Battle">
+      <UniqueIdentifier>{dd012679-957e-4965-972d-ef00c223e5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level4_Peedback">
+      <UniqueIdentifier>{633b4c35-60f7-4a81-ab65-f7c539adb192}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -306,11 +315,23 @@
     <ClInclude Include="Tank.h">
       <Filter>MainGame\Object\Champ\LongDiller</Filter>
     </ClInclude>
-    <ClInclude Include="BanPick.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="StaffList.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BanPick.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Peedback.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampCheck.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
+    <ClInclude Include="Child.h">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -473,11 +494,20 @@
     <ClCompile Include="Tank.cpp">
       <Filter>MainGame\Object\Champ\LongDiller</Filter>
     </ClCompile>
-    <ClCompile Include="BanPick.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="StaffList.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BanPick.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Peedback.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
+    </ClCompile>
+    <ClCompile Include="ChampCheck.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
