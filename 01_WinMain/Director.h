@@ -5,7 +5,7 @@
 class Staff;
 class Director : public GameObject
 {
-	vector<string> mRandomNameList; //GameObject가 핸들하는 mName 변수와 헷갈립니다. 이름 바꾸세요 -CTO
+	vector<string> mRandomNameList; 
 
 	Image* mTeamImage;
 	wstring mFileName;
@@ -34,4 +34,8 @@ public:
 
 	void SetStaffNameList(vector<string> staffNameList) { mStaffNameList = staffNameList; }
 	vector<string> GetStaffNameList() { return mStaffNameList; }
+
+public:
+	Director(const Director& copy); //복사 생성자 오버로딩, 스토리지 용
+	Director& operator=(const Director& copy); //  복사연산자 오버로딩 촉수엄금, 차후 변수가 추가되면 여기에다가도 추가해야 신전환에 복사가 될거임
 };

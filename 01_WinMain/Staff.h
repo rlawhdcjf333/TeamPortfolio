@@ -28,11 +28,10 @@ enum class Condition : int
 };
 class Staff : public GameObject
 {
-protected:	string mStaffName;
 
-public: string GetStaffName() { return mStaffName; }
 
 protected:
+	string mStaffName;
 	Image* mImage;
 	map <wstring, Animation*> mAnimationList;
 	Animation* mCurrentAnm;
@@ -66,6 +65,8 @@ protected:
 	int mCost; // 재계약 비용 만들떄 사용
 public:
 	Staff(const string& name, const string& staffName, const wstring& teamName);
+	
+	string GetStaffName() { return mStaffName; }
 
 	void Init() override;
 	void Release() override;
@@ -94,6 +95,11 @@ public:
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
 
 	void SetConditionImage();
+
+
+public:
+	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요 변수 생기면 여기다가도 추가해야 복사됨
+	Staff& operator= (const Staff& copy); //복사 연산자 오버로딩 변수가 생기면 여기다가도 추가해야 복사됨
 
 };
 

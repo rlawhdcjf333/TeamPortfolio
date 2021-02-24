@@ -95,6 +95,48 @@ void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
 
 }
 
+Director::Director(const Director & copy)
+	:GameObject(copy)
+{
+	mRandomNameList = copy.mRandomNameList;
+
+	mTeamImage = copy.mTeamImage;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mMonth = copy.mMonth;
+	mWeek = copy.mWeek;
+	mGold = copy.mGold;
+
+	mWin = copy.mWin;
+	mLose = copy.mLose;
+	mLeagueScore = copy.mLeagueScore;
+
+	mStaffNameList = copy.mStaffNameList;
+
+}
+
+Director & Director::operator=(const Director & copy)
+{
+	mRandomNameList = copy.mRandomNameList;
+
+	mTeamImage = copy.mTeamImage;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mMonth = copy.mMonth;
+	mWeek = copy.mWeek;
+	mGold = copy.mGold;
+
+	mWin = copy.mWin;
+	mLose = copy.mLose;
+	mLeagueScore = copy.mLeagueScore;
+
+	mStaffNameList = copy.mStaffNameList;
+
+
+
+	return *this;
+}
+
 string Director::RandomName()
 {
 	if (mRandomNameList.size() == 0)

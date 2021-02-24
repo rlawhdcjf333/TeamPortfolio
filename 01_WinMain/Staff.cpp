@@ -177,3 +177,58 @@ void Staff::SetConditionImage()
 		break;
 	}
 }
+
+Staff::Staff(const Staff & copy)
+	:GameObject(copy)
+{
+	mStaffName = copy.mStaffName;
+	mImage = copy.mImage;
+	mAnimationList = copy.mAnimationList;
+	mCurrentAnm = copy.mCurrentAnm;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mAtk = copy.mAtk;
+	mDef = copy.mDef;
+	mHeal = copy.mHeal;
+	mMostChamp = copy.mMostChamp;
+	mChar1 = copy.mChar1;
+	mChar2 = copy.mChar2;
+	mTraningPoint = copy.mTraningPoint;
+	mRandomIndexX = copy.mRandomIndexX;
+	mRandomIndexY = copy.mRandomIndexY;
+	mCondition = copy.mCondition;
+	mRenderSizeX = copy.mRenderSizeX;
+	mRenderSizeY = copy.mRenderSizeY;
+	mStatPoint = copy.mStatPoint;
+	mConditionImage = copy.mConditionImage;
+	mConditionX = copy.mConditionX;
+	mCost = copy.mCost;
+}
+
+Staff & Staff::operator=(const Staff & copy)
+{
+	mStaffName = copy.mStaffName;
+	mImage = copy.mImage;
+	mAnimationList = copy.mAnimationList;
+	mCurrentAnm = copy.mCurrentAnm;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mAtk = copy.mAtk;
+	mDef = copy.mDef;
+	mHeal = copy.mHeal;
+	mMostChamp = copy.mMostChamp;
+	mChar1 = copy.mChar1;
+	mChar2 = copy.mChar2;
+	mTraningPoint = copy.mTraningPoint;
+	mRandomIndexX = copy.mRandomIndexX;
+	mRandomIndexY = copy.mRandomIndexY;
+	mCondition = copy.mCondition;
+	mRenderSizeX = copy.mRenderSizeX;
+	mRenderSizeY = copy.mRenderSizeY;
+	mStatPoint = copy.mStatPoint;
+	mConditionImage = copy.mConditionImage;
+	mConditionX = copy.mConditionX;
+	mCost =	copy.mCost;
+
+	return *this;
+}

@@ -8,7 +8,6 @@ protected:
 	float mY;
 	float mSizeX;
 	float mSizeY;
-	//float mAtk;
 	RECT mRect;
 	bool mIsActive;		//활성화 상태
 	bool mIsDestroy;	//삭제할지 말지
@@ -39,5 +38,9 @@ public:
 	inline void SetIsActive(bool b) { mIsActive = b; }
 	inline bool GetIsDestroy()const { return mIsDestroy; }
 	inline void SetIsDestroy(bool b) { mIsDestroy = b; }
+
+public:
+	GameObject(const GameObject& copy); //복사 생성자 오버로딩 돈 터치
+	GameObject& operator= (const GameObject& copy); //복사 연산자 오버로딩 건들지마라
 };
 
