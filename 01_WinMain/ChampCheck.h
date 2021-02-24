@@ -1,19 +1,17 @@
 #pragma once
 #include "UI.h"
 
-class LeagueToggle :public UI
+class ChampCheck : public UI
 {
-	Image* mActive;
 	Image* mImage;
 
 public:
+	ChampCheck();
 
-	LeagueToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
 
 };
 

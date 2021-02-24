@@ -1,19 +1,19 @@
 #pragma once
 #include "UI.h"
 
-class LeagueToggle :public UI
-{
-	Image* mActive;
+class Director;
+class Ranking : public UI {
 	Image* mImage;
 
-public:
+	Director* mDirector;
+	vector<Director*> mDirectorList;
+public :
+	Ranking();
 
-	LeagueToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
 
-
+	void LoadDirectorList();
 };
-

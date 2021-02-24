@@ -1,19 +1,18 @@
 #pragma once
 #include "UI.h"
 
-class LeagueToggle :public UI
+class Battle : public UI
 {
-	Image* mActive;
 	Image* mImage;
-
+	Image* mUI;
+	int mTime;
+	float mDeltaTime;
 public:
+	Battle();
 
-	LeagueToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
-
 };
 

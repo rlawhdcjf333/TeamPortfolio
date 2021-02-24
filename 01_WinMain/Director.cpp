@@ -21,9 +21,11 @@ void Director::Init()
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
 	mGold = Random::GetInstance()->RandomInt(100, 500);
+	mRound = 1;
 	mWeek = 1;
 	mMonth = 1;
 
+	mRank = 1;
 	mWin = 0;
 	mLose = 0;
 
@@ -87,7 +89,7 @@ void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
 	DrawText(hdc, str.c_str(), str.size(), &calendarRc, DT_VCENTER | DT_RIGHT | DT_SINGLELINE);
 	wstring str1 = to_wstring(mGold);
 	DrawText(hdc, str1.c_str(), str1.size(), &goldRc, DT_VCENTER | DT_RIGHT | DT_SINGLELINE);
-	wstring str2 = L"?À§  " + to_wstring(mWin) + L"½Â  " + to_wstring(mLose) + L"ÆÐ  +" + to_wstring(mLeagueScore);
+	wstring str2 = to_wstring(mRank) + L"À§  " + to_wstring(mWin) + L"½Â  " + to_wstring(mLose) + L"ÆÐ  +" + to_wstring(mLeagueScore);
 	DrawText(hdc, str2.c_str(), str2.size(), &recordRc, DT_VCENTER | DT_LEFT | DT_SINGLELINE);
 
 	SelectObject(hdc, oldF);
@@ -135,6 +137,11 @@ Director & Director::operator=(const Director & copy)
 
 
 	return *this;
+}
+
+void Director::TeamImageRender(HDC hdc, int startX, int startY, int width, int height) 
+{
+	mTeamImage->ScaleRender(hdc, startX, startY, width, height);
 }
 
 string Director::RandomName()
