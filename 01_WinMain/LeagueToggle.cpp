@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "LeagueToggle.h"
 #include "Ranking.h"
+#include "Schedule.h"
 
 LeagueToggle::LeagueToggle()
 	:UI("LeagueToggle")
@@ -19,6 +20,7 @@ void LeagueToggle::Init()
 	mActive = IMAGEMANAGER->FindImage(L"LeagueToggleClick");
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Ranking());
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Schedule());
 }
 
 void LeagueToggle::Release()
@@ -36,7 +38,7 @@ void LeagueToggle::Update()
 		//mToggleButton(0, "", func);
 		//mToggleButton(1, "", func);
 		mToggleButton(2, "Ranking", func);
-		//mToggleButton(3, "", func);
+		mToggleButton(3, "Schedule", func);
 
 	}
 

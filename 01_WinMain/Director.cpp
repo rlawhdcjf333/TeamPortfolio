@@ -21,6 +21,7 @@ void Director::Init()
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
 	mGold = Random::GetInstance()->RandomInt(100, 500);
+	mRound = 1;
 	mWeek = 1;
 	mMonth = 1;
 

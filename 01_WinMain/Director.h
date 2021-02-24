@@ -11,6 +11,7 @@ class Director : public GameObject
 	wstring mFileName;
 	wstring mTeamName;
 
+	int mRound;
 	int mMonth;
 	int mWeek;
 	int mGold;
@@ -33,6 +34,16 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void SetRound(int round) { mRound = round; }
+	void SetMonth(int month) { mMonth = month; }
+	void SetWeek(int week) { mWeek = week; }
+	void SetGold(int gold) { mGold = gold; }
+
+	int GetRound() { return mRound; }
+	int GetMonth() { return mMonth; }
+	int GetWeek() { return mWeek; }
+	int GetGold() { return mGold; }
 
 	void UIRender(HDC hdc, int startX, int startY, int width, int height);
 	void TeamImageRender(HDC hdc, int startX, int startY, int widht, int height);
