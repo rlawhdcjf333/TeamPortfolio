@@ -28,7 +28,7 @@ void ChampCheck::Update()
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false);
 		//ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 	}
-	mToggleButton(1, "ChampCheck", []() {
+	mToggleButton(1, "ChampCheck", []() {	//배틀UI활성
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false); 
 		//ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);	//배틀 작업하면 주석 제거
 	});

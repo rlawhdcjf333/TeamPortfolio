@@ -20,4 +20,5 @@ void Battle::Update()
 
 void Battle::Render(HDC hdc)
 {
+	//배경, 상단부분, 챔프
 }
