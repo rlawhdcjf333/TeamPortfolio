@@ -149,8 +149,10 @@
   <ItemGroup>
     <ClInclude Include="01_WinMain.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BanPickGuide.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="ChampCheck.h" />
+    <ClInclude Include="ChampList.h" />
     <ClInclude Include="Child.h" />
     <ClInclude Include="Cornian.h" />
     <ClInclude Include="MistKnight.h" />
@@ -213,8 +215,10 @@
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BanPickGuide.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
+    <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="Cornian.cpp" />
     <ClCompile Include="MistKnight.cpp" />
     <ClCompile Include="Background.cpp" />

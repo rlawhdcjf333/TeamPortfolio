@@ -9,6 +9,12 @@ void UI::PickBattleUIInit()
 	//2번째 : 밴픽
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPick);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampCheck);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPickGuide);
+	//3번째 : 배틀
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Battle);
+	//4번째 진행 전에 경기결과 추가해야함...
+	//4번째 : 피드백
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Peedback);
 }
 void UI::PickBattleUIUpdate()
 {
