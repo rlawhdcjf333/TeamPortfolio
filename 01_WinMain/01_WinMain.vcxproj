@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -151,6 +151,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BanPickGuide.h" />
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="BattleResult.h" />
     <ClInclude Include="ChampCheck.h" />
     <ClInclude Include="ChampList.h" />
     <ClInclude Include="Child.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanPickGuide.cpp" />
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="BattleResult.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
     <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="Cornian.cpp" />

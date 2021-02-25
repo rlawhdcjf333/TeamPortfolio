@@ -357,6 +357,9 @@
     <ClInclude Include="Schedule.h">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
+    <ClInclude Include="BattleResult.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -544,6 +547,9 @@
     </ClCompile>
     <ClCompile Include="Schedule.cpp">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleResult.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,4 +5,6 @@
 #include "BanPickGuide.h"
 
 #include "Battle.h"
+#include "BattleResult.h"
+
 #include "Peedback.h"
