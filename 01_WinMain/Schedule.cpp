@@ -104,7 +104,7 @@ void Schedule::Render(HDC hdc)
 			for (int j = 0; j < temp.size(); j++) {
 				wstring str1 = L"  " + temp[j]->GetTeamName();
 
-				temp[j]->TeamImageRender();
+				//temp[j]->TeamImageRender();
 				newF = CreateFont(15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 				oldF = (HFONT)SelectObject(hdc, newF);
 				DrawText(hdc, str1.c_str(), str1.length(), &rectList[1 + (j * 3) + (i * 12)], DT_VCENTER | DT_LEFT | DT_SINGLELINE);
