@@ -7,7 +7,6 @@
 #include "Director.h"
 #include "Staff.h"
 
-
 void Home::Init()
 {
 
@@ -18,6 +17,8 @@ void Home::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director2", L"TeamMansu", L"TeamMansu"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director3", L"TeamJoyRoom", L"TeamJoyRoom"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
+
+	ScheduleManager::GetInstance()->Init();
 
 	UI* ui = new UI("homeUI", "homeUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);

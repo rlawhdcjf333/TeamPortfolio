@@ -5,8 +5,7 @@ class Battle : public UI
 {
 	Image* mImage;
 	Image* mUI;
-	int mTime;
-	float mDeltaTime;
+	int Count;	//юс╫ц
 public:
 	Battle();
 

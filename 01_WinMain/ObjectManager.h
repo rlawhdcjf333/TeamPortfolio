@@ -29,9 +29,6 @@ public:
 	void Release();
 	void Update();
 	void Render(HDC hdc);
-	void Collision();
-
-	bool IsCollision(ObjectLayer layer,RECT &hitbox);
 
 	virtual void AddObject(ObjectLayer layer, class GameObject* object);
 	virtual class GameObject* FindObject(const string& name);

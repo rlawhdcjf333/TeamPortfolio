@@ -7,7 +7,6 @@
 
 void PickBattle::Init()
 {
-
 	Background* background = new Background("Audiences", L"Audiences");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
@@ -30,10 +29,15 @@ void PickBattle::Update()
 {
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
+
+
 }
+
 
 void PickBattle::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
 
 }
+
+

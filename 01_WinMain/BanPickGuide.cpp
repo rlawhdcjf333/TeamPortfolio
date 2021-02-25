@@ -26,5 +26,5 @@ void BanPickGuide::Update()
 void BanPickGuide::Render(HDC hdc)
 {
 	if (mIsActive)
-		mImage->FrameRender(hdc, 162, 105,0,mFrameY);
+		mImage->FrameRender(hdc, 162, 80,0,mFrameY);
 }

@@ -95,6 +95,18 @@ public:
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
 
 	void SetConditionImage();
+	
+	map<string, int> GetMostChamp() { return mMostChamp; }
+
+	int GetTrainingPoint() { return mTraningPoint; }
+	void SetTrainingPoint(int val) { mTraningPoint = val; }
+	void MinusTrainingPoint() { mTraningPoint--; }
+	void PlusTrainingPoint() { mTraningPoint++; }
+
+	void PlusAtk() { mAtk++; }
+	void PlusDef() { mDef++; }
+	void MinusAtk() { mAtk--;}
+	void MinusDef() { mDef--; }
 
 
 public:

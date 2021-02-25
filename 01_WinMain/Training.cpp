@@ -1,5 +1,8 @@
 #include "pch.h"
 #include "Training.h"
+#include "Staff.h"
+#include "Director.h"
+#include "TrainingDetail.h"
 
 Training::Training()
 	:UI("Training")
@@ -14,20 +17,21 @@ void Training::Init()
 	IMAGEMANAGER->LoadFromFile(L"Training", Resources(L"Training.bmp"), 1247, 557,true);
 	mImage = IMAGEMANAGER->FindImage(L"Training");
 
+	mTrainingDetail = new TrainingDetail;
+	mTrainingDetail->Init(); //얘는 매니저에 등록 안함 init 필수
+
 	LoadStaffList();
 
 	if (mStaffList.size() > 0)
 	{
 		Staff* tmp = (Staff*)mStaffList[0];
 		mCurrentStaff = tmp;
-
 	}
 }
 
 void Training::Release()
 {
-
-
+	SafeDelete(mTrainingDetail);
 }
 
 void Training::Update()
@@ -46,6 +50,7 @@ void Training::Update()
 
 		mCurrentStaffAtk = mCurrentStaff->GetAtk();
 		mCurrentStaffDef = mCurrentStaff->GetDef();
+		mCurrentStaffTrainingPoint = mCurrentStaff->GetTrainingPoint();
 
 		for (int i = 0; i < mStaffList.size(); i++)
 		{
@@ -53,14 +58,23 @@ void Training::Update()
 			{
 				Staff* tmp = (Staff*)mStaffList[i];
 				mCurrentStaff = tmp;
-			}
 
+				if (Input::GetInstance()->GetKeyUp(VK_LBUTTON))
+				{
+					mSelectedStaff = mCurrentStaff;
+					mTrainingDetail->SetStaff(mSelectedStaff);
+					mSelection = mButtonList[i];
+					mTrainingDetail->SetIsActive(true);
+				}
+			}
 		}
 
+		mTrainingDetail->Update();
 
-		auto func = []()
+		auto func = [this]()
 		{
-			ObjectManager::GetInstance()->FindObject("Training")->SetIsActive(false);
+			mIsActive = false;
+			mTrainingDetail->SetIsActive(false);
 		};
 		mToggleButton(5, "None", func);
 
@@ -82,6 +96,20 @@ void Training::Render(HDC hdc)
 		{
 			DrawStaffList(hdc, i);
 		}
+
+		HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
+		HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
+		HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
+		HPEN oldP = (HPEN)SelectObject(hdc, newP);
+		RenderRect(hdc, mSelection);
+		SelectObject(hdc, oldB);
+		DeleteObject(newB);
+		SelectObject(hdc, oldP);
+		DeleteObject(newP);
+
+		mTrainingDetail->Render(hdc);
+
+
 	}
 
 
@@ -125,10 +153,15 @@ void Training::RenderCurrentStaff(HDC hdc)
 void Training::DrawStaffList(HDC hdc, int i)
 {
 	Staff* tmp = (Staff*)mStaffList[i];
+
 	string tmpStaffName = tmp->GetStaffName();
 	wstring str;
 	str.assign(tmpStaffName.begin(), tmpStaffName.end());
 	DrawText(hdc, str.c_str(), str.length(), &mButtonList[i], DT_SINGLELINE | DT_VCENTER | DT_LEFT);
+
+	int tmpStaffTrainingPoint = tmp->GetTrainingPoint();
+	wstring pt = to_wstring(tmpStaffTrainingPoint) + L"         ";
+	DrawText(hdc, pt.c_str(), pt.length(), &mButtonList[i], DT_SINGLELINE | DT_VCENTER | DT_RIGHT);
 
 
 }

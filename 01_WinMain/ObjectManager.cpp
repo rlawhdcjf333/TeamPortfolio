@@ -17,46 +17,40 @@ ObjectManager::ObjectManager()
 void ObjectManager::Init()
 {
 	ObjectIter iter = mObjectList.begin();
-
+	
 	for (; iter != mObjectList.end(); ++iter)
 	{
+		for (int i = 0; i < iter->second.size(); ++i)
 		{
-			for (int i = 0; i < iter->second.size(); ++i)
+			iter->second[i]->Init();
+			
+			if (iter->first == ObjectLayer::Director)
 			{
-				iter->second[i]->Init();
-			}
-		}
-	}
-
-	iter = mObjectList.begin();
-	for (; iter != mObjectList.end(); iter++)
-	{
-		if (iter->first == ObjectLayer::Director)
-		{
-			for (int i = 0; i < iter->second.size(); ++i) {
-				GameObject* tmpo = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
 				if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) != nullptr) // 저장소에 같은 이름으로 된 데이터가 존재하면
 				{
 					GameObject* tmp = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
-					OriginSwap(ObjectLayer::Director, tmp);
+					OriginSwap(ObjectLayer::Director, tmp); //스왑
+
+					Director * tmpdir = (Director*)iter->second[i];
+					for (string elem : tmpdir->GetStaffNameList())
+					{
+						mObjectList[ObjectLayer::Staff].push_back(new Staff(elem, elem, tmpdir->GetTeamName()));
+					}
 				}
 			}
 
-		}
-
-		if (iter->first == ObjectLayer::Staff)
-		{
-			for (int i = 0; i < iter->second.size(); ++i) {
-				GameObject* tmpo = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
+			if (iter->first == ObjectLayer::Staff)
+			{
 				if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) != nullptr) // 저장소에 같은 이름으로 된 데이터가 존재하면
 				{
 					GameObject* tmp = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
-					OriginSwap(ObjectLayer::Staff, tmp);
+					OriginSwap(ObjectLayer::Staff, tmp); // 스왑
 				}
 			}
 		}
 	}
 
+	Storage::GetInstance()->CopyToStorage(mObjectList);
 
 }
 
@@ -119,13 +113,7 @@ void ObjectManager::Render(HDC hdc)
 
 void ObjectManager::AddObject(ObjectLayer layer, GameObject * object)
 {
-	//map도 배열연산자가 정의되어 있다. 
-	//단, 실제 배열처럼 동작하는게 아니라.[]연산자 내부에 find함수를 써서 동작함
-	//그래서 결국 find쓰는거랑 비슷한데, 다른점이라고 한다면 해당 키값의 데이터가 
-	//없으면 새로 생성해버림. 주의해야함
-
 	mObjectList[layer].push_back(object);
-
 }
 
 GameObject * ObjectManager::FindObject(const string & name)
@@ -205,7 +193,6 @@ void ObjectManager::OriginSwap(ObjectLayer layerName, GameObject * old)
 	{
 		if (elem->GetName() == old->GetName())
 		{
-
 			elem->Release();
 			SafeDelete(elem); //비워주고
 

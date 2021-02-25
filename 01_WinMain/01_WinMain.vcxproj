@@ -151,7 +151,9 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BanPickGuide.h" />
     <ClInclude Include="Battle.h" />
-    <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="BattleData.h" />
+    <ClInclude Include="BattleResult.h" />
+    <ClInclude Include="BattleUI.h" />
     <ClInclude Include="ChampCheck.h" />
     <ClInclude Include="ChampList.h" />
     <ClInclude Include="Child.h" />
@@ -176,6 +178,7 @@
     <ClInclude Include="Peedback.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Schedule.h" />
+    <ClInclude Include="TrainingDetail.h" />
     <ClInclude Include="ZombieMonkey.h" />
     <ClInclude Include="Home.h" />
     <ClInclude Include="HomeToBattle.h" />
@@ -212,13 +215,16 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="Training.h" />
     <ClInclude Include="StaffList.h" />
+    <ClInclude Include="ScheduleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanPickGuide.cpp" />
     <ClCompile Include="Battle.cpp" />
-    <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="BattleData.cpp" />
+    <ClCompile Include="BattleResult.cpp" />
+    <ClCompile Include="BattleUI.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
     <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="Cornian.cpp" />
@@ -239,6 +245,8 @@
     <ClCompile Include="Peedback.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Schedule.cpp" />
+    <ClCompile Include="TrainingDetail.cpp" />
+    <ClCompile Include="ScheduleManager.cpp" />
     <ClCompile Include="ZombieMonkey.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="HomeToBattle.cpp" />
