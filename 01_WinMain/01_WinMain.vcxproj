@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -149,7 +149,11 @@
   <ItemGroup>
     <ClInclude Include="01_WinMain.h" />
     <ClInclude Include="Animation.h" />
-    <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="BanPickGuide.h" />
+    <ClInclude Include="Battle.h" />
+    <ClInclude Include="ChampCheck.h" />
+    <ClInclude Include="ChampList.h" />
+    <ClInclude Include="Child.h" />
     <ClInclude Include="Cornian.h" />
     <ClInclude Include="MistKnight.h" />
     <ClInclude Include="Background.h" />
@@ -168,6 +172,9 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameToggle.h" />
     <ClInclude Include="BabyMonkey.h" />
+    <ClInclude Include="Peedback.h" />
+    <ClInclude Include="Ranking.h" />
+    <ClInclude Include="Schedule.h" />
     <ClInclude Include="ZombieMonkey.h" />
     <ClInclude Include="Home.h" />
     <ClInclude Include="HomeToBattle.h" />
@@ -208,7 +215,10 @@
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="BanPickGuide.cpp" />
+    <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="ChampCheck.cpp" />
+    <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="Cornian.cpp" />
     <ClCompile Include="MistKnight.cpp" />
     <ClCompile Include="Background.cpp" />
@@ -224,6 +234,9 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameToggle.cpp" />
     <ClCompile Include="BabyMonkey.cpp" />
+    <ClCompile Include="Peedback.cpp" />
+    <ClCompile Include="Ranking.cpp" />
+    <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="ZombieMonkey.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="HomeToBattle.cpp" />

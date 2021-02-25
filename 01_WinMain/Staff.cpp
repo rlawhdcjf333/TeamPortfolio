@@ -9,6 +9,8 @@ Staff::Staff(const string& name, const string& staffName, const wstring& teamNam
 	mStaffName = staffName;
 	mTeamName = teamName;
 	mFileName = L"Staff";
+
+
 }
 
 void Staff::Init()
@@ -28,7 +30,7 @@ void Staff::Init()
 	mChar1 = (Character)Random::GetInstance()->RandomInt(8);
 	mChar2 = (Character)Random::GetInstance()->RandomInt(9);
 
-	mTraningPoint = 0;
+	mTraningPoint = 3;
 
 	mRandomIndexX = Random::GetInstance()->RandomInt(10);
 	mRandomIndexY = Random::GetInstance()->RandomInt(8);
@@ -40,54 +42,52 @@ void Staff::Init()
 	mConditionImage = IMAGEMANAGER->FindImage(L"Condition");
 	SetConditionImage();
 
+
 	IMAGEMANAGER->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 960, 512, 30, 16, true);
 	mImage = IMAGEMANAGER->FindImage(mFileName);
 
 	mRenderSizeX = mImage->GetFrameWidth() * 2;
 	mRenderSizeY = mImage->GetFrameHeight() * 2;
 
-	Animation* RightIdle = new Animation();
-	RightIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3, mRandomIndexY * 2, true);
-	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
-	mCurrentAnm = RightIdle;
-
-	Animation* LeftIdle = new Animation();
-	LeftIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3, mRandomIndexY * 2 + 1, true);
-	LeftIdle->SetIsLoop(true);
-	LeftIdle->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
-
-	Animation* RightRun = new Animation();
-	RightRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3 + 2, mRandomIndexY * 2, true);
-	RightRun->SetIsLoop(true);
-	RightRun->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"RightRun", RightRun));
-
-	Animation* LeftRun = new Animation();
-	LeftRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3 + 2, mRandomIndexY * 2 + 1, true);
-	LeftRun->SetIsLoop(true);
-	LeftRun->SetFrameUpdateTime(0.2f);
-	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
+	//Animation* RightIdle = new Animation();
+	//RightIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3, mRandomIndexY * 2, true);
+	//RightIdle->SetIsLoop(true);
+	//RightIdle->SetFrameUpdateTime(0.2f);
+	//mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
+	//mCurrentAnm = RightIdle;
+	//
+	//Animation* LeftIdle = new Animation();
+	//LeftIdle->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3, mRandomIndexY * 2 + 1, true);
+	//LeftIdle->SetIsLoop(true);
+	//LeftIdle->SetFrameUpdateTime(0.2f);
+	//mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
+	//
+	//Animation* RightRun = new Animation();
+	//RightRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2, mRandomIndexX * 3 + 2, mRandomIndexY * 2, true);
+	//RightRun->SetIsLoop(true);
+	//RightRun->SetFrameUpdateTime(0.2f);
+	//mAnimationList.insert(make_pair(L"RightRun", RightRun));
+	//
+	//Animation* LeftRun = new Animation();
+	//LeftRun->InitFrameByStartEnd(mRandomIndexX * 3, mRandomIndexY * 2 + 1, mRandomIndexX * 3 + 2, mRandomIndexY * 2 + 1, true);
+	//LeftRun->SetIsLoop(true);
+	//LeftRun->SetFrameUpdateTime(0.2f);
+	//mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 }
 
 void Staff::Release()
 {
-	map<wstring, Animation*> :: iterator iter = mAnimationList.begin();
-	for (; iter != mAnimationList.end(); ++iter) {
-		SafeDelete(iter->second);
-	}
+	//map<wstring, Animation*> :: iterator iter = mAnimationList.begin();
+	//for (; iter != mAnimationList.end(); ++iter) {
+	//	SafeDelete(iter->second);
+	//}
 }
 
 void Staff::Update()
 {
 	//??뭘 업데이트 해야하지?
-	if (mIsActive)
-	{
-		SetConditionImage();
-		mCurrentAnm->Update();
-	}
+	SetConditionImage();
+	mCurrentAnm->Update();
 }
 
 void Staff::Render(HDC hdc)
@@ -176,4 +176,66 @@ void Staff::SetConditionImage()
 		mConditionX = 0;	//임시로 넣은 인덱스, 이미지보고 조정
 		break;
 	}
+}
+
+Staff::Staff(const Staff & copy)
+	:GameObject(copy)
+{
+	mStaffName = copy.mStaffName;
+	mImage = copy.mImage;
+
+	mAnimationList.insert(copy.mAnimationList.begin(), copy.mAnimationList.end());
+
+	mCurrentAnm = copy.mCurrentAnm;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mAtk = copy.mAtk;
+	mDef = copy.mDef;
+	mHeal = copy.mHeal;
+
+	mMostChamp.insert(copy.mMostChamp.begin(), copy.mMostChamp.end());
+
+	mChar1 = copy.mChar1;
+	mChar2 = copy.mChar2;
+	mTraningPoint = copy.mTraningPoint;
+	mRandomIndexX = copy.mRandomIndexX;
+	mRandomIndexY = copy.mRandomIndexY;
+	mCondition = copy.mCondition;
+	mRenderSizeX = copy.mRenderSizeX;
+	mRenderSizeY = copy.mRenderSizeY;
+	mStatPoint = copy.mStatPoint;
+	mConditionImage = copy.mConditionImage;
+	mConditionX = copy.mConditionX;
+	mCost = copy.mCost;
+
+}
+
+Staff & Staff::operator=(const Staff & copy)
+{
+	mStaffName = copy.mStaffName;
+	mImage = copy.mImage;
+
+	mAnimationList.insert(copy.mAnimationList.begin(), copy.mAnimationList.end());
+	mCurrentAnm = copy.mCurrentAnm;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mAtk = copy.mAtk;
+	mDef = copy.mDef;
+	mHeal = copy.mHeal;
+
+	mMostChamp.insert(copy.mMostChamp.begin(), copy.mMostChamp.end());
+	mChar1 = copy.mChar1;
+	mChar2 = copy.mChar2;
+	mTraningPoint = copy.mTraningPoint;
+	mRandomIndexX = copy.mRandomIndexX;
+	mRandomIndexY = copy.mRandomIndexY;
+	mCondition = copy.mCondition;
+	mRenderSizeX = copy.mRenderSizeX;
+	mRenderSizeY = copy.mRenderSizeY;
+	mStatPoint = copy.mStatPoint;
+	mConditionImage = copy.mConditionImage;
+	mConditionX = copy.mConditionX;
+	mCost =	copy.mCost;
+
+	return *this;
 }

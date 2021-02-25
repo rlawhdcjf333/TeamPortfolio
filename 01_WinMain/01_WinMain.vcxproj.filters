@@ -142,8 +142,26 @@
     <Filter Include="MainGame\Object\Champ\LongDiller">
       <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\BulletManager">
-      <UniqueIdentifier>{401026e0-0d45-46c8-bf89-1bb7ac0769ed}</UniqueIdentifier>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level2_BanPick">
+      <UniqueIdentifier>{de64d368-f6b1-4a55-924b-9113fd8f056e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level3_Battle">
+      <UniqueIdentifier>{dd012679-957e-4965-972d-ef00c223e5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\PickBattelUI\Level4_Peedback">
+      <UniqueIdentifier>{633b4c35-60f7-4a81-ab65-f7c539adb192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\StaffList">
+      <UniqueIdentifier>{58517937-058c-4e90-9e97-a9abb0695da4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle">
+      <UniqueIdentifier>{1c5eb8dd-37a3-4d04-9f61-025444ced0a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Ranking">
+      <UniqueIdentifier>{c2ff32f3-1e3a-4582-9bbb-279e075e33b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Schedule">
+      <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -246,9 +264,6 @@
     <ClInclude Include="OperationToggle.h">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClInclude>
-    <ClInclude Include="LeagueToggle.h">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClInclude>
     <ClInclude Include="ChampInfo.h">
       <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
@@ -310,13 +325,37 @@
       <Filter>MainGame\Object\Champ\LongDiller</Filter>
     </ClInclude>
     <ClInclude Include="BanPick.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Peedback.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampCheck.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
+    <ClInclude Include="Child.h">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
     <ClInclude Include="StaffList.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
     </ClInclude>
-    <ClInclude Include="BulletManager.h">
-      <Filter>FrameWork\BulletManager</Filter>
+    <ClInclude Include="LeagueToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranking.h">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="BanPickGuide.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampList.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
+    <ClInclude Include="Schedule.h">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -395,9 +434,6 @@
     <ClCompile Include="Champ.cpp">
       <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>MainGame\Scene\Title</Filter>
-    </ClCompile>
     <ClCompile Include="Home.cpp">
       <Filter>MainGame\Scene\Home</Filter>
     </ClCompile>
@@ -408,9 +444,6 @@
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="OperationToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClCompile>
-    <ClCompile Include="LeagueToggle.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="ChampInfo.cpp">
@@ -480,13 +513,37 @@
       <Filter>MainGame\Object\Champ\LongDiller</Filter>
     </ClCompile>
     <ClCompile Include="BanPick.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Peedback.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
+    </ClCompile>
+    <ClCompile Include="ChampCheck.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
     <ClCompile Include="StaffList.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+    </ClCompile>
+    <ClCompile Include="LeagueToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="Ranking.cpp">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Ranking</Filter>
+    </ClCompile>
+    <ClCompile Include="BanPickGuide.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
+    <ClCompile Include="ChampList.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="BulletManager.cpp">
-      <Filter>FrameWork\BulletManager</Filter>
+    <ClCompile Include="Schedule.cpp">
+      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

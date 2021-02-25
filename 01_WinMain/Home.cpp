@@ -36,6 +36,7 @@ void Home::Release()
 
 void Home::Update()
 {
+
 	GameEventManager::GetInstance()->Update();
 	ObjectManager::GetInstance()->Update();
 

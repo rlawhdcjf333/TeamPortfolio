@@ -1,19 +1,17 @@
 #pragma once
 #include "UI.h"
 
-class LeagueToggle :public UI
+class Peedback : public UI
 {
-	Image* mActive;
 	Image* mImage;
 
 public:
+	Peedback();
 
-	LeagueToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
 
 };
 

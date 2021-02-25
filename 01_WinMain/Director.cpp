@@ -21,9 +21,11 @@ void Director::Init()
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
 	mGold = Random::GetInstance()->RandomInt(100, 500);
+	mRound = 1;
 	mWeek = 1;
 	mMonth = 1;
 
+	mRank = 1;
 	mWin = 0;
 	mLose = 0;
 
@@ -39,16 +41,7 @@ void Director::Init()
 	{
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, new Staff(mStaffNameList[i], mStaffNameList[i], mTeamName));
 	}
-	// Staff 클래스의 생성자를 확인하기 바랍니다. -CTO
-	
-	//for (string name : mStaffNameList) {
-	//	ObjectManager::GetInstance()->FindObject(name)->Init();
-	//}
-	// AddObject돌리셨으면 굳이 Init() 돌릴 필요가 음슴니다. scene init에서 일괄적으로 돌리기 때문이죠. 이러면 Init()이 두번 돕니다 -CTO
 
-	//ObjectManager::GetInstance()->FindObject(str1)->Init();
-	//ObjectManager::GetInstance()->FindObject(str2)->Init();
-	//ObjectManager::GetInstance()->FindObject(str3)->Init();
 }
 
 void Director::Release()
@@ -87,12 +80,58 @@ void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
 	DrawText(hdc, str.c_str(), str.size(), &calendarRc, DT_VCENTER | DT_RIGHT | DT_SINGLELINE);
 	wstring str1 = to_wstring(mGold);
 	DrawText(hdc, str1.c_str(), str1.size(), &goldRc, DT_VCENTER | DT_RIGHT | DT_SINGLELINE);
-	wstring str2 = L"?위  " + to_wstring(mWin) + L"승  " + to_wstring(mLose) + L"패  +" + to_wstring(mLeagueScore);
+	wstring str2 = to_wstring(mRank) + L"위  " + to_wstring(mWin) + L"승  " + to_wstring(mLose) + L"패  +" + to_wstring(mLeagueScore);
 	DrawText(hdc, str2.c_str(), str2.size(), &recordRc, DT_VCENTER | DT_LEFT | DT_SINGLELINE);
 
 	SelectObject(hdc, oldF);
 	DeleteObject(newF);
 
+}
+
+Director::Director(const Director & copy)
+	:GameObject(copy)
+{
+	mRandomNameList.assign(copy.mRandomNameList.begin(), copy.mRandomNameList.end());
+
+	mTeamImage = copy.mTeamImage;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mMonth = copy.mMonth;
+	mWeek = copy.mWeek;
+	mGold = copy.mGold;
+
+	mWin = copy.mWin;
+	mLose = copy.mLose;
+	mLeagueScore = copy.mLeagueScore;
+	
+	mStaffNameList.assign(copy.mStaffNameList.begin(), copy.mStaffNameList.end());
+
+}
+
+Director & Director::operator=(const Director & copy)
+{
+	mRandomNameList.assign(copy.mRandomNameList.begin(), copy.mRandomNameList.end());
+
+	mTeamImage = copy.mTeamImage;
+	mFileName = copy.mFileName;
+	mTeamName = copy.mTeamName;
+	mMonth = copy.mMonth;
+	mWeek = copy.mWeek;
+	mGold = copy.mGold;
+
+	mWin = copy.mWin;
+	mLose = copy.mLose;
+	mLeagueScore = copy.mLeagueScore;
+
+	mStaffNameList.assign(copy.mStaffNameList.begin(), copy.mStaffNameList.end());
+
+
+	return *this;
+}
+
+void Director::TeamImageRender(HDC hdc, int startX, int startY, int width, int height) 
+{
+	mTeamImage->ScaleRender(hdc, startX, startY, width, height);
 }
 
 string Director::RandomName()

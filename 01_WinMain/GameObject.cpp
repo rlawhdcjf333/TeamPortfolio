@@ -23,3 +23,31 @@ void GameObject::Update()
 void GameObject::Render(HDC hdc)
 {
 }
+
+GameObject::GameObject(const GameObject & copy)
+{
+	mName = copy.mName;
+	mX = copy.mX;
+	mY = copy.mY;
+	mSizeX = copy.mSizeX;
+	mSizeY = copy.mSizeY;
+	mRect = copy.mRect;
+	mIsActive = copy.mIsActive;
+	mIsDestroy = copy.mIsDestroy;
+}
+
+GameObject& GameObject::operator=(const GameObject & copy)
+{
+
+	mName = copy.mName;
+	mX = copy.mX;
+	mY = copy.mY;
+	mSizeX = copy.mSizeX;
+	mSizeY = copy.mSizeY;
+	mRect = copy.mRect;
+	mIsActive = copy.mIsActive;
+	mIsDestroy = copy.mIsDestroy;
+
+
+	return *this;
+}

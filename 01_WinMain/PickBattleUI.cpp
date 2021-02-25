@@ -1,11 +1,20 @@
 #include "pch.h"
 #include "UI.h"
-#include "StaffSelect.h"
+#include "Child.h"
 
 void UI::PickBattleUIInit()
 {
-	//mLevel = NULL;
+	//1번째 : 스태프 선택
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new StaffSelect);	
+	//2번째 : 밴픽
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPick);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampCheck);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPickGuide);
+	//3번째 : 배틀
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Battle);
+	//4번째 진행 전에 경기결과 추가해야함...
+	//4번째 : 피드백
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Peedback);
 }
 void UI::PickBattleUIUpdate()
 {
@@ -14,22 +23,4 @@ void UI::PickBattleUIUpdate()
 	func = []() {
 
 	};
-	/*
-	switch (mLevel)	//레벨이 바뀌면 여기서 active세팅
-	{
-	case 1:
-
-		if (ObjectManager::GetInstance()->FindObject("PeedBack")->GetIsActive())
-		{
-			ObjectManager::GetInstance()->FindObject("PeedBack")->SetIsActive(false);
-		}
-		if (!ObjectManager::GetInstance()->FindObject("StaffSelect")->GetIsActive())
-		{
-			ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
-		}
-		break;
-	default:
-		break;
-	}
-	*/
 }

@@ -21,13 +21,25 @@ void StaffSelect::Release()
 
 void StaffSelect::Update()
 {
+	if (mIsActive)
+	{
 	//-
 
 	//-
-	if (mIsActive)
-	{
+		//밴픽으로 이동
+		if (Input::GetInstance()->GetKeyDown('F'))
+		{
+			ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false);
+			ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true);
+			//ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
+			ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
+		}
 		mToggleButton(51, "StaffSelect", []() 
-			{ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false); });	//다음버튼... 자기자신은 false로 하고 다음걸 true
+			{
+				ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true); 
+				ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
+			}
+		);	//다음버튼... 자기자신은 false로 하고 다음걸 true
 	}
 }
 
