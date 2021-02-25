@@ -163,6 +163,9 @@
     <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Schedule">
       <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\BulletManager">
+      <UniqueIdentifier>{4a44881a-55f6-4c0b-8d61-af3ac0100754}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -357,6 +360,9 @@
     <ClInclude Include="Schedule.h">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>FrameWork\BulletManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -544,6 +550,9 @@
     </ClCompile>
     <ClCompile Include="Schedule.cpp">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>FrameWork\BulletManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
