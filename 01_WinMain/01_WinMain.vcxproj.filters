@@ -361,6 +361,7 @@
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
     <ClInclude Include="TrainingDetail.h">
+    </ClInclude>
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
     <ClInclude Include="BattleResult.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
@@ -564,6 +565,7 @@
     </ClCompile>
     <ClCompile Include="TrainingDetail.cpp">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClCompile>
     <ClCompile Include="BattleResult.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClCompile>
