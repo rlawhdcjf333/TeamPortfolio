@@ -12,7 +12,7 @@ void UI::PickBattleUIInit()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPickGuide);
 	//3번째 : 배틀
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Battle);
-	//4번째 진행 전에 경기결과 추가해야함...
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BattleResult);
 	//4번째 : 피드백
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Peedback);
 }

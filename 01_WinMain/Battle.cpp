@@ -9,12 +9,13 @@ Battle::Battle() : UI("Battle")
 void Battle::Init()
 {
 	//누적딜힐탱량 없는 이미지도 만들어두긴함
+	IMAGEMANAGER->LoadFromFile(L"BattleResult", Resources(L"BattleResult.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"BattleUI", Resources(L"battleUI.bmp"), 1280, 720, true);
 	mUI = IMAGEMANAGER->FindImage(L"BattleUI");
 	IMAGEMANAGER->LoadFromFile(L"BattleGround", Resources(L"battleback.bmp"), 1280, 720, true);
 	mImage = IMAGEMANAGER->FindImage(L"BattleGround");
 
-	mTime = 60;
+	mTime = 10;
 	mDeltaTime = 0.f;
 }
 
@@ -25,14 +26,18 @@ void Battle::Release()
 void Battle::Update()
 {
 	if (!mIsActive)
+	{
+		mTime = 60;
 		return;
+	}
 
 	if (mTime == 0 || Input::GetInstance()->GetKeyDown('G'))
 	{
-		mTime = 60;
-		mIsActive = false;
 		//종료를 표시할 UI를 띄우고 싶으면 그 UI내에서 Battle과 peedback active를 세팅
-		ObjectManager::GetInstance()->FindObject("Peedback")->SetIsActive(true);		//Peedback 정리되면 주석 제거
+		mImage = IMAGEMANAGER->FindImage(L"BattleResult");
+		ObjectManager::GetInstance()->FindObject("BattleResult")->SetIsActive(true);
+		//ObjectManager::GetInstance()->FindObject("Peedback")->SetIsActive(true);		//Peedback 정리되면 주석 제거
+		return;
 	}
 	mDeltaTime += Time::GetInstance()->DeltaTime();	//일단해봄, 초 측정할려고.. DeltaTime이 0.n인 실수인가?
 	if (mDeltaTime >= 1)

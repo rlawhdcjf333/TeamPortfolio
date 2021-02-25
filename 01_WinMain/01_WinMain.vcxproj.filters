@@ -163,9 +163,6 @@
     <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Schedule">
       <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\ScheduleManager">
-      <UniqueIdentifier>{2797f42a-2008-46f4-890b-ba3d5ed0c207}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -360,8 +357,8 @@
     <ClInclude Include="Schedule.h">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
-    <ClInclude Include="ScheduleManager.h">
-      <Filter>MainGame\ScheduleManager</Filter>
+    <ClInclude Include="BattleResult.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -551,8 +548,8 @@
     <ClCompile Include="Schedule.cpp">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClCompile>
-    <ClCompile Include="ScheduleManager.cpp">
-      <Filter>MainGame\ScheduleManager</Filter>
+    <ClCompile Include="BattleResult.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
