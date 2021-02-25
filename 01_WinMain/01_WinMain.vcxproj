@@ -151,6 +151,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BanPickGuide.h" />
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="BattleData.h" />
     <ClInclude Include="BattleResult.h" />
     <ClInclude Include="BattleUI.h" />
     <ClInclude Include="ChampCheck.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanPickGuide.cpp" />
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="BattleData.cpp" />
     <ClCompile Include="BattleResult.cpp" />
     <ClCompile Include="BattleUI.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
