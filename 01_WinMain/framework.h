@@ -11,10 +11,12 @@
 #include <tchar.h>
 #include <string>
 #include <vector>
+#include <set>
 #include <map>
 #include <queue>
 #include <functional>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -42,6 +44,7 @@ using namespace std;
 #include "Storage.h"
 #include "SceneManager.h"
 #include "GameEventManager.h"
+#include "ScheduleManager.h"
 
 extern POINT _mousePosition;	//마우스 좌표
 extern HWND	_hWnd;

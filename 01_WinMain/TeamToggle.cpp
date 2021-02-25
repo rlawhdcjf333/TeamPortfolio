@@ -2,7 +2,7 @@
 #include "TeamToggle.h"
 #include "StaffList.h"
 #include "Training.h"
-#include "Staff.h"
+//#include "Staff.h"
 
 TeamToggle::TeamToggle()
 	:UI("TeamToggle") 

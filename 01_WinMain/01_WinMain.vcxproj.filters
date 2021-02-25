@@ -163,6 +163,9 @@
     <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Schedule">
       <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Scene\PickBattle\BattleData">
+      <UniqueIdentifier>{9bc1cecc-6c35-469e-9adc-3d142ddd366f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -357,6 +360,20 @@
     <ClInclude Include="Schedule.h">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
+    <ClInclude Include="TrainingDetail.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    <ClInclude Include="BattleResult.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleUI.h">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleData.h">
+      <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -544,6 +561,20 @@
     </ClCompile>
     <ClCompile Include="Schedule.cpp">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainingDetail.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    <ClCompile Include="BattleResult.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleUI.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleData.cpp">
+      <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

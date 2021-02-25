@@ -31,13 +31,14 @@ void StaffSelect::Update()
 		{
 			ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false);
 			ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true);
-			//ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 			ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
+			ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(true);
 		}
 		mToggleButton(51, "StaffSelect", []() 
 			{
 				ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true); 
 				ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
+				ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(true);
 			}
 		);	//다음버튼... 자기자신은 false로 하고 다음걸 true
 	}

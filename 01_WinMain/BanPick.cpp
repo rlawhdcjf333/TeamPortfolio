@@ -4,14 +4,15 @@
 BanPick::BanPick() : UI("BanPick")
 {
 	mIsActive = false;
-	mNowState = "BlueBan";
 }
 
 void BanPick::Init()
 {
 	LoadFromFile("pick_battle_level2");
-	IMAGEMANAGER->LoadFromFile(L"BanPick", Resources(L"BanPick.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"BanPick", Resources(L"banpick.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"None", Resources(L"null.bmp"), 1280, 720, true);
 	mImage = IMAGEMANAGER->FindImage(L"BanPick");
+	mNowState = "BlueBan";
 }
 
 void BanPick::Release()
@@ -35,6 +36,10 @@ void BanPick::Update()
 		BanPickGuide* tptr = (BanPickGuide*)ObjectManager::GetInstance()->FindObject("BanPickGuide");
 		tptr->NextFrame();//BanPickGuide클래스 내부 함수...에 접근하려고 ↑에서 다운캐스팅
 	}
+	if (!ObjectManager::GetInstance()->FindObject("BanPickGuide")->GetIsActive())
+		mImage = IMAGEMANAGER->FindImage(L"None");
+	else
+		mImage = IMAGEMANAGER->FindImage(L"BanPick");
 }
 
 void BanPick::Render(HDC hdc)

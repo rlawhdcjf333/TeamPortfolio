@@ -9,8 +9,9 @@ ChampCheck::ChampCheck() : UI("ChampCheck")
 void ChampCheck::Init()
 {
 	LoadFromFile("ChampCheck");
-	IMAGEMANAGER->LoadFromFile(L"ChampCheck", Resources(L"ChampCheck.bmp"), 364, 302, true);
+	IMAGEMANAGER->LoadFromFile(L"ChampCheck", Resources(L"ChampCheck.bmp"), 1280, 720, true);
 	mImage = IMAGEMANAGER->FindImage(L"ChampCheck");
+	mIsClick = false;
 }
 
 void ChampCheck::Release()
@@ -30,14 +31,18 @@ void ChampCheck::Update()
 	}
 	mToggleButton(1, "ChampCheck", []() {	//배틀UI활성
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false); 
-		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);	//배틀 작업하면 주석 제거
+		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 	});
+
+	// mButtonList[2~4] : Blue팀,  mButtonList[5~7] : Red팀
+	mToggleButton(2, "None", []() {	//Blue 1번 챔프
+		});
 }
 
 void ChampCheck::Render(HDC hdc)
 {
 	if (mIsActive)
 	{
-		mImage->Render(hdc, mButtonList[0].left, mButtonList[0].top);
+		mImage->Render(hdc, 0, 0);
 	}
 }

@@ -8,6 +8,7 @@ class Schedule : public UI
 	Director* mDirector;
 
 	vector<GameObject*> mDirectorList;
+	map<int, vector<Director*>> mScheduleList;
 public :
 	Schedule();
 
