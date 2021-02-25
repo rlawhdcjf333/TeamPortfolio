@@ -213,6 +213,7 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="Training.h" />
     <ClInclude Include="StaffList.h" />
+    <ClInclude Include="ScheduleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -241,6 +242,7 @@
     <ClCompile Include="Peedback.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Schedule.cpp" />
+    <ClCompile Include="ScheduleManager.cpp" />
     <ClCompile Include="ZombieMonkey.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="HomeToBattle.cpp" />
