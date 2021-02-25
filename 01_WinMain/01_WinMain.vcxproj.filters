@@ -360,6 +360,9 @@
     <ClInclude Include="BattleResult.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClInclude>
+    <ClInclude Include="BattleUI.h">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -550,6 +553,9 @@
     </ClCompile>
     <ClCompile Include="BattleResult.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleUI.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

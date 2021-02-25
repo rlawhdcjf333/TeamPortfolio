@@ -4,7 +4,7 @@
 class ChampCheck : public UI
 {
 	Image* mImage;
-
+	bool mIsClick;
 public:
 	ChampCheck();
 

@@ -6,5 +6,6 @@
 
 #include "Battle.h"
 #include "BattleResult.h"
+#include "BattleUI.h"
 
 #include "Peedback.h"

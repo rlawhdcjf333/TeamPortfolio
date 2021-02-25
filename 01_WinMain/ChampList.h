@@ -1,5 +1,7 @@
 #pragma once
-class ChampList
+#include "UI.h"
+class ChampList : public UI
 {
+
 };
 
