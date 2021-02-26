@@ -54,7 +54,7 @@ void StaffSelect::Render(HDC hdc)
 		//프로필이랑 뭐 아무튼 글씨들어갈 자리 출력... 뭐로하던 70줄정도
 		//Staff* sst1 = ;
 		/*
-		wstring str;
+		wstring str =
 		str.assign(BData->GetSelectStaff(0)->GetStaffName().begin(), BData->GetSelectStaff(0)->GetStaffName().end());
 		TextOut(hdc, mButtonList[1].left, mButtonList[1].left, str.c_str(), str.length());
 		*/

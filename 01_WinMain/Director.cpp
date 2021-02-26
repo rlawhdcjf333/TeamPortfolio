@@ -104,6 +104,7 @@ Director::Director(const Director & copy)
 	mMonth = copy.mMonth;
 	mWeek = copy.mWeek;
 	mGold = copy.mGold;
+	mRound = copy.mRound;
 
 	mWin = copy.mWin;
 	mLose = copy.mLose;
@@ -123,6 +124,7 @@ Director & Director::operator=(const Director & copy)
 	mMonth = copy.mMonth;
 	mWeek = copy.mWeek;
 	mGold = copy.mGold;
+	mRound = copy.mRound;
 
 	mWin = copy.mWin;
 	mLose = copy.mLose;

@@ -27,7 +27,7 @@ void PickBattle::Init()
 	SoundPlayer::GetInstance()->Play(L"BanPick", 0.2f);
 
 	//--BData »£√‚
-	/*
+	
 	map<int,vector<Director*>> temp = ScheduleManager::GetInstance()->GetSchedule();//map
 	GameObject* tp = ObjectManager::GetInstance()->FindObject("Director1");
 	Director* nugul = (Director*)tp;
@@ -36,7 +36,7 @@ void PickBattle::Init()
 	BData->SetPlayerTeam(Team::Blue);
 	BData->SetTeam(Team::Blue, nugul);
 	BData->SetTeam(Team::Red, tempList[1]);
-	*/
+	
 	//--
 }
 
