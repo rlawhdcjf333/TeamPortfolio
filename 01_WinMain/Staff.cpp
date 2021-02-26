@@ -10,19 +10,6 @@ Staff::Staff(const string& name, const string& staffName, const wstring& teamNam
 	mTeamName = teamName;
 	mFileName = L"Staff";
 
-	string rand1 = "Champ" + to_string(Random::GetInstance()->RandomInt(1, 9));
-	string rand2;
-
-	while (true)
-	{
-		rand2 = "Champ" + to_string(Random::GetInstance()->RandomInt(1, 9));
-		
-		if (rand1 != rand2) break;
-	}
-
-	mMostChamp.insert(make_pair(rand1, Random::GetInstance()->RandomInt(1, 4)));
-	mMostChamp.insert(make_pair(rand2, Random::GetInstance()->RandomInt(1, 4)));
-
 }
 
 void Staff::Init()
@@ -41,10 +28,19 @@ void Staff::Init()
 	mRandomIndexX = Random::GetInstance()->RandomInt(10);
 	mRandomIndexY = Random::GetInstance()->RandomInt(8);
 
+	string rand1 = "Champ" + to_string(Random::GetInstance()->RandomInt(1, 9));
+	string rand2 = "Champ" + to_string(Random::GetInstance()->RandomInt(1, 9));
 
+	while (rand1 == rand2)
+	{
+		rand2 = "Champ" + to_string(Random::GetInstance()->RandomInt(1, 9));
+	}
+
+	mMostChamp.insert(make_pair(rand1, Random::GetInstance()->RandomInt(1, 4)));
+	mMostChamp.insert(make_pair(rand2, Random::GetInstance()->RandomInt(1, 4)));
 
 	mCondition = (Condition)Random::GetInstance()->RandomInt(4);
-	//컨디션 이미지 작업하면 아래 세 줄 주석 제거
+
 	IMAGEMANAGER->LoadFromFile(L"Condition", Resources(L"Condition.bmp"), 150, 30, 5, 1, true);
 	mConditionImage = IMAGEMANAGER->FindImage(L"Condition");
 	SetConditionImage();
@@ -55,6 +51,8 @@ void Staff::Init()
 
 	mRenderSizeX = mImage->GetFrameWidth() * 2;
 	mRenderSizeY = mImage->GetFrameHeight() * 2;
+
+	mCost = 150 + (mAtk + mDef) * 10;
 	
 }
 
@@ -224,6 +222,7 @@ Staff::Staff(const Staff & copy)
 	mRandomIndexX = copy.mRandomIndexX;
 	mRandomIndexY = copy.mRandomIndexY;
 	mCondition = copy.mCondition;
+	mConditionX = copy.mConditionX;
 	mRenderSizeX = copy.mRenderSizeX;
 	mRenderSizeY = copy.mRenderSizeY;
 	mStatPoint = copy.mStatPoint;
@@ -244,6 +243,7 @@ Staff & Staff::operator=(const Staff & copy)
 	mDef = copy.mDef;
 	mHeal = copy.mHeal;
 
+	
 	mMostChamp.insert(copy.mMostChamp.begin(), copy.mMostChamp.end());
 
 	mChar1 = copy.mChar1;
@@ -252,6 +252,7 @@ Staff & Staff::operator=(const Staff & copy)
 	mRandomIndexX = copy.mRandomIndexX;
 	mRandomIndexY = copy.mRandomIndexY;
 	mCondition = copy.mCondition;
+	mConditionX = copy.mConditionX;
 	mRenderSizeX = copy.mRenderSizeX;
 	mRenderSizeY = copy.mRenderSizeY;
 	mStatPoint = copy.mStatPoint;

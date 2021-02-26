@@ -127,9 +127,6 @@
     <Filter Include="MainGame\Object\UI\PickBattelUI\Level1_StaffSelect">
       <UniqueIdentifier>{0fc7c1c9-b069-476a-a562-c61b7d299465}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Object\Champ\Hiller">
-      <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Object\Champ\Assassin">
       <UniqueIdentifier>{11185ea8-b4b3-4d01-9ab0-8a666bdfca54}</UniqueIdentifier>
     </Filter>
@@ -138,9 +135,6 @@
     </Filter>
     <Filter Include="MainGame\Object\Champ\Magician">
       <UniqueIdentifier>{36011a3a-79d5-4821-8c87-1117d43e59da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\Champ\LongDiller">
-      <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainGame\Object\UI\PickBattelUI\Level2_BanPick">
       <UniqueIdentifier>{de64d368-f6b1-4a55-924b-9113fd8f056e}</UniqueIdentifier>
@@ -262,9 +256,6 @@
     <ClInclude Include="SoundPlayer.h">
       <Filter>FrameWork\SoundPlayer</Filter>
     </ClInclude>
-    <ClInclude Include="OperationToggle.h">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClInclude>
     <ClInclude Include="ChampInfo.h">
       <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
@@ -308,10 +299,10 @@
       <Filter>MainGame\Object\Champ\Tanker</Filter>
     </ClInclude>
     <ClInclude Include="ZombieMonkey.h">
-      <Filter>MainGame\Object\Champ\Hiller</Filter>
+      <Filter>MainGame\Object\Champ\Healer</Filter>
     </ClInclude>
     <ClInclude Include="BabyMonkey.h">
-      <Filter>MainGame\Object\Champ\Hiller</Filter>
+      <Filter>MainGame\Object\Champ\Healer</Filter>
     </ClInclude>
     <ClInclude Include="Cornian.h">
       <Filter>MainGame\Object\Champ\Assassin</Filter>
@@ -320,10 +311,10 @@
       <Filter>MainGame\Object\Champ\Assassin</Filter>
     </ClInclude>
     <ClInclude Include="BubbleTea.h">
-      <Filter>MainGame\Object\Champ\LongDiller</Filter>
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
     </ClInclude>
     <ClInclude Include="Tank.h">
-      <Filter>MainGame\Object\Champ\LongDiller</Filter>
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
     </ClInclude>
     <ClInclude Include="BanPick.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
@@ -457,9 +448,6 @@
     <ClCompile Include="homeUI.cpp">
       <Filter>MainGame\Object\UI\homeUI</Filter>
     </ClCompile>
-    <ClCompile Include="OperationToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
-    </ClCompile>
     <ClCompile Include="ChampInfo.cpp">
       <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
     </ClCompile>
@@ -509,10 +497,10 @@
       <Filter>MainGame\Object\Champ\Tanker</Filter>
     </ClCompile>
     <ClCompile Include="ZombieMonkey.cpp">
-      <Filter>MainGame\Object\Champ\Hiller</Filter>
+      <Filter>MainGame\Object\Champ\Healer</Filter>
     </ClCompile>
     <ClCompile Include="BabyMonkey.cpp">
-      <Filter>MainGame\Object\Champ\Hiller</Filter>
+      <Filter>MainGame\Object\Champ\Healer</Filter>
     </ClCompile>
     <ClCompile Include="Cornian.cpp">
       <Filter>MainGame\Object\Champ\Assassin</Filter>
@@ -521,10 +509,10 @@
       <Filter>MainGame\Object\Champ\Assassin</Filter>
     </ClCompile>
     <ClCompile Include="BubbleTea.cpp">
-      <Filter>MainGame\Object\Champ\LongDiller</Filter>
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
     </ClCompile>
     <ClCompile Include="Tank.cpp">
-      <Filter>MainGame\Object\Champ\LongDiller</Filter>
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
     </ClCompile>
     <ClCompile Include="BanPick.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
@@ -592,6 +580,18 @@
     <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult">
       <UniqueIdentifier>{16cb068e-68a1-4773-819a-329ae7b0758c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Champ\Healer">
+      <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Champ\ADCarry">
+      <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\OperationToggle">
+      <UniqueIdentifier>{b87c1306-d534-4764-a7d9-900a79fba59a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\News">
+      <UniqueIdentifier>{8a337f25-a0c9-4618-969e-e45939ab6645}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NewStaff.cpp">
@@ -603,6 +603,18 @@
     <ClCompile Include="StaffSearch.cpp">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
     </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="OperationToggle.cpp">
+      <Filter>MainGame\Object\UI\homeUI\OperationToggle</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffListDetail.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+    </ClCompile>
+    <ClCompile Include="News.cpp">
+      <Filter>MainGame\Object\UI\homeUI\OperationToggle\News</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NewStaff.h">
@@ -613,6 +625,18 @@
     </ClInclude>
     <ClInclude Include="StaffSearch.h">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationToggle.h">
+      <Filter>MainGame\Object\UI\homeUI\OperationToggle</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffListDetail.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+    </ClInclude>
+    <ClInclude Include="News.h">
+      <Filter>MainGame\Object\UI\homeUI\OperationToggle\News</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

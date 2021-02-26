@@ -11,7 +11,7 @@ Yeti::Yeti(const string& name)
 
 void Yeti::Init()
 {
-	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Yeti", Resources(L"Tanker1.bmp"), 2700, 2760, 9, 12, true);
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Yeti", Resources(L"Yeti.bmp"), 2700, 2760, 9, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"Yeti");
 
 	mFullHP = 100;
@@ -156,7 +156,7 @@ void Yeti::Update()
 				mCurrentAnm = mAnimationList.find(L"RightSkill2")->second; //스킬2 모션을 실행한다.
 				mCurrentAnm->Play();
 
-				if (mCurrentAnm->GetCurrentFrameIndex() == mImage->FrameRender()//궁극기 스킬의 끝프레임 까지 갔다면 타겟의 HP를 복합적인 연산으로 깎고 모션을 아이들로 바꾼다.
+				if (mCurrentAnm->GetCurrentFrameIndex() == 9)//궁극기 스킬의 끝프레임 까지 갔다면 타겟의 HP를 복합적인 연산으로 깎고 모션을 아이들로 바꾼다.
 				{
 					tmp->SetHP(tmp->GetHP() - 100);			//HP를 깎는다.
 						mMP = 0;								//마나를 0으로 초기화

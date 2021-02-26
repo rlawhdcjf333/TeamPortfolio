@@ -126,7 +126,13 @@ void UI::mToggleButton(int index, string UIName, function <void(void)> func)
 
 		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
 
-			if (UIName != "None")
+			if (UIName == "OnPatch")
+			{
+				OnPatch* tmp = (OnPatch*)ObjectManager::GetInstance()->FindObject(UIName);
+				tmp->SetIsActive(true);
+				tmp->ResetCurrentTime();
+			}
+			else if (UIName != "None")
 			{
 				GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
 				hptr->SetIsActive(!hptr->GetIsActive());

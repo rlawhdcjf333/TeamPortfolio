@@ -93,6 +93,18 @@ void Director::AddStaff(string name)
 	mStaffNameList.push_back(name);
 }
 
+void Director::PopStaff(string name)
+{
+	for (int i=0; i<mStaffNameList.size(); i++)
+	{
+		if (mStaffNameList[i]==name)
+		{
+			mStaffNameList.erase(mStaffNameList.begin() + i);
+			i--;
+		}
+	}
+}
+
 Director::Director(const Director & copy)
 	:GameObject(copy)
 {

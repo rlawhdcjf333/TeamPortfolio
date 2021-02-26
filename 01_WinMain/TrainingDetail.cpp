@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "TrainingDetail.h"
 #include "Staff.h"
+#include "Champ.h"
 
 TrainingDetail::TrainingDetail()
 	:UI("TrainingDetail")
@@ -35,18 +36,14 @@ void TrainingDetail::Update()
 {
 	if (mIsActive)
 	{
-
-		Staff* tmp=(Staff*)Storage::GetInstance()->FindObject(mCurrentStaff->GetName());
-		
-		originAtk = tmp->GetAtk();
-		originDef = tmp->GetDef();
-		originPoint = tmp->GetTrainingPoint();
+		//만일 3이 아니라 변수로 이 값을 대체하면 시설 개선을 구현할 수 있다.
 
 		function <void(void)> func = [this]() 
 		{
-			if (originAtk < mCurrentStaff->GetAtk())
+			mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusAtk();
+			if (mCurrentStaff->GetTrainingPoint() > 3 or mCurrentStaff->GetAtk()<1)
 			{
-				mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusAtk();
+				mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusAtk();
 			}
 			
 		};
@@ -54,34 +51,77 @@ void TrainingDetail::Update()
 
 		func = [this] ()
 		{
-			if (mCurrentStaff->GetTrainingPoint() > 0)
+			mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusAtk();
+			if (mCurrentStaff->GetTrainingPoint() < 0)
 			{
-				mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusAtk();
+				mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusAtk();
 			}
 		};
 		mToggleButton(1, "None", func);
 
 		func = [this]()
 		{
-			if (originDef < mCurrentStaff->GetDef())
+			mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusDef();
+			if (mCurrentStaff->GetTrainingPoint() > 3 or mCurrentStaff->GetDef()<1)
 			{
-				mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusDef();
+				mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusDef();
 			}
 		};
 		mToggleButton(2, "None", func);
 
 		func = [this]()
 		{
-			if (mCurrentStaff->GetTrainingPoint() > 0)
+			mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusDef();
+			if (mCurrentStaff->GetTrainingPoint() < 0)
 			{
-				mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusDef();
+				mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusDef();
 			}
 		};
 		mToggleButton(3, "None", func);
 
-		
+		func = [this]()
+		{
+			mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusMost1();
+			if (mCurrentStaff->GetTrainingPoint() > 3 or mCurrentStaff->GetMostChamp().begin()->second < 1)
+			{
+				mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusMost1();
+			}
 
+		};
+		mToggleButton(4, "None", func);
 
+		func = [this]()
+		{
+			mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusMost1();
+			if (mCurrentStaff->GetTrainingPoint() < 0)
+			{
+				mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusMost1();
+			}
+
+		};
+		mToggleButton(5, "None", func);
+
+		func = [this]()
+		{
+			mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusMost2();
+			if (mCurrentStaff->GetTrainingPoint() > 3 or mCurrentStaff->GetMostChamp().rbegin()->second<1)
+			{
+				mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusMost2();
+			}
+
+		};
+		mToggleButton(6, "None", func);
+
+		func = [this]()
+		{
+			mCurrentStaff->MinusTrainingPoint(); mCurrentStaff->PlusMost2();
+			if (mCurrentStaff->GetTrainingPoint() < 0)
+			{
+				mCurrentStaff->PlusTrainingPoint(); mCurrentStaff->MinusMost2();
+			}
+
+		};
+		mToggleButton(7, "None", func);
 
 
 	}
@@ -100,20 +140,29 @@ void TrainingDetail::SetStaff(Staff * currentStaff)
 
 void TrainingDetail::RenderStaffInfo(HDC hdc)
 {
-	auto caching = mCurrentStaff->GetMostChamp();
+	auto list = mCurrentStaff->GetMostChamp();
 
-	string mostChamp1 = caching.begin()->first;
-	string mostChamp2 = (caching.begin()++)->first;
+	Champ* mostChamp1 = (Champ*)ObjectManager::GetInstance()->FindObject(list.begin()->first);
+	Champ* mostChamp2 = (Champ*)ObjectManager::GetInstance()->FindObject(list.rbegin()->first);
 
 	//설정 중인 선수 숙련픽 1 표시
-	wstring tmp1; 
-	tmp1.assign(mostChamp1.begin(), mostChamp1.end());
+	wstring tmp1 = mostChamp1->GetChampName();
+	mostChamp1->UIRender(hdc, 485, 368, 48, 48);
 	TextOut(hdc, 542, 386, tmp1.c_str(), tmp1.size());
-	
+
+	//숙련픽 1 숙련도
+	wstring mostPt1 = to_wstring(list.begin()->second);
+	TextOut(hdc, 747, 382, mostPt1.c_str(), mostPt1.size());
+
 	//설정 중인 선수 숙련픽 2 표시
-	wstring tmp2;
-	tmp2.assign(mostChamp2.begin(), mostChamp2.end());
+	wstring tmp2 = mostChamp2->GetChampName();
+	mostChamp2->UIRender(hdc, 868, 368, 48, 48);
 	TextOut(hdc, 924, 386, tmp2.c_str(), tmp2.size());
+
+	//숙련픽 2 숙련도
+	wstring mostPt2 = to_wstring(list.rbegin()->second);
+	TextOut(hdc, 1115, 382, mostPt2.c_str(), mostPt2.size());
+
 
 	//설정 중인 선수 공격력 표시
 	int atk = mCurrentStaff->GetAtk();

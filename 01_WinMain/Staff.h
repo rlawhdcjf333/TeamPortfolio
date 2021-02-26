@@ -109,8 +109,27 @@ public:
 	void MinusAtk() { mAtk--;}
 	void MinusDef() { mDef--; }
 
+	void PlusMost1() 
+	{
+		mMostChamp[mMostChamp.begin()->first] = mMostChamp.begin()->second + 1;
+	}
+	void MinusMost1()
+	{
+		mMostChamp[mMostChamp.begin()->first] = mMostChamp.begin()->second - 1;
+	}
+	void PlusMost2()
+	{
+		mMostChamp[mMostChamp.rbegin()->first] = mMostChamp.rbegin()->second + 1;
+	}
+	void MinusMost2()
+	{
+		mMostChamp[mMostChamp.rbegin()->first] = mMostChamp.rbegin()->second - 1;
+	}
 	Condition GetCondition()const { return mCondition; }
 	void SetCondition(Condition con) { mCondition = con; }
+
+	int GetCost() { return mCost; }
+
 public:
 	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요. 새로운 변수 생기면 반드시 여기다가도 추가해야함
 	Staff& operator= (const Staff& copy); //복사 연산자 오버로딩. 이 클래스에 새로운 변수가 생기면 반드시 여기다가도 추가해야함

@@ -64,7 +64,6 @@ void StaffResult::Update()
 				
 				Staff* copy = new Staff(*mStaff); // 생성된 스태프 복사
 				ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, copy); // 매니저에도 등록
-				Storage::GetInstance()->StaffInsert(copy);// 저장소에도 등록
 				mDirector->AddStaff(copy->GetName()); // 팀에 등록
 				mStaffList->UpdateStaffList(); //선수단 ui 업데이트
 				mTraining->UpdateStaffList();  // 훈련 ui 업데이트
@@ -139,12 +138,13 @@ void StaffResult::Render(HDC hdc)
 		auto mostPickList = mStaff->GetMostChamp();
 
 		auto pickListIter = mostPickList.begin();
-
+		auto pickListIter2 = mostPickList.rbegin();
+		
 		string mostPick1 = pickListIter->first;
-		string mostPick2 = (pickListIter++)->first;
+		string mostPick2 = pickListIter2->first;
 
-		int mostPick1Val = (pickListIter--)->second;
-		int mostPick2Val = (pickListIter++)->second;
+		int mostPick1Val = pickListIter->second;
+		int mostPick2Val = pickListIter2->second;
 
 		Champ* mostChamp1 = (Champ*)ObjectManager::GetInstance()->FindObject(mostPick1);
 		Champ* mostChamp2 = (Champ*)ObjectManager::GetInstance()->FindObject(mostPick2);
@@ -155,18 +155,8 @@ void StaffResult::Render(HDC hdc)
 		wstring mostPick1Pt = to_wstring(mostPick1Val);
 		wstring mostPick2Pt = to_wstring(mostPick2Val);
 
-		SetBkMode(hdc, OPAQUE);
-		RECT rect1 = RectMake(mX + 44, mY + 68, 23, 16);
+		RECT rect1 = RectMake(mX + 40, mY + 68, 23, 16);
 		RECT rect2 = RectMake(mX + 112, mY + 68, 23, 16);
-
-		HBRUSH newB = CreateSolidBrush(RGB(17,19,23));
-		HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
-		RenderRect(hdc, rect1);
-		RenderRect(hdc, rect2);
-		SelectObject(hdc, oldB);
-		DeleteObject(newB);
-		
-		SetBkMode(hdc, TRANSPARENT);
 
 		DrawText(hdc, mostPick1Pt.c_str(), mostPick1Pt.size(), &rect1, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
 		DrawText(hdc, mostPick2Pt.c_str(), mostPick2Pt.size(), &rect2, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
