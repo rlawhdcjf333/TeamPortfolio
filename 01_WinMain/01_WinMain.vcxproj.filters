@@ -166,9 +166,7 @@
     <Filter Include="MainGame\Scene\PickBattle\BattleData">
       <UniqueIdentifier>{9bc1cecc-6c35-469e-9adc-3d142ddd366f}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="framework.h">
+  	  <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
@@ -362,6 +360,7 @@
     </ClInclude>
     <ClInclude Include="TrainingDetail.h">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClInclude>
     <ClInclude Include="BattleResult.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClInclude>
@@ -374,9 +373,7 @@
     <ClInclude Include="BattleData.h">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="01_WinMain.cpp">
+  	  <ClCompile Include="01_WinMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
@@ -564,6 +561,7 @@
     </ClCompile>
     <ClCompile Include="TrainingDetail.cpp">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+    </ClCompile>
     <ClCompile Include="BattleResult.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClCompile>
@@ -576,14 +574,10 @@
     <ClCompile Include="BattleData.cpp">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="01_WinMain.rc">
+     <ResourceCompile Include="01_WinMain.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
+     <Image Include="small.ico">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="01_WinMain.ico">
