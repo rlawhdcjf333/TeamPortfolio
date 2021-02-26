@@ -166,7 +166,7 @@
     <Filter Include="MainGame\Scene\PickBattle\BattleData">
       <UniqueIdentifier>{9bc1cecc-6c35-469e-9adc-3d142ddd366f}</UniqueIdentifier>
     </Filter>
-  	  <ClInclude Include="framework.h">
+    <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
@@ -373,7 +373,7 @@
     <ClInclude Include="BattleData.h">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClInclude>
-  	  <ClCompile Include="01_WinMain.cpp">
+    <ClCompile Include="01_WinMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
@@ -574,14 +574,24 @@
     <ClCompile Include="BattleData.cpp">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClCompile>
-     <ResourceCompile Include="01_WinMain.rc">
+    <ResourceCompile Include="01_WinMain.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
-     <Image Include="small.ico">
+    <Image Include="small.ico">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="01_WinMain.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ChampManager.cpp">
+      <Filter>MainGame\Object\Champ</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChampManager.h">
+      <Filter>MainGame\Object\Champ</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

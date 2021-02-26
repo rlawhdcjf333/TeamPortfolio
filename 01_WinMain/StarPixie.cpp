@@ -11,6 +11,9 @@ StarPixie::StarPixie(const string& name)
 
 void StarPixie::Init()
 {
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"StarPixie", Resources(L"StarPixie.bmp"), 900, 1440, 10, 12, true);
+	mImage = IMAGEMANAGER->FindImage(L"StarPixie");
+
 	mFullHP = 100;
 	mHP = mFullHP;
 	mMP = 0;

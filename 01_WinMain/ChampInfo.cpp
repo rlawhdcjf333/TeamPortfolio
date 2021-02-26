@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ChampInfo.h"
+#include "ChampManager.h"
 #include "Champ.h"
 
 ChampInfo::ChampInfo()
@@ -42,13 +43,12 @@ void ChampInfo::Render(HDC hdc)
 
 		vector<RECT> rectList;
 		for (int i = 0; i < mChampList.size(); i++) {
-			rectList.push_back(RectMake(44 + (i * 120), 150, 110, 25));
-			rectList.push_back(RectMake(44 + (i * 120), 175, 110, 115));
-			rectList.push_back(RectMake(44 + (i * 120), 290, 110, 35));
+			rectList.push_back(RectMake(49 + (i * 125), 155, 110, 25));
+			rectList.push_back(RectMake(49 + (i * 125), 180, 110, 115));
+			rectList.push_back(RectMake(49 + (i * 125), 295, 110, 35));
 		}
 
 		for (int i = 0; i < mChampList.size(); i++) {
-
 
 			HBRUSH newB = CreateSolidBrush(RGB(53, 58, 61));
 			HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
@@ -63,11 +63,12 @@ void ChampInfo::Render(HDC hdc)
 			SelectObject(hdc, oldB);
 			DeleteObject(newB);
 
-			mChampList[i]->Render(hdc);
+			Champ* champ = (Champ*)mChampList[i];
+			champ->ChampImageRender(hdc, rectList[1 + (i * 3)]);
 
-			ClassTypeCheck();
+			ClassTypeCheck(i);
 
-			string temp = mChampList[i]->GetName();
+			wstring temp = champ->GetChampName();
 			wstring champClass = L"  " + mClassTypeName;
 			wstring champName;
 			champName.assign(temp.begin(), temp.end());
@@ -90,9 +91,7 @@ void ChampInfo::Render(HDC hdc)
 
 void ChampInfo::LoadAllChampList()
 {
-	for (int i = 1; i < 3; i++) {
-		mChampList.push_back((Champ*)ObjectManager::GetInstance()->FindObject("Champ" + to_string(i)));
-	}
+	mChampList = ChampManager::GetInstance()->GetChampList();
 }
 
 void ChampInfo::LoadWarriorChampList()
@@ -116,26 +115,26 @@ void ChampInfo::LoadAssassinChampList()
 {
 }
 
-void ChampInfo::ClassTypeCheck()
+void ChampInfo::ClassTypeCheck(int index)
 {
-	for (int i = 0; i < mChampList.size(); i++) {
-		switch (mChampList[i]->GetClassType())
-		{
-		case ClassType::Warrior:
-			mClassTypeName = L"전사";
-			break;
-		case ClassType::ADCarry:
-			mClassTypeName = L"원거리";
-			break;
-		case ClassType::Magician:
-			mClassTypeName = L"마법사";
-			break;
-		case ClassType::Suporter:
-			mClassTypeName = L"전투 보조";
-			break;
-		case ClassType::Assassin:
-			mClassTypeName = L"암살자";
-			break;
-		}
+	Champ* champ = (Champ*)mChampList[index];
+	switch (champ->GetClassType())
+	{
+	case ClassType::Warrior:
+		mClassTypeName = L"전사";
+		break;
+	case ClassType::ADCarry:
+		mClassTypeName = L"원거리";
+		break;
+	case ClassType::Magician:
+		mClassTypeName = L"마법사";
+		break;
+	case ClassType::Supporter:
+		mClassTypeName = L"전투 보조";
+		break;
+	case ClassType::Assassin:
+		mClassTypeName = L"암살자";
+		break;
 	}
+	
 }

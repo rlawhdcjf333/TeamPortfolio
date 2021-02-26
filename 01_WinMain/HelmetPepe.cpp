@@ -10,6 +10,8 @@ HelmetPepe::HelmetPepe(const string& name)
 
 void HelmetPepe::Init()
 {
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"HelmetPepe", Resources(L"HelmetPepe.bmp"), 1040, 1440, 8, 12, true);
+	mImage = IMAGEMANAGER->FindImage(L"HelmetPepe");
 }
 
 void HelmetPepe::Release()

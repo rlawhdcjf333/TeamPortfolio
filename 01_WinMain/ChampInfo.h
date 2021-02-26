@@ -8,7 +8,7 @@ class ChampInfo :public UI
 
 
 	wstring mClassTypeName;
-	vector<Champ*> mChampList;
+	vector<GameObject*> mChampList;
 public:
 
 	ChampInfo();
@@ -23,5 +23,5 @@ public:
 	void LoadMagicanChampList();
 	void LoadSupoterChampList();
 	void LoadAssassinChampList();
-	void ClassTypeCheck();
+	void ClassTypeCheck(int index);
 };

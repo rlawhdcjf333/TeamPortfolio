@@ -6,7 +6,7 @@ enum class ClassType : int
 	Warrior = 0,
 	ADCarry = 1,
 	Magician = 2,
-	Suporter = 3,
+	Supporter = 3,
 	Assassin = 4,
 
 	End
@@ -61,6 +61,7 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
+	void ChampImageRender(HDC hdc, RECT rc);
 
 	void SetStaff(GameObject* staff) { mStaff = staff; } //staff 불러오기
 	void SetHP(float hp) { mHP = hp; } //HP값 불러오기
@@ -70,6 +71,7 @@ public:
 	vector<GameObject*> GetPlayerList() { return mPlayerList; }
 	vector<GameObject*> GetEnemyList() { return mEnemyList; }
 	ClassType GetClassType() const { return mClassType; }
+	wstring GetChampName() const { return mChampName; }
 	
 	float GetFullHP() { return mFullHP; }			//UI표시
 	void Recover() { mHP = mFullHP;  }	//죽었을때 이걸 쓰면 다시 풀체력
