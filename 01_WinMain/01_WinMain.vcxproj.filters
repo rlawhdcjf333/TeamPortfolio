@@ -583,24 +583,46 @@
     <Image Include="01_WinMain.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Filter Include="FrameWork\BulletManager">
-      <UniqueIdentifier>{0ef1dbab-e759-4f42-a5aa-3b2552c5b7ef}</UniqueIdentifier>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff">
+      <UniqueIdentifier>{a2ff4072-65e5-43a7-8513-0dd5ff97e2e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch">
+      <UniqueIdentifier>{2efd7ea1-face-4afa-8d48-b90e18426be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult">
+      <UniqueIdentifier>{16cb068e-68a1-4773-819a-329ae7b0758c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NewStaff.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffResult.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffSearch.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NewStaff.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffResult.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffSearch.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChampManager.cpp">
       <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
-    <ClCompile Include="BulletManager.cpp">
-      <Filter>FrameWork\BulletManager</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChampManager.h">
       <Filter>MainGame\Object\Champ</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletManager.h">
-      <Filter>FrameWork\BulletManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

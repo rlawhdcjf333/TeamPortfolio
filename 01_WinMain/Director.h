@@ -36,6 +36,7 @@ public:
 	void Render(HDC hdc)override;
 
 	void SetRound(int round) { mRound = round; }
+	void UpRound() { mRound++; }
 	void SetMonth(int month) { mMonth = month; }
 	void SetWeek(int week) { mWeek = week; }
 	void SetGold(int gold) { mGold = gold; }
@@ -65,8 +66,9 @@ public:
 	int GetTeamTotalKill() { return mTeamTotalKill; }
 	int GetTeamTotalDeath() { return mTeamTotalDeath; }
 
-	void SetStaffNameList(vector<string> staffNameList) { mStaffNameList = staffNameList; }
 	vector<string> GetStaffNameList() { return mStaffNameList; }
+
+	void AddStaff(string name);
 
 public:
 	Director(const Director& copy); //복사 생성자 오버로딩, 스토리지 용

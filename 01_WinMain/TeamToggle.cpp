@@ -2,7 +2,7 @@
 #include "TeamToggle.h"
 #include "StaffList.h"
 #include "Training.h"
-//#include "Staff.h"
+#include "NewStaff.h" 
 
 TeamToggle::TeamToggle()
 	:UI("TeamToggle") 
@@ -22,7 +22,7 @@ void TeamToggle::Init()
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new StaffList);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Training);
-
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new NewStaff);
 }
 
 void TeamToggle::Release()
@@ -33,14 +33,23 @@ void TeamToggle::Update()
 {
 	if (mIsActive) 
 	{
-		auto func = []()
+		function <void(void)> func = [this]()
 		{
-			ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
+			mIsActive = false;
 		};
-
 		mToggleButton(0, "StaffList", func);
+
+		func = [this]()
+		{
+			mIsActive = false;
+		};
 		mToggleButton(1, "Training", func);
 
+		func = [this]()
+		{
+			mIsActive = false;
+		};
+		mToggleButton(2, "NewStaff", func);
 	}
 
 }

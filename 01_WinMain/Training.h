@@ -35,4 +35,6 @@ public:
 	void LoadStaffList();
 	void RenderCurrentStaff(HDC hdc);
 	void DrawStaffList(HDC hdc, int i);
+
+	void UpdateStaffList();
 };

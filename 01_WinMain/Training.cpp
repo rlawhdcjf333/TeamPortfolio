@@ -166,3 +166,22 @@ void Training::DrawStaffList(HDC hdc, int i)
 
 }
 
+void Training::UpdateStaffList()
+{
+	auto list = mDirector->GetStaffNameList();
+	vector <Staff*> temp;
+
+	for (string elem : list)
+	{
+		if (ObjectManager::GetInstance()->FindObject(elem) != nullptr)
+		{
+			Staff* tmp = (Staff*)ObjectManager::GetInstance()->FindObject(elem);
+			temp.push_back(tmp);
+		}
+
+	}
+
+	mStaffList.assign(temp.begin(), temp.end());
+
+}
+

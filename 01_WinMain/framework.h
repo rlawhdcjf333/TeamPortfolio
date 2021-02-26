@@ -45,6 +45,7 @@ using namespace std;
 #include "SceneManager.h"
 #include "GameEventManager.h"
 #include "ScheduleManager.h"
+#include "BattleData.h"
 
 extern POINT _mousePosition;	//마우스 좌표
 extern HWND	_hWnd;

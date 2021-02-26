@@ -27,6 +27,14 @@ void StaffList::Update()
 {
 	if (mIsActive)
 	{
+
+		ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("GameToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("HomeToBattle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("LeagueToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("OperationToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("SystemToggle")->SetIsActive(false);
+
 		mToggleButton(5, "StaffList");
 	}
 
@@ -92,5 +100,23 @@ void StaffList::LoadStaffList()
 		}
 
 	}
+
+}
+
+void StaffList::UpdateStaffList()
+{
+	auto list = mDirector->GetStaffNameList();
+	vector<Staff*> temp;
+
+	for (string elem : list)
+	{
+		if (ObjectManager::GetInstance()->FindObject(elem) != nullptr)
+		{
+			Staff* tmp = (Staff*)ObjectManager::GetInstance()->FindObject(elem);
+			temp.push_back(tmp);
+		}
+
+	}
+	mStaffList.assign(temp.begin(), temp.end());
 
 }
