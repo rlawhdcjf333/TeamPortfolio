@@ -166,7 +166,7 @@
     <Filter Include="MainGame\Scene\PickBattle\BattleData">
       <UniqueIdentifier>{9bc1cecc-6c35-469e-9adc-3d142ddd366f}</UniqueIdentifier>
     </Filter>
-  	  <ClInclude Include="framework.h">
+    <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
@@ -373,7 +373,7 @@
     <ClInclude Include="BattleData.h">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClInclude>
-  	  <ClCompile Include="01_WinMain.cpp">
+    <ClCompile Include="01_WinMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
@@ -574,14 +574,45 @@
     <ClCompile Include="BattleData.cpp">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClCompile>
-     <ResourceCompile Include="01_WinMain.rc">
+    <ResourceCompile Include="01_WinMain.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
-     <Image Include="small.ico">
+    <Image Include="small.ico">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="01_WinMain.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff">
+      <UniqueIdentifier>{a2ff4072-65e5-43a7-8513-0dd5ff97e2e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch">
+      <UniqueIdentifier>{2efd7ea1-face-4afa-8d48-b90e18426be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult">
+      <UniqueIdentifier>{16cb068e-68a1-4773-819a-329ae7b0758c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NewStaff.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffResult.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffSearch.cpp">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NewStaff.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffResult.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffSearch.h">
+      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

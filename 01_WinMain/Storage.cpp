@@ -74,6 +74,19 @@ void Storage::CopyToStorage(map <ObjectLayer, vector <GameObject*>> list)
 
 }
 
+void Storage::StaffInsert(Staff* target)
+{
+	if (FindObject(target->GetName()) == nullptr) //저장소에 없음
+	{
+		Staff* copy = new Staff(*target); //이걸 복사 생성자로 복사해서
+		AddObject(ObjectLayer::Staff, copy);  //저장소에 새로 등록
+
+	}
+	else // 저장소에 있네?
+	{
+		ElemSwap(ObjectLayer::Staff, target);
+	}
+}
 
 void Storage::ElemSwap(ObjectLayer layerName, GameObject* origin)
 {

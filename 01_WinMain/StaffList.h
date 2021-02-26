@@ -18,7 +18,7 @@ public:
 	void Render(HDC hdc)override;
 
 	void LoadStaffList();
-
+	void UpdateStaffList();
 
 
 };

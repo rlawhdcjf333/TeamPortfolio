@@ -86,7 +86,10 @@ public:
 	void SetChar2(Character c) { mChar2 = c; }
 	Character GetChar1() { return mChar1; }
 	Character GetChar2() { return mChar2; }
+
+	
 	wstring GetCharComment(int Charnum);
+	wstring GetCharInfo(int Charnum);
 
 	void SetProficiency(string key, int value) { mMostChamp.find(key)->second = value; }
 	int GetProficiency(string key)const { return mMostChamp.find(key)->second; }

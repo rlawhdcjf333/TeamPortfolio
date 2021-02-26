@@ -64,8 +64,9 @@ public:
 	int GetTeamTotalKill() { return mTeamTotalKill; }
 	int GetTeamTotalDeath() { return mTeamTotalDeath; }
 
-	void SetStaffNameList(vector<string> staffNameList) { mStaffNameList = staffNameList; }
 	vector<string> GetStaffNameList() { return mStaffNameList; }
+
+	void AddStaff(string name);
 
 public:
 	Director(const Director& copy); //복사 생성자 오버로딩, 스토리지 용

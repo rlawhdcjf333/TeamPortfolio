@@ -13,4 +13,5 @@ public:
 
 
 	void ElemSwap(ObjectLayer layerName, GameObject* origin);
+	void StaffInsert(class Staff* target);
 };

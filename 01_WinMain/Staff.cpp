@@ -148,12 +148,63 @@ wstring Staff::GetCharComment(int Charnum)
 	case Character::Spear:	//꿰뚫는 창 : 방어력 관통효과 +10(상대방의 방어력을 10 무시한다)
 		comment = L"죽창";
 		break;
-	case Character::None:	//비어있는 특성(표시 안하는 상태)
+	case Character::None:
+		comment = L" "; //비어있는 특성(표시 안하는 상태)
 		break;
 	default:
 		break;
 	}
 	return comment;
+}
+
+wstring Staff::GetCharInfo(int Charnum)
+{
+	wstring comment = L" ";
+	Character ch;
+	if (Charnum == 1)
+		ch = mChar1;
+	else if (Charnum == 2)
+		ch = mChar2;
+	else
+		return comment;	//다른인덱스 넣으면 공백
+
+	switch (ch)
+	{
+	case Character::Nomal:
+		comment = L"아무 특성 없음";
+		break;
+	case Character::Hero:	
+		comment = L"이기고 있을때 모든 능력치 -10, 지고 있을때 +10";
+		break;
+	case Character::Glass:	
+		comment = L"이기고 있을때 모든 능력치 +10, 지고 있을때 -10";
+		break;
+	case Character::Mother:	
+		comment = L"회복력 + 10";
+		break;
+	case Character::Thorn:	
+		comment = L"상대방의 회복력 -10";
+		break;
+	case Character::Winner:	
+		comment = L"처치관여(assist)시 체력 +10";
+		break;
+	case Character::Distraction:
+		comment = L"공격대상이 5초마다 무작위로 변경";
+		break;
+	case Character::Fest:	
+		comment = L"스킬 시전속도 10% 증가";
+		break;
+	case Character::Spear:
+		comment = L"방어력 관통효과 +10 (상대방의 방어력을 10 무시)";
+		break;
+	case Character::None:
+		comment = L" ";
+		break;
+	default:
+		break;
+	}
+	return comment;
+
 }
 
 void Staff::SetConditionImage()

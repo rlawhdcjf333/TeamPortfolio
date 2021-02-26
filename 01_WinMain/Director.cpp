@@ -88,6 +88,11 @@ void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
 
 }
 
+void Director::AddStaff(string name)
+{
+	mStaffNameList.push_back(name);
+}
+
 Director::Director(const Director & copy)
 	:GameObject(copy)
 {

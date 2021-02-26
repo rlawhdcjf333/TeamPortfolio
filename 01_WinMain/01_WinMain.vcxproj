@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -178,6 +178,7 @@
     <ClInclude Include="Peedback.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Schedule.h" />
+    <ClInclude Include="StaffResult.h" />
     <ClInclude Include="TrainingDetail.h" />
     <ClInclude Include="ZombieMonkey.h" />
     <ClInclude Include="Home.h" />
@@ -216,6 +217,8 @@
     <ClInclude Include="Training.h" />
     <ClInclude Include="StaffList.h" />
     <ClInclude Include="ScheduleManager.h" />
+    <ClInclude Include="NewStaff.h" />
+    <ClInclude Include="StaffSearch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -290,6 +293,9 @@
     <ClCompile Include="TitleUI.cpp" />
     <ClCompile Include="Training.cpp" />
     <ClCompile Include="StaffList.cpp" />
+    <ClCompile Include="NewStaff.cpp" />
+    <ClCompile Include="StaffSearch.cpp" />
+    <ClCompile Include="StaffResult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />
