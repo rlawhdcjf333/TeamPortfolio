@@ -134,6 +134,11 @@ void Director::TeamImageRender(HDC hdc, int startX, int startY, int width, int h
 	mTeamImage->ScaleRender(hdc, startX, startY, width, height);
 }
 
+void Director::TeamImageRender(HDC hdc, RECT rc)
+{
+	mTeamImage->ScaleRender(hdc, rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+}
+
 string Director::RandomName()
 {
 	if (mRandomNameList.size() == 0)
