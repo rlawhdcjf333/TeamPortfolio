@@ -2,12 +2,17 @@
 #include "ZombieMonkey.h"
 #include "Animation.h"
 
-ZombieMonkey::ZombieMonkey()
-	:Champ("ZombieMonkey") {}
+ZombieMonkey::ZombieMonkey(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"ZombieMonkey";
+	mClassType = ClassType::Supporter;
+}
 
 void ZombieMonkey::Init()
 {
-
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 2210, 2040, 13, 12, true);
+	mImage = IMAGEMANAGER->FindImage(L"ZombieMonkey");
 }
 
 void ZombieMonkey::Release()

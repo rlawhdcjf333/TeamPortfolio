@@ -66,7 +66,7 @@ protected:
 public:
 	Staff(const string& name, const string& staffName, const wstring& teamName);
 	
-	string GetStaffName() { return mStaffName; }
+	string GetStaffName()const { return mStaffName; }
 
 	void Init() override;
 	void Release() override;
@@ -84,9 +84,9 @@ public:
 
 	void SetChar1(Character c) { mChar1 = c; }
 	void SetChar2(Character c) { mChar2 = c; }
-	Character GetChar1() { return mChar1; }
-	Character GetChar2() { return mChar2; }
-
+	
+	Character GetChar1()const { return mChar1; }
+	Character GetChar2()const { return mChar2; }
 	
 	wstring GetCharComment(int Charnum);
 	wstring GetCharInfo(int Charnum);
@@ -101,7 +101,7 @@ public:
 	
 	map<string, int> GetMostChamp() { return mMostChamp; }
 
-	int GetTrainingPoint() { return mTraningPoint; }
+	int GetTrainingPoint()const { return mTraningPoint; }
 	void SetTrainingPoint(int val) { mTraningPoint = val; }
 	void MinusTrainingPoint() { mTraningPoint--; }
 	void PlusTrainingPoint() { mTraningPoint++; }
@@ -111,7 +111,8 @@ public:
 	void MinusAtk() { mAtk--;}
 	void MinusDef() { mDef--; }
 
-
+	Condition GetCondition()const { return mCondition; }
+	void SetCondition(Condition con) { mCondition = con; }
 public:
 	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요. 새로운 변수 생기면 반드시 여기다가도 추가해야함
 	Staff& operator= (const Staff& copy); //복사 연산자 오버로딩. 이 클래스에 새로운 변수가 생기면 반드시 여기다가도 추가해야함

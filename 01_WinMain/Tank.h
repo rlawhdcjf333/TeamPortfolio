@@ -4,7 +4,7 @@ class Tank : public Champ
 {
 public:
 
-	Tank();
+	Tank(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

@@ -2,6 +2,15 @@
 #include "Champ.h"
 #include "Animation.h"
 
+enum class Motion
+{
+	Idle = 1,
+	Run,
+	Attack,
+	Hit,
+	Death
+};
+
 Champ::Champ(const string & name)
 	:GameObject(name) {}
 
@@ -13,6 +22,7 @@ Champ::Champ(const string& name, float x, float y) : GameObject(name)
 void Champ::Init()
 {
 
+
 }
 
 void Champ::Release()
@@ -22,16 +32,18 @@ void Champ::Release()
 
 void Champ::Update()
 {
-	
 
-	
-	
 }
 
 void Champ::Render(HDC hdc)
 {
 	mImage->AlphaScaleFrameRender(hdc, mRect.left, mRect.top, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 100, 100, mAlpha);
 
+}
+
+void Champ::ChampImageRender(HDC hdc, RECT rc)
+{
+	mImage->ScaleFrameRender(hdc, rc.left, rc.top, 0, 0, rc.right - rc.left, rc.bottom - rc.top);
 }
 
 //void Champ::GetStaff(string staff)

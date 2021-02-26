@@ -615,4 +615,14 @@
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ChampManager.cpp">
+      <Filter>MainGame\Object\Champ</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChampManager.h">
+      <Filter>MainGame\Object\Champ</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

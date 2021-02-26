@@ -2,12 +2,20 @@
 #include "StarPixie.h"
 #include "Animation.h"
 
-StarPixie::StarPixie()
-	:Champ("StarPixie") {}
+StarPixie::StarPixie(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"StarPixie";
+	mClassType = ClassType::Magician;
+}
 
 void StarPixie::Init()
 {
-	mHP = 100;
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"StarPixie", Resources(L"StarPixie.bmp"), 900, 1440, 10, 12, true);
+	mImage = IMAGEMANAGER->FindImage(L"StarPixie");
+
+	mFullHP = 100;
+	mHP = mFullHP;
 	mMP = 0;
 	mAtk = 100;
 	mDef = 100;

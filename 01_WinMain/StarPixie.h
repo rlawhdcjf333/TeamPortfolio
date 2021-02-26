@@ -7,7 +7,7 @@ private:
 	float mTimer;
 public:
 
-	StarPixie();
+	StarPixie(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;
