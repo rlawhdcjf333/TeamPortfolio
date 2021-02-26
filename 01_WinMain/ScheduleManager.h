@@ -7,6 +7,8 @@ class ScheduleManager {
 
 	vector<Director*> mDirectorList;
 	map<int, vector<Director*>> mSchedule;
+
+	int mToday;
 public:
 
 	void Init();
@@ -15,4 +17,5 @@ public:
 	void ShuffleDirectorList();
 
 	map<int, vector<Director*>> GetSchedule() const { return mSchedule; }
+	vector<Director*> GetDayDirector(int key) { return mSchedule.find(key)->second; }
 };
