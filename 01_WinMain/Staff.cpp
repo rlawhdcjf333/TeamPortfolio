@@ -161,19 +161,19 @@ void Staff::SetConditionImage()
 	switch (mCondition)
 	{
 	case Condition::Bad:
-		mConditionX = 4;	//임시로 넣은 인덱스, 이미지보고 조정
+		mConditionX = 4;
 		break;
 	case Condition::LittleBad:
-		mConditionX = 3;	//임시로 넣은 인덱스, 이미지보고 조정
+		mConditionX = 3;
 		break;
 	case Condition::Nomal:
-		mConditionX = 2;	//임시로 넣은 인덱스, 이미지보고 조정
+		mConditionX = 2;
 		break;
 	case Condition::Good:
-		mConditionX = 1;	//임시로 넣은 인덱스, 이미지보고 조정
+		mConditionX = 1;
 		break;
 	case Condition::Best:
-		mConditionX = 0;	//임시로 넣은 인덱스, 이미지보고 조정
+		mConditionX = 0;
 		break;
 	}
 }

@@ -26,7 +26,7 @@ class BattleData	//싱글턴으로 만들어 저장
 private:
 	Team mPlayerTeam;
 
-	//방법2 mTeamData 구조체 사용;
+	//mTeamData 구조체 사용;
 	TeamData mBlueTeam;
 	TeamData mRedTeam;
 
@@ -36,18 +36,8 @@ private:
 	Staff* mStaff;	//위에 맵에 키값으로 넣을녀석을 담을 변수, 함수용으로 쓰일거같아 만듬
 	Champ* mChamp;	//↑랑 동일, 여긴 map의 value를 담아서 
 
-	/*//방법1 각각 맵을 만들기
-	Director* mTeam[2];		//
-	
-	map<Team, vector<Staff*>> mStaffList;	//팀에 속한 스태프
-	map<Team, Staff*[3]> mSelectStaff;	//출전선수
-	map<Team, Staff*[2]> mWaitStaff;	//대기선수
-
-	map<Team, int>	mKillCount;
-	map<Team, int> mWinCount;
-	*/
 public:
-	//void RoundReset();	//밴과 픽 정보 초기화
+	void RoundReset();	//밴과 픽 정보 초기화
 
 	void SetPlayerTeam(Team t) { mPlayerTeam = t; }
 	Team GetPlayerTeam() { return mPlayerTeam; }
@@ -70,6 +60,14 @@ public:
 		if (mBlueTeam.mKillCount < mRedTeam.mKillCount)
 			mRedTeam.mWinCount++;
 	}
+	bool IsEnd() {	//PickBattle Scene 종료여부
+		if (mBlueTeam.mWinCount >= 2)
+			return true;
+		if (mRedTeam.mWinCount >= 2)
+			return true;
+		return false;
+	}
+
 
 	void SetTeam(Team t, Director * dir);
 	void LoadStaffList(TeamData t);	//SetTeam에서 호출할 StaffList초기화용 함수
@@ -78,16 +76,13 @@ public:
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
 	void ChampSwap(Staff* st1, Staff* st2);
 
-	void Peedback();
-};
-/*
-	1.Director 팀 (Red, Blue)
-	2.플레이어의 팀 -> StaffSelect와 BanPick~ChampCheck에서 알아야함
-	3.밴된 챔프
-	4.스태프가 선택한 챔프 -> 5.ChampCheck에서 같은 팀끼리 교환하는 함수
-	6.라운드당 Red와 Blue의 킬 수
-	7.Red,Blue의 라운드 승리 수 -> BattleUI에 승수만큼 이미지 표시
+	void Feedback(int i);//i = 버튼 번호
+	void UpdateCondition(TeamData t, int con);
 
+	void SetResult();
+};
+#define BData BattleData::GetInstance();
+/*
 	<함수>
 	1. 플레이어 팀 지정 -> SetPlayerTeam
 	2. mBlueTeam과 mRedTeam 초기화(정보 입력), : PickBattle 씬 시작시 호출 -> SetTeam
@@ -100,5 +95,8 @@ public:
 	7. 배틀 돌리는 함수.........킬이 발생하면 mKillCount++ : Battle UI에서 호출
 	8. mKillCount를 확인하고 mWinCount++, mKillCount = 0하는 함수 : BattleUI(Battle이랑 다른거임) UI에서 BattleResult UI active=true 전에 호출
 	->UpdateWinCount
-	9. 승패 여부에 따라 피드백을 하고 Staff들의 컨디션을 변경시키는 함수 : Peedback UI에서 호출
+	9. 승패 여부에 따라 피드백을 하고 Staff들의 컨디션을 변경시키는 함수 : Peedback UI에서 호출 -> Feedback
+
+	+
+	10. Director* 에 승/패 지정 -> HomeScene으로 돌아가기전 BattleResult UI에서 호출
 */
