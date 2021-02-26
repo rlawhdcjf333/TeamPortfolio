@@ -79,7 +79,12 @@ void StaffList::Render(HDC hdc)
 
 			SelectObject(hdc, oldF);
 			DeleteObject(newF);
+
 		}
+
+		int teamNumber = mStaffList.size();
+		wstring numberStr = to_wstring(teamNumber) + L" / 5  ";
+		TextOut(hdc, 140, 555, numberStr.c_str(), numberStr.size());
 
 	}
 
@@ -97,6 +102,7 @@ void StaffList::LoadStaffList()
 		{
 			Staff* temp = (Staff*)ObjectManager::GetInstance()->FindObject(elem);
 			mStaffList.push_back(temp);
+
 		}
 
 	}

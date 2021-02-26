@@ -33,8 +33,6 @@ class Staff : public GameObject
 protected:
 	string mStaffName;
 	Image* mImage;
-	map <wstring, Animation*> mAnimationList;
-	Animation* mCurrentAnm;
 
 	wstring mFileName;
 	wstring mTeamName;
@@ -48,7 +46,7 @@ protected:
 	Character mChar1;	//if(Character::None) 표시 안함
 	Character mChar2;	//if(Character::None) 표시 안함
 
-	int mTraningPoint;	//Scene1:Home 에서 훈련에 쓰일 변수, 여기 있어야하나? Scene1::Home에서 쓰는거라 필요없으면 없애도 됨
+	int mTrainingPoint;	//Scene1:Home 에서 훈련에 쓰일 변수, 여기 있어야하나? Scene1::Home에서 쓰는거라 필요없으면 없애도 됨
 	int mRandomIndexX;	//이미지 랜덤 변수
 	int mRandomIndexY;	//이미지 랜덤 변수
 
@@ -101,10 +99,10 @@ public:
 	
 	map<string, int> GetMostChamp() { return mMostChamp; }
 
-	int GetTrainingPoint()const { return mTraningPoint; }
-	void SetTrainingPoint(int val) { mTraningPoint = val; }
-	void MinusTrainingPoint() { mTraningPoint--; }
-	void PlusTrainingPoint() { mTraningPoint++; }
+	int GetTrainingPoint()const { return mTrainingPoint; }
+	void SetTrainingPoint(int val) { mTrainingPoint = val; }
+	void MinusTrainingPoint() { mTrainingPoint--; }
+	void PlusTrainingPoint() { mTrainingPoint++; }
 
 	void PlusAtk() { mAtk++; }
 	void PlusDef() { mDef++; }

@@ -41,6 +41,13 @@ void Champ::Render(HDC hdc)
 
 }
 
+void Champ::UIRender(HDC hdc, int startX, int startY, int width, int height)
+{
+
+	mImage->ScaleFrameRender(hdc, startX, startY, 0,0, width, height);
+
+}
+
 void Champ::ChampImageRender(HDC hdc, RECT rc)
 {
 	mImage->ScaleFrameRender(hdc, rc.left, rc.top, 0, 0, rc.right - rc.left, rc.bottom - rc.top);

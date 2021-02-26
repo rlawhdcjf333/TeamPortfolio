@@ -25,6 +25,7 @@ void ChampManager::Init()
 
 	for (int i = 0; i < 9; i++) {
 		mChampList.push_back(ObjectManager::GetInstance()->FindObject("Champ" + to_string(i + 1)));
+		mChampList[i]->SetIsActive(false);
 	}
 }
 

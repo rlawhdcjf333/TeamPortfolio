@@ -5,6 +5,7 @@
 #include "Staff.h"
 #include "StaffList.h"
 #include "Training.h"
+#include "Champ.h"
 
 StaffResult::StaffResult(int x, int y, Director* dir)
 	:UI("StaffResult")
@@ -125,13 +126,52 @@ void StaffResult::Render(HDC hdc)
 		TextOut(hdc, mX+35, mY+150, tmpChar.c_str(), tmpChar.size());
 
 		//특성 설명 표시
+		RECT infoRect = RectMake(mX + 40, mY + 170, 220, 70);
 		wstring tmpCharInfo = mStaff->GetCharInfo(1);
-		TextOut(hdc, mX + 35, mY + 170, tmpCharInfo.c_str(), tmpCharInfo.size());
+		DrawText(hdc, tmpCharInfo.c_str(), tmpCharInfo.size(), &infoRect, DT_LEFT|DT_WORDBREAK);
 
 		//비용 표시
 		RECT tmpRect = RectMake(mX + 150, mY + 272, 90, 38);
 		wstring costStr = to_wstring(mCost);
-		DrawText(hdc, costStr.c_str(), costStr.size(), &tmpRect, DT_SINGLELINE | DT_VCENTER | DT_RIGHT);
+		DrawText(hdc, costStr.c_str(), costStr.size(), &tmpRect,  DT_RIGHT|DT_SINGLELINE|DT_VCENTER);
+
+		//모스트 픽 표시
+		auto mostPickList = mStaff->GetMostChamp();
+
+		auto pickListIter = mostPickList.begin();
+
+		string mostPick1 = pickListIter->first;
+		string mostPick2 = (pickListIter++)->first;
+
+		int mostPick1Val = (pickListIter--)->second;
+		int mostPick2Val = (pickListIter++)->second;
+
+		Champ* mostChamp1 = (Champ*)ObjectManager::GetInstance()->FindObject(mostPick1);
+		Champ* mostChamp2 = (Champ*)ObjectManager::GetInstance()->FindObject(mostPick2);
+
+		mostChamp1->UIRender(hdc, mX + 12, mY + 70, 50, 48);
+		mostChamp2->UIRender(hdc, mX + 84, mY + 70, 50, 48);
+
+		wstring mostPick1Pt = to_wstring(mostPick1Val);
+		wstring mostPick2Pt = to_wstring(mostPick2Val);
+
+		SetBkMode(hdc, OPAQUE);
+		RECT rect1 = RectMake(mX + 44, mY + 68, 23, 16);
+		RECT rect2 = RectMake(mX + 112, mY + 68, 23, 16);
+
+		HBRUSH newB = CreateSolidBrush(RGB(17,19,23));
+		HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
+		RenderRect(hdc, rect1);
+		RenderRect(hdc, rect2);
+		SelectObject(hdc, oldB);
+		DeleteObject(newB);
+		
+		SetBkMode(hdc, TRANSPARENT);
+
+		DrawText(hdc, mostPick1Pt.c_str(), mostPick1Pt.size(), &rect1, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+		DrawText(hdc, mostPick2Pt.c_str(), mostPick2Pt.size(), &rect2, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+
+
 
 	}
 
