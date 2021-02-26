@@ -6,12 +6,13 @@ BabyMonkey::BabyMonkey(const string& name )
 	:Champ(name) 
 {
 	mChampName = L"BabyMonkey";
-	mClassType = ClassType::Suporter;
+	mClassType = ClassType::Supporter;
 }
 
 void BabyMonkey::Init()
 {
-
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"BabyMonkey", Resources(L"BabyMonkey.bmp"), 480, 600, 6, 10, true);
+	mImage = IMAGEMANAGER->FindImage(L"BabyMonkey");
 }
 
 void BabyMonkey::Release()

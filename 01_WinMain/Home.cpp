@@ -6,12 +6,15 @@
 #include "GameEvent.h"
 #include "Director.h"
 #include "Staff.h"
+#include "ChampManager.h"
 
 void Home::Init()
 {
 
 	Background* background = new Background("Home", L"Home");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
+
+	ChampManager::GetInstance()->Init();
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director1", L"TeamNuguri", L"TeamNuguri"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director2", L"TeamMansu", L"TeamMansu"));

@@ -6,12 +6,13 @@ ZombieMonkey::ZombieMonkey(const string& name)
 	:Champ(name) 
 {
 	mChampName = L"ZombieMonkey";
-	mClassType = ClassType::Suporter;
+	mClassType = ClassType::Supporter;
 }
 
 void ZombieMonkey::Init()
 {
-
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 2210, 2040, 13, 12, true);
+	mImage = IMAGEMANAGER->FindImage(L"ZombieMonkey");
 }
 
 void ZombieMonkey::Release()
