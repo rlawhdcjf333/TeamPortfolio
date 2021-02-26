@@ -130,7 +130,7 @@ void ChampInfo::ClassTypeCheck()
 		case ClassType::Magician:
 			mClassTypeName = L"마법사";
 			break;
-		case ClassType::Supoter:
+		case ClassType::Suporter:
 			mClassTypeName = L"전투 보조";
 			break;
 		case ClassType::Assassin:

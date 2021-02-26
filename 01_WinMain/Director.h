@@ -47,6 +47,7 @@ public:
 
 	void UIRender(HDC hdc, int startX, int startY, int width, int height);
 	void TeamImageRender(HDC hdc, int startX, int startY, int widht, int height);
+	void TeamImageRender(HDC hdc, RECT rc);
 
 	wstring GetTeamName() { return mTeamName; }
 
