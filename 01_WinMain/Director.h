@@ -36,6 +36,7 @@ public:
 	void Render(HDC hdc)override;
 
 	void SetRound(int round) { mRound = round; }
+	void UpRound() { mRound++; }
 	void SetMonth(int month) { mMonth = month; }
 	void SetWeek(int week) { mWeek = week; }
 	void SetGold(int gold) { mGold = gold; }

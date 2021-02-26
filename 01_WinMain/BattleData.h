@@ -24,7 +24,7 @@ class BattleData	//싱글턴으로 만들어 저장
 {
 	Singleton(BattleData);
 private:
-	Team mPlayerTeam;
+	Team mPlayerTeam;//팀색깔 -> switch용
 
 	//mTeamData 구조체 사용;
 	TeamData mBlueTeam;
@@ -80,8 +80,21 @@ public:
 	void UpdateCondition(TeamData t, int con);
 
 	void SetResult();
+
+	Staff* GetSelectStaff(int index) {
+		if (mPlayerTeam == Team::Blue)
+			return mBlueTeam.mSelectStaff[index];
+		if (mPlayerTeam == Team::Red)
+			return mRedTeam.mSelectStaff[index];
+	}
+	Staff* GetWaitStaff(int index) {
+		if (mPlayerTeam == Team::Blue)
+			return mBlueTeam.mWaitStaff[index];
+		if (mPlayerTeam == Team::Red)
+			return mRedTeam.mWaitStaff[index];
+	}
 };
-#define BData BattleData::GetInstance();
+#define BData BattleData::GetInstance()
 /*
 	<함수>
 	1. 플레이어 팀 지정 -> SetPlayerTeam
