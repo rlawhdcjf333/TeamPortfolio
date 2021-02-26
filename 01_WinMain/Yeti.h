@@ -4,7 +4,7 @@ class Yeti : public Champ
 {
 public:
 
-	Yeti();
+	Yeti(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

@@ -1,8 +1,12 @@
 #include "pch.h"
 #include "HelmetPepe.h"
 
-HelmetPepe::HelmetPepe()
-	:Champ("HelmetPepe") {}
+HelmetPepe::HelmetPepe(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"HelmetPepe";
+	mClassType = ClassType::Warrior;
+}
 
 void HelmetPepe::Init()
 {

@@ -2,8 +2,12 @@
 #include "StarPixie.h"
 #include "Animation.h"
 
-StarPixie::StarPixie()
-	:Champ("StarPixie") {}
+StarPixie::StarPixie(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"StarPixie";
+	mClassType = ClassType::Magician;
+}
 
 void StarPixie::Init()
 {

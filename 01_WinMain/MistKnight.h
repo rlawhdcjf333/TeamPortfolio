@@ -4,7 +4,7 @@ class MistKnight : public Champ
 {
 public:
 
-	MistKnight();
+	MistKnight(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

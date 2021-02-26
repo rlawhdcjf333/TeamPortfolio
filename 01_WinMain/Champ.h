@@ -1,12 +1,15 @@
 #pragma once
 #include "GameObject.h"
 class Animation;
-enum class Tag : int
+enum class ClassType : int
 {
-	Assassin =0,
-	Tanker,
-	Diller,
-	Brujer
+	Warrior = 0,
+	ADCarry = 1,
+	Magician = 2,
+	Suporter = 3,
+	Assassin = 4,
+
+	End
 };
 class Champ : public GameObject
 {
@@ -15,6 +18,9 @@ protected:
 
 	Animation* mCurrentAnm;
 	map<wstring ,Animation*> mAnimationList;
+	wstring mChampName;
+
+	ClassType mClassType;
 
 	float mHP;				//나의 HP
 	float mMP;				//나의 MP
@@ -31,7 +37,7 @@ protected:
 	float mRange;			//챔프 공격 사거리
 	float mSpeed;			//초당 이동속도
 	float mSpecialSkill;	//궁극기
-	float mSkill;
+	float mSkill;			//스킬1
 
 	float mAttackCool;		//공격 쿨 타임
 	float mSkill1Cool;		//스킬1 쿨 타임
@@ -63,6 +69,7 @@ public:
 	GameObject* GetStaff() { return mStaff; } //staff값 조정
 	vector<GameObject*> GetPlayerList() { return mPlayerList; }
 	vector<GameObject*> GetEnemyList() { return mEnemyList; }
+	ClassType GetClassType() const { return mClassType; }
 	
 	float GetFullHP() { return mFullHP; }			//UI표시
 	void Recover() { mHP = mFullHP;  }	//죽었을때 이걸 쓰면 다시 풀체력
