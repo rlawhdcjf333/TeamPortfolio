@@ -154,6 +154,7 @@
     <ClInclude Include="BattleData.h" />
     <ClInclude Include="BattleResult.h" />
     <ClInclude Include="BattleUI.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="ChampCheck.h" />
     <ClInclude Include="ChampList.h" />
     <ClInclude Include="ChampManager.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="BattleData.cpp" />
     <ClCompile Include="BattleResult.cpp" />
     <ClCompile Include="BattleUI.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
     <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="ChampManager.cpp" />

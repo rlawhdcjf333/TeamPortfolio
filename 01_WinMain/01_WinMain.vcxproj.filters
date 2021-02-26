@@ -583,15 +583,24 @@
     <Image Include="01_WinMain.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Filter Include="FrameWork\BulletManager">
+      <UniqueIdentifier>{0ef1dbab-e759-4f42-a5aa-3b2552c5b7ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChampManager.cpp">
       <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>FrameWork\BulletManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChampManager.h">
       <Filter>MainGame\Object\Champ</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>FrameWork\BulletManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

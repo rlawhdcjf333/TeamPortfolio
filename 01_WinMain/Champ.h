@@ -22,6 +22,7 @@ protected:
 
 	ClassType mClassType;
 
+	float mFullHP;			//태어날 때 풀피로 태어나게 해주기 위함.
 	float mHP;				//나의 HP
 	float mMP;				//나의 MP
 	float mMPSecGet;		//초당 얻을 마나
@@ -47,14 +48,15 @@ protected:
 	float mAlpha;
 	GameObject* mTarget;	//받아올 타겟 포인터
 	GameObject* mStaff;		//받아올 스텝 포인터
-	vector<GameObject*> mPlayerList;
-	vector<GameObject*> mEnemyList;
+	vector<GameObject*> mPlayerList;			//아군들 (최대 3명)
+	vector<GameObject*> mEnemyList;				//적들	 (최대 3명)
 
-	
-	float mFullHP;
+	int mImageAnimationFrame;
+
 public:
 	Champ(const string& name);
 	Champ(const string& name, float x, float y);
+	Champ(const string& name, int animation);
 
 	void Init()override;
 	void Release()override;
@@ -73,6 +75,7 @@ public:
 	ClassType GetClassType() const { return mClassType; }
 	wstring GetChampName() const { return mChampName; }
 	
+	//float GetChampAnm() { return }
 	float GetFullHP() { return mFullHP; }			//UI표시
-	void Recover() { mHP = mFullHP;  }	//죽었을때 이걸 쓰면 다시 풀체력
+	void Recover() { mHP = mFullHP;  }				//죽었을때 이걸 쓰면 다시 풀체력
 };

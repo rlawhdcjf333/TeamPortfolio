@@ -36,77 +36,89 @@ void BubbleTea::Init()
 	//mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 
 	//애니메이션
-	//Animation* RightIdle = new Animation();
-	//RightIdle->InitFrameByStartEnd(0, 1, 3, 1, true);
-	//RightIdle->SetIsLoop(true);
-	//RightIdle->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
-	//
-	//Animation* RightRun = new Animation();
-	//RightRun->InitFrameByStartEnd(0, 3, 4, 3, true);
-	//RightRun->SetIsLoop(true);
-	//RightRun->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"RightRun", RightRun));
-	//
-	//Animation* RightAttack = new Animation();
-	//RightAttack->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//RightAttack->SetIsLoop(true);
-	//RightAttack->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"RightAttack", RightAttack));
-	//
-	//Animation* RightSkill1 = new Animation();
-	//RightSkill1->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//RightSkill1->SetIsLoop(true);
-	//RightSkill1->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"RightSkill1", RightSkill1));
-	//
-	//Animation* RightSkill2 = new Animation();
-	//RightSkill2->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//RightSkill2->SetIsLoop(true);
-	//RightSkill2->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
-	//
-	//Animation* RightDeath = new Animation();
-	//RightDeath->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//RightDeath->SetIsLoop(true);
-	//RightDeath->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
-	//
-	//Animation* LeftIdle = new Animation();
-	//LeftIdle->InitFrameByStartEnd(0, 0, 3, 0, true);
-	//LeftIdle->SetIsLoop(true);
-	//LeftIdle->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
-	//
-	//Animation* LeftRun = new Animation();
-	//LeftRun->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//LeftRun->SetIsLoop(true);
-	//LeftRun->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
-	//
-	//Animation* LeftAttack = new Animation();
-	//LeftAttack->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//LeftAttack->SetIsLoop(true);
-	//LeftAttack->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
-	//
-	//Animation* LeftSkill1 = new Animation();
-	//LeftSkill1->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//LeftSkill1->SetIsLoop(true);
-	//LeftSkill1->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
-	//
-	//Animation* LeftSkill2 = new Animation();
-	//LeftSkill2->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//LeftSkill2->SetIsLoop(true);
-	//LeftSkill2->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
-	//
-	//Animation* LeftDeath = new Animation();
-	//LeftDeath->InitFrameByStartEnd(0, 2, 4, 2, true);
-	//LeftDeath->SetIsLoop(true);
-	//LeftDeath->SetFrameUpdateTime(0.2f);
-	//mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
+	Animation* RightIdle = new Animation();
+	RightIdle->InitFrameByStartEnd(0, 1, 3, 1, true);
+	RightIdle->SetIsLoop(true);
+	RightIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
+	
+	Animation* RightRun = new Animation();
+	RightRun->InitFrameByStartEnd(0, 3, 4, 3, true);
+	RightRun->SetIsLoop(true);
+	RightRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightRun", RightRun));
+	
+	Animation* RightAttack = new Animation();
+	RightAttack->InitFrameByStartEnd(0, 7, 6, 7, true);
+	RightAttack->SetIsLoop(true);
+	RightAttack->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightAttack", RightAttack));
+	
+	Animation* RightSkill1 = new Animation();
+	RightSkill1->InitFrameByStartEnd(0, 9, 2, 9, true);
+	RightSkill1->SetIsLoop(true);
+	RightSkill1->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightSkill1", RightSkill1));
+	
+	Animation* RightSkill2 = new Animation();
+	RightSkill2->InitFrameByStartEnd(0, 7, 6, 7, true);
+	RightSkill2->SetIsLoop(true);
+	RightSkill2->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
+	
+	Animation* RightSkill2HitEffect = new Animation();
+	RightSkill2HitEffect->InitFrameByStartEnd(0, 12, 0, 12, true);
+	RightSkill2HitEffect->SetIsLoop(true);
+	RightSkill2HitEffect->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightSkill2HitEffect", RightSkill2HitEffect));
+
+	Animation* RightDeath = new Animation();
+	RightDeath->InitFrameByStartEnd(0, 5, 0, 5, true);
+	RightDeath->SetIsLoop(true);
+	RightDeath->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
+	
+	Animation* LeftIdle = new Animation();
+	LeftIdle->InitFrameByStartEnd(0, 0, 3, 0, true);
+	LeftIdle->SetIsLoop(true);
+	LeftIdle->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
+	
+	Animation* LeftRun = new Animation();
+	LeftRun->InitFrameByStartEnd(0, 2, 4, 2, true);
+	LeftRun->SetIsLoop(true);
+	LeftRun->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
+	
+	Animation* LeftAttack = new Animation();
+	LeftAttack->InitFrameByStartEnd(0, 6, 6, 6, true);
+	LeftAttack->SetIsLoop(true);
+	LeftAttack->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
+	
+	Animation* LeftSkill1 = new Animation();
+	LeftSkill1->InitFrameByStartEnd(0, 8, 2, 8, true);
+	LeftSkill1->SetIsLoop(true);
+	LeftSkill1->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
+	
+	Animation* LeftSkill2 = new Animation();
+	LeftSkill2->InitFrameByStartEnd(0, 6, 6, 6, true);
+	LeftSkill2->SetIsLoop(true);
+	LeftSkill2->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
+
+	Animation* LeftSkill2HitEffect = new Animation();
+	LeftSkill2HitEffect->InitFrameByStartEnd(0, 13, 0, 13, true);
+	LeftSkill2HitEffect->SetIsLoop(true);
+	LeftSkill2HitEffect->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftSkill2HitEffect", LeftSkill2HitEffect));
+	
+	Animation* LeftDeath = new Animation();
+	LeftDeath->InitFrameByStartEnd(0, 4, 0, 4, true);
+	LeftDeath->SetIsLoop(true);
+	LeftDeath->SetFrameUpdateTime(0.2f);
+	mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
 
 }
 
