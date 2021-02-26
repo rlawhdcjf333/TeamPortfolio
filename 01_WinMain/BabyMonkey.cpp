@@ -2,8 +2,12 @@
 #include "BabyMonkey.h"
 #include "Animation.h"
 
-BabyMonkey::BabyMonkey()
-	:Champ("BabyMonkey") {}
+BabyMonkey::BabyMonkey(const string& name )
+	:Champ(name) 
+{
+	mChampName = L"BabyMonkey";
+	mClassType = ClassType::Suporter;
+}
 
 void BabyMonkey::Init()
 {

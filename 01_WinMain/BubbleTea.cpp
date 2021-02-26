@@ -13,7 +13,8 @@ void BubbleTea::Init()
 	mImage= IMAGEMANAGER->FindImage(L"Tank");
 
 	//변수 초기화
-	mHP = 100;
+	mFullHP = 80;
+	mHP = mFullHP;
 	mMP = 0;
 	mAtk = 10;
 	mDef = 0;
@@ -111,23 +112,23 @@ void BubbleTea::Release()
 }
 void BubbleTea::Update()
 {
-	if (mIsActive == false && mDeathCool <= 0)
-	{
-		mDeathCool = 3;
-		mIsActive = true;
-		mHP = 100;
-	}
-
-	if (mHP <= 0)
-	{
-		mIsActive = false;
-	}
-
-	if (mIsActive == false)
-	{
-		mDeathCool -= Time::GetInstance()->DeltaTime();
-		return;
-	}
+	//if (mIsActive == false && mDeathCool <= 0)
+	//{
+	//	mDeathCool = 3;
+	//	mIsActive = true;
+	//	mHP = 100;
+	//}
+	//
+	//if (mHP <= 0)
+	//{
+	//	mIsActive = false;
+	//}
+	//
+	//if (mIsActive == false)
+	//{
+	//	mDeathCool -= Time::GetInstance()->DeltaTime();
+	//	return;
+	//}
 	//각각의 적들의 상태가 엑티브인 애들의 거리를 찾아서 가까운 애가 타겟이 되게 설정한다.
 	//우선 엑티브가 트루인지 폴스인지 확인후 트루면 값을 넣어주고 아니면 0을 넣어서 거리값을 비교하게 한다.
 	//비교했을 때 거리가 가까운 애를 타겟으로 한다.

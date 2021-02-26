@@ -2,8 +2,12 @@
 #include "ZombieMonkey.h"
 #include "Animation.h"
 
-ZombieMonkey::ZombieMonkey()
-	:Champ("ZombieMonkey") {}
+ZombieMonkey::ZombieMonkey(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"ZombieMonkey";
+	mClassType = ClassType::Suporter;
+}
 
 void ZombieMonkey::Init()
 {

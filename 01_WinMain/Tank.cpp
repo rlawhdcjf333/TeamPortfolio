@@ -2,11 +2,16 @@
 #include "Tank.h"
 #include "Animation.h"
 
-Tank::Tank()
-	:Champ("Tank") {}
+Tank::Tank(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"Tank";
+	mClassType = ClassType::ADCarry;
+}
 
 void Tank::Init()
 {
+	mFullHP;
 	mHP;
 	mMP;
 	//mMPtmp;

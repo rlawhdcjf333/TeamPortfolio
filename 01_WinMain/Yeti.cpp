@@ -1,8 +1,12 @@
 #include "pch.h"
 #include "Yeti.h"
 
-Yeti::Yeti()
-	:Champ("Yeti") {}
+Yeti::Yeti(const string& name)
+	:Champ(name) 
+{
+	mChampName = L"Yeti";
+	mClassType = ClassType::Warrior;
+}
 
 void Yeti::Init()
 {

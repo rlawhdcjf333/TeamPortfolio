@@ -4,7 +4,7 @@ class ZombieMonkey : public Champ
 {
 public:
 
-	ZombieMonkey();
+	ZombieMonkey(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;
