@@ -592,6 +592,9 @@
     <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\News">
       <UniqueIdentifier>{8a337f25-a0c9-4618-969e-e45939ab6645}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\Sponsor">
+      <UniqueIdentifier>{bdf1a325-27a8-48e6-86fa-799295b125d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NewStaff.cpp">
@@ -615,6 +618,9 @@
     <ClCompile Include="News.cpp">
       <Filter>MainGame\Object\UI\homeUI\OperationToggle\News</Filter>
     </ClCompile>
+    <ClCompile Include="Sponsor.cpp">
+      <Filter>MainGame\Object\UI\homeUI\OperationToggle\Sponsor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NewStaff.h">
@@ -637,6 +643,9 @@
     </ClInclude>
     <ClInclude Include="News.h">
       <Filter>MainGame\Object\UI\homeUI\OperationToggle\News</Filter>
+    </ClInclude>
+    <ClInclude Include="Sponsor.h">
+      <Filter>MainGame\Object\UI\homeUI\OperationToggle\Sponsor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

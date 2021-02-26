@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "OperationToggle.h"
 #include "News.h"
+#include "Sponsor.h"
 
 OperationToggle::OperationToggle()
 	:UI("OperationToggle")
@@ -19,6 +20,7 @@ void OperationToggle::Init()
 	mActive = IMAGEMANAGER->FindImage(L"OperationToggleClick");
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new News);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Sponsor);
 }
 
 void OperationToggle::Release()
@@ -31,7 +33,7 @@ void OperationToggle::Update()
 	mToggleButton(0, "News", func);
 	mToggleButton(1, "OnPatch", func);
 	mToggleButton(2, "OnPatch", func);
-	mToggleButton(3, "OnPatch", func);
+	mToggleButton(3, "Sponsor", func);
 
 }
 

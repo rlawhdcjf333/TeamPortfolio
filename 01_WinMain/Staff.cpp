@@ -52,7 +52,7 @@ void Staff::Init()
 	mRenderSizeX = mImage->GetFrameWidth() * 2;
 	mRenderSizeY = mImage->GetFrameHeight() * 2;
 
-	mCost = 150 + (mAtk + mDef) * 10;
+	mCost = (150 + (mAtk + mDef) * 10)/2;
 	
 }
 

@@ -163,6 +163,10 @@ void TrainingDetail::RenderStaffInfo(HDC hdc)
 	wstring mostPt2 = to_wstring(list.rbegin()->second);
 	TextOut(hdc, 1115, 382, mostPt2.c_str(), mostPt2.size());
 
+	//설정 중인 선수 이름 표시
+	wstring name = StoW(mCurrentStaff->GetStaffName());
+	RECT nameRect = { 510, 244, 600, 268 };
+	DrawText(hdc, name.c_str(), name.size(), &nameRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE |DT_END_ELLIPSIS|DT_MODIFYSTRING);
 
 	//설정 중인 선수 공격력 표시
 	int atk = mCurrentStaff->GetAtk();

@@ -25,9 +25,9 @@ StaffResult::StaffResult(int x, int y, Director* dir)
 
 void StaffResult::Init()
 {
-	RECT rc1 = RectMake(mX + 18, mY + 331, 118, 30);
+	RECT rc1 = RectMake(mX + 18, mY + 331, 118, 32);
 	mButtonList.push_back(rc1);
-	RECT rc2 = RectMake(mX + 158, mY + 331, 118, 30);
+	RECT rc2 = RectMake(mX + 158, mY + 331, 118, 32);
 	mButtonList.push_back(rc2);
 
 	IMAGEMANAGER->LoadFromFile(L"StaffResult", Resources(L"StaffResult.bmp"), 293, 381, true);

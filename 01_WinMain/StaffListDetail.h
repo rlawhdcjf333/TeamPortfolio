@@ -26,4 +26,5 @@ public:
 
 	void SetStaff(Staff* currentStaff) { mCurrentStaff = currentStaff; }
 	void SetStaffList(StaffList* staffList) { mStaffList = staffList; }
+	void RenderAlert(HDC hdc);
 };

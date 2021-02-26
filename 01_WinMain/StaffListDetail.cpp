@@ -43,10 +43,14 @@ void StaffListDetail::Render(HDC hdc)
 		//공격력 표시
 		wstring tmp1 = to_wstring(mCurrentStaff->GetAtk());
 		TextOut(hdc, 140, 192, tmp1.c_str(), tmp1.size());
+		RECT atkRect = { 1164,223, 1228,242 };
+		DrawText(hdc, tmp1.c_str(), tmp1.size(), &atkRect, DT_VCENTER | DT_RIGHT | DT_SINGLELINE);
 
 		//방어력 표시
 		wstring tmp2 = to_wstring(mCurrentStaff->GetDef());
 		TextOut(hdc, 228, 192, tmp2.c_str(), tmp2.size());
+		RECT defRect = { 1164,251, 1228,269 };
+		DrawText(hdc, tmp2.c_str(), tmp2.size(), &defRect, DT_VCENTER | DT_RIGHT | DT_SINGLELINE);
 
 		//컨디션 표시
 		mCurrentStaff->ConditionRender(hdc, 420, 170, 30, 30);
@@ -59,11 +63,21 @@ void StaffListDetail::Render(HDC hdc)
 		mostChamp1->UIRender(hdc, 42, 288, 45, 45);
 		mostChamp2->UIRender(hdc, 42, 344, 45, 45);
 
+		//모스트 픽 이름 표시
+		wstring champName1 = mostChamp1->GetChampName();
+		wstring champName2 = mostChamp2->GetChampName();
+		RECT champNameRc1 = { 980,278, 1228, 296 };
+		RECT champNameRc2 = { 980, 308, 1228, 324 };
+		DrawText(hdc, champName1.c_str(), champName1.size(), &champNameRc1, DT_SINGLELINE | DT_LEFT | DT_VCENTER);
+		DrawText(hdc, champName2.c_str(), champName2.size(), &champNameRc2, DT_SINGLELINE | DT_LEFT | DT_VCENTER);
+
 		//모스트 픽 숙련도 표시
 		wstring mostChamp1Pt = to_wstring(tmp3.begin()->second);
 		wstring mostChamp2Pt = to_wstring(tmp3.rbegin()->second);
 		TextOut(hdc, 175, 315, mostChamp1Pt.c_str(), mostChamp1Pt.size());
 		TextOut(hdc, 175, 375, mostChamp2Pt.c_str(), mostChamp2Pt.size());
+		DrawText(hdc, mostChamp1Pt.c_str(), mostChamp1Pt.size(), &champNameRc1, DT_SINGLELINE | DT_RIGHT | DT_VCENTER);
+		DrawText(hdc, mostChamp2Pt.c_str(), mostChamp2Pt.size(), &champNameRc2, DT_SINGLELINE | DT_RIGHT | DT_VCENTER);
 
 		//재계약 비용 표시
 		wstring reCost = to_wstring(mCurrentStaff->GetCost());
@@ -76,31 +90,15 @@ void StaffListDetail::Render(HDC hdc)
 
 		//특성 설명 표시
 		wstring characterInfo1 = mCurrentStaff->GetCharInfo(1);
-		RECT characterInfoRect1 = RectMake(640, 192, 320, 48);
+		RECT characterInfoRect1 = RectMake(640, 192, 320, 15);
 		DrawText(hdc, characterInfo1.c_str(), characterInfo1.size(), &characterInfoRect1, DT_WORDBREAK);
 		
-		if (mIsAlertOn)
-		{
-			mDuration -= Time::GetInstance()->DeltaTime();
 
-			HFONT newF = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-			HFONT oldF = (HFONT)SelectObject(hdc, newF);
-			SetTextColor(hdc, RGB(255, 0, 0));
-			wstring alert = L"리그 팀에는 최소 3명의 인원이 필요합니다";
-			RECT alertRect = RectMake(Random::GetInstance()->RandomInt(9,15), Random::GetInstance()->RandomInt(305,315), 1253, 70);
-			DrawText(hdc, alert.c_str(), alert.size(), &alertRect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-			SelectObject(hdc, oldF);
-			DeleteObject(newF);
 
-			SetTextColor(hdc, RGB(255, 255, 255));
 
-			if (mDuration < 0)
-			{
-				mDuration = 1.2f;
-				mIsAlertOn = false;
-			}
-		}
 
+		
+		RenderAlert(hdc);
 	}
 }
 
@@ -111,8 +109,8 @@ void StaffListDetail::Update()
 	{
 		if (mStaffList->GetStaffSize() > 3)
 		{
-			mCurrentStaff->SetIsDestroy(true); //제거
-			mDirector->PopStaff(mCurrentStaff->GetStaffName());
+			mCurrentStaff->SetIsDestroy(true); //매니저에서 제거
+			mDirector->PopStaff(mCurrentStaff->GetStaffName()); // 팀 명단 업데이트
 			mStaffList->UpdateStaffList(); //선수단 ui 업데이트
 			mTraining->UpdateStaffList(); //훈련 ui 업데이트
 			mStaffList->SetIsToggleDetail(false);
@@ -139,3 +137,27 @@ void StaffListDetail::Release()
 {
 }
 
+void StaffListDetail::RenderAlert(HDC hdc)
+{
+	if (mIsAlertOn)
+	{
+		mDuration -= Time::GetInstance()->DeltaTime();
+
+		HFONT newF = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		HFONT oldF = (HFONT)SelectObject(hdc, newF);
+		SetTextColor(hdc, RGB(255, 0, 0));
+		wstring alert = L"리그 팀에는 최소 3명의 인원이 필요합니다";
+		RECT alertRect = RectMake(Random::GetInstance()->RandomInt(9, 15), Random::GetInstance()->RandomInt(305, 315), 1253, 70);
+		DrawText(hdc, alert.c_str(), alert.size(), &alertRect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		SelectObject(hdc, oldF);
+		DeleteObject(newF);
+
+		SetTextColor(hdc, RGB(255, 255, 255));
+
+		if (mDuration < 0)
+		{
+			mDuration = 1.2f;
+			mIsAlertOn = false;
+		}
+	}
+}

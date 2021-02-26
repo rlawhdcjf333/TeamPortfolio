@@ -5,6 +5,7 @@
 UI::UI(const string& name)
 	:GameObject(name) 
 {
+	mMouseOverOn = true;
 	mIsActive = false;
 }
 
@@ -30,6 +31,7 @@ void UI::Init()
 		PickBattleUIInit();
 	}
 
+	mMouseOverOn = true;
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OnPatch("OnPatch"));
 }
 
@@ -101,21 +103,24 @@ void UI::LoadFromFile(const string& fileName)
 
 void UI::MouseOver(HDC hdc)
 {
-	for (int index = 0; index < mButtonList.size(); index++)
+	if (mMouseOverOn)
 	{
+		for (int index = 0; index < mButtonList.size(); index++)
+		{
 
-		HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
-		HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
-		HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
-		HPEN oldP = (HPEN)SelectObject(hdc, newP);
-		if (PtInRect(&mButtonList[index], _mousePosition)) {
+			HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
+			HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
+			HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
+			HPEN oldP = (HPEN)SelectObject(hdc, newP);
+			if (PtInRect(&mButtonList[index], _mousePosition)) {
 	
-			RenderRect(hdc, mButtonList[index]);
+				RenderRect(hdc, mButtonList[index]);
+			}
+			SelectObject(hdc, oldB);
+			DeleteObject(newB);
+			SelectObject(hdc, oldP);
+			DeleteObject(newP);
 		}
-		SelectObject(hdc, oldB);
-		DeleteObject(newB);
-		SelectObject(hdc, oldP);
-		DeleteObject(newP);
 	}
 
 }

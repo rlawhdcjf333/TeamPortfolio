@@ -2,8 +2,6 @@
 #include "Director.h"
 #include "Staff.h"
 
-//vector<string> Director::Name;
-
 Director::Director(const string& name, const wstring& fileName, const wstring& teamName)
 	:GameObject(name)
 {
@@ -12,15 +10,12 @@ Director::Director(const string& name, const wstring& fileName, const wstring& t
 	mIsActive = false;
 }
 
-// 굳이 감독 캐릭터가 필요할까??
-// 팀이름
-// TeamNuguri, TeamMansu, TeamJoyRoom, TeamCowHead
 void Director::Init()
 {
 	IMAGEMANAGER->GetInstance()->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 60, 60, true);
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
-	mGold = Random::GetInstance()->RandomInt(100, 500);
+	mGold = Random::GetInstance()->RandomInt(300, 700);
 	mRound = 1;
 	mWeek = 1;
 	mMonth = 1;
