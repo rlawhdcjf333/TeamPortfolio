@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "Director.h"
 #include "Staff.h"
+#include <algorithm>
 
 ObjectManager::ObjectManager()
 {
@@ -216,6 +217,20 @@ void ObjectManager::OriginSwap(ObjectLayer layerName, GameObject * old)
 		}
 	}
 		
+}
+
+void ObjectManager::Zorder()
+{
+	auto func = [](GameObject* a, GameObject* b)
+	{
+		if (a->GetX() == b->GetY()) //증말 흔치 않은 일이지만 이럴수도 있지
+		{
+			return a->GetName() < a->GetName();
+		}
+		return a->GetY() < b->GetY();
+	};
+	sort(mObjectList[ObjectLayer::Champ].begin(), mObjectList[ObjectLayer::Champ].end(), func);
+
 }
 
 
