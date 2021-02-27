@@ -28,21 +28,25 @@ void Feedback::Update()
 	mToggleButton(1, "Feedback", []() {
 		/*피드백 1번 버튼 누르면 작동할 코드*/
 		BData->Feedback(1);
+		BData->TeamChange();//피드백 후 팀변경 **순서 중요**
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
 	mToggleButton(2, "Feedback", []() {
 		/*피드백 2번 버튼 누르면 작동할 코드*/
 		BData->Feedback(2);
+		BData->TeamChange();
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
 	mToggleButton(3, "Feedback", []() {
 		/*피드백 3번 버튼 누르면 작동할 코드*/
 		BData->Feedback(3);
+		BData->TeamChange();
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
 	mToggleButton(4, "Feedback", []() {
 		/*피드백 4번 버튼 누르면 작동할 코드*/
 		BData->Feedback(4);
+		BData->TeamChange();
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
 }
