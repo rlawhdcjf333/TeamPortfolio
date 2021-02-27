@@ -20,6 +20,8 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
-	void SetImage(Image* img) { mImage = img; } //이걸 씬 init에서 쓰면~~
+	void RenderStaffList(HDC hdc, int x, int y, int index);
+	void RenderWatingList(HDC hdc, int x, int y, int index);
+
 };
 

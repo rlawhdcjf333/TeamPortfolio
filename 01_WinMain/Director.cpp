@@ -57,11 +57,11 @@ void Director::Render(HDC hdc)
 	}
 }
 
-
-void Director::UIRender(HDC hdc, int startX, int startY, int width, int height)
+void Director::UIRender(HDC hdc, int startX, int startY, int width, int height, bool b)
 {
 
 	mTeamImage->ScaleRender(hdc, startX, startY, width, height);
+	if (b == false) return;
 
 	RECT calendarRc = RectMake(860, 10, 160, 50);
 	RECT goldRc = RectMake(1100, 10, 160, 50);
@@ -160,15 +160,15 @@ string Director::RandomName()
 		mRandomNameList.push_back("Crom");
 		mRandomNameList.push_back("Jake");
 		mRandomNameList.push_back("Sam");
-		mRandomNameList.push_back("HobakGoguma");
+		mRandomNameList.push_back("Hobak");
 		mRandomNameList.push_back("Lockman");
 		mRandomNameList.push_back("Wa");
 		mRandomNameList.push_back("Maple");
-		mRandomNameList.push_back("Mr.Kyugil");
-		mRandomNameList.push_back("Ppangkkuttongkku");
-		mRandomNameList.push_back("Gonjaless");
+		mRandomNameList.push_back("Kyugil");
+		mRandomNameList.push_back("Back");
+		mRandomNameList.push_back("Gonjales");
 		mRandomNameList.push_back("Mario");
-		mRandomNameList.push_back("MG the God");
+		mRandomNameList.push_back("MGtheGod");
 		mRandomNameList.push_back("Takara");
 		mRandomNameList.push_back("Kakao");
 		mRandomNameList.push_back("Lion");
@@ -181,7 +181,7 @@ string Director::RandomName()
 		mRandomNameList.push_back("Kwangsub");
 		mRandomNameList.push_back("GHAAA");
 		mRandomNameList.push_back("Vecx");
-		mRandomNameList.push_back("NuguryMaster");
+		mRandomNameList.push_back("Nuguri");
 		mRandomNameList.push_back("Bryndi");
 		mRandomNameList.push_back("Eksomess");
 		mRandomNameList.push_back("Gwawle");
@@ -189,19 +189,19 @@ string Director::RandomName()
 		mRandomNameList.push_back("Iteric");
 		mRandomNameList.push_back("Jarrite");
 		mRandomNameList.push_back("Korten");
-		mRandomNameList.push_back("cidy sizer makes my feel hight");
+		mRandomNameList.push_back("Synth");
 		mRandomNameList.push_back("Umilum");
-		mRandomNameList.push_back("Webbitus");
+		mRandomNameList.push_back("Webbit");
 		mRandomNameList.push_back("Nugu");
 		mRandomNameList.push_back("Emetshelk");
 		mRandomNameList.push_back("Danice");
-		mRandomNameList.push_back("Edward Elic");
-		mRandomNameList.push_back("CommitPushij-jima");
-		mRandomNameList.push_back("Jumsimnagasumukulgugodhea");
+		mRandomNameList.push_back("Elic");
+		mRandomNameList.push_back("ComPush");
+		mRandomNameList.push_back("Jumsim");
 		mRandomNameList.push_back("Laliho");
 		mRandomNameList.push_back("Cloy");
 		mRandomNameList.push_back("Bob");
-		mRandomNameList.push_back("Brave Cookie");
+		mRandomNameList.push_back("Cookie");
 		mRandomNameList.push_back("Gardian");
 		mRandomNameList.push_back("Faker");
 		mRandomNameList.push_back("Last");

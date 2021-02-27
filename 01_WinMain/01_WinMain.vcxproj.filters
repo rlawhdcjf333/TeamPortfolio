@@ -493,9 +493,6 @@
     <ClCompile Include="BanPickGuide.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Schedule.cpp">
       <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
     </ClCompile>
@@ -660,13 +657,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ChampList.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ChampList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Title.cpp">
+      <Filter>MainGame\Scene\Title</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

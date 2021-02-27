@@ -117,7 +117,8 @@ void Schedule::Render(HDC hdc)
 
 void Schedule::LoadDirectorList()
 {
-	for (int i = 1; i < 5; i++) {
+	for (int i = 1; i < 5; i++) 
+	{
 		mDirectorList.push_back(ObjectManager::GetInstance()->FindObject("Director" + to_string(i)));
 	}
 }

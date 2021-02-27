@@ -12,14 +12,8 @@ void PickBattle::Init()
 
 	Background* background = new Background("Audiences", L"Audiences");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
-
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director1", L"TeamNuguri", L"TeamNuguri"));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director2", L"TeamMansu", L"TeamMansu"));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director3", L"TeamJoyRoom", L"TeamJoyRoom"));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
-
+	
 	ChampManager::GetInstance()->Init();
-	ScheduleManager::GetInstance()->Init();
 
 	UI* ui = new UI("pickbattleUI", "pickbattleUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
@@ -35,17 +29,19 @@ void PickBattle::Init()
 	
 	Director* player = (Director*)ObjectManager::GetInstance()->FindObject("Director1");
 	int thisWeek = player->GetWeek();
+	Director* enemy = ScheduleManager::GetInstance()->GetEnemy(thisWeek);
+
 	if (thisWeek & 0)
 	{
-		BData->SetPlayerTeam(Team::Blue); //일단 존중
+		BData->SetPlayerTeam(Team::Blue); 
 		BData->SetTeam(Team::Blue, player);
-		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
+		BData->SetTeam(Team::Red, enemy);
 	}
 	else
 	{
 		BData->SetPlayerTeam(Team::Red);
 		BData->SetTeam(Team::Red, player);
-		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
+		BData->SetTeam(Team::Blue, enemy);
 	}
 	
 }

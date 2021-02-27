@@ -78,7 +78,7 @@ public:
 	TeamData LoadStaffList(Director* dir);	//SetTeam에서 호출할 StaffList초기화용 함수
 	void StaffSwap(Staff* waittoselect,Staff* selecttowait);//1:대기선수,2:교체될 출전선수
 
-	void Pick(Champ* c, Staff* s) { GameObject* staff = (GameObject*)s; c->SetStaff(staff); }
+	//void Pick(Champ* c, Staff* s) { GameObject* staff = (GameObject*)s; c->SetStaff(staff); }
 	void ChampBan(Champ* ban);
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
 	void ChampSwap(Staff* st1, Staff* st2);//미완성보수필요

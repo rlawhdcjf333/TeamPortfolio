@@ -4,6 +4,7 @@
 #include "Staff.h"
 #include "StaffSelect.h"
 #include "Champ.h"
+
 void BattleData::RoundReset()
 {
 	for (int i = 0; i < mSelectChamp.size(); ++i)

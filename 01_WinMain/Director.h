@@ -11,15 +11,15 @@ class Director : public GameObject
 	wstring mFileName;
 	wstring mTeamName;
 
-	int mRound;
+	int mRound; //3ÆÇ 2¼± ¶ó¿îµå
 	int mMonth;
 	int mWeek;
 	int mGold;
 
-	int mRank;
-	int mWin;
-	int mLose;
-	int mLeagueScore;
+	int mRank; //¼øÀ§
+	int mWin; // ÃÑ ½Â¸® ÀüÀû
+	int mLose; // ÃÑ ÆĞ¹è ÀüÀû
+	int mLeagueScore; //ÃÑ ½ÂÁ¡
 
 	int mTeamTotalKill;
 	int mTeamTotalDeath;
@@ -46,7 +46,7 @@ public:
 	int GetWeek() { return mWeek; }
 	int GetGold() { return mGold; }
 
-	void UIRender(HDC hdc, int startX, int startY, int width, int height);
+	void UIRender(HDC hdc, int startX, int startY, int width, int height, bool b = true);
 	void TeamImageRender(HDC hdc, int startX, int startY, int widht, int height);
 	void TeamImageRender(HDC hdc, RECT rc);
 

@@ -26,6 +26,7 @@ public:
 	ObjectManager();
 
 	void Init();
+	void LoadInit();
 	void Release();
 	void Update();
 	void Render(HDC hdc);

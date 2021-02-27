@@ -110,3 +110,13 @@ inline void CallFont(HDC hdc, int size, function <void(void)> func)
 	SelectObject(hdc, oldF);
 	DeleteObject(newF);
 }
+
+inline void CallBrush(HDC hdc, COLORREF color, function <void(void)> func)
+{
+	HBRUSH newB = CreateSolidBrush(color);
+	HBRUSH oldF = (HBRUSH)SelectObject(hdc, newB);
+	func();
+	SelectObject(hdc, oldF);
+	DeleteObject(newB);
+
+}

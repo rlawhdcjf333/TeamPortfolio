@@ -17,42 +17,51 @@ ObjectManager::ObjectManager()
 
 void ObjectManager::Init()
 {
+	for (int i = 1; i < 5; i++)
+	{
+		Director* tmp = (Director*)Storage::GetInstance()->FindObject("Director" + to_string(i));
+		Director* copy = new Director(*tmp);
+		AddObject(ObjectLayer::Director, copy);
+	}
+
+	auto tmp = Storage::GetInstance()->GetObjectList(ObjectLayer::Staff);
+	for (int i = 0; i < Storage::GetInstance()->GetObjectList(ObjectLayer::Staff).size(); i++)
+	{
+		Staff* tempo = (Staff*)tmp[i];
+		Staff* copy = new Staff(*tempo);
+		AddObject(ObjectLayer::Staff, copy);
+	}
+
+
 	ObjectIter iter = mObjectList.begin();
 	
 	for (; iter != mObjectList.end(); ++iter)
 	{
 		for (int i = 0; i < iter->second.size(); ++i)
 		{
+			if (iter->first == ObjectLayer::Director) continue;
+			if (iter->first == ObjectLayer::Staff) continue;
+
 			iter->second[i]->Init();
-			
-			if (iter->first == ObjectLayer::Director)
-			{
-				if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) != nullptr) // 저장소에 같은 이름으로 된 데이터가 존재하면
-				{
-					GameObject* tmp = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
-					OriginSwap(ObjectLayer::Director, tmp); //스왑
-
-					Director * tmpdir = (Director*)iter->second[i];
-					for (string elem : tmpdir->GetStaffNameList())
-					{
-						mObjectList[ObjectLayer::Staff].push_back(new Staff(elem, elem, tmpdir->GetTeamName()));
-					}
-				}
-			}
-
-			if (iter->first == ObjectLayer::Staff)
-			{
-				if (Storage::GetInstance()->FindObject(iter->second[i]->GetName()) != nullptr) // 저장소에 같은 이름으로 된 데이터가 존재하면
-				{
-					GameObject* tmp = Storage::GetInstance()->FindObject(iter->second[i]->GetName());
-					OriginSwap(ObjectLayer::Staff, tmp); // 스왑
-				}
-			}
 		}
 	}
 
-	Storage::GetInstance()->CopyToStorage(mObjectList);
+	
 
+}
+
+void ObjectManager::LoadInit()
+{
+	ObjectIter iter = mObjectList.begin();
+
+	for (; iter != mObjectList.end(); ++iter)
+	{
+		for (int i = 0; i < iter->second.size(); ++i)
+		{
+			iter->second[i]->Init();
+
+		}
+	}
 }
 
 void ObjectManager::Release()
@@ -73,6 +82,7 @@ void ObjectManager::Release()
 	}
 	
 }
+
 
 void ObjectManager::Update()
 {
@@ -187,7 +197,7 @@ vector<class GameObject*> ObjectManager::GetObjectList(ObjectLayer layer)
 
 void ObjectManager::OriginSwap(ObjectLayer layerName, GameObject * old)
 {
-
+	// 그냥... 우리 CTO가 남긴 고민의 흔적 ㅠㅠ
 	auto& tmp = mObjectList[layerName];
 
 	for (GameObject*& elem : tmp)

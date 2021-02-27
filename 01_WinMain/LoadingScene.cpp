@@ -20,7 +20,13 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warriors", L"../04_Bgm/Warriors.mp3", true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BanPick", L"../04_Bgm/BanPick.mp3", true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warsong", L"../04_Bgm/Warsong.mp3", true); });
-	
+	AddLoadFunc([]() {ScheduleManager::GetInstance()->Init();});
+	AddLoadFunc([]() {ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director1", L"TeamNuguri", L"TeamNuguri"));});
+	AddLoadFunc([]() {ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director2", L"TeamMansu", L"TeamMansu"));});
+	AddLoadFunc([]() {ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director3", L"TeamJoyRoom", L"TeamJoyRoom"));});
+	AddLoadFunc([]() {ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));});
+	AddLoadFunc([]() {ObjectManager::GetInstance()->LoadInit();});
+
 
 	for (int i = 0; i < 50; i++) {AddLoadFunc([](){});} //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
 	for (int i = 0; i < 50; i++) { AddLoadFunc([]() {}); } //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
@@ -30,6 +36,7 @@ void LoadingScene::Init()
 
 void LoadingScene::Release()
 {
+	ObjectManager::GetInstance()->Release();
 }
 
 void LoadingScene::Update()
