@@ -3,7 +3,8 @@
 class GameObject;
 class ChampManager
 {
-	Singleton(ChampManager)
+	Singleton(ChampManager);
+
 	vector<GameObject*> mChampList;
 
 public:

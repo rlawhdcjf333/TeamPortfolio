@@ -13,17 +13,22 @@ struct TeamData
 {
 	Director* mDirector;		//감독
 	vector<Staff*> mStaffList;	//감독의 모든 선수
-	Staff* mSelectStaff[3];		//출전선수
-	Staff* mWaitStaff[2];		//대기선수
-	
-	int mKillCount;				//한 라운드의 킬 수
-	int mWinCount;				//판 승리수
+	//vector<Staff*> mSelectStaff;
+	//vector<Staff*> mWaitStaff;
+	Staff* mSelectStaff[3] = { nullptr ,nullptr,nullptr };		//출전선수
+	Staff* mWaitStaff[2] = { nullptr ,nullptr };		//대기선수
+
+	int mKillCount = 0;				//한 라운드의 킬 수
+	int mWinCount = 0;				//판 승리수
 };
+
 
 class BattleData	//싱글턴으로 만들어 저장
 {
 	Singleton(BattleData);
 private:
+
+
 	Team mPlayerTeam;//팀색깔 -> switch용 //
 
 	//mTeamData 구조체 사용; //개나이스 cto 싱글턴 쓰는게 굿
@@ -70,7 +75,7 @@ public:
 
 
 	void SetTeam(Team t, Director * dir);
-	void LoadStaffList(TeamData t);	//SetTeam에서 호출할 StaffList초기화용 함수
+	TeamData LoadStaffList(Director* dir);	//SetTeam에서 호출할 StaffList초기화용 함수
 	void StaffSwap(Staff* waittoselect,Staff* selecttowait);//1:대기선수,2:교체될 출전선수
 	void ChampBan(Champ* ban);
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
@@ -99,7 +104,7 @@ public:
 	vector<Staff*> GetEnemyStaff();
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
-
+	Director* GetEnemyDirector();
 };
 #define BData BattleData::GetInstance()
 /*

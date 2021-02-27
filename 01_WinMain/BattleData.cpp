@@ -17,24 +17,24 @@ void BattleData::SetTeam(Team t, Director * dir)
 	{
 	case Team::Blue:
 		mBlueTeam.mDirector = dir;
-		LoadStaffList(mBlueTeam);
-		mBlueTeam.mKillCount = 0;
-		mBlueTeam.mWinCount = 0;
+		mBlueTeam = LoadStaffList(dir);
 		break;
 	case Team::Red:
 		mRedTeam.mDirector = dir;
-		LoadStaffList(mRedTeam);
-		mRedTeam.mKillCount = 0;
-		mRedTeam.mWinCount = 0;
+		mRedTeam = LoadStaffList(dir);
 		break;
 	}
 }
-void BattleData::LoadStaffList(TeamData t)
-{
-	t.mStaffList.clear();
-	t.mStaffList.shrink_to_fit();
 
-	auto list = t.mDirector->GetStaffNameList();
+TeamData BattleData::LoadStaffList(Director* dir)
+{
+	 TeamData t ;
+	//t.mStaffList.clear();
+	//t.mStaffList.shrink_to_fit();
+	 t.mDirector = dir;
+
+
+	vector<string> list = dir->GetStaffNameList();
 
 	for (string elem : list)
 	{
@@ -50,9 +50,17 @@ void BattleData::LoadStaffList(TeamData t)
 	{
 		if (i < 3)
 			t.mSelectStaff[i] = t.mStaffList[i];
-		else if(i >= 3 && i < 5)
-			t.mWaitStaff[i] = t.mStaffList[i];
+		else if(i > 3 && i < 5)
+			t.mWaitStaff[i-3] = t.mStaffList[i];
 	}
+	t.mKillCount = 0;
+	t.mWinCount = 0;
+
+	Staff* tempo = t.mSelectStaff[0];
+	Staff* tempoi = t.mSelectStaff[1];
+	Staff* tempoiu = t.mSelectStaff[2];
+
+	return t;
 }
 
 void BattleData::StaffSwap(Staff * waittoselect, Staff * selecttowait)
@@ -320,4 +328,12 @@ void BattleData::TeamChange()
 	TeamData temp = mBlueTeam;	//temp에 블루팀 데이터 복사
 	mBlueTeam = mRedTeam;	//레드팀 데이터를 블루팀으로 복사
 	mRedTeam = temp;		//temp(블루팀 복사본)을 레드팀으로 복사 하면 스왑이 됐겠지?
+}
+
+Director * BattleData::GetEnemyDirector()
+{
+	if (mPlayerTeam == Team::Blue)
+		return mRedTeam.mDirector;
+	if (mPlayerTeam == Team::Red)
+		return mBlueTeam.mDirector;
 }

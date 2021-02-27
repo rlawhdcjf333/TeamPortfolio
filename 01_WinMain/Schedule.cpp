@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Schedule.h"
 #include "Director.h"
-#include "ScheduleManager.h"
 
 Schedule::Schedule()
 	:UI("Schedule")
@@ -16,11 +15,13 @@ void Schedule::Init()
 	IMAGEMANAGER->LoadFromFile(L"Schedule", Resources(L"Schedule.bmp"), WINSIZEX, WINSIZEY, true);
 	mImage = IMAGEMANAGER->FindImage(L"Schedule");
 
-	LoadDirectorList();
+	mDirectorList.clear();
 
-	mScheduleList = ScheduleManager::GetInstance()->GetSchedule();
-
-	mDirector = (Director*)mDirectorList[0];
+	//LoadDirectorList(); 스토리지 문제로 외부로 옮김 - CTO
+	//
+	//mScheduleList = ScheduleManager::GetInstance()->GetSchedule();
+	//
+	//mDirector = (Director*)mDirectorList[0];
 	   
 }
 
@@ -121,4 +122,15 @@ void Schedule::LoadDirectorList()
 	for (int i = 1; i < 5; i++) {
 		mDirectorList.push_back(ObjectManager::GetInstance()->FindObject("Director" + to_string(i)));
 	}
+}
+
+void Schedule::SetScheduleUI(map<int, vector<Director*>> list)
+{
+	for (int i = 1; i < 5; i++) 
+	{
+		mDirectorList.push_back(ObjectManager::GetInstance()->FindObject("Director" + to_string(i)));
+	}
+
+	mScheduleList = list;
+	mDirector = (Director*)mDirectorList[0];
 }

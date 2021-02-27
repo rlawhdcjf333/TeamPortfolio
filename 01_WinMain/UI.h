@@ -21,6 +21,7 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 	virtual void LoadFromFile(const string& fileName);
+	virtual void LoadFromFile(const string& fileName1, const string& fileName2);
 	
 	virtual void MouseOver(HDC hdc);
 	//Scene 전환이 일어나지 않는 버튼 토글;

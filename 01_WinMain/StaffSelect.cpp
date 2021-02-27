@@ -35,7 +35,7 @@ void StaffSelect::Update()
 	if (mIsActive)
 	{
 	//-
-		if (BData->GetPlayerTeam() == Team::Blue)//이러면 이미지 바뀔듯, 라운드가 돌고 돌아오면 거긴 Init이 안도니 여기서 바꿈
+		if (BData->GetPlayerTeam() == Team::Blue)//이러면 이미지 바뀔듯, 서순+
 			mImage = IMAGEMANAGER->FindImage(L"BlueSelect");
 		if (BData->GetPlayerTeam() == Team::Red)
 			mImage = IMAGEMANAGER->FindImage(L"RedSelect");
@@ -53,12 +53,14 @@ void StaffSelect::Update()
 				ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false);
 				ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true);
 				ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
+				//ObjectManager::GetInstance()->FindObject("ChampSelect")->SetIsActive(true);
 				ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(true);
 			}
 			mToggleButton(51, "StaffSelect", []() 
 				{
 					ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true); 
 					ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
+					//ObjectManager::GetInstance()->FindObject("ChampSelect")->SetIsActive(true);
 					ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(true);
 				}
 			);	//다음버튼... 자기자신은 false로 하고 다음걸 true

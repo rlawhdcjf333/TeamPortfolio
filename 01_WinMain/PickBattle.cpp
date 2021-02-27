@@ -17,14 +17,19 @@ void PickBattle::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director3", L"TeamJoyRoom", L"TeamJoyRoom"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
 
+	ChampManager::GetInstance()->Init();
+
 	UI* ui = new UI("pickbattleUI", "pickbattleUI");
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, ui);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
 	ObjectManager::GetInstance()->Init();
-	GameEventManager::GetInstance()->PushEvent(new UIDelayEvent("StaffSelect",2.f));
+	ScheduleManager::GetInstance()->Init();
 
 	SoundPlayer::GetInstance()->AllPause();
 	SoundPlayer::GetInstance()->Play(L"BanPick", 0.2f);
+
+	GameEventManager::GetInstance()->PushEvent(new UIDelayEvent("StaffSelect",2.f));
+
 
 	//--BData 호출
 	
@@ -35,6 +40,8 @@ void PickBattle::Init()
 		BData->SetPlayerTeam(Team::Blue); //일단 존중
 		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
 		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
+
+		auto temp = BData->GetEnemyStaff();
 		BData->SetStaffSelect();
 
 	}

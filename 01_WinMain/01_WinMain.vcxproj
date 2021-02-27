@@ -156,6 +156,8 @@
     <ClInclude Include="BattleUI.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="ChampCheck.h" />
+    <ClInclude Include="ChampSelect.h" />
+    <ClInclude Include="ChampInformation.h" />
     <ClInclude Include="ChampList.h" />
     <ClInclude Include="ChampManager.h" />
     <ClInclude Include="Child.h" />
@@ -235,7 +237,11 @@
     <ClCompile Include="BattleUI.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
+    <ClCompile Include="ChampSelect.cpp" />
+=======
+    <ClCompile Include="ChampInformation.cpp" />
     <ClCompile Include="ChampList.cpp" />
+>>>>>>> 9289b10eb60f2bb77ba1336a44d50074cf18ddb0
     <ClCompile Include="ChampManager.cpp" />
     <ClCompile Include="Cornian.cpp" />
     <ClCompile Include="MistKnight.cpp" />

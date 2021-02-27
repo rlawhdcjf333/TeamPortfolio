@@ -6,7 +6,7 @@
 #include "GameEvent.h"
 #include "Director.h"
 #include "Staff.h"
-#include "ChampManager.h"
+#include "Schedule.h"
 
 void Home::Init()
 {
@@ -20,13 +20,16 @@ void Home::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
 
 	ChampManager::GetInstance()->Init();
-	ScheduleManager::GetInstance()->Init();
 
 	UI* ui = new UI("homeUI", "homeUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
 
 	ObjectManager::GetInstance()->Init();
+	ScheduleManager::GetInstance()->Init();
+	Schedule* tmp = (Schedule*)ObjectManager::GetInstance()->FindObject("Schedule");
+	tmp->SetScheduleUI(ScheduleManager::GetInstance()->GetSchedule());
+
 
 	SoundPlayer::GetInstance()->AllPause();
 	SoundPlayer::GetInstance()->Play(L"Warriors", 0.2f);

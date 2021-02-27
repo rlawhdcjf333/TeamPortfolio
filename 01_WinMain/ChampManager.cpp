@@ -13,7 +13,6 @@
 
 void ChampManager::Init()
 {
-	//이걸 왜이렇게 어렵게 하고 있어?? 걍 champ* vector 만들어서 쓰면 되자너???
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Yeti("Champ1"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new HelmetPepe("Champ2"));

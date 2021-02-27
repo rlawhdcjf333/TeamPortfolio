@@ -19,10 +19,14 @@ void ScheduleManager::AddSchedule()
 
 void ScheduleManager::LoadDirectorList()
 {
+	vector <Director*> tmp;
+
 	for (int i = 1; i < 5; i++) {
 		Director* director = (Director*)ObjectManager::GetInstance()->FindObject("Director" + to_string(i));
-		mDirectorList.push_back(director);
+		tmp.push_back(director);
 	}
+
+	mDirectorList.assign(tmp.begin(), tmp.end());
 }
 
 void ScheduleManager::ShuffleDirectorList()

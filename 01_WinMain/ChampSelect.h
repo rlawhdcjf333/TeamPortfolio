@@ -1,19 +1,15 @@
 #pragma once
 #include "UI.h"
-
-class ChampInfo;
-class GameToggle :public UI
+class ChampSelect : public UI
 {
-	Image* mActive;
-	Image* mImage;
-
-	ChampInfo* mChampInfo;
+	Image *mBackFrame;
+	vector<GameObject*> mChampList;
 public:
+	ChampSelect();
 
-	GameToggle();
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
 };
+
