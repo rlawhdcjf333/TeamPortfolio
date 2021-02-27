@@ -308,3 +308,16 @@ vector<Staff*> BattleData::GetEnemyStaff()
 
 	return result;
 }
+
+void BattleData::TeamChange()
+{
+	//바꿀거 mPlayerTeam,mBlueTeam<->mRedTeam
+	if (mPlayerTeam == Team::Blue)	//mPlayerTeam : 함수 내에서 팀 식별용으로 쓰이는 변수 반전
+		mPlayerTeam = Team::Red;
+	else if (mPlayerTeam == Team::Red)	//else if <- 둘 중 하나만 실행되야해서
+		mPlayerTeam = Team::Blue;
+
+	TeamData temp = mBlueTeam;	//temp에 블루팀 데이터 복사
+	mBlueTeam = mRedTeam;	//레드팀 데이터를 블루팀으로 복사
+	mRedTeam = temp;		//temp(블루팀 복사본)을 레드팀으로 복사 하면 스왑이 됐겠지?
+}
