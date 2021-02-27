@@ -15,8 +15,6 @@ void Schedule::Init()
 	IMAGEMANAGER->LoadFromFile(L"Schedule", Resources(L"Schedule.bmp"), WINSIZEX, WINSIZEY, true);
 	mImage = IMAGEMANAGER->FindImage(L"Schedule");
 
-	mDirectorList.clear();
-
 	LoadDirectorList(); //다시 부활 CTO
 	
 	mScheduleList = ScheduleManager::GetInstance()->GetSchedule();

@@ -5,6 +5,7 @@
 #include "BackGround.h"
 #include "GameEvent.h"
 #include "Director.h"
+#include "StaffSelect.h"
 
 void PickBattle::Init()
 {
@@ -18,6 +19,7 @@ void PickBattle::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
 
 	ChampManager::GetInstance()->Init();
+	ScheduleManager::GetInstance()->Init();
 
 	UI* ui = new UI("pickbattleUI", "pickbattleUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
@@ -36,14 +38,13 @@ void PickBattle::Init()
 	if (thisWeek & 0)
 	{
 		BData->SetPlayerTeam(Team::Blue); //일단 존중
-		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
+		BData->SetTeam(Team::Blue, player);
 		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
-
 	}
 	else
 	{
 		BData->SetPlayerTeam(Team::Red);
-		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
+		BData->SetTeam(Team::Red, player);
 		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
 	}
 	

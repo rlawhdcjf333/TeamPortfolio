@@ -237,7 +237,6 @@
     <ClCompile Include="ChampCheck.cpp" />
     <ClCompile Include="ChampSelect.cpp" />
     <ClCompile Include="ChampInformation.cpp" />
-    <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="ChampManager.cpp" />
     <ClCompile Include="Cornian.cpp" />
     <ClCompile Include="MistKnight.cpp" />
