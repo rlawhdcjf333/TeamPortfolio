@@ -19,6 +19,5 @@ public :
 
 	void LoadDirectorList();
 
-	void SetScheduleUI(map<int, vector<Director*>> list);
 	
 };

@@ -17,11 +17,11 @@ void Schedule::Init()
 
 	mDirectorList.clear();
 
-	//LoadDirectorList(); 스토리지 문제로 외부로 옮김 - CTO
-	//
-	//mScheduleList = ScheduleManager::GetInstance()->GetSchedule();
-	//
-	//mDirector = (Director*)mDirectorList[0];
+	LoadDirectorList(); //다시 부활 CTO
+	
+	mScheduleList = ScheduleManager::GetInstance()->GetSchedule();
+	
+	mDirector = (Director*)mDirectorList[0];
 	   
 }
 
@@ -124,13 +124,4 @@ void Schedule::LoadDirectorList()
 	}
 }
 
-void Schedule::SetScheduleUI(map<int, vector<Director*>> list)
-{
-	for (int i = 1; i < 5; i++) 
-	{
-		mDirectorList.push_back(ObjectManager::GetInstance()->FindObject("Director" + to_string(i)));
-	}
 
-	mScheduleList = list;
-	mDirector = (Director*)mDirectorList[0];
-}
