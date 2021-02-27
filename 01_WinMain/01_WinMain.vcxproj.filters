@@ -583,8 +583,6 @@
     <Filter Include="MainGame\Object\Champ\Assassin\Healer">
       <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="NewStaff.cpp">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
     </ClCompile>
@@ -620,9 +618,6 @@
     </ClCompile>
     <ClCompile Include="ChampInformation.cpp">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
-    <ClCompile Include="ChampInformation.cpp">
-    </ClCompile>
-    <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClCompile>
     <ClInclude Include="NewStaff.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
@@ -663,13 +658,9 @@
     <ClInclude Include="ChampInformation.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ChampManager.cpp">
       <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ChampManager.h">
       <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>
