@@ -568,9 +568,6 @@
     <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule">
       <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule">
-      <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Object\UI\OnPatch\homeUI\OperationToggle">
       <UniqueIdentifier>{b87c1306-d534-4764-a7d9-900a79fba59a}</UniqueIdentifier>
     </Filter>
@@ -651,9 +648,6 @@
     </ClInclude>
     <ClInclude Include="ChampSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
-    </ClInclude>
-    <ClInclude Include="ChampInformation.h">
-      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
     <ClInclude Include="ChampInformation.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
