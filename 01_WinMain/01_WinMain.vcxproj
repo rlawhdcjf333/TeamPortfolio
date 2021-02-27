@@ -226,8 +226,6 @@
     <ClInclude Include="StaffListDetail.h" />
     <ClInclude Include="News.h" />
     <ClInclude Include="Sponsor.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanPickGuide.cpp" />
@@ -238,10 +236,8 @@
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
     <ClCompile Include="ChampSelect.cpp" />
-=======
     <ClCompile Include="ChampInformation.cpp" />
     <ClCompile Include="ChampList.cpp" />
->>>>>>> 9289b10eb60f2bb77ba1336a44d50074cf18ddb0
     <ClCompile Include="ChampManager.cpp" />
     <ClCompile Include="Cornian.cpp" />
     <ClCompile Include="MistKnight.cpp" />
@@ -312,11 +308,7 @@
     <ClCompile Include="StaffListDetail.cpp" />
     <ClCompile Include="News.cpp" />
     <ClCompile Include="Sponsor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="01_WinMain.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

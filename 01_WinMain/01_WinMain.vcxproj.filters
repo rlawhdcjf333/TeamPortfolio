@@ -568,6 +568,9 @@
     <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule">
       <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule">
+      <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MainGame\Object\UI\OnPatch\homeUI\OperationToggle">
       <UniqueIdentifier>{b87c1306-d534-4764-a7d9-900a79fba59a}</UniqueIdentifier>
     </Filter>
@@ -612,16 +615,15 @@
     <ClCompile Include="Feedback.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="ChampSelect.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
-=======
+    </ClCompile>
     <ClCompile Include="ChampInformation.cpp">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
->>>>>>> 9289b10eb60f2bb77ba1336a44d50074cf18ddb0
+    <ClCompile Include="ChampInformation.cpp">
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
+    <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
+    </ClCompile>
     <ClInclude Include="NewStaff.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
     </ClInclude>
@@ -652,13 +654,14 @@
     <ClInclude Include="Feedback.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="ChampSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
-=======
+    </ClInclude>
     <ClInclude Include="ChampInformation.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
->>>>>>> 9289b10eb60f2bb77ba1336a44d50074cf18ddb0
+    </ClInclude>
+    <ClInclude Include="ChampInformation.h">
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
