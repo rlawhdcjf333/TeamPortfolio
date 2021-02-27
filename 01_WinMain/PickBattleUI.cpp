@@ -21,7 +21,7 @@ void UI::PickBattleUIInit()
 }
 void UI::PickBattleUIUpdate()
 {
-	//업데이트는 생성된 오브젝트의 mIsActive = true 이면 알아서 업데이트, 랜더 된다? //그렇소
+	//업데이트는 생성된 오브젝트의 mIsActive = true 이면 알아서 업데이트, 랜더 된다?
 	function<void(void)> func;
 	func = []() {
 

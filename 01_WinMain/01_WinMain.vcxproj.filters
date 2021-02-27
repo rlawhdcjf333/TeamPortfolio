@@ -358,6 +358,9 @@
     <ClInclude Include="BattleUI.h">
       <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
+    <ClInclude Include="ScheduleManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="BattleData.h">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClInclude>
@@ -553,6 +556,9 @@
     <ClCompile Include="BattleUI.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClCompile>
+    <ClCompile Include="ScheduleManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="BattleData.cpp">
       <Filter>MainGame\Scene\PickBattle\BattleData</Filter>
     </ClCompile>
@@ -589,9 +595,6 @@
     <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\Sponsor">
       <UniqueIdentifier>{bdf1a325-27a8-48e6-86fa-799295b125d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\ScheduleManager">
-      <UniqueIdentifier>{100a8b16-9e0c-417d-ba52-70efbb66e176}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NewStaff.cpp">
@@ -618,9 +621,6 @@
     <ClCompile Include="Sponsor.cpp">
       <Filter>MainGame\Object\UI\homeUI\OperationToggle\Sponsor</Filter>
     </ClCompile>
-    <ClCompile Include="ScheduleManager.cpp">
-      <Filter>FrameWork\ScheduleManager</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NewStaff.h">
@@ -646,9 +646,6 @@
     </ClInclude>
     <ClInclude Include="Sponsor.h">
       <Filter>MainGame\Object\UI\homeUI\OperationToggle\Sponsor</Filter>
-    </ClInclude>
-    <ClInclude Include="ScheduleManager.h">
-      <Filter>FrameWork\ScheduleManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
