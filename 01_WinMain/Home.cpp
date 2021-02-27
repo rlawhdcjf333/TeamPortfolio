@@ -19,6 +19,7 @@ void Home::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director3", L"TeamJoyRoom", L"TeamJoyRoom"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
 
+	ScheduleManager::GetInstance()->Init();
 	ChampManager::GetInstance()->Init();
 
 	UI* ui = new UI("homeUI", "homeUI");
@@ -26,9 +27,6 @@ void Home::Init()
 
 
 	ObjectManager::GetInstance()->Init();
-	ScheduleManager::GetInstance()->Init();
-	Schedule* tmp = (Schedule*)ObjectManager::GetInstance()->FindObject("Schedule");
-	tmp->SetScheduleUI(ScheduleManager::GetInstance()->GetSchedule());
 
 
 	SoundPlayer::GetInstance()->AllPause();

@@ -23,13 +23,11 @@ void PickBattle::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
 	ObjectManager::GetInstance()->Init();
-	ScheduleManager::GetInstance()->Init();
 
 	SoundPlayer::GetInstance()->AllPause();
 	SoundPlayer::GetInstance()->Play(L"BanPick", 0.2f);
 
 	GameEventManager::GetInstance()->PushEvent(new UIDelayEvent("StaffSelect",2.f));
-
 
 	//--BData È£Ãâ
 	
@@ -41,19 +39,14 @@ void PickBattle::Init()
 		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
 		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
 
-		auto temp = BData->GetEnemyStaff();
-		BData->SetStaffSelect();
-
 	}
 	else
 	{
 		BData->SetPlayerTeam(Team::Red);
 		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
 		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
-		BData->SetStaffSelect();
 	}
 	
-	//--
 }
 
 void PickBattle::Release()
