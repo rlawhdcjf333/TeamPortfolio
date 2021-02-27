@@ -1,23 +1,23 @@
 #include "pch.h"
-#include "Peedback.h"
+#include "Feedback.h"
 
-Peedback::Peedback() : UI("Peedback")
+Feedback::Feedback() : UI("Feedback")
 {
 	mIsActive = false;
 }
 
-void Peedback::Init()
+void Feedback::Init()
 {
-	LoadFromFile("Peedback");
-	IMAGEMANAGER->LoadFromFile(L"Peedback", Resources(L"peedback.bmp"), 1252, 204, true);
-	mImage = IMAGEMANAGER->FindImage(L"Peedback");
+	LoadFromFile("Feedback");
+	IMAGEMANAGER->LoadFromFile(L"Feedback", Resources(L"peedback.bmp"), 1252, 204, true);
+	mImage = IMAGEMANAGER->FindImage(L"Feedback");
 }
 
-void Peedback::Release()
+void Feedback::Release()
 {
 }
 
-void Peedback::Update()
+void Feedback::Update()
 {
 	if (!mIsActive)
 		return;
@@ -25,25 +25,29 @@ void Peedback::Update()
 		1	2
 		3	4
 	*/
-	mToggleButton(1, "Peedback", []() {
+	mToggleButton(1, "Feedback", []() {
 		/*피드백 1번 버튼 누르면 작동할 코드*/
+		BData->Feedback(1);
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
-	mToggleButton(2, "Peedback", []() {
+	mToggleButton(2, "Feedback", []() {
 		/*피드백 2번 버튼 누르면 작동할 코드*/
+		BData->Feedback(2);
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
-	mToggleButton(3, "Peedback", []() {
+	mToggleButton(3, "Feedback", []() {
 		/*피드백 3번 버튼 누르면 작동할 코드*/
+		BData->Feedback(3);
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
-	mToggleButton(4, "Peedback", []() {
+	mToggleButton(4, "Feedback", []() {
 		/*피드백 4번 버튼 누르면 작동할 코드*/
+		BData->Feedback(4);
 		ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(true);
 		});
 }
 
-void Peedback::Render(HDC hdc)
+void Feedback::Render(HDC hdc)
 {
 	if (mIsActive)
 		mImage->Render(hdc, mButtonList[0].left, mButtonList[0].top);

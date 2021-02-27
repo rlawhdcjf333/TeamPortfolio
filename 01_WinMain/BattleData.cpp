@@ -170,7 +170,7 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 	mSelectChamp.find(st2)->second = temp;
 }
 
-void BattleData::Feedback(int i)
+void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
 {
 	//버튼별로 숫자를 지정해서 함수를 호출
 	int con = 0;

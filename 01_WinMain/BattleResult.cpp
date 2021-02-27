@@ -23,12 +23,12 @@ void BattleResult::Update()
 	if (Input::GetInstance()->GetKeyDown('F'))
 	{
 		ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
-		ObjectManager::GetInstance()->FindObject("Peedback")->SetIsActive(true);
+		ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
 		ObjectManager::GetInstance()->FindObject("BattleResult")->SetIsActive(false);
 	}
 	mToggleButton(0, "BattleResult", []() {
 		ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
-		ObjectManager::GetInstance()->FindObject("Peedback")->SetIsActive(true);
+		ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
 		});
 }
 

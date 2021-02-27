@@ -322,9 +322,6 @@
     <ClInclude Include="Battle.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClInclude>
-    <ClInclude Include="Peedback.h">
-      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
-    </ClInclude>
     <ClInclude Include="ChampCheck.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClInclude>
@@ -517,9 +514,6 @@
     <ClCompile Include="Battle.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
     </ClCompile>
-    <ClCompile Include="Peedback.cpp">
-      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
-    </ClCompile>
     <ClCompile Include="ChampCheck.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
@@ -621,6 +615,9 @@
     <ClCompile Include="ScheduleManager.cpp">
       <Filter>FrameWork\ScheduleManager</Filter>
     </ClCompile>
+    <ClCompile Include="Feedback.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NewStaff.h">
@@ -649,6 +646,9 @@
     </ClInclude>
     <ClInclude Include="ScheduleManager.h">
       <Filter>FrameWork\ScheduleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Feedback.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

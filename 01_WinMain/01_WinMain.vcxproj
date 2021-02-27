@@ -177,7 +177,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameToggle.h" />
     <ClInclude Include="BabyMonkey.h" />
-    <ClInclude Include="Peedback.h" />
+    <ClInclude Include="Feedback.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Schedule.h" />
     <ClInclude Include="StaffResult.h" />
@@ -252,7 +252,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameToggle.cpp" />
     <ClCompile Include="BabyMonkey.cpp" />
-    <ClCompile Include="Peedback.cpp" />
+    <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="TrainingDetail.cpp" />
