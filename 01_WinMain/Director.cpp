@@ -2,8 +2,6 @@
 #include "Director.h"
 #include "Staff.h"
 
-//vector<string> Director::Name;
-
 Director::Director(const string& name, const wstring& fileName, const wstring& teamName)
 	:GameObject(name)
 {
@@ -12,15 +10,12 @@ Director::Director(const string& name, const wstring& fileName, const wstring& t
 	mIsActive = false;
 }
 
-// 굳이 감독 캐릭터가 필요할까??
-// 팀이름
-// TeamNuguri, TeamMansu, TeamJoyRoom, TeamCowHead
 void Director::Init()
 {
 	IMAGEMANAGER->GetInstance()->LoadFromFile(mFileName, Resources(mFileName + L".bmp"), 60, 60, true);
 	mTeamImage = IMAGEMANAGER->GetInstance()->FindImage(mFileName);
 
-	mGold = Random::GetInstance()->RandomInt(100, 500);
+	mGold = Random::GetInstance()->RandomInt(300, 700);
 	mRound = 1;
 	mWeek = 1;
 	mMonth = 1;
@@ -93,6 +88,18 @@ void Director::AddStaff(string name)
 	mStaffNameList.push_back(name);
 }
 
+void Director::PopStaff(string name)
+{
+	for (int i=0; i<mStaffNameList.size(); i++)
+	{
+		if (mStaffNameList[i]==name)
+		{
+			mStaffNameList.erase(mStaffNameList.begin() + i);
+			i--;
+		}
+	}
+}
+
 Director::Director(const Director & copy)
 	:GameObject(copy)
 {
@@ -104,7 +111,6 @@ Director::Director(const Director & copy)
 	mMonth = copy.mMonth;
 	mWeek = copy.mWeek;
 	mGold = copy.mGold;
-	mRound = copy.mRound;
 
 	mWin = copy.mWin;
 	mLose = copy.mLose;
@@ -124,7 +130,6 @@ Director & Director::operator=(const Director & copy)
 	mMonth = copy.mMonth;
 	mWeek = copy.mWeek;
 	mGold = copy.mGold;
-	mRound = copy.mRound;
 
 	mWin = copy.mWin;
 	mLose = copy.mLose;

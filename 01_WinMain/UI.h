@@ -8,8 +8,9 @@ protected: vector <RECT> mButtonList;
 
 private:
 	string mFileName;
-	Image* mImage;
 	bool mTrigger;
+
+	bool mMouseOverOn;
 
 public:
 	UI(const string& name);
@@ -24,7 +25,7 @@ public:
 	virtual void MouseOver(HDC hdc);
 	//Scene 전환이 일어나지 않는 버튼 토글;
 	virtual void mToggleButton(int index, string UIName, function <void(void)> func = []() {});
-	//LoadScene 불러오는 버튼 토글; 이걸 쓸때는 Update의 >>최하단부<<에 쓴다.
+	//LoadScene 불러오는 버튼 토글; 
 	virtual void mSceneChangeButton(int index, wstring nextSceneName, bool sceneEvent =false, function <void(void)> func = []() {});
 	
 	void TitleUIInit();
@@ -37,5 +38,7 @@ public:
 	//PickBattle 제어
 	void PickBattleUIInit();
 	void PickBattleUIUpdate();
+
+	void SetMouseOver(bool b) { mMouseOverOn = b; }
 };
 

@@ -62,6 +62,7 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+	void UIRender(HDC  hdc, int startX, int startY, int width, int height); //UI¿ë ·»´õ
 
 	void ChampImageRender(HDC hdc, RECT rc);
 

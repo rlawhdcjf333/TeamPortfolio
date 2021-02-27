@@ -28,14 +28,23 @@ void PickBattle::Init()
 
 	//--BData 호출
 	
-	map<int,vector<Director*>> temp = ScheduleManager::GetInstance()->GetSchedule();//map
-	GameObject* tp = ObjectManager::GetInstance()->FindObject("Director1");
-	Director* nugul = (Director*)tp;
-	int key = nugul->GetRound();
-	vector<Director*> tempList = ScheduleManager::GetInstance()->GetDayDirector(1);
-	BData->SetPlayerTeam(Team::Blue);
-	BData->SetTeam(Team::Blue, nugul);
-	BData->SetTeam(Team::Red, tempList[1]);
+	Director* player = (Director*)ObjectManager::GetInstance()->FindObject("Director1");
+	int thisWeek = player->GetWeek();
+	if (thisWeek & 0)
+	{
+		BData->SetPlayerTeam(Team::Blue); //일단 존중
+		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
+		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
+		BData->SetStaffSelect();
+
+	}
+	else
+	{
+		BData->SetPlayerTeam(Team::Red);
+		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
+		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
+		BData->SetStaffSelect();
+	}
 	
 	//--
 }
@@ -50,6 +59,7 @@ void PickBattle::Update()
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
+	ObjectManager::GetInstance()->Zorder();
 
 }
 

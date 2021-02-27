@@ -21,6 +21,7 @@ void Schedule::Init()
 	mScheduleList = ScheduleManager::GetInstance()->GetSchedule();
 
 	mDirector = (Director*)mDirectorList[0];
+	   
 }
 
 void Schedule::Release()

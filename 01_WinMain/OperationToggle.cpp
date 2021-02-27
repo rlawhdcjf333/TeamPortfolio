@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "OperationToggle.h"
+#include "News.h"
+#include "Sponsor.h"
 
 OperationToggle::OperationToggle()
 	:UI("OperationToggle")
@@ -17,8 +19,8 @@ void OperationToggle::Init()
 	IMAGEMANAGER->LoadFromFile(L"OperationToggleClick", Resources(L"OperationToggleClick.bmp"), 162, 50, true);
 	mActive = IMAGEMANAGER->FindImage(L"OperationToggleClick");
 
-
-
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new News);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Sponsor);
 }
 
 void OperationToggle::Release()
@@ -27,16 +29,11 @@ void OperationToggle::Release()
 
 void OperationToggle::Update()
 {
-	if (mIsActive)
-	{
-
-
-		auto func = [] () {ObjectManager::GetInstance()->FindObject("OperationToggle")->SetIsActive(false); };
-		mToggleButton(1, "OnPatch", func);
-		mToggleButton(2, "OnPatch", func);
-
-
-	}
+	auto func = [this]() {mIsActive = false; };
+	mToggleButton(0, "News", func);
+	mToggleButton(1, "OnPatch", func);
+	mToggleButton(2, "OnPatch", func);
+	mToggleButton(3, "Sponsor", func);
 
 }
 
@@ -48,6 +45,7 @@ void OperationToggle::Render(HDC hdc)
 		mImage->Render(hdc, 193, 454);
 		MouseOver(hdc);
 		mActive->Render(hdc, 191, 648);
+
 	}
 
 }

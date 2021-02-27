@@ -15,6 +15,8 @@ class TrainingDetail :public UI
 	int originPoint;
 
 	RECT trainingRect[3];
+	RECT atkRect[3];
+	RECT defRect[3];
 
 public:
 	TrainingDetail();

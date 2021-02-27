@@ -83,3 +83,30 @@ inline bool IntersectRectToCircle(RECT rc, int x, int y, int radius)
 	//충돌하지 않았다
 	return false;
 }
+
+inline string WtoS(wstring wstr)
+{
+	string result;
+
+	result.assign(wstr.begin(), wstr.end());
+
+	return result;
+}
+
+inline wstring StoW(string str)
+{
+	wstring result;
+
+	result.assign(str.begin(), str.end());
+
+	return result;
+}
+
+inline void CallFont(HDC hdc, int size, function <void(void)> func)
+{
+	HFONT newF = CreateFont(size, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	HFONT oldF = (HFONT)SelectObject(hdc, newF);
+	func();
+	SelectObject(hdc, oldF);
+	DeleteObject(newF);
+}

@@ -17,6 +17,7 @@
 #include <functional>
 #include <fstream>
 #include <algorithm>
+#include <assert.h>
 
 using namespace std;
 
