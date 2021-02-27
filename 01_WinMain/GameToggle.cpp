@@ -10,8 +10,7 @@ GameToggle::GameToggle()
 
 void GameToggle::Init()
 {
-	RECT champInfo = RectMake(554, 596, 162, 50);
-	mButtonList.push_back(champInfo);
+	mButtonList.push_back({548,596,548+156,596+50});
 
 
 	IMAGEMANAGER->LoadFromFile(L"GameToggle", Resources(L"GameToggle.bmp"), 162, 50, true);
@@ -20,7 +19,7 @@ void GameToggle::Init()
 	IMAGEMANAGER->LoadFromFile(L"GameToggleClick", Resources(L"GameToggleClick.bmp"), 162, 50, true);
 	mActive = IMAGEMANAGER->FindImage(L"GameToggleClick");
 
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampInfo);
+	//ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampInfo);
 
 }
 

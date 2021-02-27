@@ -22,7 +22,6 @@ Champ::Champ(const string& name, float x, float y) : GameObject(name)
 void Champ::Init()
 {
 
-
 }
 
 void Champ::Release()
@@ -38,6 +37,13 @@ void Champ::Update()
 void Champ::Render(HDC hdc)
 {
 	mImage->AlphaScaleFrameRender(hdc, mRect.left, mRect.top, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 100, 100, mAlpha);
+
+}
+
+void Champ::UIRender(HDC hdc, int startX, int startY, int width, int height)
+{
+
+	mImage->ScaleFrameRender(hdc, startX, startY, 0,0, width, height);
 
 }
 

@@ -5,6 +5,7 @@
 #include "Staff.h"
 #include "StaffList.h"
 #include "Training.h"
+#include "Champ.h"
 
 StaffResult::StaffResult(int x, int y, Director* dir)
 	:UI("StaffResult")
@@ -24,9 +25,9 @@ StaffResult::StaffResult(int x, int y, Director* dir)
 
 void StaffResult::Init()
 {
-	RECT rc1 = RectMake(mX + 18, mY + 331, 118, 30);
+	RECT rc1 = RectMake(mX + 18, mY + 331, 118, 32);
 	mButtonList.push_back(rc1);
-	RECT rc2 = RectMake(mX + 158, mY + 331, 118, 30);
+	RECT rc2 = RectMake(mX + 158, mY + 331, 118, 32);
 	mButtonList.push_back(rc2);
 
 	IMAGEMANAGER->LoadFromFile(L"StaffResult", Resources(L"StaffResult.bmp"), 293, 381, true);
@@ -63,7 +64,6 @@ void StaffResult::Update()
 				
 				Staff* copy = new Staff(*mStaff); // 생성된 스태프 복사
 				ObjectManager::GetInstance()->AddObject(ObjectLayer::Staff, copy); // 매니저에도 등록
-				Storage::GetInstance()->StaffInsert(copy);// 저장소에도 등록
 				mDirector->AddStaff(copy->GetName()); // 팀에 등록
 				mStaffList->UpdateStaffList(); //선수단 ui 업데이트
 				mTraining->UpdateStaffList();  // 훈련 ui 업데이트
@@ -125,13 +125,43 @@ void StaffResult::Render(HDC hdc)
 		TextOut(hdc, mX+35, mY+150, tmpChar.c_str(), tmpChar.size());
 
 		//특성 설명 표시
+		RECT infoRect = RectMake(mX + 40, mY + 170, 220, 70);
 		wstring tmpCharInfo = mStaff->GetCharInfo(1);
-		TextOut(hdc, mX + 35, mY + 170, tmpCharInfo.c_str(), tmpCharInfo.size());
+		DrawText(hdc, tmpCharInfo.c_str(), tmpCharInfo.size(), &infoRect, DT_LEFT|DT_WORDBREAK);
 
 		//비용 표시
 		RECT tmpRect = RectMake(mX + 150, mY + 272, 90, 38);
 		wstring costStr = to_wstring(mCost);
-		DrawText(hdc, costStr.c_str(), costStr.size(), &tmpRect, DT_SINGLELINE | DT_VCENTER | DT_RIGHT);
+		DrawText(hdc, costStr.c_str(), costStr.size(), &tmpRect,  DT_RIGHT|DT_SINGLELINE|DT_VCENTER);
+
+		//모스트 픽 표시
+		auto mostPickList = mStaff->GetMostChamp();
+
+		auto pickListIter = mostPickList.begin();
+		auto pickListIter2 = mostPickList.rbegin();
+		
+		string mostPick1 = pickListIter->first;
+		string mostPick2 = pickListIter2->first;
+
+		int mostPick1Val = pickListIter->second;
+		int mostPick2Val = pickListIter2->second;
+
+		Champ* mostChamp1 = (Champ*)ObjectManager::GetInstance()->FindObject(mostPick1);
+		Champ* mostChamp2 = (Champ*)ObjectManager::GetInstance()->FindObject(mostPick2);
+
+		mostChamp1->UIRender(hdc, mX + 12, mY + 70, 50, 48);
+		mostChamp2->UIRender(hdc, mX + 84, mY + 70, 50, 48);
+
+		wstring mostPick1Pt = to_wstring(mostPick1Val);
+		wstring mostPick2Pt = to_wstring(mostPick2Val);
+
+		RECT rect1 = RectMake(mX + 40, mY + 68, 23, 16);
+		RECT rect2 = RectMake(mX + 112, mY + 68, 23, 16);
+
+		DrawText(hdc, mostPick1Pt.c_str(), mostPick1Pt.size(), &rect1, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+		DrawText(hdc, mostPick2Pt.c_str(), mostPick2Pt.size(), &rect2, DT_VCENTER | DT_CENTER | DT_SINGLELINE);
+
+
 
 	}
 

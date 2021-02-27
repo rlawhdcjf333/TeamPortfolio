@@ -14,5 +14,7 @@ public:
 	void Release()override;
 	void Render(HDC hdc)override;
 
+	void ResetCurrentTime() { mCurrentTime = 0; }
+
 };
 

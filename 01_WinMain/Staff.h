@@ -33,8 +33,6 @@ class Staff : public GameObject
 protected:
 	string mStaffName;
 	Image* mImage;
-	map <wstring, Animation*> mAnimationList;
-	Animation* mCurrentAnm;
 
 	wstring mFileName;
 	wstring mTeamName;
@@ -48,7 +46,7 @@ protected:
 	Character mChar1;	//if(Character::None) 표시 안함
 	Character mChar2;	//if(Character::None) 표시 안함
 
-	int mTraningPoint;	//Scene1:Home 에서 훈련에 쓰일 변수, 여기 있어야하나? Scene1::Home에서 쓰는거라 필요없으면 없애도 됨
+	int mTrainingPoint;	//Scene1:Home 에서 훈련에 쓰일 변수, 여기 있어야하나? Scene1::Home에서 쓰는거라 필요없으면 없애도 됨
 	int mRandomIndexX;	//이미지 랜덤 변수
 	int mRandomIndexY;	//이미지 랜덤 변수
 
@@ -101,18 +99,37 @@ public:
 	
 	map<string, int> GetMostChamp() { return mMostChamp; }
 
-	int GetTrainingPoint()const { return mTraningPoint; }
-	void SetTrainingPoint(int val) { mTraningPoint = val; }
-	void MinusTrainingPoint() { mTraningPoint--; }
-	void PlusTrainingPoint() { mTraningPoint++; }
+	int GetTrainingPoint()const { return mTrainingPoint; }
+	void SetTrainingPoint(int val) { mTrainingPoint = val; }
+	void MinusTrainingPoint() { mTrainingPoint--; }
+	void PlusTrainingPoint() { mTrainingPoint++; }
 
 	void PlusAtk() { mAtk++; }
 	void PlusDef() { mDef++; }
 	void MinusAtk() { mAtk--;}
 	void MinusDef() { mDef--; }
 
+	void PlusMost1() 
+	{
+		mMostChamp[mMostChamp.begin()->first] = mMostChamp.begin()->second + 1;
+	}
+	void MinusMost1()
+	{
+		mMostChamp[mMostChamp.begin()->first] = mMostChamp.begin()->second - 1;
+	}
+	void PlusMost2()
+	{
+		mMostChamp[mMostChamp.rbegin()->first] = mMostChamp.rbegin()->second + 1;
+	}
+	void MinusMost2()
+	{
+		mMostChamp[mMostChamp.rbegin()->first] = mMostChamp.rbegin()->second - 1;
+	}
 	Condition GetCondition()const { return mCondition; }
 	void SetCondition(Condition con) { mCondition = con; }
+
+	int GetCost() { return mCost; }
+
 public:
 	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요. 새로운 변수 생기면 반드시 여기다가도 추가해야함
 	Staff& operator= (const Staff& copy); //복사 연산자 오버로딩. 이 클래스에 새로운 변수가 생기면 반드시 여기다가도 추가해야함
