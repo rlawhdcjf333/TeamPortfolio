@@ -17,24 +17,24 @@ void BattleData::SetTeam(Team t, Director * dir)
 	{
 	case Team::Blue:
 		mBlueTeam.mDirector = dir;
-		LoadStaffList(mBlueTeam);
-		mBlueTeam.mKillCount = 0;
-		mBlueTeam.mWinCount = 0;
+		mBlueTeam = LoadStaffList(dir);
 		break;
 	case Team::Red:
 		mRedTeam.mDirector = dir;
-		LoadStaffList(mRedTeam);
-		mRedTeam.mKillCount = 0;
-		mRedTeam.mWinCount = 0;
+		mRedTeam = LoadStaffList(dir);
 		break;
 	}
 }
-void BattleData::LoadStaffList(TeamData t)
-{
-	t.mStaffList.clear();
-	t.mStaffList.shrink_to_fit();
 
-	auto list = t.mDirector->GetStaffNameList();
+TeamData BattleData::LoadStaffList(Director* dir)
+{
+	 TeamData t ;
+	//t.mStaffList.clear();
+	//t.mStaffList.shrink_to_fit();
+	 t.mDirector = dir;
+
+
+	vector<string> list = dir->GetStaffNameList();
 
 	for (string elem : list)
 	{
@@ -50,9 +50,17 @@ void BattleData::LoadStaffList(TeamData t)
 	{
 		if (i < 3)
 			t.mSelectStaff[i] = t.mStaffList[i];
-		else if(i >= 3 && i < 5)
-			t.mWaitStaff[i] = t.mStaffList[i];
+		else if(i > 3 && i < 5)
+			t.mWaitStaff[i-3] = t.mStaffList[i];
 	}
+	t.mKillCount = 0;
+	t.mWinCount = 0;
+
+	Staff* tempo = t.mSelectStaff[0];
+	Staff* tempoi = t.mSelectStaff[1];
+	Staff* tempoiu = t.mSelectStaff[2];
+
+	return t;
 }
 
 void BattleData::StaffSwap(Staff * waittoselect, Staff * selecttowait)

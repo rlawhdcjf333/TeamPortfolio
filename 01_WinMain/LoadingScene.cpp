@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "LoadingScene.h"
 #include "Image.h"
+#include "Director.h"
 
 void LoadingScene::AddLoadFunc(const function<void(void)>& func)
 {
@@ -16,9 +17,11 @@ void LoadingScene::Init()
 	mImage = IMAGEMANAGER->FindImage(L"LoadingScene");
 
 
-	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warriors", L"../04_Bgm/Warriors.mp3", true);});
-	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BanPick", L"../04_Bgm/BanPick.mp3", true);});
-	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warsong", L"../04_Bgm/Warsong.mp3", true);});
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warriors", L"../04_Bgm/Warriors.mp3", true); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BanPick", L"../04_Bgm/BanPick.mp3", true); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warsong", L"../04_Bgm/Warsong.mp3", true); });
+	
+
 	for (int i = 0; i < 50; i++) {AddLoadFunc([](){});} //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
 	for (int i = 0; i < 50; i++) { AddLoadFunc([]() {}); } //µô·¹ÀÌ 0.5ÃÊ¸¦ À§ÇÑ »½ÆãÅÍ
 

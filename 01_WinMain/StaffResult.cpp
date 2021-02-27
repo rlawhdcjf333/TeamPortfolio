@@ -36,7 +36,6 @@ void StaffResult::Init()
 	string newStaffName = mDirector->RandomName();
 	mStaff = new Staff(newStaffName, newStaffName, L"TeamNuguri");
 	mStaff->Init();
-	mStaff->SetTrainingPoint(0); //새로 영입하는 선수는 훈련포인트 0으로 초기화
 
 	mCost = 100 + mStaff->GetAtk() * 10 + mStaff->GetDef() * 10;
 
