@@ -2,6 +2,7 @@
 #include "BattleData.h"
 #include "Director.h"
 #include "Staff.h"
+#include "StaffSelect.h"
 
 void BattleData::RoundReset()
 {
@@ -264,4 +265,46 @@ void BattleData::SetResult()
 		mBlueTeam.mDirector->SetLose(mBlueTeam.mDirector->GetLose() + 1);
 		mRedTeam.mDirector->SetWin(mRedTeam.mDirector->GetWin() + 1);
 	}
+}
+
+void BattleData::SetStaffSelect()
+{
+	StaffSelect* tmp = (StaffSelect*)ObjectManager::GetInstance()->FindObject("StaffSelect");
+
+	if (mPlayerTeam == Team::Blue)
+	{
+		tmp->SetImage(IMAGEMANAGER->FindImage(L"BlueSelect"));
+	}
+	else if(mPlayerTeam==Team::Red)
+	{
+		tmp->SetImage(IMAGEMANAGER->FindImage(L"RedSelect"));
+	}
+	else
+	{
+		wstring alert = L"플레이어 팀이 지정되지 않았거나 잘못된 값이 설정되었습니다.";
+		wstring caption = L"오류!";
+		MessageBox(_hWnd, alert.c_str(), caption.c_str(), MB_OK);
+		assert(false);
+		
+	}
+}
+
+vector<Staff*> BattleData::GetEnemyStaff()
+{
+	vector <Staff*> result;
+
+	if (mPlayerTeam == Team::Blue)
+	{
+		result.push_back(mRedTeam.mStaffList[0]);
+		result.push_back(mRedTeam.mStaffList[1]);
+		result.push_back(mRedTeam.mStaffList[2]);
+	}
+	else if (mPlayerTeam == Team::Red)
+	{
+		result.push_back(mBlueTeam.mStaffList[0]);
+		result.push_back(mBlueTeam.mStaffList[1]);
+		result.push_back(mBlueTeam.mStaffList[2]);
+	}
+
+	return result;
 }
