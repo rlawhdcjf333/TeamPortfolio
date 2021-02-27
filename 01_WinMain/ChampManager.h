@@ -1,11 +1,10 @@
 #pragma once
 
 class GameObject;
-class ChampManager
-{
+class ChampManager {
 	Singleton(ChampManager)
-	vector<GameObject*> mChampList;
 
+	vector<GameObject*> mChampList;
 public:
 	void Init();
 	void Release();

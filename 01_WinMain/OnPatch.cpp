@@ -9,7 +9,7 @@ void OnPatch::Init()
 	IMAGEMANAGER->LoadFromFile(L"OnPatch", Resources(L"OnPatch.bmp"), 260, 132, true);
 	mImage = IMAGEMANAGER->FindImage(L"OnPatch");
 
-	mDuration = 1.f;
+	mDuration = 2.f;
 	mCurrentTime = 0.f;
 }
 
@@ -22,13 +22,14 @@ void OnPatch::Update()
 		if (mCurrentTime >= mDuration)
 		{
 			mCurrentTime = 0.f;
-			mIsActive = false;
+			ObjectManager::GetInstance()->FindObject("OnPatch")->SetIsActive(false);
 		}
+
 
 		if (Input::GetInstance()->GetKeyUp(VK_ESCAPE))
 		{
 			mCurrentTime = 0.f;
-			mIsActive = false;
+			ObjectManager::GetInstance()->FindObject("OnPatch")->SetIsActive(false);
 		}
 	}
 	

@@ -5,7 +5,6 @@
 UI::UI(const string& name)
 	:GameObject(name) 
 {
-	mMouseOverOn = true;
 	mIsActive = false;
 }
 
@@ -31,7 +30,6 @@ void UI::Init()
 		PickBattleUIInit();
 	}
 
-	mMouseOverOn = true;
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new OnPatch("OnPatch"));
 }
 
@@ -103,24 +101,21 @@ void UI::LoadFromFile(const string& fileName)
 
 void UI::MouseOver(HDC hdc)
 {
-	if (mMouseOverOn)
+	for (int index = 0; index < mButtonList.size(); index++)
 	{
-		for (int index = 0; index < mButtonList.size(); index++)
-		{
 
-			HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
-			HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
-			HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
-			HPEN oldP = (HPEN)SelectObject(hdc, newP);
-			if (PtInRect(&mButtonList[index], _mousePosition)) {
+		HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
+		HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
+		HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
+		HPEN oldP = (HPEN)SelectObject(hdc, newP);
+		if (PtInRect(&mButtonList[index], _mousePosition)) {
 	
-				RenderRect(hdc, mButtonList[index]);
-			}
-			SelectObject(hdc, oldB);
-			DeleteObject(newB);
-			SelectObject(hdc, oldP);
-			DeleteObject(newP);
+			RenderRect(hdc, mButtonList[index]);
 		}
+		SelectObject(hdc, oldB);
+		DeleteObject(newB);
+		SelectObject(hdc, oldP);
+		DeleteObject(newP);
 	}
 
 }
@@ -131,13 +126,7 @@ void UI::mToggleButton(int index, string UIName, function <void(void)> func)
 
 		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
 
-			if (UIName == "OnPatch")
-			{
-				OnPatch* tmp = (OnPatch*)ObjectManager::GetInstance()->FindObject(UIName);
-				tmp->SetIsActive(true);
-				tmp->ResetCurrentTime();
-			}
-			else if (UIName != "None")
+			if (UIName != "None")
 			{
 				GameObject* hptr = ObjectManager::GetInstance()->FindObject(UIName);
 				hptr->SetIsActive(!hptr->GetIsActive());

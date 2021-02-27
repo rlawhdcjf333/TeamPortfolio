@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "StaffList.h"
-#include "Training.h"
-#include "StaffListDetail.h"
 #include "Staff.h"
-#include "Director.h"
-#include "Champ.h"
 
 StaffList::StaffList()
 	:UI("StaffList")
@@ -20,44 +16,29 @@ void StaffList::Init()
 	mImage = IMAGEMANAGER->FindImage(L"StaffList");
 
 	LoadStaffList();
-
-	mIsToggleDetail = false;
-	mStaffListDetail = new StaffListDetail;
-	mStaffListDetail->SetStaffList(this);
-	mStaffListDetail->Init();
 }
 
 void StaffList::Release()
 {
-	mStaffListDetail->Release();
-	SafeDelete(mStaffListDetail);
+
 }
 
 void StaffList::Update()
 {
-	ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
-	ObjectManager::GetInstance()->FindObject("GameToggle")->SetIsActive(false);
-	ObjectManager::GetInstance()->FindObject("HomeToBattle")->SetIsActive(false);
-	ObjectManager::GetInstance()->FindObject("LeagueToggle")->SetIsActive(false);
-	ObjectManager::GetInstance()->FindObject("OperationToggle")->SetIsActive(false);
-	ObjectManager::GetInstance()->FindObject("SystemToggle")->SetIsActive(false);
-
-	if (!mIsToggleDetail)
+	if (mIsActive)
 	{
-		for (int i = 0; i < mStaffList.size(); i++)
-		{
-			auto func = [this, i]()
-			{
-				mStaffListDetail->SetStaff(mStaffList[i]);
-				mStaffListDetail->SetIsActive(true);
-				mIsToggleDetail = true;
-			};
-			mToggleButton(i, "None", func);
-		}
+
+		ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("GameToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("HomeToBattle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("LeagueToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("OperationToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("SystemToggle")->SetIsActive(false);
+
 		mToggleButton(5, "StaffList");
 	}
 
-	mStaffListDetail->Update();
+
 
 }
 
@@ -77,9 +58,10 @@ void StaffList::Render(HDC hdc)
 			RECT defRc = RectMake(665, 187 + (i * 70), 50, 50);
 			string temp = mStaffList[i]->GetStaffName();
 			wstring charStr1 = mStaffList[i]->GetCharComment(1);
-			wstring nameStr = StoW(temp);
+			wstring nameStr;
 			wstring atkStr = to_wstring(mStaffList[i]->GetAtk());
 			wstring defStr = to_wstring(mStaffList[i]->GetDef());
+			nameStr.assign(temp.begin(), temp.end());
 			
 			HBRUSH newB = CreateSolidBrush(RGB(14, 18, 21));
 			HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
@@ -97,29 +79,8 @@ void StaffList::Render(HDC hdc)
 
 			SelectObject(hdc, oldF);
 			DeleteObject(newF);
-
-			auto mostList = mStaffList[i]->GetMostChamp();
-			Champ* mostPick1 = (Champ*)ObjectManager::GetInstance()->FindObject(mostList.begin()->first);
-			Champ* mostPick2 = (Champ*)ObjectManager::GetInstance()->FindObject(mostList.rbegin()->first);
-
-			mostPick1->UIRender(hdc, 823, 187 + 70 * i, 48, 48);
-			mostPick2->UIRender(hdc, 880, 187 + 70 * i, 48, 48);
-
-			wstring mostPick1Pt = to_wstring(mostList.begin()->second);
-			wstring mostPick2Pt = to_wstring(mostList.rbegin()->second);
-
-			TextOut(hdc, 860, 185 + 70 * i, mostPick1Pt.c_str(), mostPick1Pt.size());
-			TextOut(hdc, 916, 185 + 70 * i, mostPick2Pt.c_str(), mostPick2Pt.size());
-
-
-
 		}
 
-		int teamNumber = mStaffList.size();
-		wstring numberStr = to_wstring(teamNumber) + L" / 5  ";
-		TextOut(hdc, 140, 555, numberStr.c_str(), numberStr.size());
-
-		mStaffListDetail->Render(hdc);
 	}
 
 }
@@ -136,7 +97,6 @@ void StaffList::LoadStaffList()
 		{
 			Staff* temp = (Staff*)ObjectManager::GetInstance()->FindObject(elem);
 			mStaffList.push_back(temp);
-
 		}
 
 	}

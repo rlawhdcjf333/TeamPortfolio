@@ -93,12 +93,6 @@ void UI::homeUIUpdate()
 
 	mToggleButton(5, "HomeToBattle");
 
-	if (Input::GetInstance()->GetKeyUp('Y'))
-	{
-		GameObject* tmp = ObjectManager::GetInstance()->FindObject("HomeToBattle");
-		tmp->SetIsActive(!tmp->GetIsActive());
-	}
-
 }
 
 void UI::homeUIRender(HDC hdc) 

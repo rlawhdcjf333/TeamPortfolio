@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "GameEvent.h"
 #include "Camera.h"
-#include "UI.h"
-
 
 IDelayEvent::IDelayEvent(float delayTime)
 {
@@ -46,14 +44,10 @@ IPrologueEvent::IPrologueEvent()
 void IPrologueEvent::Start()
 {
 	
-
 }
 
 bool IPrologueEvent::Update()
 {
-	UI* tmp = (UI*)ObjectManager::GetInstance()->FindObject("titleUI");
-	tmp->SetMouseOver(false);
-
 	HBRUSH newb = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	HBRUSH oldb = (HBRUSH)SelectObject(hdc, newb);
 	RenderRect(hdc, mRect);

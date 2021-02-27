@@ -69,7 +69,6 @@ public:
 	vector<string> GetStaffNameList() { return mStaffNameList; }
 
 	void AddStaff(string name);
-	void PopStaff(string name);
 
 public:
 	Director(const Director& copy); //복사 생성자 오버로딩, 스토리지 용

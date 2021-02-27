@@ -26,9 +26,9 @@ void SystemToggle::Update()
 {
 	if (mIsActive)
 	{
-		auto func = [this]() 
+		auto func = []() 
 		{
-			mIsActive = false;
+			ObjectManager::GetInstance()->FindObject("SystemToggle")->SetIsActive(false);
 			ObjectManager::GetInstance()->FindObject("OnPatch")->SetIsActive(true);
 		};
 		mToggleButton(0, "OnPatch", func);

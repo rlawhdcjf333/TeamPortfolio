@@ -31,12 +31,12 @@ void LeagueToggle::Update()
 {
 	if (mIsActive)
 	{
-		auto func = [this]() //this 캡쳐 적극 활용 바람 - CTO
+		auto func = []()
 		{
-			mIsActive = false;
+			ObjectManager::GetInstance()->FindObject("LeagueToggle")->SetIsActive(false);
 		};
-		mToggleButton(0, "OnPatch", func); //OnPatch를 넣으면 준비중 멘트가 출력된다
-		mToggleButton(1, "OnPatch", func);
+		//mToggleButton(0, "", func);
+		//mToggleButton(1, "", func);
 		mToggleButton(2, "Ranking", func);
 		mToggleButton(3, "Schedule", func);
 

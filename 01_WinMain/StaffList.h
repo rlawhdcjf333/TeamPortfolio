@@ -1,19 +1,14 @@
 #pragma once
 #include "UI.h"
+#include "Director.h"
 
-class Staff;
-class Director;
-class StaffListDetail;
 class StaffList : public UI
 {
 
 	Image* mImage;
 	Director* mDirector;
-	StaffListDetail* mStaffListDetail;
+
 	vector<Staff*> mStaffList;
-
-	bool mIsToggleDetail;
-
 public:
 
 	StaffList();
@@ -25,6 +20,5 @@ public:
 	void LoadStaffList();
 	void UpdateStaffList();
 
-	int GetStaffSize() { return mStaffList.size(); }
-	void SetIsToggleDetail(bool b) { mIsToggleDetail = b; }
+
 };

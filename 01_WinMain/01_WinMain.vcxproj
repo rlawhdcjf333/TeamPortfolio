@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -221,9 +221,6 @@
     <ClInclude Include="ScheduleManager.h" />
     <ClInclude Include="NewStaff.h" />
     <ClInclude Include="StaffSearch.h" />
-    <ClInclude Include="StaffListDetail.h" />
-    <ClInclude Include="News.h" />
-    <ClInclude Include="Sponsor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -303,9 +300,6 @@
     <ClCompile Include="NewStaff.cpp" />
     <ClCompile Include="StaffSearch.cpp" />
     <ClCompile Include="StaffResult.cpp" />
-    <ClCompile Include="StaffListDetail.cpp" />
-    <ClCompile Include="News.cpp" />
-    <ClCompile Include="Sponsor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />

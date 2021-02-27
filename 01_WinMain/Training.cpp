@@ -3,7 +3,6 @@
 #include "Staff.h"
 #include "Director.h"
 #include "TrainingDetail.h"
-#include "Champ.h"
 
 Training::Training()
 	:UI("Training")
@@ -146,12 +145,8 @@ void Training::RenderCurrentStaff(HDC hdc)
 	RECT CharRc = RectMake(108, 182, 47, 21);
 	DrawText(hdc, mCurrentStaff->GetCharComment(1).c_str(), mCurrentStaff->GetCharComment(1).size(), &CharRc, DT_VCENTER | DT_SINGLELINE | DT_CENTER);
 
-	auto list = mCurrentStaff->GetMostChamp();
-	Champ* most1 = (Champ*)ObjectManager::GetInstance()->FindObject(list.begin()->first);
-	Champ* most2 = (Champ*)ObjectManager::GetInstance()->FindObject(list.rbegin()->first);
+	//TextOut(hdc, 108, 184, mCurrentStaff->GetCharComment(1).c_str(), mCurrentStaff->GetCharComment(1).size());
 
-	most1->UIRender(hdc, 356, 205, 48, 48);
-	most2->UIRender(hdc, 414, 205, 48, 48);
 
 }
 
