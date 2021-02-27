@@ -1,12 +1,12 @@
 #pragma once
 #include "UI.h"
 
-class Peedback : public UI
+class Feedback : public UI
 {
 	Image* mImage;
 
 public:
-	Peedback();
+	Feedback();
 
 	void Init()override;
 	void Release()override;

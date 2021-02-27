@@ -18,18 +18,25 @@ void BattleResult::Update()
 	if (!mIsActive)
 		return;
 	//만약 2번 승리한 팀이 있거나 진행한 경기가 3판이면 홈으로 돌아감
-	//BData->IsEnd()
-	//배틀 후 피드백으로 이동
+	function<void(void)> func;
+	if (BData->IsEnd())
+	{
+		func = []() {SceneManager::GetInstance()->LoadScene(L"Home"); };
+	}
+	else //2승한 팀이 없으면 피드백UI활성화
+	{
+		func = []() {
+			ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
+			ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
+		};
+	}
+
 	if (Input::GetInstance()->GetKeyDown('F'))
 	{
-		ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
-		ObjectManager::GetInstance()->FindObject("Peedback")->SetIsActive(true);
 		ObjectManager::GetInstance()->FindObject("BattleResult")->SetIsActive(false);
+		func();
 	}
-	mToggleButton(0, "BattleResult", []() {
-		ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
-		ObjectManager::GetInstance()->FindObject("Peedback")->SetIsActive(true);
-		});
+	mToggleButton(0, "BattleResult", func);
 }
 
 void BattleResult::Render(HDC hdc)

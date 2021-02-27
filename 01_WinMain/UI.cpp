@@ -101,6 +101,66 @@ void UI::LoadFromFile(const string& fileName)
 	fin.close();
 }
 
+void UI::LoadFromFile(const string& fileName1, const string& fileName2)
+{
+	mButtonList.clear();
+	mButtonList.shrink_to_fit();
+
+	ifstream fin1("../rectList/" + fileName1 + ".txt");
+	if (fin1.is_open()) {
+
+		vector <int> v;
+		string tmp;
+		int tmpint;
+
+		while (fin1) {
+
+			getline(fin1, tmp);
+			if (tmp.size()) {
+				tmpint = stoi(tmp);
+				v.push_back(tmpint);
+			}
+
+		}
+
+
+		for (int i = 0; i < v.size(); i += 4) {
+			RECT rc = { v[i], v[i + 1], v[i + 2], v[i + 3] };
+			mButtonList.push_back(rc);
+		}
+
+	}
+
+	fin1.close();
+
+	ifstream fin2("../rectList/" + fileName2 + ".txt");
+	if (fin2.is_open()) {
+
+		vector <int> v;
+		string tmp;
+		int tmpint;
+
+		while (fin2) {
+
+			getline(fin2, tmp);
+			if (tmp.size()) {
+				tmpint = stoi(tmp);
+				v.push_back(tmpint);
+			}
+
+		}
+
+
+		for (int i = 0; i < v.size(); i += 4) {
+			RECT rc = { v[i], v[i + 1], v[i + 2], v[i + 3] };
+			mButtonList.push_back(rc);
+		}
+
+	}
+
+	fin2.close();
+}
+
 void UI::MouseOver(HDC hdc)
 {
 	if (mMouseOverOn)

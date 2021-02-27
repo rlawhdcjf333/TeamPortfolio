@@ -81,7 +81,7 @@ public:
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
 	void ChampSwap(Staff* st1, Staff* st2);
 
-	void Feedback(int i);//i = 버튼 번호
+	void Feedback(int i);
 	void UpdateCondition(TeamData t, int con);
 
 	void SetResult();
@@ -103,7 +103,7 @@ public:
 
 	vector<Staff*> GetEnemyStaff();
 
-
+	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
 
 };
 #define BData BattleData::GetInstance()
@@ -120,7 +120,7 @@ public:
 	7. 배틀 돌리는 함수.........킬이 발생하면 mKillCount++ : Battle UI에서 호출
 	8. mKillCount를 확인하고 mWinCount++, mKillCount = 0하는 함수 : BattleUI(Battle이랑 다른거임) UI에서 BattleResult UI active=true 전에 호출
 	->UpdateWinCount
-	9. 승패 여부에 따라 피드백을 하고 Staff들의 컨디션을 변경시키는 함수 : Peedback UI에서 호출 -> Feedback
+	9. 승패 여부에 따라 피드백을 하고 Staff들의 컨디션을 변경시키는 함수 : Feedback UI에서 호출 -> Feedback
 
 	+
 	10. Director* 에 승/패 지정 -> HomeScene으로 돌아가기전 BattleResult UI에서 호출

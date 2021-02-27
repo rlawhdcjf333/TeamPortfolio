@@ -1,12 +1,13 @@
 #pragma once
 #include "UI.h"
 
+class ChampInfo;
 class GameToggle :public UI
 {
 	Image* mActive;
 	Image* mImage;
 
-
+	ChampInfo* mChampInfo;
 public:
 
 	GameToggle();

@@ -70,6 +70,11 @@ public:
 	void SetHP(float hp) { mHP = hp; } //HP값 불러오기
 	float GetHP() { return mHP; } //HP값 조정
 
+	float GetAtk() { return mAtk; }
+	float GetRange() { return mRange; }
+	float GetDef() { return mDef; }
+	float GetSpeed() { return mSpeed; }
+
 	GameObject* GetStaff() { return mStaff; } //staff값 조정
 	vector<GameObject*> GetPlayerList() { return mPlayerList; }
 	vector<GameObject*> GetEnemyList() { return mEnemyList; }

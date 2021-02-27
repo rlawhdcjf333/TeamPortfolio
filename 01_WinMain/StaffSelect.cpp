@@ -16,10 +16,9 @@ void StaffSelect::Init()
 	startX = mButtonList[50].left;
 	startY = mButtonList[50].top;
 
-	//여기서 Director의 team?을 받아서 해당 색깔의 이미지를 Load/Find // Director의 팀을  UI init이 돌고 난 다음에 설정하므로 그건 불가능 따라서 이미지 설정 함수를 빼주...
+	//여기서 Director의 team?을 받아서 해당 색깔의 이미지를 Load/Find // Director의 팀을  UI init이 돌고 난 다음에 설정하므로 그건 불가능 따라서 이미지 설정 함수를 빼주...<-이걸 위해GetPlayerTeam함수를 만들었다
 	IMAGEMANAGER->LoadFromFile(L"BlueSelect", Resources(L"StaffSelect_blue.bmp"), 1080, 560, true);
 	IMAGEMANAGER->LoadFromFile(L"RedSelect", Resources(L"StaffSelect_red.bmp"), 1080, 560, true);
-
 	mImage = IMAGEMANAGER->FindImage(L"BlueSelect"); //신에서 재설정하겠지만 그래도 초기화 하는 습관은 좋구요, 걱정 ㄴ 버그나면 어썰트로 막아둠
 
 	player = (Director*)ObjectManager::GetInstance()->FindObject("Director1"); //플레이어 팀 포인터 저장
@@ -36,7 +35,10 @@ void StaffSelect::Update()
 	if (mIsActive)
 	{
 	//-
-
+		if (BData->GetPlayerTeam() == Team::Blue)//이러면 이미지 바뀔듯, 라운드가 돌고 돌아오면 거긴 Init이 안도니 여기서 바꿈
+			mImage = IMAGEMANAGER->FindImage(L"BlueSelect");
+		if (BData->GetPlayerTeam() == Team::Red)
+			mImage = IMAGEMANAGER->FindImage(L"RedSelect");
 
 
 

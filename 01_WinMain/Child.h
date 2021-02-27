@@ -8,4 +8,4 @@
 #include "BattleResult.h"
 #include "BattleUI.h"
 
-#include "Peedback.h"
+#include "Feedback.h"
