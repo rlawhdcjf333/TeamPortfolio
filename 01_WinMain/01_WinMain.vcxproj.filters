@@ -97,32 +97,11 @@
     <Filter Include="MainGame\Object\UI\TitleUI">
       <UniqueIdentifier>{69d932ff-4da9-4231-beee-b3fec23b3984}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI">
-      <UniqueIdentifier>{2ca6ac4d-3d37-41f7-aa11-98b691ca0ef4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\GameToggle">
-      <UniqueIdentifier>{e318b164-400c-4239-8ca2-c30357a0d575}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\GameToggle\ChampInfo">
-      <UniqueIdentifier>{5cc7b14c-bd12-4178-8b96-4b7022638209}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\HomeToBattle">
-      <UniqueIdentifier>{ba31257d-5f87-4efa-bb56-321bb50f4df0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\SystemToggle">
-      <UniqueIdentifier>{a807e896-025a-49da-94c8-edccbd8d47d3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Object\UI\PickBattelUI">
       <UniqueIdentifier>{1076f13c-20e7-4d40-9fab-cca48c899749}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainGame\Scene\PickBattle">
       <UniqueIdentifier>{0bc5f813-fbdc-46fc-9dfa-c2dbf74b9d17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle">
-      <UniqueIdentifier>{d7835167-2315-4de9-9b81-00dcb903ffa7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\Training">
-      <UniqueIdentifier>{1db1fd46-d15f-442c-97b2-d191f009551e}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainGame\Object\UI\PickBattelUI\Level1_StaffSelect">
       <UniqueIdentifier>{0fc7c1c9-b069-476a-a562-c61b7d299465}</UniqueIdentifier>
@@ -144,18 +123,6 @@
     </Filter>
     <Filter Include="MainGame\Object\UI\PickBattelUI\Level4_Peedback">
       <UniqueIdentifier>{633b4c35-60f7-4a81-ab65-f7c539adb192}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\StaffList">
-      <UniqueIdentifier>{58517937-058c-4e90-9e97-a9abb0695da4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle">
-      <UniqueIdentifier>{1c5eb8dd-37a3-4d04-9f61-025444ced0a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Ranking">
-      <UniqueIdentifier>{c2ff32f3-1e3a-4582-9bbb-279e075e33b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\LeagueToggle\Schedule">
-      <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainGame\Scene\PickBattle\BattleData">
       <UniqueIdentifier>{9bc1cecc-6c35-469e-9adc-3d142ddd366f}</UniqueIdentifier>
@@ -257,16 +224,16 @@
       <Filter>FrameWork\SoundPlayer</Filter>
     </ClInclude>
     <ClInclude Include="ChampInfo.h">
-      <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
     <ClInclude Include="GameToggle.h">
-      <Filter>MainGame\Object\UI\homeUI\GameToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle</Filter>
     </ClInclude>
     <ClInclude Include="HomeToBattle.h">
-      <Filter>MainGame\Object\UI\homeUI\HomeToBattle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\HomeToBattle</Filter>
     </ClInclude>
     <ClInclude Include="SystemToggle.h">
-      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\SystemToggle</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
       <Filter>FrameWork\Storage</Filter>
@@ -281,10 +248,10 @@
       <Filter>MainGame\Scene\PickBattle</Filter>
     </ClInclude>
     <ClInclude Include="TeamToggle.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle</Filter>
     </ClInclude>
     <ClInclude Include="Training.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\Training</Filter>
     </ClInclude>
     <ClInclude Include="StaffSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
@@ -299,10 +266,10 @@
       <Filter>MainGame\Object\Champ\Tanker</Filter>
     </ClInclude>
     <ClInclude Include="ZombieMonkey.h">
-      <Filter>MainGame\Object\Champ\Healer</Filter>
+      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
     </ClInclude>
     <ClInclude Include="BabyMonkey.h">
-      <Filter>MainGame\Object\Champ\Healer</Filter>
+      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
     </ClInclude>
     <ClInclude Include="Cornian.h">
       <Filter>MainGame\Object\Champ\Assassin</Filter>
@@ -329,13 +296,13 @@
       <Filter>MainGame\Object\UI\PickBattelUI</Filter>
     </ClInclude>
     <ClInclude Include="StaffList.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\StaffList</Filter>
     </ClInclude>
     <ClInclude Include="LeagueToggle.h">
-      <Filter>MainGame\Object\UI\homeUI\LeagueToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle</Filter>
     </ClInclude>
     <ClInclude Include="Ranking.h">
-      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Ranking</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Ranking</Filter>
     </ClInclude>
     <ClInclude Include="BanPickGuide.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
@@ -344,10 +311,10 @@
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClInclude>
     <ClInclude Include="Schedule.h">
-      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
     <ClInclude Include="TrainingDetail.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\Training</Filter>
     </ClInclude>
     <ClInclude Include="BattleResult.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
@@ -440,19 +407,19 @@
       <Filter>FrameWork\SoundPlayer</Filter>
     </ClCompile>
     <ClCompile Include="homeUI.cpp">
-      <Filter>MainGame\Object\UI\homeUI</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI</Filter>
     </ClCompile>
     <ClCompile Include="ChampInfo.cpp">
-      <Filter>MainGame\Object\UI\homeUI\GameToggle\ChampInfo</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClCompile>
     <ClCompile Include="GameToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI\GameToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle</Filter>
     </ClCompile>
     <ClCompile Include="HomeToBattle.cpp">
-      <Filter>MainGame\Object\UI\homeUI\HomeToBattle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\HomeToBattle</Filter>
     </ClCompile>
     <ClCompile Include="SystemToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\SystemToggle</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
       <Filter>FrameWork\Storage</Filter>
@@ -473,10 +440,10 @@
       <Filter>MainGame\Scene\PickBattle</Filter>
     </ClCompile>
     <ClCompile Include="TeamToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle</Filter>
     </ClCompile>
     <ClCompile Include="Training.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\Training</Filter>
     </ClCompile>
     <ClCompile Include="StaffSelect.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
@@ -491,10 +458,10 @@
       <Filter>MainGame\Object\Champ\Tanker</Filter>
     </ClCompile>
     <ClCompile Include="ZombieMonkey.cpp">
-      <Filter>MainGame\Object\Champ\Healer</Filter>
+      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
     </ClCompile>
     <ClCompile Include="BabyMonkey.cpp">
-      <Filter>MainGame\Object\Champ\Healer</Filter>
+      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
     </ClCompile>
     <ClCompile Include="Cornian.cpp">
       <Filter>MainGame\Object\Champ\Assassin</Filter>
@@ -518,13 +485,13 @@
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
     <ClCompile Include="StaffList.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\StaffList</Filter>
     </ClCompile>
     <ClCompile Include="LeagueToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI\LeagueToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle</Filter>
     </ClCompile>
     <ClCompile Include="Ranking.cpp">
-      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Ranking</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Ranking</Filter>
     </ClCompile>
     <ClCompile Include="BanPickGuide.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
@@ -536,10 +503,10 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Schedule.cpp">
-      <Filter>MainGame\Object\UI\homeUI\LeagueToggle\Schedule</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule</Filter>
     </ClCompile>
     <ClCompile Include="TrainingDetail.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\Training</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\Training</Filter>
     </ClCompile>
     <ClCompile Include="BattleResult.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level3_Battle</Filter>
@@ -559,58 +526,91 @@
     <Image Include="01_WinMain.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff">
-      <UniqueIdentifier>{a2ff4072-65e5-43a7-8513-0dd5ff97e2e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch">
-      <UniqueIdentifier>{2efd7ea1-face-4afa-8d48-b90e18426be0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult">
-      <UniqueIdentifier>{16cb068e-68a1-4773-819a-329ae7b0758c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\Champ\Healer">
-      <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Object\Champ\ADCarry">
       <UniqueIdentifier>{936a2695-1c5b-4eb3-9df6-1315de095ffd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\OperationToggle">
-      <UniqueIdentifier>{b87c1306-d534-4764-a7d9-900a79fba59a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\News">
-      <UniqueIdentifier>{8a337f25-a0c9-4618-969e-e45939ab6645}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\Sponsor">
-      <UniqueIdentifier>{bdf1a325-27a8-48e6-86fa-799295b125d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="FrameWork\ScheduleManager">
       <UniqueIdentifier>{100a8b16-9e0c-417d-ba52-70efbb66e176}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI">
+      <UniqueIdentifier>{2ca6ac4d-3d37-41f7-aa11-98b691ca0ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\GameToggle">
+      <UniqueIdentifier>{e318b164-400c-4239-8ca2-c30357a0d575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo">
+      <UniqueIdentifier>{5cc7b14c-bd12-4178-8b96-4b7022638209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\HomeToBattle">
+      <UniqueIdentifier>{ba31257d-5f87-4efa-bb56-321bb50f4df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\SystemToggle">
+      <UniqueIdentifier>{a807e896-025a-49da-94c8-edccbd8d47d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\TeamToggle">
+      <UniqueIdentifier>{d7835167-2315-4de9-9b81-00dcb903ffa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\TeamToggle\Training">
+      <UniqueIdentifier>{1db1fd46-d15f-442c-97b2-d191f009551e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\TeamToggle\StaffList">
+      <UniqueIdentifier>{58517937-058c-4e90-9e97-a9abb0695da4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff">
+      <UniqueIdentifier>{a2ff4072-65e5-43a7-8513-0dd5ff97e2e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff\StaffSearch">
+      <UniqueIdentifier>{2efd7ea1-face-4afa-8d48-b90e18426be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult">
+      <UniqueIdentifier>{16cb068e-68a1-4773-819a-329ae7b0758c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle">
+      <UniqueIdentifier>{1c5eb8dd-37a3-4d04-9f61-025444ced0a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Ranking">
+      <UniqueIdentifier>{c2ff32f3-1e3a-4582-9bbb-279e075e33b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule">
+      <UniqueIdentifier>{eb67b385-4846-497c-b574-9a3ce35cbd93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\OperationToggle">
+      <UniqueIdentifier>{b87c1306-d534-4764-a7d9-900a79fba59a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\OperationToggle\News">
+      <UniqueIdentifier>{8a337f25-a0c9-4618-969e-e45939ab6645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\UI\OnPatch\homeUI\OperationToggle\Sponsor">
+      <UniqueIdentifier>{bdf1a325-27a8-48e6-86fa-799295b125d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Champ\Assassin\Healer">
+      <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NewStaff.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
     </ClCompile>
     <ClCompile Include="StaffResult.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
     </ClCompile>
     <ClCompile Include="StaffSearch.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
     </ClCompile>
     <ClCompile Include="BulletManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="OperationToggle.cpp">
-      <Filter>MainGame\Object\UI\homeUI\OperationToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\OperationToggle</Filter>
     </ClCompile>
     <ClCompile Include="StaffListDetail.cpp">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\StaffList</Filter>
     </ClCompile>
     <ClCompile Include="News.cpp">
-      <Filter>MainGame\Object\UI\homeUI\OperationToggle\News</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\OperationToggle\News</Filter>
     </ClCompile>
     <ClCompile Include="Sponsor.cpp">
-      <Filter>MainGame\Object\UI\homeUI\OperationToggle\Sponsor</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\OperationToggle\Sponsor</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleManager.cpp">
       <Filter>FrameWork\ScheduleManager</Filter>
@@ -618,37 +618,43 @@
     <ClCompile Include="Feedback.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
     </ClCompile>
+    <ClCompile Include="ChampInformation.cpp">
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NewStaff.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
     </ClInclude>
     <ClInclude Include="StaffResult.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff\StaffSearch\StaffResult</Filter>
     </ClInclude>
     <ClInclude Include="StaffSearch.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff\StaffSearch</Filter>
     </ClInclude>
     <ClInclude Include="BulletManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="OperationToggle.h">
-      <Filter>MainGame\Object\UI\homeUI\OperationToggle</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\OperationToggle</Filter>
     </ClInclude>
     <ClInclude Include="StaffListDetail.h">
-      <Filter>MainGame\Object\UI\homeUI\TeamToggle\StaffList</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\StaffList</Filter>
     </ClInclude>
     <ClInclude Include="News.h">
-      <Filter>MainGame\Object\UI\homeUI\OperationToggle\News</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\OperationToggle\News</Filter>
     </ClInclude>
     <ClInclude Include="Sponsor.h">
-      <Filter>MainGame\Object\UI\homeUI\OperationToggle\Sponsor</Filter>
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\OperationToggle\Sponsor</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleManager.h">
       <Filter>FrameWork\ScheduleManager</Filter>
     </ClInclude>
     <ClInclude Include="Feedback.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
+    </ClInclude>
+    <ClInclude Include="ChampInformation.h">
+      <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

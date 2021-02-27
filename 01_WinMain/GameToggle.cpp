@@ -19,23 +19,27 @@ void GameToggle::Init()
 	IMAGEMANAGER->LoadFromFile(L"GameToggleClick", Resources(L"GameToggleClick.bmp"), 162, 50, true);
 	mActive = IMAGEMANAGER->FindImage(L"GameToggleClick");
 
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampInfo);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampInfo);
 
+
+	mChampInfo = new ChampInfo();
+	mChampInfo->Init();
 }
 
 void GameToggle::Release()
 {
+	mChampInfo->Release();
+	SafeDelete(mChampInfo);
 }
 
 void GameToggle::Update()
 {
 	if (mIsActive)
 	{
+		auto func = [this]() { mChampInfo->SetIsActive(true); };
+		mToggleButton(0, "None", func);
 
-		auto func = []() {ObjectManager::GetInstance()->FindObject("GameToggle")->SetIsActive(false); };
-		mToggleButton(0, "ChampInfo", func);
-
-
+		mChampInfo->Update();
 	}
 
 }
@@ -48,6 +52,8 @@ void GameToggle::Render(HDC hdc)
 		mImage->Render(hdc, 544, 596);
 		MouseOver(hdc);
 		mActive->Render(hdc, 544, 648);
+		
+		mChampInfo->Render(hdc);
 	}
 
 }

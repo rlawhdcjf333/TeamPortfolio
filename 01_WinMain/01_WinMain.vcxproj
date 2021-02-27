@@ -156,6 +156,7 @@
     <ClInclude Include="BattleUI.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="ChampCheck.h" />
+    <ClInclude Include="ChampInformation.h" />
     <ClInclude Include="ChampList.h" />
     <ClInclude Include="ChampManager.h" />
     <ClInclude Include="Child.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="BattleUI.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="ChampCheck.cpp" />
+    <ClCompile Include="ChampInformation.cpp" />
     <ClCompile Include="ChampList.cpp" />
     <ClCompile Include="ChampManager.cpp" />
     <ClCompile Include="Cornian.cpp" />
