@@ -39,5 +39,6 @@ public:
 
 	void OriginSwap(ObjectLayer layerName, GameObject* old);
 
+	void Zorder();
 };
 

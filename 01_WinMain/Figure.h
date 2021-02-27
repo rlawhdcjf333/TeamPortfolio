@@ -101,3 +101,12 @@ inline wstring StoW(string str)
 
 	return result;
 }
+
+inline void CallFont(HDC hdc, int size, function <void(void)> func)
+{
+	HFONT newF = CreateFont(size, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	HFONT oldF = (HFONT)SelectObject(hdc, newF);
+	func();
+	SelectObject(hdc, oldF);
+	DeleteObject(newF);
+}
