@@ -307,9 +307,6 @@
     <ClInclude Include="BanPickGuide.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClInclude>
-    <ClInclude Include="ChampList.h">
-      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
-    </ClInclude>
     <ClInclude Include="Schedule.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\LeagueToggle\Schedule</Filter>
     </ClInclude>
@@ -496,9 +493,6 @@
     <ClCompile Include="BanPickGuide.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
-    <ClCompile Include="ChampList.cpp">
-      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
-    </ClCompile>
     <ClCompile Include="Title.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -586,8 +580,6 @@
     <Filter Include="MainGame\Object\Champ\Assassin\Healer">
       <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="NewStaff.cpp">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
     </ClCompile>
@@ -618,11 +610,12 @@
     <ClCompile Include="Feedback.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
     </ClCompile>
+    <ClCompile Include="ChampSelect.cpp">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClCompile>
     <ClCompile Include="ChampInformation.cpp">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="NewStaff.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\TeamToggle\NewStaff</Filter>
     </ClInclude>
@@ -653,16 +646,15 @@
     <ClInclude Include="Feedback.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level4_Peedback</Filter>
     </ClInclude>
+    <ClInclude Include="ChampSelect.h">
+      <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
+    </ClInclude>
     <ClInclude Include="ChampInformation.h">
       <Filter>MainGame\Object\UI\OnPatch\homeUI\GameToggle\ChampInfo</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ChampManager.cpp">
       <Filter>MainGame\Object\Champ</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ChampManager.h">
       <Filter>MainGame\Object\Champ</Filter>
     </ClInclude>

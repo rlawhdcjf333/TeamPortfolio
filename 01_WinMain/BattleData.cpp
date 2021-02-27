@@ -329,3 +329,11 @@ void BattleData::TeamChange()
 	mBlueTeam = mRedTeam;	//레드팀 데이터를 블루팀으로 복사
 	mRedTeam = temp;		//temp(블루팀 복사본)을 레드팀으로 복사 하면 스왑이 됐겠지?
 }
+
+Director * BattleData::GetEnemyDirector()
+{
+	if (mPlayerTeam == Team::Blue)
+		return mRedTeam.mDirector;
+	if (mPlayerTeam == Team::Red)
+		return mBlueTeam.mDirector;
+}

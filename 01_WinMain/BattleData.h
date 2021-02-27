@@ -104,7 +104,7 @@ public:
 	vector<Staff*> GetEnemyStaff();
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
-
+	Director* GetEnemyDirector();
 };
 #define BData BattleData::GetInstance()
 /*
