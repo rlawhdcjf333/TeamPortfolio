@@ -5,6 +5,7 @@
 #include "BackGround.h"
 #include "GameEvent.h"
 #include "Director.h"
+#include "StaffSelect.h"
 
 void PickBattle::Init()
 {
@@ -18,18 +19,17 @@ void PickBattle::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director4", L"TeamCowHead", L"TeamCowHead"));
 
 	ChampManager::GetInstance()->Init();
+	ScheduleManager::GetInstance()->Init();
 
 	UI* ui = new UI("pickbattleUI", "pickbattleUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 
 	ObjectManager::GetInstance()->Init();
-	ScheduleManager::GetInstance()->Init();
 
 	SoundPlayer::GetInstance()->AllPause();
 	SoundPlayer::GetInstance()->Play(L"BanPick", 0.2f);
 
 	GameEventManager::GetInstance()->PushEvent(new UIDelayEvent("StaffSelect",2.f));
-
 
 	//--BData 호출
 	
@@ -38,22 +38,16 @@ void PickBattle::Init()
 	if (thisWeek & 0)
 	{
 		BData->SetPlayerTeam(Team::Blue); //일단 존중
-		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
+		BData->SetTeam(Team::Blue, player);
 		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
-
-		auto temp = BData->GetEnemyStaff();
-		BData->SetStaffSelect();
-
 	}
 	else
 	{
 		BData->SetPlayerTeam(Team::Red);
-		BData->SetTeam(Team::Red, ScheduleManager::GetInstance()->GetPlayer(thisWeek));
+		BData->SetTeam(Team::Red, player);
 		BData->SetTeam(Team::Blue, ScheduleManager::GetInstance()->GetEnemy(thisWeek));
-		BData->SetStaffSelect();
 	}
 	
-	//--
 }
 
 void PickBattle::Release()

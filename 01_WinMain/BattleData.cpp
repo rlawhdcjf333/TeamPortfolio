@@ -3,10 +3,15 @@
 #include "Director.h"
 #include "Staff.h"
 #include "StaffSelect.h"
-
+#include "Champ.h"
 void BattleData::RoundReset()
 {
+	for (int i = 0; i < mSelectChamp.size(); ++i)
+	{
+		mSelectChamp[i]->SetStaff(nullptr);
+	}
 	mSelectChamp.clear();
+	mSelectChamp.shrink_to_fit();
 	mBanChamp[0] = nullptr;
 	mBanChamp[1] = nullptr;
 }
@@ -112,13 +117,11 @@ void BattleData::ChampBan(Champ * ban)
 
 bool BattleData::ChampSelect(Staff * st, Champ * c)
 {
-	if (mSelectChamp.find(st) == mSelectChamp.end())
-	{
-		mSelectChamp.insert(make_pair(st, c));
-		return true;
-	}
+	if(GetChampTeam(c) != Team::None)//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
+		return false;
 
-	return false;
+	mSelectChamp.push_back(c);
+	return true;
 }
 
 void BattleData::ChampSwap(Staff * st1, Staff * st2)
@@ -173,9 +176,18 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 
 	//확인이 끝났으니 스왑
 	Champ* temp;
-	temp = mSelectChamp.find(st1)->second;
-	mSelectChamp.find(st1)->second = mSelectChamp.find(st2)->second;
-	mSelectChamp.find(st2)->second = temp;
+	Champ* champ1 = nullptr;
+	Champ* champ2 = nullptr;
+	for (int i = 0; i < mSelectChamp.size(); ++i)
+	{
+		if (mSelectChamp[i]->GetStaff() == st1)
+			champ1 = mSelectChamp[i];
+		if (mSelectChamp[i]->GetStaff() == st2)
+			champ2 = mSelectChamp[i];
+	}
+	temp = champ1;
+	champ1 = champ2;
+	champ2 = temp;
 }
 
 void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
@@ -336,4 +348,30 @@ Director * BattleData::GetEnemyDirector()
 		return mRedTeam.mDirector;
 	if (mPlayerTeam == Team::Red)
 		return mBlueTeam.mDirector;
+}
+
+Team BattleData::GetChampTeam(GameObject * pt)
+{
+	Champ* champ = (Champ*)pt;
+	
+	if (mBanChamp[0] == champ)
+		return Team::Ban;
+	if (mBanChamp[1] == champ)
+		return Team::Ban;
+
+	if (mBlueTeam.mSelectStaff[0] == champ->GetStaff())
+		return Team::Blue;
+	if (mBlueTeam.mSelectStaff[1] == champ->GetStaff())
+		return Team::Blue;
+	if (mBlueTeam.mSelectStaff[2] == champ->GetStaff())
+		return Team::Blue;
+
+	if (mRedTeam.mSelectStaff[0] == champ->GetStaff())
+		return Team::Red;
+	if (mRedTeam.mSelectStaff[1] == champ->GetStaff())
+		return Team::Red;
+	if (mRedTeam.mSelectStaff[2] == champ->GetStaff())
+		return Team::Red;
+
+	return Team::None;
 }

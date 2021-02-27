@@ -5,16 +5,16 @@ class Staff;
 class Champ;
 
 enum class Team {
-	Blue = 0,
-	Red = 1
+	None,
+	Ban,
+	Blue,
+	Red
 };
 
 struct TeamData
 {
 	Director* mDirector;		//감독
 	vector<Staff*> mStaffList;	//감독의 모든 선수
-	//vector<Staff*> mSelectStaff;
-	//vector<Staff*> mWaitStaff;
 	Staff* mSelectStaff[3] = { nullptr ,nullptr,nullptr };		//출전선수
 	Staff* mWaitStaff[2] = { nullptr ,nullptr };		//대기선수
 
@@ -36,7 +36,7 @@ private:
 	TeamData mRedTeam;
 
 	Champ* mBanChamp[2];	//밴된 챔피언, GameObject*로 해야하나? //상관업음 Gameobject 이 더 편하긴함   mIsActive 껏다키는 거면
-	map<Staff*, Champ*> mSelectChamp;	//스태프(key,first)별 픽한 챔피언(value,second), key는 TeamData.mSelectStaff
+	vector<Champ*> mSelectChamp;	//스태프(key,first)별 픽한 챔피언(value,second), key는 TeamData.mSelectStaff
 
 	Staff* mStaff;	//위에 맵에 키값으로 넣을녀석을 담을 변수, 함수용으로 쓰일거같아 만듬 //currentStaff라고 하면 되겠네
 	Champ* mChamp;	//↑랑 동일, 여긴 map의 value를 담아서 //이건 currentPick
@@ -74,12 +74,14 @@ public:
 	}
 
 
-	void SetTeam(Team t, Director * dir);
+	void SetTeam(Team t, Director * dir);	//Team초기화, 이거 해야 GetEnemyDirector쓸수있음
 	TeamData LoadStaffList(Director* dir);	//SetTeam에서 호출할 StaffList초기화용 함수
 	void StaffSwap(Staff* waittoselect,Staff* selecttowait);//1:대기선수,2:교체될 출전선수
+
+	void Pick(Champ* c, Staff* s) { GameObject* staff = (GameObject*)s; c->SetStaff(staff); }
 	void ChampBan(Champ* ban);
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
-	void ChampSwap(Staff* st1, Staff* st2);
+	void ChampSwap(Staff* st1, Staff* st2);//미완성보수필요
 
 	void Feedback(int i);
 	void UpdateCondition(TeamData t, int con);
@@ -105,6 +107,8 @@ public:
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
 	Director* GetEnemyDirector();
+	
+	Team GetChampTeam(GameObject* pt);
 };
 #define BData BattleData::GetInstance()
 /*
