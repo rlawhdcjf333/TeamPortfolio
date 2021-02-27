@@ -12,6 +12,7 @@ class ChampInformation : public UI {
 	vector<Champ*> mChampList;
 	vector<RECT> mRectList;
 	
+
 public:
 
 	ChampInformation();
@@ -19,6 +20,8 @@ public:
 	void Release() override;
 	void Update() override;
 	void Render(HDC hdc) override;
+
+	wstring ClassTypeCheck(Champ* champ);
 
 	void SetCurrentChamp(Champ* champ) { mCurrentChamp = champ; }
 	void SetChampList(vector<Champ*> ChampList) { mChampList = ChampList; }
