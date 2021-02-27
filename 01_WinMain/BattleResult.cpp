@@ -22,12 +22,13 @@ void BattleResult::Update()
 	if (BData->IsEnd())
 	{
 		func = []() {SceneManager::GetInstance()->LoadScene(L"Home"); };
-		return;
 	}
 	else //2승한 팀이 없으면 피드백UI활성화
 	{
-		ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
-		ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
+		func = []() {
+			ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
+			ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
+		};
 	}
 
 	if (Input::GetInstance()->GetKeyDown('F'))
