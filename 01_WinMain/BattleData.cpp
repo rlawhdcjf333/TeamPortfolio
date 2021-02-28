@@ -178,7 +178,7 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 		return;
 
 	//확인이 끝났으니 스왑
-	Champ* temp;
+	Staff* temp;
 	Champ* champ1 = nullptr;
 	Champ* champ2 = nullptr;
 	for (int i = 0; i < mSelectChamp.size(); ++i)
@@ -188,9 +188,9 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 		if (mSelectChamp[i]->GetStaff() == st2)
 			champ2 = mSelectChamp[i];
 	}
-	temp = champ1;
-	champ1 = champ2;
-	champ2 = temp;
+	temp = (Staff*)champ1->GetStaff();
+	champ1->SetStaff(champ2->GetStaff());
+	champ2->SetStaff(temp);
 }
 
 void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
