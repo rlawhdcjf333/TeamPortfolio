@@ -55,7 +55,7 @@ void Tank::Init()
 	mAtk = mInitAtk;
 	mInitDef = 10;
 	mDef = mInitDef;
-	mSpeed = 110;
+	mSpeed = 80;
 	mInitRange = 160;
 	mRange = mInitRange;
 	mMaxAttackCool = 1.5f;
