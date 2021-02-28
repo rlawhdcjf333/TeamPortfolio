@@ -35,6 +35,17 @@ void Cornian::Init()
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"CornianSkill", Resources(L"SkillIcon/CornianSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"CornianSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"CornianSepcialSkill", Resources(L"SKillIcon/CornianSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"CornianSepcialSkill");
+
+	mChampEx = L"팔시온을 휘두르는 도마뱀. 체구에 비해 굉장히 재빠른 것이 특징.";
+	mSkillEx = L"자신의 공격력을 증가시킨다.";
+	mSpecialSkillEx = L"일직선 상의 적을 공격하여 피해를 주고 범위만큼 이동한다.";
+	
 	//변수 초기화
 	mMaxHP = 150;
 	mMaxMP = 100;
@@ -53,9 +64,12 @@ void Cornian::Init()
 	mDeathCool = 3;
 	mAlpha = 0.6;
 
+
 	mDistance1 = 0;
 	mDistance2 = 0;
 	mDistance3 = 0;
+
+
 
 
 	mAngle = 0;

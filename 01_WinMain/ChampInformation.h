@@ -13,6 +13,23 @@ class ChampInformation : public UI {
 	vector<RECT> mRectList;
 	
 
+	wstring mClassChampType;
+	wstring mChampName;
+	wstring mChampInformation;
+	wstring mChampAtk;
+	wstring mChampAtkSpeed;
+	wstring mChampRange;
+	wstring mChampDef;
+	wstring mChampHp;
+	wstring mChampSpeed;
+	wstring mChampEx;
+	wstring mSkillCool;
+	wstring mSpecialSkillCool;
+	wstring mChampSkill;
+	wstring mChampSpecialSkill;
+
+	HDC mHdc;
+
 public:
 
 	ChampInformation();

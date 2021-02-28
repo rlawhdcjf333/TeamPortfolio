@@ -35,6 +35,19 @@ void MistKnight::Init()
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
+	
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"MistKnightSkill", Resources(L"SkillIcon/MistKnightSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"MistKnightSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"MistKnightSpecialSkill", Resources(L"SkillIcon/MistKnightSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"MistKnightSpecialSkill");
+
+	mChampEx = L"검은 천을 뒤집어 쓴 암살귀. 그의 눈을 본 사람은 보통 오래 살지 못한다고 한다.";
+	mSkillEx = L"체력이 낮은 적에게 이동한다.";
+	mSpecialSkillEx = L"적에게 피해를 준 뒤 피해량 만큼 체력을 회복한다.";
+
+	
+	
 	//변수 초기화
 	mMaxHP = 150;
 	mMaxMP = 100;

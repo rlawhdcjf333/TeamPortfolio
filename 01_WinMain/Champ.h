@@ -20,6 +20,9 @@ protected:
 	map<wstring ,Animation*> mAnimationList;
 	wstring mChampName;
 	wstring mChampEx;
+	wstring mSkillEx;
+	wstring mSpecialSkillEx;
+	
 
 	ClassType mClassType;
 
@@ -75,7 +78,6 @@ protected:
 	Image* mMPImage;
 	Image* mExclamation;
 	Image* mDefImage;
-
 	Image*mSkillImage;
 	Image*mSpecialSkillImage;
 	float mAlpha;
@@ -95,10 +97,10 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 	void UIRender(HDC  hdc, int startX, int startY, int width, int height); //UI용 렌더
-	void SkillImageRender(HDC hdc, RECT rc);
 	void ChampImageRender(HDC hdc, RECT rc);
+	void SkillImageRender(HDC hdc, RECT rc);
 	void SpecialSkillImageRender(HDC hdc, RECT rc);
-	
+
 
 	void SetStaff(GameObject* staff) { mStaff = staff; } //staff 불러오기
 	void SetHP(float hp) { mHP = hp; } //HP값 불러오기
@@ -117,6 +119,9 @@ public:
 	float GetDef() { return mDef; }
 	float GetSpeed() { return mSpeed; }
 	bool GetIsDeath() { return mIsDeath; }
+	float GetSkillCool() { return mSkill1Cool; }
+
+
 	GameObject* GetStaff() { return mStaff; } //staff값 조정
 	vector<GameObject*> GetPlayerList() { return mFriendList; }
 	vector<GameObject*> GetEnemyList() { return mEnemyList; }
@@ -128,4 +133,7 @@ public:
 	void AtkBuff(float atkbuff, float time);
 	void Aggro(float time);
 	void DefBuff(float defbuff, float time);
+	wstring GetSkillEx() const { return mSkillEx; }
+	wstring GetSpecialSkillEx() const { return mSpecialSkillEx; }
+	
 };

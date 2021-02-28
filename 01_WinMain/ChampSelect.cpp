@@ -247,31 +247,58 @@ GameObject* ChampSelect::ChampToggle()
 	//챔프가 10개인걸로 알고 만들어둠
 	temp = ToggleButton(0);
 	if (temp)
-		select = temp;
+	{
+		if(!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(1);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(2);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(3);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(4);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(5);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(6);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(7);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	temp = ToggleButton(8);
 	if (temp)
-		select = temp;
+	{
+		if (!BData->IsSelectChamp((Champ*)temp))
+			select = temp;
+	}
 	//mToggleButton(9, "None", [this]() {});
 	//if (temp)
 	//	select = temp;

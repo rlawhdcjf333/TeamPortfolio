@@ -35,6 +35,13 @@ void Yeti::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"YetiSpecialSkill", Resources(L"SkillIcon/YetiSpecialSkill.bmp"), 62, 62, true);
 	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"YetiSpecialSkill");
 
+	mChampEx = L"엘나스에서 평화롭게 지내던 설인. 튼튼한 체력과 넉백으로 아군을 지켜준다.";
+	mSkillEx = L"자신 주변의 상대를 넉백시키고 일정시간동안 자신의 공격력을 증가시킨다.";
+	mSpecialSkillEx = L"차가운 바람의 기운을 모아 자신 주변의 상대를 강하게 넉백하고 범위공격을 한다.";
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"YetiSpecialSkill", Resources(L"SkillIcon/YetiSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"YetiSpecialSkill");
+
 	IMAGEMANAGER->LoadFromFile(L"Yeti", Resources(L"Yeti.bmp"), 2700, 2760, 9, 12, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);

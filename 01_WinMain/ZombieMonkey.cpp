@@ -35,6 +35,17 @@ void ZombieMonkey::Init()
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkeySkill", Resources(L"SkillIcon/ZombieMonkeySkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"ZombieMonkeySkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkeySpecialSkill", Resources(L"SkillIcon/ZombieMonkeySpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"ZombieMonkeySpecialSkill");
+
+	mChampEx = L"깊은 원한 속에서 성불해버린 원숭이. 신기하게도 저주가 아니라 회복능력에 특화되어 있다.";
+	mSkillEx = L"아군 캐릭터 하나의 체력을 회복시킨다.";
+	mSpecialSkillEx = L"아군 캐릭터 하나의 체력을 대량 회복시킨다";
+
 	//변수 초기화
 	mMaxHP = 150;
 	mMaxMP = 100;
@@ -52,7 +63,6 @@ void ZombieMonkey::Init()
 	mSkill1Cool = mMaxSkill1Cool;
 	mDeathCool = 3;
 	mAlpha = 0.6;
-
 	mDistance1 = 0;
 	mDistance2 = 0;
 	mDistance3 = 0;

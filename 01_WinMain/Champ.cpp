@@ -183,3 +183,4 @@ void Champ::DefBuff(float defbuff, float time)
 	mDefBuff = defbuff;
 	mDefBuffTime = time;
 }
+
