@@ -88,8 +88,10 @@ public:
 	Champ* GetBanCp(int index) { return mBanChamp[index]; }
 
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
-	void ChampSwap(Staff* st1, Staff* st2);
+	void ChampSwap(Champ* cp1, Champ* cp2);
 	int GetSelectSize() { return mSelectChamp.size(); }
+	vector<Champ*> GetSelectChampList(TeamData t) { return t.mSelectChamp; }
+	Champ* GetSelectChamp(Team t, int index);
 
 	void Feedback(int i);
 	void UpdateCondition(TeamData t, int con);

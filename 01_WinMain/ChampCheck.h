@@ -5,6 +5,9 @@ class ChampCheck : public UI
 {
 	Image* mImage;
 	bool mIsClick;
+
+	Champ* mFirst;
+	Champ* mSecond;
 public:
 	ChampCheck();
 
@@ -12,6 +15,8 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void ChampRender(HDC hdc, int x, int y, Champ* champ);
 
 };
 

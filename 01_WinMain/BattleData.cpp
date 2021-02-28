@@ -121,21 +121,22 @@ void BattleData::ChampBan(Champ * ban)
 
 bool BattleData::ChampSelect(Staff * st, Champ * c)
 {
-	if(GetChampTeam(c) != Team::None)//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
-		return false;
-
-	mSelectChamp.push_back(c);
-	c->SetStaff(st);
-	Team temp = GetStaffTeam(st);
-	switch (temp)
+	if (GetChampTeam(c) == Team::None)//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
 	{
-	case Team::Blue:
-		mBlueTeam.mSelectChamp.push_back(c);
-		break;
-	case Team::Red:
-		mRedTeam.mSelectChamp.push_back(c);
-	}
+		mSelectChamp.push_back(c);
+		c->SetStaff(st);
+		Team temp = GetStaffTeam(st);
+		switch (temp)
+		{
+		case Team::Blue:
+			mBlueTeam.mSelectChamp.push_back(c);
+			break;
+		case Team::Red:
+			mRedTeam.mSelectChamp.push_back(c);
+		}
 	return true;
+	}
+	return false;
 }
 
 int BattleData::BanCount()
@@ -144,10 +145,12 @@ int BattleData::BanCount()
 	else if (mBanChamp[1] == nullptr) return 1;
 	else if (mBanChamp[1]) return 2;
 }
-void BattleData::ChampSwap(Staff * st1, Staff * st2)
+void BattleData::ChampSwap(Champ* cp1, Champ * cp2)
 {
 	//플레이어의 selectstaff인지 확인(혹시 몰라서 만듬)
 	bool checkMyTeam = false;
+	Staff* st1 = (Staff*)cp1->GetStaff();
+	Staff* st2 = (Staff*)cp2->GetStaff();
 	switch (mPlayerTeam)
 	{
 	case Team::Blue:
@@ -196,18 +199,43 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 
 	//확인이 끝났으니 스왑
 	Staff* temp;
-	Champ* champ1 = nullptr;
-	Champ* champ2 = nullptr;
-	for (int i = 0; i < mSelectChamp.size(); ++i)
+	temp = st1;
+	cp1->SetStaff(st2);
+	cp2->SetStaff(temp);
+
+	int index1 = 0;
+	int index2 = 0;
+	switch (mPlayerTeam)
 	{
-		if (mSelectChamp[i]->GetStaff() == st1)
-			champ1 = mSelectChamp[i];
-		if (mSelectChamp[i]->GetStaff() == st2)
-			champ2 = mSelectChamp[i];
+	case Team::Blue:
+		for (int i = 0; i < 3; ++i)
+		{
+			if (mBlueTeam.mSelectChamp[i] == cp1)
+				index1 = i;
+		}
+		for (int i = 0; i < 3; ++i)
+		{
+			if (mBlueTeam.mSelectChamp[i] == cp2)
+				index2 = i;
+		}
+		mBlueTeam.mSelectChamp[index1] = cp2;
+		mBlueTeam.mSelectChamp[index2] = cp1;
+		break;
+	case Team::Red:
+		for (int i = 0; i < 3; ++i)
+		{
+			if (mRedTeam.mSelectChamp[i] == cp1)
+				index1 = i;
+		}
+		for (int i = 0; i < 3; ++i)
+		{
+			if (mRedTeam.mSelectChamp[i] == cp2)
+				index2 = i;
+		}
+		mRedTeam.mSelectChamp[index1] = cp2;
+		mRedTeam.mSelectChamp[index2] = cp1;
+		break;
 	}
-	temp = (Staff*)champ1->GetStaff();
-	champ1->SetStaff(champ2->GetStaff());
-	champ2->SetStaff(temp);
 }
 
 void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
@@ -358,18 +386,18 @@ Team BattleData::GetChampTeam(GameObject * pt)
 	if (mBanChamp[1] == champ)
 		return Team::Ban;
 
-	if (mBlueTeam.mSelectStaff[0] == champ->GetStaff())
+	if (mBlueTeam.mSelectStaff[0] == (Staff*)champ->GetStaff())
 		return Team::Blue;
-	if (mBlueTeam.mSelectStaff[1] == champ->GetStaff())
+	if (mBlueTeam.mSelectStaff[1] == (Staff*)champ->GetStaff())
 		return Team::Blue;
-	if (mBlueTeam.mSelectStaff[2] == champ->GetStaff())
+	if (mBlueTeam.mSelectStaff[2] == (Staff*)champ->GetStaff())
 		return Team::Blue;
 
-	if (mRedTeam.mSelectStaff[0] == champ->GetStaff())
+	if (mRedTeam.mSelectStaff[0] == (Staff*)champ->GetStaff())
 		return Team::Red;
-	if (mRedTeam.mSelectStaff[1] == champ->GetStaff())
+	if (mRedTeam.mSelectStaff[1] == (Staff*)champ->GetStaff())
 		return Team::Red;
-	if (mRedTeam.mSelectStaff[2] == champ->GetStaff())
+	if (mRedTeam.mSelectStaff[2] == (Staff*)champ->GetStaff())
 		return Team::Red;
 
 	return Team::None;
@@ -393,3 +421,16 @@ Team BattleData::GetStaffTeam(Staff* st)
 	return Team::None;
 }
 
+Champ* BattleData::GetSelectChamp(Team t, int index)
+{
+	TeamData team;
+	switch (t)
+	{
+	case Team::Red:
+		team = mRedTeam;
+		break;
+	case Team::Blue:
+		team = mBlueTeam;
+	}
+	return team.mSelectChamp[index]; 
+}
