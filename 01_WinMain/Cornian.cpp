@@ -22,6 +22,8 @@ Cornian::Cornian(string str, float x, float y)
 	mRespawnY = y;
 }
 
+
+
 void Cornian::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
@@ -48,70 +50,67 @@ void Cornian::Init()
 	mChampEx = L"팔시온을 휘두르는 도마뱀. 체구에 비해 굉장히 재빠른 것이 특징.";
 	mSkillEx = L"자신의 공격력을 증가시킨다.";
 	mSpecialSkillEx = L"일직선 상의 적을 공격하여 피해를 주고 범위만큼 이동한다.";
-	
+
 	//변수 초기화
-	mMaxHP = 150;
+	mMaxHP = 100;
 	mMaxMP = 100;
 	mHP = mMaxHP;
 	mMP = 0;
-	mInitAtk = 15;
+	mInitAtk = 25;
 	mAtk = mInitAtk;
-	mInitDef = 30;
-	mDef = mInitDef;
+	mDef = 5;
 	mSpeed = 150;
 	mRange = 60;
-	mMaxAttackCool = 1.5;
-	mAttackCool = 0;
-	mMaxSkill1Cool = 7;
+	mMaxAttackCool = 1.5f;
+	mAttackCool = mMaxAttackCool;
+	mMaxSkill1Cool = 5;
 	mSkill1Cool = mMaxSkill1Cool;
 	mDeathCool = 3;
-	mAlpha = 0.6;
 
 
 	mDistance1 = 0;
 	mDistance2 = 0;
 	mDistance3 = 0;
-
-
-
+	mAlpha = 0.6;
 
 	mAngle = 0;
 	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
+
 	//애니메이션
 	Animation* RightIdle = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 6, 5, 6, true);
+	RightIdle->InitFrameByStartEnd(0, 8, 5, 8, true);
 	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.1f);
+	RightIdle->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
 	mCurrentAnm = RightIdle;
 	mCurrentAnm->Play();
 
 	Animation* RightRun = new Animation();
-	RightRun->InitFrameByStartEnd(0, 7, 7, 7, true);
+	RightRun->InitFrameByStartEnd(0, 9, 3, 9, true);
 	RightRun->SetIsLoop(true);
-	RightRun->SetFrameUpdateTime(0.1f);
+	RightRun->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightRun", RightRun));
 
 	Animation* RightAttack = new Animation();
-	RightAttack->InitFrameByStartEnd(0, 8, 5, 8, true);
+	RightAttack->InitFrameByStartEnd(0, 10, 5, 10, true);
 	RightAttack->SetIsLoop(true);
 	RightAttack->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightAttack", RightAttack));
 
 	Animation* RightSkill1 = new Animation();
-	RightSkill1->InitFrameByStartEnd(0, 9, 4, 9, true);
+	RightSkill1->InitFrameByStartEnd(0, 11, 6, 11, true);
 	RightSkill1->SetIsLoop(true);
 	RightSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill1", RightSkill1));
 
 	Animation* RightSkill2 = new Animation();
-	RightSkill2->InitFrameByStartEnd(0, 10, 7, 10, true);
+	RightSkill2->InitFrameByStartEnd(0, 12, 5, 12, true);
 	RightSkill2->SetIsLoop(true);
 	RightSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
 
-	Animation* RightDeath = new Animation();
-	RightDeath->InitFrameByStartEnd(0, 11, 7, 11, true);
+	Animation* RightDeath = new Animation();							//이친구는 이미지가 하나라 알파값을 넣어야한다.
+	RightDeath->InitFrameByStartEnd(0, 13, 0, 13, true);
 	RightDeath->SetIsLoop(true);
 	RightDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
@@ -123,9 +122,9 @@ void Cornian::Init()
 	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
 
 	Animation* LeftRun = new Animation();
-	LeftRun->InitFrameByStartEnd(0, 1, 7, 1, false);
+	LeftRun->InitFrameByStartEnd(0, 1, 3, 1, false);
 	LeftRun->SetIsLoop(true);
-	LeftRun->SetFrameUpdateTime(0.1f);
+	LeftRun->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 
 	Animation* LeftAttack = new Animation();
@@ -135,30 +134,29 @@ void Cornian::Init()
 	mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
 
 	Animation* LeftSkill1 = new Animation();
-	LeftSkill1->InitFrameByStartEnd(0, 3, 4, 3, false);
+	LeftSkill1->InitFrameByStartEnd(0, 3, 6, 3, false);
 	LeftSkill1->SetIsLoop(true);
 	LeftSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
 
 	Animation* LeftSkill2 = new Animation();
-	LeftSkill2->InitFrameByStartEnd(0, 4, 7, 4, false);
+	LeftSkill2->InitFrameByStartEnd(0, 4, 5, 4, false);
 	LeftSkill2->SetIsLoop(true);
 	LeftSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
 
 	Animation* LeftDeath = new Animation();
-	LeftDeath->InitFrameByStartEnd(0, 5, 7, 5, false);
+	LeftDeath->InitFrameByStartEnd(0, 5, 0, 5, false);
 	LeftDeath->SetIsLoop(true);
 	LeftDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
-
-	mapIter = mAnimationList.begin();
 }
 
 void Cornian::Release()
 {
 
 }
+
 void Cornian::Update()
 {
 	Champ::Update();
@@ -184,7 +182,7 @@ void Cornian::Update()
 
 	if (mIsDeath == true)
 	{
-		if (mCurrentAnm->GetNowFrameY() >= 6 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
+		if (mCurrentAnm->GetNowFrameY() >= 8 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
 		{
 			mDeathCount++;
 			mCurrentAnm->Stop();
@@ -192,16 +190,15 @@ void Cornian::Update()
 			mCurrentAnm->Play();
 
 		}
-		if (mCurrentAnm->GetNowFrameY() < 6 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
+		if (mCurrentAnm->GetNowFrameY() < 8 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
 		{
 			mDeathCount++;
 			mCurrentAnm->Stop();
 			mCurrentAnm = mAnimationList.find(L"LeftDeath")->second;
 			mCurrentAnm->Play();
 		}
-		if (mCurrentAnm->GetCurrentFrameIndex() != 6)
-			mCurrentAnm->Update();
-		mAlpha -= 0.2*Time::GetInstance()->DeltaTime();
+		mCurrentAnm->Update();
+		mAlpha -= 0.2 * Time::GetInstance()->DeltaTime();
 		mDeathCool -= Time::GetInstance()->DeltaTime();
 		return;
 	}
@@ -210,7 +207,7 @@ void Cornian::Update()
 	//우선 엑티브가 트루인지 폴스인지 확인후 트루면 값을 넣어주고 아니면 0을 넣어서 거리값을 비교하게 한다.
 	//비교했을 때 거리가 가까운 애를 타겟으로 한다.
 	if (mCurrentAnm != mAnimationList.find(L"RightSkill2")->second && mCurrentAnm != mAnimationList.find(L"LeftSkill2")->second)
-		mMP += Time::GetInstance()->DeltaTime() * 7;	//MP 1씩 더해주기
+		mMP += Time::GetInstance()->DeltaTime() * 7;	//MP 7씩 더해주기
 	if (mCurrentAnm != mAnimationList.find(L"RightSkill1")->second && mCurrentAnm != mAnimationList.find(L"LeftSkill1")->second)
 		mSkill1Cool -= Time::GetInstance()->DeltaTime(); //스킬 쿨 돌아가게 해주기
 	if (mCurrentAnm != mAnimationList.find(L"RightAttack")->second && mCurrentAnm != mAnimationList.find(L"LeftAttack")->second)
@@ -279,8 +276,8 @@ void Cornian::Update()
 		mTargetDistance = Math::GetDistance(mX, mY, mTarget->GetX(), mTarget->GetY());
 	}
 
-
 	Champ* tmp = (Champ*)mTarget;		//타겟이 확정됐으니 적 체력세팅을 위해 다운캐스팅해버림
+
 	mAngle = Math::GetAngle(mX, mY, mTarget->GetX(), mTarget->GetY());
 	//}}
 
@@ -398,8 +395,8 @@ void Cornian::Update()
 
 			if (!(temp[0]->GetIsDeath() == true && temp[1]->GetIsDeath() == true && temp[2]->GetIsDeath() == true))	//모두 죽었을 때 안 움직이게 한다.
 			{
-				mX += cosf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;	//이동속도만큼 X,Y값에 값을 더한다.
-				mY -= sinf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
+				mX += cosf(mAngle) * Time::GetInstance()->DeltaTime() * mSpeed;	//이동속도만큼 X,Y값에 값을 더한다.
+				mY -= sinf(mAngle) * Time::GetInstance()->DeltaTime() * mSpeed;
 			}
 			mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 		}
@@ -408,31 +405,80 @@ void Cornian::Update()
 		//{{어떤 모션을 취했을 시
 		if (mIsAction == true)
 		{
-			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 7
-				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 7)
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
 			{
 				mMP = 0;
-				DefBuff(15, 5);
+
+				POINT pt = { temp[0]->GetX(), temp[0]->GetY() };
+				POINT pt1 = { temp[1]->GetX(), temp[1]->GetY() };		//범위 타격을 위한 포인트 생성
+				POINT pt2 = { temp[2]->GetX(), temp[2]->GetY() };
+				RECT rc = { mX - 100,mY - 100,mX + 100,mY + 100 };		//범위 렉트 생성
+
+				float Angle = Math::GetAngle(mX, mY, temp[0]->GetX(), temp[0]->GetY());
+				float Angle1 = Math::GetAngle(mX, mY, temp[1]->GetX(), temp[1]->GetY());
+				float Angle2 = Math::GetAngle(mX, mY, temp[2]->GetX(), temp[2]->GetY());
+
+				if (PtInRect(&rc, pt))
+				{
+					temp[0]->NuckBack(400, Angle);
+					temp[0]->SetHP(temp[0]->GetHP() - (mAtk * (1 - (temp[0]->GetDef() / (temp[0]->GetDef() + 30)))));
+				}
+				if (PtInRect(&rc, pt1))
+				{
+					temp[1]->NuckBack(400, Angle1);
+					temp[1]->SetHP(temp[1]->GetHP() - (mAtk * (1 - (temp[1]->GetDef() / (temp[1]->GetDef() + 30)))));
+				}
+				if (PtInRect(&rc, pt2))
+				{
+					temp[2]->NuckBack(400, Angle2);
+					temp[2]->SetHP(temp[2]->GetHP() - (mAtk * (1 - (temp[2]->GetDef() / (temp[2]->GetDef() + 30)))));
+				}
+				if (mDistance1 > mDistance2 && mDistance1 > mDistance3)
+				{
+					mTarget = mEnemyList[0];
+					mTargetDistance = mDistance1;
+				}
+
+				if (mDistance2 > mDistance3 && mDistance2 > mDistance1)
+				{
+					mTarget = mEnemyList[1];
+					mTargetDistance = mDistance2;
+				}
+
+				if (mDistance3 > mDistance1 && mDistance3 > mDistance2)
+				{
+					mTarget = mEnemyList[2];
+					mTargetDistance = mDistance3;
+				}
+				if (mCurrentAnm->GetNowFrameY() >= 8)
+				{
+					mX = mTarget->GetX() + 20;
+					mY = mTarget->GetY();
+				}
+				else
+				{
+					mX = mTarget->GetX() - 20;
+					mY = mTarget->GetY();
+				}
 				mIsAction = false;
 			}
-			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 4
-				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 4)
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
 			{
-				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
-				Aggro(3);
 				mSkill1Cool = mMaxSkill1Cool;
+				AtkBuff(10, 5);
 				mIsAction = false;
 			}
 			if ((mCurrentAnm == mAnimationList.find(L"RightAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
 				|| (mCurrentAnm == mAnimationList.find(L"LeftAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5))
 			{
-				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
-				tmp->SetHP(tmp->GetHP() - (mAtk *(1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
 				mAttackCool = mMaxAttackCool;
+				tmp->SetHP(tmp->GetHP() - (mAtk * (1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
 				mIsAction = false;
 			}
-			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
-				|| mCurrentAnm == mAnimationList.find(L"LeftIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
+			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 2
+				|| mCurrentAnm == mAnimationList.find(L"LeftIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 2)
 			{
 				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
 				mIsAction = false;
@@ -466,44 +512,42 @@ void Cornian::Update()
 	if (mY <= 227) mY = 227;
 	if (mY >= 640) mY = 640;
 
-	if (mHP > mMaxHP)mHP = mMaxHP;
-	if (mMP > mMaxMP)mMP = mMaxMP;
+	if (mHP >= mMaxHP)mHP = mMaxHP;
+	if (mMP >= mMaxMP)mMP = mMaxMP;
 	mCurrentAnm->Update();
 	mRect = RectMake(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	//}}
-
 }
+
 void Cornian::Render(HDC hdc)
 {
 	//RenderRect(hdc, mRect);
-	//Rectangle(hdc,mX - 100, mY - 100, mX + 100, mY + 100);
-	if (mCurrentAnm->GetNowFrameY() >= 6)
+	if (mCurrentAnm->GetNowFrameY() >= 8)
 	{
-		if (mCurrentAnm->GetNowFrameY() == 11)
+		if (mCurrentAnm->GetNowFrameY() == 13)
 		{
-			mImage->AlphaScaleFrameRender(hdc, mX - 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70, mAlpha);
+			mImage->AlphaScaleFrameRender(hdc, mX - 115, mY - 90, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 238, 119, mAlpha);
 		}
 		else
-			mImage->ScaleFrameRender(hdc, mX - 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70);
+			mImage->ScaleFrameRender(hdc, mX - 115, mY - 90, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 238, 119);
 	}
 	else
 	{
 		if (mCurrentAnm->GetNowFrameY() == 5)
 		{
-			mImage->AlphaScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70, mAlpha);
+			mImage->AlphaScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 55, mY - 90, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 238, 119, mAlpha);
 		}
 		else
-			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70);
+			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 55, mY - 90, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 238, 119);
 	}
 
-	wstring atkCool = to_wstring(mDeathCount);
-	TextOut(hdc, 50, 75, atkCool.c_str(), atkCool.size());
 	if (mIsDeath != true)
 	{
-		mHPImage->Render(hdc, mX - 35, mY + 10, 0, 0, 88 * (mHP / mMaxHP), 8);
-		mMPImage->Render(hdc, mX - 33, mY + 16, 0, 0, 80 * (mMP / mMaxMP), 8);
-		mHPBar->Render(hdc, mX - 36, mY + 10);
+		mHPImage->Render(hdc, mX - 35, mY + 25, 0, 0, 88 * (mHP / mMaxHP), 8);
+		mMPImage->Render(hdc, mX - 33, mY + 31, 0, 0, 80 * (mMP / mMaxMP), 8);
+		mHPBar->Render(hdc, mX - 36, mY + 25);
 	}
+
 	if (mProvocateur)
 	{
 		if (mCurrentAnm->GetNowFrameY() >= 5)
@@ -511,11 +555,12 @@ void Cornian::Render(HDC hdc)
 		else
 			mExclamation->Render(hdc, mX + 4, mY - 50);
 	}
+
 	if (mGetDefBuff)
 	{
 		if (mCurrentAnm->GetNowFrameY() >= 6)
-			mDefImage->Render(hdc, mX - 36, mY - 10);
+			mDefImage->Render(hdc, mX - 36, mY + 5);
 		else
-			mDefImage->Render(hdc, mX + 34, mY - 10);
+			mDefImage->Render(hdc, mX + 34, mY + 5);
 	}
 }
