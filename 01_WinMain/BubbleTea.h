@@ -13,7 +13,7 @@ public:
 
 	BubbleTea();
 	BubbleTea(string str, float  x, float y);
-	BubbleTea(string str);
+	BubbleTea(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

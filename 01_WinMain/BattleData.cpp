@@ -483,3 +483,5 @@ Champ* BattleData::GetSelectChamp(Team t, int index)
 	}
 	return team.mSelectChamp[index]; 
 }
+
+

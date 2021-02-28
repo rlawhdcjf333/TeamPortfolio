@@ -18,10 +18,16 @@ void Battle::Release()
 
 void Battle::Update()
 {
-	if (!mIsActive)
-	{
-		return;
-	}
+	
+
+
+	
+
+
+
+
+
+
 }
 
 void Battle::Render(HDC hdc)

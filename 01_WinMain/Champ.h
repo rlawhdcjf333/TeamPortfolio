@@ -136,4 +136,9 @@ public:
 	wstring GetSkillEx() const { return mSkillEx; }
 	wstring GetSpecialSkillEx() const { return mSpecialSkillEx; }
 	
+
+	void StaffOnChamp();
+
+
+
 };

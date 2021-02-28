@@ -18,5 +18,7 @@ public:
 
 	void ChampRender(HDC hdc, int x, int y, Champ* champ);
 
+	void ConfirmChamp();
+
 };
 

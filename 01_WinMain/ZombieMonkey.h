@@ -9,7 +9,7 @@ public:
 
 	ZombieMonkey();
 	ZombieMonkey(string str, float  x, float y);
-	ZombieMonkey(string str);
+	ZombieMonkey(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

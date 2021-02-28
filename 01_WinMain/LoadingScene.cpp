@@ -20,6 +20,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warriors", L"../04_Bgm/Warriors.mp3", true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BanPick", L"../04_Bgm/BanPick.mp3", true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Warsong", L"../04_Bgm/Warsong.mp3", true); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Airman", L"../04_Bgm/Airman.mp3", true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Pick", L"../04_Bgm/Pick.mp3", false); });
 	AddLoadFunc([]() {ScheduleManager::GetInstance()->Init();});
 	AddLoadFunc([]() {ObjectManager::GetInstance()->AddObject(ObjectLayer::Director, new Director("Director1", L"TeamNuguri", L"TeamNuguri"));});

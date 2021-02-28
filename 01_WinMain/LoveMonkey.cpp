@@ -6,6 +6,13 @@
 LoveMonkey::LoveMonkey()
 	:Champ("LoveMonkey") {}
 
+LoveMonkey::LoveMonkey(const string& name)
+	: Champ(name)
+{
+	mChampName = L"LoveMonkey";
+	mClassType = ClassType::Supporter;
+}
+
 LoveMonkey::LoveMonkey(string str, float x, float y)
 	: Champ(str)
 {
@@ -14,25 +21,32 @@ LoveMonkey::LoveMonkey(string str, float x, float y)
 	mRespawnX = x;
 	mRespawnY = y;
 }
-LoveMonkey::LoveMonkey(string str)
-	:Champ(str) {}
 
 void LoveMonkey::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"LoveMonkey", Resources(L"LoveMonkey.bmp"), 480, 720, 6, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"LoveMonkey", Resources(L"LoveMonkey.bmp"), 480, 600, 6, 10, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"exclamation", Resources(L"exclamation.bmp"), 40, 40, true);
 	IMAGEMANAGER->LoadFromFile(L"Def", Resources(L"Def.bmp"), 20, 20, true);
+	IMAGEMANAGER->LoadFromFile(L"MonkeySkill", Resources(L"SkillIcon/MonkeySkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"MonkeySpecialSkill", Resources(L"SkillIcon/MonkeySpecialSkill.bmp"), 62, 62, true);
+
+	mChampEx = L"큐피트가 되고 싶은 아기 원숭이. 아군을 치유하는데 열심이다.";
+	mSkillEx = L"사랑의 힘으로 주변 좁은 범위의 아군을 회복시킨다.";
+	mSpecialSkillEx = L"강력한 사랑의 힘으로 주변 넓은 범위의 아군을 3번 회복시킨다.";
+
 	mImage = IMAGEMANAGER->FindImage(L"LoveMonkey");
 	mHPBar = IMAGEMANAGER->FindImage(L"HPBar");
 	mHPImage = IMAGEMANAGER->FindImage(L"HP");
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
+	mSkillImage = IMAGEMANAGER->FindImage(L"MonkeySkill");
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"MonkeySpecialSkill");
 	//변수 초기화
 	mMaxHP = 150;
 	mMaxMP = 100;

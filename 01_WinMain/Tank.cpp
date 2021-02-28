@@ -6,6 +6,13 @@
 Tank::Tank()
 	:Champ("Tank") {}
 
+Tank::Tank(const string& name)
+	: Champ(name) 
+{
+	mChampName = L"Tank";
+	mClassType = ClassType::ADCarry;
+}
+
 Tank::Tank(string str, float x, float y)
 	: Champ(str)
 {
@@ -14,8 +21,6 @@ Tank::Tank(string str, float x, float y)
 	mRespawnX = x;
 	mRespawnY = y;
 }
-Tank::Tank(string str)
-	:Champ(str){}
 
 void Tank::Init()
 {
@@ -34,10 +39,10 @@ void Tank::Init()
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
 
-	IMAGEMANAGER->GetInstance()->LoadFromFile(L"TankSkill", Resources(L"SkillIcon/TankSkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"TankSkill", Resources(L"SkillIcon/TankSkill.bmp"), 62, 62, true);
 	mSkillImage = IMAGEMANAGER->FindImage(L"TankSkill");
 
-	IMAGEMANAGER->GetInstance()->LoadFromFile(L"TankSpecialSkill", Resources(L"SkillIcon/TankSpecialSkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"TankSpecialSkill", Resources(L"SkillIcon/TankSpecialSkill.bmp"), 62, 62, true);
 	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"TankSpecialSkill");
 
 	mChampEx = L"우스꽝스러운 디자인으로 제작된 전차. 위력은 결코 우스꽝스럽지 않다.";

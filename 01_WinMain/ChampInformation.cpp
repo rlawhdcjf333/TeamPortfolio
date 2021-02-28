@@ -73,7 +73,7 @@ void ChampInformation::Update()
 		mChampSpeed = to_wstring(mCurrentChamp->GetSpeed());
 		mChampEx = mCurrentChamp->GetChampEx();
 		mSkillCool = to_wstring(mCurrentChamp->GetSkillCool());
-		//mSpecialSkillCool = to_wstring(mCurrentChamp->GetSpecialSkillCool());
+		mSpecialSkillCool = L"풀마나시 시전";
 		mChampSkill = mCurrentChamp->GetSkillEx();
 		mChampSpecialSkill = mCurrentChamp->GetSpecialSkillEx();
 	}

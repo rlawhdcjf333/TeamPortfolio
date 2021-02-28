@@ -5,14 +5,14 @@ class Animation;
 
 enum class Character : int	//0 ~ 8, 9는 표시안함
 {
-	Nomal,	//평범 : 아무 특성 없음
+	Normal,	//평범 : 아무 특성 없음
 	Hero,	//영웅 : 이기고 있을때 모든 능력치 -10, 지고 있을때 +10
 	Glass,	//유리멘탈 : 이기고 있을때 모든 능력치 +10, 지고 있을때 -10
 	Mother,	//엄마 : 회복력 + 10
 	Thorn,	//가시 : 상대방의 회복력 -10
 	Winner,	//승리자 : 처치관여(assist)시 체력 +10
 	Distraction,//주의산만 : 공격대상이 5초마다 무작위로 변경
-	Fest,	//쾌속 : 스킬 시전속도 10% 증가
+	Fast,	//쾌속 : 스킬 시전속도 10% 증가
 	Spear,	//꿰뚫는 창 : 방어력 관통효과 +10(상대방의 방어력을 10 무시한다)
 
 	None	//비어있는 특성(표시 안하는 상태)
@@ -26,7 +26,7 @@ enum class Condition : int
 	Good,	//약간 좋음
 	Best	//최고
 };
-class Staff : public GameObject
+class  Staff: public GameObject
 {
 
 
@@ -61,6 +61,7 @@ protected:
 	int mConditionX;
 
 	int mCost; // 재계약 비용 만들떄 사용
+
 public:
 	Staff(const string& name, const string& staffName, const wstring& teamName);
 	
@@ -129,6 +130,8 @@ public:
 	void SetCondition(Condition con) { mCondition = con; }
 
 	int GetCost() { return mCost; }
+
+	Director* GetMyDirector();
 
 public:
 	Staff(const Staff& copy); //복사 생성자 오버로딩 deep copy에 필요. 새로운 변수 생기면 반드시 여기다가도 추가해야함
