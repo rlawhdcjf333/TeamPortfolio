@@ -22,6 +22,8 @@ class ChampSelect : public UI
 	Champ* mCurrentChamp;
 	RECT mCurrentRect;
 
+	float mDelay;
+	
 
 public:
 	ChampSelect();
@@ -39,5 +41,7 @@ public:
 	void NextState();
 	void ChampRender(HDC hdc, int x , int y, vector<GameObject*> list, int i);
 	void BanRender(HDC hdc, int x, int y, Champ* champ);
+
+	void DelayReset() { mDelay = 2.f; }
 };
 
