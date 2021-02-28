@@ -14,8 +14,15 @@ void BabyMonkey::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"BabyMonkey", Resources(L"BabyMonkey.bmp"), 480, 600, 6, 10, true);
 	mImage = IMAGEMANAGER->FindImage(L"BabyMonkey");
 
-	mChampEx = L"큐피트가 되고 싶은 아기 원숭이. 아군을 치유하는데 열심이다.";
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"MonkeySkill", Resources(L"SkillIcon/MonkeySkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"MonkeySkill");
 
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"MonkeySpecialSkill", Resources(L"SkillIcon/MonkeySpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"MonkeySpecialSkill");
+
+	mChampEx = L"큐피트가 되고 싶은 아기 원숭이. 아군을 치유하는데 열심이다.";
+	mSkillEx = L"사랑의 힘으로 주변 좁은 범위의 아군을 회복시킨다.";
+	mSpecialSkillEx = L"강력한 사랑의 힘으로 주변 넓은 범위의 아군을 3번 회복시킨다.";
 	
 	mFullHP = 100;
 	mHP = mFullHP;

@@ -13,7 +13,15 @@ void HelmetPepe::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"HelmetPepe", Resources(L"HelmetPepe.bmp"), 1040, 1440, 8, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"HelmetPepe");
 
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"PepeSkill", Resources(L"SkillIcon/PepeSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"PepeSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"PepeSpecialSkill", Resources(L"SkillIcon/PepeSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"PepeSpecialSkill");
+
 	mChampEx = L"헬멧을 뒤집어 쓴 펭귄. 이유는 모르겠지만 도발적이다.";
+	mSkillEx = L"자신 주변의 상대를 3초간 도발한다.";
+	mSpecialSkillEx = L"남극지방 전통춤을 추어 모든 아군의 방어력을 일정시간 올린다.";
 
 	mFullHP = 100;
 	mHP = mFullHP;

@@ -2,11 +2,23 @@
 #include "Champ.h"
 class Tank : public Champ
 {
+	typedef map<wstring, Animation*> ::iterator iter;
+	iter mapIter;
+
+	bool mIsMode;
+	float mModeTime;
+	float mRangeBuff;
+	float mInitRange;
 public:
 
-	Tank(const string& name);
+	Tank();
+	Tank(string str, float  x, float y);
+	Tank(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void Mode(float time, float plusrange, float plusdamage);
+
 };

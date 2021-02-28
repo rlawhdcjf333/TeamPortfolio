@@ -38,6 +38,9 @@ void ChampInformation::Init()
 	for (int i = 0; i < 2; i++) {	// 챔프 스킬 설명
 		mRectList.push_back(RectMake(442, 386 + (i * 70), 388, 58));
 	}
+
+	// 통계는 없습니다
+
 }
 
 void ChampInformation::Release()
@@ -58,6 +61,21 @@ void ChampInformation::Update()
 		mToggleButton(0, "None", prevButton);
 		mToggleButton(1, "None", nextButton);
 		mToggleButton(2, "None", func);
+
+		mClassChampType = ClassTypeCheck(mCurrentChamp);
+		mChampName = mCurrentChamp->GetChampName();
+		mChampInformation = mChampName + L" 상세 정보";
+		mChampAtk = to_wstring((int)mCurrentChamp->GetAtk());
+		mChampAtkSpeed = to_wstring(0);
+		mChampRange = to_wstring(mCurrentChamp->GetRange());
+		mChampDef = to_wstring(mCurrentChamp->GetDef());
+		mChampHp = to_wstring(mCurrentChamp->GetHP());
+		mChampSpeed = to_wstring(mCurrentChamp->GetSpeed());
+		mChampEx = mCurrentChamp->GetChampEx();
+		mSkillCool = to_wstring(mCurrentChamp->GetSkillCool());
+		//mSpecialSkillCool = to_wstring(mCurrentChamp->GetSpecialSkillCool());
+		mChampSkill = mCurrentChamp->GetSkillEx();
+		mChampSpecialSkill = mCurrentChamp->GetSpecialSkillEx();
 	}
 }
 
@@ -67,69 +85,42 @@ void ChampInformation::Render(HDC hdc)
 		mImage->Render(hdc, 0, 0);
 		MouseOver(hdc);
 
-		wstring ClassChampType = ClassTypeCheck(mCurrentChamp);
-		wstring ChampName = mCurrentChamp->GetChampName();
-		wstring ChampInformation = ChampName + L" 상세 정보";
-		wstring ChampAtk = to_wstring((int)mCurrentChamp->GetAtk());
-		wstring ChampAtkSpeed = to_wstring(0);
-		wstring ChampRange = to_wstring(mCurrentChamp->GetRange());
-		wstring ChampDef = to_wstring(mCurrentChamp->GetDef());
-		wstring ChampHp = to_wstring(mCurrentChamp->GetHP());
-		wstring ChampSpeed = to_wstring(mCurrentChamp->GetSpeed());
-
 		mCurrentChamp->ChampImageRender(hdc, mRectList[1]);
+		mCurrentChamp->SkillImageRender(hdc, mRectList[11]);
+		mCurrentChamp->SpecialSkillImageRender(hdc, mRectList[12]);
 		
-		HFONT newF = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		HFONT oldF = (HFONT)SelectObject(hdc, newF);
-		DrawText(hdc, ChampInformation.c_str(), ChampInformation.length(), &mRectList[0], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		SelectObject(hdc, oldF);
-		DeleteObject(newF);
+		mHdc = hdc;
 
-		newF = CreateFont(20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		oldF = (HFONT)SelectObject(hdc, newF);
-		DrawText(hdc, ClassChampType.c_str(), ClassChampType.length(), &mRectList[2], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		SelectObject(hdc, oldF);
-		DeleteObject(newF);
+		function<void(void)> champInformation = [this]() { DrawText(mHdc, mChampInformation.c_str(), mChampInformation.length(), &mRectList[0], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champClassType = [this]() { DrawText(mHdc, mClassChampType.c_str(), mClassChampType.length(), &mRectList[2], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champName = [this]() { DrawText(mHdc, mChampName.c_str(), mChampName.length(), &mRectList[3], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champAtk = [this]() { DrawText(mHdc, mChampAtk.c_str(), mChampAtk.length(), &mRectList[4], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champAtkSpeed = [this]() { DrawText(mHdc, mChampAtkSpeed.c_str(), mChampAtkSpeed.length(), &mRectList[5], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champRange = [this]() { DrawText(mHdc, mChampRange.c_str(), mChampRange.length(), &mRectList[6], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champDef = [this]() { DrawText(mHdc, mChampDef.c_str(), mChampDef.length(), &mRectList[7], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champHp = [this]() { DrawText(mHdc, mChampHp.c_str(), mChampHp.length(), &mRectList[8], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champSpeed = [this]() { DrawText(mHdc, mChampSpeed.c_str(), mChampSpeed.length(), &mRectList[9], DT_VCENTER | DT_CENTER | DT_SINGLELINE); };
+		function<void(void)> champEx = [this]() { DrawText(mHdc, mChampEx.c_str(), mChampEx.length(), &mRectList[10], DT_TOP | DT_LEFT | DT_WORDBREAK); };
 
-		newF = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		oldF = (HFONT)SelectObject(hdc, newF);
-		DrawText(hdc, ChampName.c_str(), ChampName.length(), &mRectList[3], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		SelectObject(hdc, oldF);
-		DeleteObject(newF);
+		function<void(void)> SkillCool = [this]() { DrawText(mHdc, mSkillCool.c_str(), mSkillCool.length(), &mRectList[13], DT_VCENTER | DT_LEFT | DT_SINGLELINE); };
+		function<void(void)> SpecialSkillColl = [this]() { DrawText(mHdc, mSpecialSkillCool.c_str(), mSpecialSkillCool.length(), &mRectList[14], DT_VCENTER | DT_LEFT | DT_SINGLELINE); };
+		function<void(void)> SkillEx = [this]() { DrawText(mHdc, mChampSkill.c_str(), mChampSkill.length(), &mRectList[15], DT_TOP | DT_LEFT | DT_WORDBREAK); };
+		function<void(void)> SpecialSkillEx = [this]() { DrawText(mHdc, mChampSpecialSkill.c_str(), mChampSpecialSkill.length(), &mRectList[16], DT_TOP | DT_LEFT | DT_WORDBREAK); };
 
-
-		newF = CreateFont(15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		oldF = (HFONT)SelectObject(hdc, newF);
-		DrawText(hdc, ChampAtk.c_str(), ChampAtk.length(), &mRectList[4], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		DrawText(hdc, ChampAtkSpeed.c_str(), ChampAtkSpeed.length(), &mRectList[5], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		DrawText(hdc, ChampRange.c_str(), ChampRange.length(), &mRectList[6], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		DrawText(hdc, ChampDef.c_str(), ChampDef.length(), &mRectList[7], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		DrawText(hdc, ChampHp.c_str(), ChampHp.length(), &mRectList[8], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		DrawText(hdc, ChampSpeed.c_str(), ChampSpeed.length(), &mRectList[9], DT_VCENTER | DT_CENTER | DT_SINGLELINE);
-		SelectObject(hdc, oldF);
-		DeleteObject(newF);
-
-		//챔프 설명
-		wstring ChampEx = mCurrentChamp->GetChampEx();
-		newF = CreateFont(15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		oldF = (HFONT)SelectObject(hdc, newF);
-		DrawText(hdc, ChampEx.c_str(), ChampEx.length(), &mRectList[10], DT_TOP | DT_LEFT | DT_WORDBREAK);
-		SelectObject(hdc, oldF);
-		DeleteObject(newF);
-
-		// 챔프 스킬 이미지를 넣고 싶으면 11 ~ 12번 랙트에다가 출력
-
-		// 챔프 스킬 쿨타임은 13 ~ 14번 랙트
-
-		wstring ChampSkill1 = L"챔프 스킬 설명은 15 ~ 16번을 이용해주시기 바랍니다. 아마 이것도 따로따로 해야될듯";
-		wstring ChampSkill2 = L"챔프 스킬 설명은 15 ~ 16번을 이용해주시기 바랍니다. 아마 이것도 따로따로 해야될듯";
-
-		newF = CreateFont(15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		oldF = (HFONT)SelectObject(hdc, newF);
-		DrawText(hdc, ChampSkill1.c_str(), ChampSkill1.length(), &mRectList[15], DT_TOP | DT_LEFT | DT_WORDBREAK);
-		DrawText(hdc, ChampSkill2.c_str(), ChampSkill2.length(), &mRectList[16], DT_TOP | DT_LEFT | DT_WORDBREAK);
-		SelectObject(hdc, oldF);
-		DeleteObject(newF);
+		CallFont(hdc, 40, champInformation);
+		CallFont(hdc, 20, champClassType);
+		CallFont(hdc, 30, champName);
+		CallFont(hdc, 15, champAtk);
+		CallFont(hdc, 15, champAtkSpeed);
+		CallFont(hdc, 15, champRange);
+		CallFont(hdc, 15, champDef);
+		CallFont(hdc, 15, champHp);
+		CallFont(hdc, 15, champSpeed);
+		CallFont(hdc, 20, champEx);
+		CallFont(hdc, 15, SkillCool);
+		CallFont(hdc, 15, SpecialSkillColl);
+		CallFont(hdc, 15, SkillEx);
+		CallFont(hdc, 15, SpecialSkillEx);
 	}
 }
 

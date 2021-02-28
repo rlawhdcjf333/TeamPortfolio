@@ -1,15 +1,15 @@
 #pragma once
 #include "Champ.h"
-class Yeti : public Champ
+class Pixie : public Champ
 {
 	typedef map<wstring, Animation*> ::iterator iter;
 	iter mapIter;
-
+	Image* mMagicCircle;
 public:
 
-	Yeti();
-	Yeti(string str, float  x, float y);
-	Yeti(const string name);
+	Pixie();
+	Pixie(string str, float  x, float y);
+	Pixie(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;
@@ -17,4 +17,3 @@ public:
 
 
 };
-
