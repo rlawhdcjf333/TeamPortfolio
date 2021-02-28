@@ -1,40 +1,76 @@
 #include "pch.h"
 #include "Yeti.h"
 #include "Animation.h"
+#include "Image.h"
 
-Yeti::Yeti(const string& name)
-	:Champ(name) 
+Yeti::Yeti()
+	:Champ("Yeti") {}
+
+Yeti::Yeti(string str, float x, float y)
+	: Champ(str)
+{
+	mX = x;
+	mY = y;
+	mRespawnX = x;
+	mRespawnY = y;
+}
+
+Yeti::Yeti(const string name)
+	:Champ(name)
 {
 	mChampName = L"Yeti";
 	mClassType = ClassType::Warrior;
 }
 
+
 void Yeti::Init()
 {
+	//이미지 로드하고 넣기
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Yeti", Resources(L"Yeti.bmp"), 2700, 2760, 9, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"Yeti");
 
-	mFullHP = 100;
-	mHP = mFullHP;
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"YetiSkill", Resources(L"SkillIcon/YetiSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"YetiSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"YetiSpecialSkill", Resources(L"SkillIcon/YetiSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"YetiSpecialSkill");
+
+	IMAGEMANAGER->LoadFromFile(L"Yeti", Resources(L"Yeti.bmp"), 2700, 2760, 9, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
+	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
+	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
+	IMAGEMANAGER->LoadFromFile(L"exclamation", Resources(L"exclamation.bmp"), 40, 40, true);
+	IMAGEMANAGER->LoadFromFile(L"Def", Resources(L"Def.bmp"), 20, 20, true);
+	mImage = IMAGEMANAGER->FindImage(L"Yeti");
+	mHPBar = IMAGEMANAGER->FindImage(L"HPBar");
+	mHPImage = IMAGEMANAGER->FindImage(L"HP");
+	mMPImage = IMAGEMANAGER->FindImage(L"MP");
+	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
+	mDefImage = IMAGEMANAGER->FindImage(L"Def");
+	//변수 초기화
+	mMaxHP = 200;
+	mMaxMP = 100;
+	mHP = mMaxHP;
 	mMP = 0;
-	mAtk = 100;
-	mDef = 100;
-	mDistance1 = 100.f;
-	mDistance2 = 100.f;
-	mDistance3 = 100.f;
-	mTargetDistance = 100.f;
-	mAngle = 1.f;
-	mRange = 100.f;
-	mSpeed = 100.f;
+	mInitAtk = 17;
+	mAtk = mInitAtk;
+	mInitDef = 5;
+	mDef = mInitDef;
+	mSpeed = 150;
+	mRange = 60;
+	mMaxAttackCool = 1.5;
+	mAttackCool = 0;
+	mMaxSkill1Cool = 5;
+	mSkill1Cool = mMaxSkill1Cool;
+	mDeathCool = 3;
 
-	mAttackCool = 1.f;
-	mSkill1Cool = 100.f;
-	mDeathCool = 3.f;
-	mSkill = 0;									//지역변수 선언 
-	mSpecialSkill = 100;
+	mDistance1 = 0;
+	mDistance2 = 0;
+	mDistance3 = 0;
+	mAlpha = 0.6;
 
-	mChampEx = L"엘나스에서 평화롭게 지내던 설인. 튼튼한 체력과 넉백으로 아군을 지켜준다.";
-
+	mAngle = 0;
+	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	//애니메이션
 	Animation* RightIdle = new Animation();
 	RightIdle->InitFrameByStartEnd(0, 6, 2, 6, true);
@@ -69,7 +105,7 @@ void Yeti::Init()
 	mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
 
 	Animation* RightDeath = new Animation();
-	RightDeath->InitFrameByStartEnd(0, 2, 6, 2, true);
+	RightDeath->InitFrameByStartEnd(0, 11, 6, 11, true);
 	RightDeath->SetIsLoop(true);
 	RightDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
@@ -109,222 +145,409 @@ void Yeti::Init()
 	LeftDeath->SetIsLoop(true);
 	LeftDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
+
+	mapIter = mAnimationList.begin();
 }
 
 void Yeti::Release()
 {
-}
 
+}
 void Yeti::Update()
 {
-	if (!mIsActive) return;				//
+	Champ::Update();
+	if (mIsDeath == true && mDeathCool <= 0)
+	{
+		mX = mRespawnX;	//부활했을 때 리스폰 장소로 초기화 해주자
+		mY = mRespawnY;
+		mDeathCool = 3;
+		mHP = mMaxHP;
+		mAlpha = 0.6;
+		mIsDeath = false;
+		mIsAction = false;
+	}
+	if (Input::GetInstance()->GetKeyUp(VK_SPACE))
+	{
+		mHP -= 10;
+	}
 
-	if (mTarget == nullptr) return;
+	if (mHP <= 0)
+	{
+		mIsDeath = true;
+	}
+
+	if (mIsDeath == true)
+	{
+		if (mCurrentAnm->GetNowFrameY() >= 6 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
+		{
+			mDeathCount++;
+			mCurrentAnm->Stop();
+			mCurrentAnm = mAnimationList.find(L"RightDeath")->second;
+			mCurrentAnm->Play();
+
+		}
+		if (mCurrentAnm->GetNowFrameY() < 6 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
+		{
+			mDeathCount++;
+			mCurrentAnm->Stop();
+			mCurrentAnm = mAnimationList.find(L"LeftDeath")->second;
+			mCurrentAnm->Play();
+		}
+		if (mCurrentAnm->GetCurrentFrameIndex() != 6)
+			mCurrentAnm->Update();
+		mAlpha -= 0.2*Time::GetInstance()->DeltaTime();
+		mDeathCool -= Time::GetInstance()->DeltaTime();
+		return;
+	}
+
+	//각각의 적들의 상태가 엑티브인 애들의 거리를 찾아서 가까운 애가 타겟이 되게 설정한다.
+	//우선 엑티브가 트루인지 폴스인지 확인후 트루면 값을 넣어주고 아니면 0을 넣어서 거리값을 비교하게 한다.
+	//비교했을 때 거리가 가까운 애를 타겟으로 한다.
+	if (mCurrentAnm != mAnimationList.find(L"RightSkill2")->second && mCurrentAnm != mAnimationList.find(L"LeftSkill2")->second)
+		mMP += Time::GetInstance()->DeltaTime() * 7;	//MP 7씩 더해주기
+	if (mCurrentAnm != mAnimationList.find(L"RightSkill1")->second && mCurrentAnm != mAnimationList.find(L"LeftSkill1")->second)
+		mSkill1Cool -= Time::GetInstance()->DeltaTime(); //스킬 쿨 돌아가게 해주기
+	if (mCurrentAnm != mAnimationList.find(L"RightAttack")->second && mCurrentAnm != mAnimationList.find(L"LeftAttack")->second)
+		mAttackCool -= Time::GetInstance()->DeltaTime(); //공격 쿨 돌아가게 해주기
+
+	if (mEnemyList.size() <= 0)
+	{
+		if (Input::GetInstance()->GetKeyUp(VK_RIGHT))
+		{
+			mCurrentAnm->Stop();
+			mapIter++;
+			if (mapIter == mAnimationList.end())			//이미지 괜찮은지 보는 기능
+			{
+				mapIter = mAnimationList.begin();
+			}
+			mCurrentAnm = mapIter->second;
+			mCurrentAnm->Play();
+
+
+		}
+		mCurrentAnm->Update();
+		mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
+		return;
+	}
+	//{{적 세팅하기 (디스턴스 + 타겟잡기)
+	vector<Champ*>temp;
+	for (int i = 0; i < 3; i++)
+	{
+		Champ* tmp = (Champ*)mEnemyList[i];			//다운캐스팅해서 isdeath로 죽었는지 확인 
+		temp.push_back(tmp);
+	}
+	if (temp[0]->GetIsDeath() == false)
+		mDistance1 = Math::GetDistance(mX, mY, mEnemyList[0]->GetX(), mEnemyList[0]->GetY());
+	else mDistance1 = 1280;
+
+	if (temp[1]->GetIsDeath() == false)
+		mDistance2 = Math::GetDistance(mX, mY, mEnemyList[1]->GetX(), mEnemyList[1]->GetY());
+	else mDistance2 = 1280;
+
+	if (temp[2]->GetIsDeath() == false)
+		mDistance3 = Math::GetDistance(mX, mY, mEnemyList[2]->GetX(), mEnemyList[2]->GetY());
+	else mDistance3 = 1280;
+
+	if (mProvocateur != true)
+	{
+		if (mDistance1 < mDistance2 && mDistance1 < mDistance3)
+		{
+			mTarget = mEnemyList[0];
+			mTargetDistance = mDistance1;
+		}
+
+		if (mDistance2 < mDistance3 && mDistance2 < mDistance1)
+		{
+			mTarget = mEnemyList[1];
+			mTargetDistance = mDistance2;
+		}
+
+		if (mDistance3 < mDistance1 && mDistance3 < mDistance2)
+		{
+			mTarget = mEnemyList[2];
+			mTargetDistance = mDistance3;
+		}
+	}
+	else
+	{
+		mTargetDistance = Math::GetDistance(mX, mY, mTarget->GetX(), mTarget->GetY());
+	}
 
 	Champ* tmp = (Champ*)mTarget;		//타겟이 확정됐으니 적 체력세팅을 위해 다운캐스팅해버림
+
 	mAngle = Math::GetAngle(mX, mY, mTarget->GetX(), mTarget->GetY());
+	//}}
 
-	if (mHP <= 0)											//죽었을 때 알고리즘 
-	{
-		mIsActive = false;
-		if (mIsActive == false)
-		{
-			mDeathCool -= Time::GetInstance()->DeltaTime();
-			if (mIsActive == false && mDeathCool <= 0)				//
-			{
-				mDeathCool = 3;
-				mIsActive = true;
-				//if(mName=="")
-				//{ 
-				//
-				//}
-				//else if (mName == "")
-				//{
-				//
-				//}
-				mHP = mFullHP;				//자 그런데 모든 캐릭터의 HP는 똑같지 않을 터이니 mHP = mCharacterHPMAX라는 예시 변수를 사용해서 받아올 수 있게 만들어보자
-			}							//그럼 Init 매개변수에 float CharacterHPMAX라는 것을 선언해줘야 하는데 오버라이드가 되어 사용할 수 없다. 
-		}								//어떻게 받아오는게 좋을까? 어제 지원동생이 생성자를 이용해보라고 했었다 이것이 힌트일 것 같다.
 
-	}
 	//{{설정된 타겟이 사거리 안에 들어 온다면 궁극기 > 스킬 > 공격 순으로 행동을 하게한다.
-	if (mRange <= mTargetDistance)	//타겟이 사거리 안에 있다.
+	if (!(temp[0]->GetIsDeath() == true && temp[1]->GetIsDeath() == true && temp[2]->GetIsDeath() == true)) //모두 살아있을 때만 작동
 	{
-		if (mX < mTarget->GetX())//타겟이 오른쪽에 있다
+		if (mRange >= mTargetDistance && mIsAction == false)	//타겟이 사거리 안에 있다.
 		{
-			if (mMP >= mSkill1Cool)//마나가 이상이 있다면
+			if (mX < mTarget->GetX())//타겟이 오른쪽에 있다
 			{
-				mCurrentAnm->Stop();
-				mCurrentAnm = mAnimationList.find(L"RightSkill2")->second; //스킬2 모션을 실행한다.
-				mCurrentAnm->Play();
-
-				if (mCurrentAnm->GetCurrentFrameIndex() == 9)//궁극기 스킬의 끝프레임 까지 갔다면 타겟의 HP를 복합적인 연산으로 깎고 모션을 아이들로 바꾼다.
-				{
-					tmp->SetHP(tmp->GetHP() - 100);			//HP를 깎는다.
-						mMP = 0;								//마나를 0으로 초기화
-						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"RightIdle")->second;	//모션을 아이들로 한다.
-						mCurrentAnm->Play();
-				}
-			}
-			else
-			{
-				if (mSkill1Cool <= 0)	//마나가 없고 스킬쿨이 0보다 아래라면
+				if (mMP >= 100)//마나가	100이상이 있다면
 				{
 					mCurrentAnm->Stop();
-					mCurrentAnm = mAnimationList.find(L"RightSkill1")->second;//스킬1 모션을 실행한다.
+					mCurrentAnm = mAnimationList.find(L"RightSkill2")->second; //스킬2 모션을 실행한다.
 					mCurrentAnm->Play();
+					mIsAction = true;	//액션을 트루로 바꾼다.
 
-					if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
-					{
-						tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
-						mSkill1Cool = 5;				//쿨타임을 원래대로 초기화
-						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"RightIdle")->second;	//모션을 아이들로 한다.
-						mCurrentAnm->Play();
-					}
 				}
 				else
 				{
-					if (mAttackCool <= 0)	//마나가 없고 스킬쿨이 0보다 아래가 아니고 공격쿨이 0보다 아래라면
+					if (mSkill1Cool <= 0)	//마나가 없고 스킬쿨이 0보다 아래라면
 					{
 						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"RightAttack")->second;//공격 모션을 실행한다.
+						mCurrentAnm = mAnimationList.find(L"RightSkill1")->second;//스킬1 모션을 실행한다.
 						mCurrentAnm->Play();
-
-						if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
+						mIsAction = true;	//액션을 트루로 바꾼다.
+					}
+					else
+					{
+						if (mAttackCool <= 0)	//마나가 없고 스킬쿨이 0보다 아래가 아니고 공격쿨이 0보다 아래라면
 						{
-							tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
-							mAttackCool = 5;				//쿨타임을 원래대로 초기화
 							mCurrentAnm->Stop();
-							mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;	//모션을 아이들로 한다.
+							mCurrentAnm = mAnimationList.find(L"RightAttack")->second;//공격 모션을 실행한다.
 							mCurrentAnm->Play();
+							mIsAction = true;	//액션을 트루로 바꾼다.
+						}
+						else
+						{
+							mCurrentAnm->Stop();
+							mCurrentAnm = mAnimationList.find(L"RightIdle")->second;
+							mCurrentAnm->Play();
+							mIsAction = true;
 						}
 					}
-					else	//마나가 없고 스킬쿨이 0보다 아래가 아니고 공격쿨이 0보다 아래가 아니라면 아이들 상태로 바꾸자
-					{
-						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;
-						mCurrentAnm->Play();
-					}
 				}
 			}
-		}
 
-		else if (mX > mTarget->GetX())	//타겟이 왼쪽에 있다면
-		{
-			if (mMP >= 100)//마나가	100이상이 있다면
+			else if (mX > mTarget->GetX() && mIsAction == false)	//타겟이 왼쪽에 있다면
 			{
-				mCurrentAnm->Stop();
-				mCurrentAnm = mAnimationList.find(L"LeftSkill2")->second; //스킬2 모션을 실행한다.
-				mCurrentAnm->Play();
-
-				if (mCurrentAnm->GetCurrentFrameIndex() == 6)//궁극기 스킬의 끝프레임 까지 갔다면 타겟의 HP를 복합적인 연산으로 깎고 모션을 아이들로 바꾼다.
-				{
-
-					tmp->SetHP(tmp->GetHP() - 100);			//HP를 깎는다.
-					mMP = 0;								//마나를 0으로 초기화
-					mCurrentAnm->Stop();
-					mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;	//모션을 아이들로 한다.
-					mCurrentAnm->Play();
-				}
-			}
-			else
-			{
-				if (mSkill1Cool <= 0)	//마나가 없고 스킬쿨이 0보다 아래라면
+				if (mMP >= 100)//마나가	100이상이 있다면
 				{
 					mCurrentAnm->Stop();
-					mCurrentAnm = mAnimationList.find(L"LeftSkill1")->second;//스킬1 모션을 실행한다.
+					mCurrentAnm = mAnimationList.find(L"LeftSkill2")->second; //스킬2 모션을 실행한다.
 					mCurrentAnm->Play();
-
-					if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
-					{
-						tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
-						mSkill1Cool = 5;				//쿨타임을 원래대로 초기화
-						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;	//모션을 아이들로 한다.
-						mCurrentAnm->Play();
-					}
+					mIsAction = true;	//액션을 트루로 바꾼다.
 				}
 				else
 				{
-					if (mAttackCool <= 0)	//마나가 없고 스킬쿨이 0보다 아래가 아니고 공격쿨이 0보다 아래라면
+					if (mSkill1Cool <= 0)	//마나가 없고 스킬쿨이 0보다 아래라면
 					{
 						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"LeftAttack")->second;//공격 모션을 실행한다.
+						mCurrentAnm = mAnimationList.find(L"LeftSkill1")->second;//스킬1 모션을 실행한다.
 						mCurrentAnm->Play();
-
-						if (mCurrentAnm->GetCurrentFrameIndex() == 6)//스킬1의 끝 프레임 까지 갔다면 타겟의 HP를 복합적인 연산 후 깎고 모션을 아이들로 바꾼다.
-						{
-							tmp->SetHP(tmp->GetHP() - 100);	//HP를 깎는다.
-							mAttackCool = 5;				//쿨타임을 원래대로 초기화
-							mCurrentAnm->Stop();
-							mCurrentAnm = mAnimationList.find(L"RightIdle")->second;	//모션을 아이들로 한다.
-							mCurrentAnm->Play();
-						}
+						mIsAction = true;	//액션을 트루로 바꾼다.
 					}
-					else	//마나가 없고 스킬쿨이 0보다 아래가 아니고 공격쿨이 0보다 아래가 아니라면 아이들 상태로 바꾸자
+					else
 					{
-						mCurrentAnm->Stop();
-						mCurrentAnm = mAnimationList.find(L"RightIdle")->second;
-						mCurrentAnm->Play();
+						if (mAttackCool <= 0)	//마나가 없고 스킬쿨이 0보다 아래가 아니고 공격쿨이 0보다 아래라면
+						{
+							mCurrentAnm->Stop();
+							mCurrentAnm = mAnimationList.find(L"LeftAttack")->second;//공격 모션을 실행한다.
+							mCurrentAnm->Play();
+							mIsAction = true;	//액션을 트루로 바꾼다.
+						}
+						else
+						{
+							mCurrentAnm->Stop();
+							mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;
+							mCurrentAnm->Play();
+							mIsAction = true;
+						}
 					}
 				}
 			}
+			else if (mX == mTarget->GetX() && mIsAction == false)
+			{
+
+			}
+			//}}
+
+			//}}
 		}
-		//}}
+		else if (mRange < mTargetDistance && mIsAction == false)//{{사거리 안에 타겟이 없다면
+		{
+			if (mX <= mTarget->GetX())	//타겟이 오른쪽에 있다면
+			{
+				if (mCurrentAnm != mAnimationList.find(L"RightRun")->second)
+				{
+					mCurrentAnm->Stop();
+					mCurrentAnm = mAnimationList.find(L"RightRun")->second;	//모션을 오른쪽 런으로 한다.
+					mCurrentAnm->Play();
+				}
+			}
+			else if (mX > mTarget->GetX())	//타겟이 왼쪽에 있다면
+			{
+				if (mCurrentAnm != mAnimationList.find(L"LeftRun")->second)
+				{
+					mCurrentAnm->Stop();
+					mCurrentAnm = mAnimationList.find(L"LeftRun")->second;	//모션을 왼쪽 런으로 한다.
+					mCurrentAnm->Play();
+				}
+			}
 
-		//}}
+
+			if (!(temp[0]->GetIsDeath() == true && temp[1]->GetIsDeath() == true && temp[2]->GetIsDeath() == true))	//모두 죽었을 때 안 움직이게 한다.
+			{
+				mX += cosf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;	//이동속도만큼 X,Y값에 값을 더한다.
+				mY -= sinf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
+			}
+			mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
+		}
+
+
+		//{{어떤 모션을 취했을 시
+		if (mIsAction == true)
+		{
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 6
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 6)
+			{
+				mMP = 0;
+
+				POINT pt = { temp[0]->GetX(), temp[0]->GetY() };
+				POINT pt1 = { temp[1]->GetX(), temp[1]->GetY() };		//범위 타격을 위한 포인트 생성
+				POINT pt2 = { temp[2]->GetX(), temp[2]->GetY() };
+				RECT rc = { mX - 100,mY - 100,mX + 100,mY + 100 };		//범위 렉트 생성
+
+				float Angle = Math::GetAngle(mX, mY, temp[0]->GetX(), temp[0]->GetY());
+				float Angle1 = Math::GetAngle(mX, mY, temp[1]->GetX(), temp[1]->GetY());
+				float Angle2 = Math::GetAngle(mX, mY, temp[2]->GetX(), temp[2]->GetY());
+
+				if (PtInRect(&rc, pt))
+				{
+					temp[0]->NuckBack(600, Angle);
+					temp[0]->SetHP(temp[0]->GetHP() - (mAtk *(1 - (temp[0]->GetDef() / (temp[0]->GetDef() + 30)))));
+				}
+				if (PtInRect(&rc, pt1))
+				{
+					temp[1]->NuckBack(600, Angle1);
+					temp[1]->SetHP(temp[1]->GetHP() - (mAtk *(1 - (temp[1]->GetDef() / (temp[1]->GetDef() + 30)))));
+				}
+				if (PtInRect(&rc, pt2))
+				{
+					temp[2]->NuckBack(600, Angle2);
+					temp[2]->SetHP(temp[2]->GetHP() - (mAtk *(1 - (temp[2]->GetDef() / (temp[2]->GetDef() + 30)))));
+				}
+				mIsAction = false;
+			}
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
+			{
+				mSkill1Cool = mMaxSkill1Cool;
+				POINT pt = { temp[0]->GetX(), temp[0]->GetY() };
+				POINT pt1 = { temp[1]->GetX(), temp[1]->GetY() };		//범위 타격을 위한 포인트 생성
+				POINT pt2 = { temp[2]->GetX(), temp[2]->GetY() };
+				RECT rc = { mX - 100,mY - 100,mX + 100,mY + 100 };		//범위 렉트 생성
+
+				float Angle = Math::GetAngle(mX, mY, temp[0]->GetX(), temp[0]->GetY());
+				float Angle1 = Math::GetAngle(mX, mY, temp[1]->GetX(), temp[1]->GetY());
+				float Angle2 = Math::GetAngle(mX, mY, temp[2]->GetX(), temp[2]->GetY());
+
+				if (PtInRect(&rc, pt))
+					temp[0]->NuckBack(400, mAngle);
+				if (PtInRect(&rc, pt1))
+					temp[1]->NuckBack(400, mAngle);
+				if (PtInRect(&rc, pt2))
+					temp[2]->NuckBack(400, mAngle);
+
+				AtkBuff(10, 5);
+				mIsAction = false;
+			}
+			if ((mCurrentAnm == mAnimationList.find(L"RightAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
+				|| (mCurrentAnm == mAnimationList.find(L"LeftAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5))
+			{
+				mAttackCool = mMaxAttackCool;
+				tmp->SetHP(tmp->GetHP() - (mAtk *(1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
+				tmp->NuckBack(400, mAngle);
+				mIsAction = false;
+			}
+			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 2
+				|| mCurrentAnm == mAnimationList.find(L"LeftIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 2)
+			{
+				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
+				mIsAction = false;
+			}
+		}
 	}
+	//}}
 
-	else//{{사거리 안에 타겟이 없다면
+	//적이 모두 죽어있을 때 아이들 상태로 만든다.
+	if (temp[0]->GetIsDeath() == true && temp[1]->GetIsDeath() == true && temp[2]->GetIsDeath() == true)
 	{
-		if (mX < mTarget->GetX())	//타겟이 오른쪽에 있다면
+		if (mCurrentAnm->GetNowFrameY() >= 6 && mCurrentAnm != mAnimationList.find(L"RightIdle")->second)
 		{
 			mCurrentAnm->Stop();
-			mCurrentAnm = mAnimationList.find(L"RightRun")->second;	//모션을 오른쪽 런으로 한다.
+			mCurrentAnm = mAnimationList.find(L"RightIdle")->second;
 			mCurrentAnm->Play();
 
 		}
-		else if (mX > mTarget->GetX())	//타겟이 왼쪽에 있다면
+		else if (mCurrentAnm->GetNowFrameY() < 6 && mCurrentAnm != mAnimationList.find(L"LeftIdle")->second)
 		{
 			mCurrentAnm->Stop();
-			mCurrentAnm = mAnimationList.find(L"LeftRun")->second;	//모션을 왼쪽 런으로 한다.
+			mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;
 			mCurrentAnm->Play();
 		}
-
-		mX += cosf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;	//이동속도만큼 X,Y값에 값을 더한다.
-		mY -= sinf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
 	}
 
-	//마나 얻는 알고리즘
-	mMPSecGet += Time::GetInstance()->DeltaTime();
-	if (mMPSecGet >= 5)
-	{
-		mMPSecGet = 0;
-		mMP += 20;
-	}
+	//}}보정
+	//경기장 밖으로 가면 보정해주자
+	if (mX <= 270) mX = 270;
+	if (mX >= 1000) mX = 1000;
+	if (mY <= 227) mY = 227;
+	if (mY >= 640) mY = 640;
 
-	//mPlayerList가 있고 mEnemyList
-
-	// 공격을 하였을 시 마나 N개를 얻게 하는 알고리즘
-	//if(Range범위 안에 mEnemyList가 들어왔을 경우.)
-	//AtkCool -= Time::GetInstance()->DeltaTime();			//Ex) AtkCool = 1.23f다.
-	//if(AtkCool <= 0)
-	//mMP += N;
-	//mHP -= mAtk					//다만 누구껏의 mHP고 mAtk인지 명시해줘야 할 것이다. (플레이어 것인가 적의 것인가)
-	//AtkCool = 1.23f				//단 여기에 있는 숫자도, 각 챔프들마다 공격속도가 다를 터이니 매개변수로 받을 수 있게 해줘야할것 같다.
-
-	//원거리 알고리즘
-
-
-
-
-	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	if (mHP > mMaxHP)mHP = mMaxHP;
+	if (mMP > mMaxMP)mMP = mMaxMP;
 	mCurrentAnm->Update();
+	mRect = RectMake(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
+	//}}
 
 }
-
 void Yeti::Render(HDC hdc)
 {
+	//RenderRect(hdc, mRect);
+	if (mCurrentAnm->GetNowFrameY() >= 6)
+	{
+		if (mCurrentAnm->GetNowFrameY() == 11)
+		{
+			mImage->AlphaScaleFrameRender(hdc, mX - 30, mY - 110, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 200, 130, mAlpha);
+		}
+		else
+			mImage->ScaleFrameRender(hdc, mX - 30, mY - 110, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 200, 130);
+	}
+	else
+	{
+		if (mCurrentAnm->GetNowFrameY() == 5)
+		{
+			mImage->AlphaScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2, mY - 110, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 200, 130, mAlpha);
+		}
+		else
+			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2, mY - 110, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 200, 130);
+	}
+
+	if (mIsDeath != true)
+	{
+		mHPImage->Render(hdc, mX - 35, mY + 25, 0, 0, 88 * (mHP / mMaxHP), 8);
+		mMPImage->Render(hdc, mX - 33, mY + 31, 0, 0, 80 * (mMP / mMaxMP), 8);
+		mHPBar->Render(hdc, mX - 36, mY + 25);
+	}
+
+	if (mProvocateur)
+	{
+		if (mCurrentAnm->GetNowFrameY() >= 5)
+			mExclamation->Render(hdc, mX - 37, mY - 50);
+		else
+			mExclamation->Render(hdc, mX + 4, mY - 50);
+	}
+
+	if (mGetDefBuff)
+	{
+		if (mCurrentAnm->GetNowFrameY() >= 6)
+			mDefImage->Render(hdc, mX - 36, mY + 5);
+		else
+			mDefImage->Render(hdc, mX + 34, mY + 5);
+	}
 }

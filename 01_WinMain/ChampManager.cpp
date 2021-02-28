@@ -1,26 +1,24 @@
 #include "pch.h"
 #include "ChampManager.h"
 #include "Yeti.h"
-#include "HelmetPepe.h"
-#include "StarPixie.h"
+#include "Pepe.h"
+#include "Pixie.h"
 #include "Tank.h"
 #include "BubbleTea.h"
-#include "BabyMonkey.h"
+#include "LoveMonkey.h"
 #include "ZombieMonkey.h"
-#include "BabyMonkey.h"
 #include "Cornian.h"
 #include "MistKnight.h"
 
 void ChampManager::Init()
 {
-
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Yeti("Champ1"));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new HelmetPepe("Champ2"));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new StarPixie("Champ3"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Pepe("Champ2"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Pixie("Champ3"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Tank("Champ4"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new BubbleTea("Champ5"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new ZombieMonkey("Champ6"));
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new BabyMonkey("Champ7"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new LoveMonkey("Champ7"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new MistKnight("Champ8"));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Cornian("Champ9"));
 

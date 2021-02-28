@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "ZombieMonkey.h"
+#include "Pepe.h"
 #include "Animation.h"
 #include "Image.h"
 
-ZombieMonkey::ZombieMonkey()
-	:Champ("ZombieMonkey") {}
+Pepe::Pepe()
+	:Champ("Pepe") {}
 
-ZombieMonkey::ZombieMonkey(string str, float x, float y)
+Pepe::Pepe(string str, float x, float y)
 	: Champ(str)
 {
 	mX = x;
@@ -15,21 +15,21 @@ ZombieMonkey::ZombieMonkey(string str, float x, float y)
 	mRespawnY = y;
 }
 
-ZombieMonkey::ZombieMonkey(string str)
-	:Champ(str) {}
+Pepe::Pepe(string str)
+	:Champ(str){}
 
 
-void ZombieMonkey::Init()
+void Pepe::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 1040, 1440, 8, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"Pepe", Resources(L"Pepe.bmp"), 1040, 1440, 8, 12, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"exclamation", Resources(L"exclamation.bmp"), 40, 40, true);
 	IMAGEMANAGER->LoadFromFile(L"Def", Resources(L"Def.bmp"), 20, 20, true);
-	mImage = IMAGEMANAGER->FindImage(L"ZombieMonkey");
+	mImage = IMAGEMANAGER->FindImage(L"Pepe");
 	mHPBar = IMAGEMANAGER->FindImage(L"HPBar");
 	mHPImage = IMAGEMANAGER->FindImage(L"HP");
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
@@ -138,11 +138,11 @@ void ZombieMonkey::Init()
 	mapIter = mAnimationList.begin();
 }
 
-void ZombieMonkey::Release()
+void Pepe::Release()
 {
 
 }
-void ZombieMonkey::Update()
+void Pepe::Update()
 {
 	Champ::Update();
 	if (mIsDeath == true && mDeathCool <= 0)
@@ -456,7 +456,7 @@ void ZombieMonkey::Update()
 	//}}
 
 }
-void ZombieMonkey::Render(HDC hdc)
+void Pepe::Render(HDC hdc)
 {
 	//RenderRect(hdc, mRect);
 	//Rectangle(hdc,mX - 100, mY - 100, mX + 100, mY + 100);

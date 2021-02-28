@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "ZombieMonkey.h"
+#include "LoveMonkey.h"
 #include "Animation.h"
 #include "Image.h"
 
-ZombieMonkey::ZombieMonkey()
-	:Champ("ZombieMonkey") {}
+LoveMonkey::LoveMonkey()
+	:Champ("LoveMonkey") {}
 
-ZombieMonkey::ZombieMonkey(string str, float x, float y)
+LoveMonkey::LoveMonkey(string str, float x, float y)
 	: Champ(str)
 {
 	mX = x;
@@ -14,22 +14,20 @@ ZombieMonkey::ZombieMonkey(string str, float x, float y)
 	mRespawnX = x;
 	mRespawnY = y;
 }
-
-ZombieMonkey::ZombieMonkey(string str)
+LoveMonkey::LoveMonkey(string str)
 	:Champ(str) {}
 
-
-void ZombieMonkey::Init()
+void LoveMonkey::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 1040, 1440, 8, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"LoveMonkey", Resources(L"LoveMonkey.bmp"), 480, 720, 6, 12, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"exclamation", Resources(L"exclamation.bmp"), 40, 40, true);
 	IMAGEMANAGER->LoadFromFile(L"Def", Resources(L"Def.bmp"), 20, 20, true);
-	mImage = IMAGEMANAGER->FindImage(L"ZombieMonkey");
+	mImage = IMAGEMANAGER->FindImage(L"LoveMonkey");
 	mHPBar = IMAGEMANAGER->FindImage(L"HPBar");
 	mHPImage = IMAGEMANAGER->FindImage(L"HP");
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
@@ -38,18 +36,20 @@ void ZombieMonkey::Init()
 	//변수 초기화
 	mMaxHP = 150;
 	mMaxMP = 100;
-	mHP = mMaxHP;
+	mHP = 150;
 	mMP = 0;
 	mInitAtk = 15;
-	mAtk = mInitAtk;
-	mInitDef = 30;
-	mDef = mInitDef;
-	mSpeed = 150;
+	mAtk = 10;
+	mInitDef = 15;
+	mDef = 15;
+	mInitHealPr = 10;
+	mHealPr = 10;
+	mSpeed = 175;
 	mRange = 60;
-	mMaxAttackCool = 1.5;
+	mMaxAttackCool = 2;
 	mAttackCool = 0;
-	mMaxSkill1Cool = 7;
-	mSkill1Cool = mMaxSkill1Cool;
+	mMaxSkill1Cool = 4;
+	mSkill1Cool = 4;
 	mDeathCool = 3;
 	mAlpha = 0.6;
 
@@ -59,78 +59,79 @@ void ZombieMonkey::Init()
 
 
 	mAngle = 0;
+
 	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	//애니메이션
 	Animation* RightIdle = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 6, 5, 6, true);
+	RightIdle->InitFrameByStartEnd(0, 6, 1, 6, true);
 	RightIdle->SetIsLoop(true);
-	RightIdle->SetFrameUpdateTime(0.1f);
+	RightIdle->SetFrameUpdateTime(0.9f);
 	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
 	mCurrentAnm = RightIdle;
 	mCurrentAnm->Play();
 
 	Animation* RightRun = new Animation();
-	RightRun->InitFrameByStartEnd(0, 7, 7, 7, true);
+	RightRun->InitFrameByStartEnd(0, 7, 2, 7, true);
 	RightRun->SetIsLoop(true);
 	RightRun->SetFrameUpdateTime(0.1f);
 	mAnimationList.insert(make_pair(L"RightRun", RightRun));
 
 	Animation* RightAttack = new Animation();
-	RightAttack->InitFrameByStartEnd(0, 8, 5, 8, true);
+	RightAttack->InitFrameByStartEnd(0, 8, 1, 8, true);
 	RightAttack->SetIsLoop(true);
 	RightAttack->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightAttack", RightAttack));
 
 	Animation* RightSkill1 = new Animation();
-	RightSkill1->InitFrameByStartEnd(0, 9, 4, 9, true);
+	RightSkill1->InitFrameByStartEnd(0, 9, 5, 9, true);
 	RightSkill1->SetIsLoop(true);
 	RightSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill1", RightSkill1));
 
 	Animation* RightSkill2 = new Animation();
-	RightSkill2->InitFrameByStartEnd(0, 10, 7, 10, true);
+	RightSkill2->InitFrameByStartEnd(0, 10, 5, 10, true);
 	RightSkill2->SetIsLoop(true);
 	RightSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
 
 	Animation* RightDeath = new Animation();
-	RightDeath->InitFrameByStartEnd(0, 11, 7, 11, true);
+	RightDeath->InitFrameByStartEnd(0, 11, 3, 11, true);
 	RightDeath->SetIsLoop(true);
 	RightDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
 
 	Animation* LeftIdle = new Animation();
-	LeftIdle->InitFrameByStartEnd(0, 0, 5, 0, false);
+	LeftIdle->InitFrameByStartEnd(0, 0, 1, 0, false);
 	LeftIdle->SetIsLoop(true);
-	LeftIdle->SetFrameUpdateTime(0.2f);
+	LeftIdle->SetFrameUpdateTime(0.9f);
 	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
 
 	Animation* LeftRun = new Animation();
-	LeftRun->InitFrameByStartEnd(0, 1, 7, 1, false);
+	LeftRun->InitFrameByStartEnd(0, 1, 2, 1, false);
 	LeftRun->SetIsLoop(true);
 	LeftRun->SetFrameUpdateTime(0.1f);
 	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 
 	Animation* LeftAttack = new Animation();
-	LeftAttack->InitFrameByStartEnd(0, 2, 5, 2, false);
+	LeftAttack->InitFrameByStartEnd(0, 2, 1, 2, false);
 	LeftAttack->SetIsLoop(true);
 	LeftAttack->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
 
 	Animation* LeftSkill1 = new Animation();
-	LeftSkill1->InitFrameByStartEnd(0, 3, 4, 3, false);
+	LeftSkill1->InitFrameByStartEnd(0, 3, 5, 3, false);
 	LeftSkill1->SetIsLoop(true);
 	LeftSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
 
 	Animation* LeftSkill2 = new Animation();
-	LeftSkill2->InitFrameByStartEnd(0, 4, 7, 4, false);
+	LeftSkill2->InitFrameByStartEnd(0, 4, 5, 4, false);
 	LeftSkill2->SetIsLoop(true);
 	LeftSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
 
 	Animation* LeftDeath = new Animation();
-	LeftDeath->InitFrameByStartEnd(0, 5, 7, 5, false);
+	LeftDeath->InitFrameByStartEnd(0, 5, 3, 5, false);
 	LeftDeath->SetIsLoop(true);
 	LeftDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
@@ -138,11 +139,11 @@ void ZombieMonkey::Init()
 	mapIter = mAnimationList.begin();
 }
 
-void ZombieMonkey::Release()
+void LoveMonkey::Release()
 {
 
 }
-void ZombieMonkey::Update()
+void LoveMonkey::Update()
 {
 	Champ::Update();
 	if (mIsDeath == true && mDeathCool <= 0)
@@ -167,7 +168,7 @@ void ZombieMonkey::Update()
 
 	if (mIsDeath == true)
 	{
-		if (mCurrentAnm->GetNowFrameY() >= 6 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
+		if (mCurrentAnm->GetNowFrameY() >= 5 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
 		{
 			mDeathCount++;
 			mCurrentAnm->Stop();
@@ -175,14 +176,14 @@ void ZombieMonkey::Update()
 			mCurrentAnm->Play();
 
 		}
-		if (mCurrentAnm->GetNowFrameY() < 6 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
+		if (mCurrentAnm->GetNowFrameY() < 5 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
 		{
 			mDeathCount++;
 			mCurrentAnm->Stop();
 			mCurrentAnm = mAnimationList.find(L"LeftDeath")->second;
 			mCurrentAnm->Play();
 		}
-		if (mCurrentAnm->GetCurrentFrameIndex() != 6)
+		if (mCurrentAnm->GetCurrentFrameIndex() != 3)
 			mCurrentAnm->Update();
 		mAlpha -= 0.2*Time::GetInstance()->DeltaTime();
 		mDeathCool -= Time::GetInstance()->DeltaTime();
@@ -225,6 +226,12 @@ void ZombieMonkey::Update()
 		Champ* tmp = (Champ*)mEnemyList[i];			//다운캐스팅해서 isdeath로 죽었는지 확인 
 		temp.push_back(tmp);
 	}
+	vector<Champ*>temp2;
+	for (int i = 0; i < 3; i++)
+	{
+		Champ* tmp2 = (Champ*)mFriendList[i];			//다운캐스팅해서 isdeath로 죽었는지 확인 
+		temp2.push_back(tmp2);
+	}
 	if (temp[0]->GetIsDeath() == false)
 		mDistance1 = Math::GetDistance(mX, mY, mEnemyList[0]->GetX(), mEnemyList[0]->GetY());
 	else mDistance1 = 1280;
@@ -261,12 +268,9 @@ void ZombieMonkey::Update()
 	{
 		mTargetDistance = Math::GetDistance(mX, mY, mTarget->GetX(), mTarget->GetY());
 	}
-
-
 	Champ* tmp = (Champ*)mTarget;		//타겟이 확정됐으니 적 체력세팅을 위해 다운캐스팅해버림
 	mAngle = Math::GetAngle(mX, mY, mTarget->GetX(), mTarget->GetY());
 	//}}
-
 
 	//{{설정된 타겟이 사거리 안에 들어 온다면 궁극기 > 스킬 > 공격 순으로 행동을 하게한다.
 	if (!(temp[0]->GetIsDeath() == true && temp[1]->GetIsDeath() == true && temp[2]->GetIsDeath() == true)) //모두 살아있을 때만 작동
@@ -306,7 +310,6 @@ void ZombieMonkey::Update()
 							mCurrentAnm->Stop();
 							mCurrentAnm = mAnimationList.find(L"RightIdle")->second;
 							mCurrentAnm->Play();
-							mIsAction = true;
 						}
 					}
 				}
@@ -344,7 +347,6 @@ void ZombieMonkey::Update()
 							mCurrentAnm->Stop();
 							mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;
 							mCurrentAnm->Play();
-							mIsAction = true;
 						}
 					}
 				}
@@ -391,33 +393,59 @@ void ZombieMonkey::Update()
 		//{{어떤 모션을 취했을 시
 		if (mIsAction == true)
 		{
-			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 7
-				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 7)
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() >= 3
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() >= 3)
 			{
 				mMP = 0;
-				DefBuff(15, 5);
-				mIsAction = false;
+				POINT pt = { temp2[0]->GetX(), temp2[0]->GetY() };
+				POINT pt1 = { temp2[1]->GetX(), temp2[1]->GetY() };		//범위 타격을 위한 포인트 생성
+				POINT pt2 = { temp2[2]->GetX(), temp2[2]->GetY() };
+				RECT rc = { mX - 100,mY - 100,mX + 100,mY + 100 };		//범위 렉트 생성
+
+				if (PtInRect(&rc, pt))
+				{
+					temp2[0]->SetHP(temp2[0]->GetHP() + mHealPr * 3 * Time::GetInstance()->DeltaTime());
+				}
+				if (PtInRect(&rc, pt1))
+				{
+					temp2[1]->SetHP(temp2[1]->GetHP() + mHealPr * 3 * Time::GetInstance()->DeltaTime());
+				}
+				if (PtInRect(&rc, pt2))
+				{
+					temp2[2]->SetHP(temp2[2]->GetHP() + mHealPr * 3 * Time::GetInstance()->DeltaTime());
+				}
+				if (mCurrentAnm->GetCurrentFrameIndex() == 5)
+					mIsAction = false;
 			}
-			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 4
-				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 4)
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
 			{
-				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
-				Aggro(3);
+
 				mSkill1Cool = mMaxSkill1Cool;
+				POINT pt = { temp2[0]->GetX(), temp2[0]->GetY() };
+				POINT pt1 = { temp2[1]->GetX(), temp2[1]->GetY() };		//범위 타격을 위한 포인트 생성
+				POINT pt2 = { temp2[2]->GetX(), temp2[2]->GetY() };
+				RECT rc = { mX - 100,mY - 100,mX + 100,mY + 100 };		//범위 렉트 생성
+
+				if (PtInRect(&rc, pt))
+				{
+					temp2[0]->SetHP(temp2[0]->GetHP() + mHealPr / 2);
+				}
+				if (PtInRect(&rc, pt1))
+				{
+					temp2[1]->SetHP(temp2[1]->GetHP() + mHealPr / 2);
+				}
+				if (PtInRect(&rc, pt2))
+				{
+					temp2[2]->SetHP(temp2[2]->GetHP() + mHealPr / 2);
+				}
 				mIsAction = false;
 			}
-			if ((mCurrentAnm == mAnimationList.find(L"RightAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
-				|| (mCurrentAnm == mAnimationList.find(L"LeftAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5))
+			if ((mCurrentAnm == mAnimationList.find(L"RightAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 1)
+				|| (mCurrentAnm == mAnimationList.find(L"LeftAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 1))
 			{
-				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
 				tmp->SetHP(tmp->GetHP() - (mAtk *(1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
 				mAttackCool = mMaxAttackCool;
-				mIsAction = false;
-			}
-			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
-				|| mCurrentAnm == mAnimationList.find(L"LeftIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
-			{
-				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
 				mIsAction = false;
 			}
 		}
@@ -454,12 +482,10 @@ void ZombieMonkey::Update()
 	mCurrentAnm->Update();
 	mRect = RectMake(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	//}}
-
 }
-void ZombieMonkey::Render(HDC hdc)
+void LoveMonkey::Render(HDC hdc)
 {
 	//RenderRect(hdc, mRect);
-	//Rectangle(hdc,mX - 100, mY - 100, mX + 100, mY + 100);
 	if (mCurrentAnm->GetNowFrameY() >= 6)
 	{
 		if (mCurrentAnm->GetNowFrameY() == 11)
@@ -473,20 +499,21 @@ void ZombieMonkey::Render(HDC hdc)
 	{
 		if (mCurrentAnm->GetNowFrameY() == 5)
 		{
-			mImage->AlphaScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70, mAlpha);
+			mImage->AlphaScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 6, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70, mAlpha);
 		}
 		else
-			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70);
+			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 6, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70);
 	}
 
-	wstring atkCool = to_wstring(mDeathCount);
-	TextOut(hdc, 50, 75, atkCool.c_str(), atkCool.size());
+	wstring atkCool = to_wstring(mHP);
+	TextOut(hdc, 50, 50, atkCool.c_str(), atkCool.size());
 	if (mIsDeath != true)
 	{
-		mHPImage->Render(hdc, mX - 35, mY + 10, 0, 0, 88 * (mHP / mMaxHP), 8);
-		mMPImage->Render(hdc, mX - 33, mY + 16, 0, 0, 80 * (mMP / mMaxMP), 8);
-		mHPBar->Render(hdc, mX - 36, mY + 10);
+		mHPImage->Render(hdc, mX - 45, mY + 13, 0, 0, 88 * (mHP / mMaxHP), 8);
+		mMPImage->Render(hdc, mX - 43, mY + 19, 0, 0, 80 * (mMP / mMaxMP), 8);
+		mHPBar->Render(hdc, mX - 46, mY + 13);
 	}
+
 	if (mProvocateur)
 	{
 		if (mCurrentAnm->GetNowFrameY() >= 5)
@@ -497,8 +524,8 @@ void ZombieMonkey::Render(HDC hdc)
 	if (mGetDefBuff)
 	{
 		if (mCurrentAnm->GetNowFrameY() >= 6)
-			mDefImage->Render(hdc, mX - 36, mY - 10);
+			mDefImage->Render(hdc, mX - 46, mY - 7);
 		else
-			mDefImage->Render(hdc, mX + 34, mY - 10);
+			mDefImage->Render(hdc, mX + 24, mY - 7);
 	}
 }

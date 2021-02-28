@@ -256,33 +256,6 @@
     <ClInclude Include="StaffSelect.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClInclude>
-    <ClInclude Include="StarPixie.h">
-      <Filter>MainGame\Object\Champ\Magician</Filter>
-    </ClInclude>
-    <ClInclude Include="Yeti.h">
-      <Filter>MainGame\Object\Champ\Tanker</Filter>
-    </ClInclude>
-    <ClInclude Include="HelmetPepe.h">
-      <Filter>MainGame\Object\Champ\Tanker</Filter>
-    </ClInclude>
-    <ClInclude Include="ZombieMonkey.h">
-      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
-    </ClInclude>
-    <ClInclude Include="BabyMonkey.h">
-      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
-    </ClInclude>
-    <ClInclude Include="Cornian.h">
-      <Filter>MainGame\Object\Champ\Assassin</Filter>
-    </ClInclude>
-    <ClInclude Include="MistKnight.h">
-      <Filter>MainGame\Object\Champ\Assassin</Filter>
-    </ClInclude>
-    <ClInclude Include="BubbleTea.h">
-      <Filter>MainGame\Object\Champ\ADCarry</Filter>
-    </ClInclude>
-    <ClInclude Include="Tank.h">
-      <Filter>MainGame\Object\Champ\ADCarry</Filter>
-    </ClInclude>
     <ClInclude Include="BanPick.h">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClInclude>
@@ -445,33 +418,6 @@
     <ClCompile Include="StaffSelect.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level1_StaffSelect</Filter>
     </ClCompile>
-    <ClCompile Include="StarPixie.cpp">
-      <Filter>MainGame\Object\Champ\Magician</Filter>
-    </ClCompile>
-    <ClCompile Include="Yeti.cpp">
-      <Filter>MainGame\Object\Champ\Tanker</Filter>
-    </ClCompile>
-    <ClCompile Include="HelmetPepe.cpp">
-      <Filter>MainGame\Object\Champ\Tanker</Filter>
-    </ClCompile>
-    <ClCompile Include="ZombieMonkey.cpp">
-      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
-    </ClCompile>
-    <ClCompile Include="BabyMonkey.cpp">
-      <Filter>MainGame\Object\Champ\Assassin\Healer</Filter>
-    </ClCompile>
-    <ClCompile Include="Cornian.cpp">
-      <Filter>MainGame\Object\Champ\Assassin</Filter>
-    </ClCompile>
-    <ClCompile Include="MistKnight.cpp">
-      <Filter>MainGame\Object\Champ\Assassin</Filter>
-    </ClCompile>
-    <ClCompile Include="BubbleTea.cpp">
-      <Filter>MainGame\Object\Champ\ADCarry</Filter>
-    </ClCompile>
-    <ClCompile Include="Tank.cpp">
-      <Filter>MainGame\Object\Champ\ADCarry</Filter>
-    </ClCompile>
     <ClCompile Include="BanPick.cpp">
       <Filter>MainGame\Object\UI\PickBattelUI\Level2_BanPick</Filter>
     </ClCompile>
@@ -522,9 +468,6 @@
     </Filter>
     <Filter Include="FrameWork\ScheduleManager">
       <UniqueIdentifier>{100a8b16-9e0c-417d-ba52-70efbb66e176}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainGame\Object\Champ\Assassin\Healer">
-      <UniqueIdentifier>{47653837-fe51-40e9-935e-912d5d280ad9}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="NewStaff.cpp">
       <Filter>MainGame\Object\UI\homeUI\TeamToggle\NewStaff</Filter>
@@ -655,15 +598,72 @@
     <Filter Include="MainGame\Object\UI\homeUI\OperationToggle\Sponsor">
       <UniqueIdentifier>{bdf1a325-27a8-48e6-86fa-799295b125d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Champ\Healer">
+      <UniqueIdentifier>{6a772b6f-a748-4c27-b01c-37710e9efa86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChampList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Pepe.h">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClInclude>
+    <ClInclude Include="Yeti.h">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieMonkey.h">
+      <Filter>MainGame\Object\Champ\Healer</Filter>
+    </ClInclude>
+    <ClInclude Include="LoveMonkey.h">
+      <Filter>MainGame\Object\Champ\Healer</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixie.h">
+      <Filter>MainGame\Object\Champ\Magician</Filter>
+    </ClInclude>
+    <ClInclude Include="MistKnight.h">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClInclude>
+    <ClInclude Include="Cornian.h">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank.h">
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleTea.h">
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
       <Filter>MainGame\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Pepe.cpp">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClCompile>
+    <ClCompile Include="Yeti.cpp">
+      <Filter>MainGame\Object\Champ\Tanker</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieMonkey.cpp">
+      <Filter>MainGame\Object\Champ\Healer</Filter>
+    </ClCompile>
+    <ClCompile Include="LoveMonkey.cpp">
+      <Filter>MainGame\Object\Champ\Healer</Filter>
+    </ClCompile>
+    <ClCompile Include="Pixie.cpp">
+      <Filter>MainGame\Object\Champ\Magician</Filter>
+    </ClCompile>
+    <ClCompile Include="MistKnight.cpp">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClCompile>
+    <ClCompile Include="Cornian.cpp">
+      <Filter>MainGame\Object\Champ\Assassin</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank.cpp">
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleTea.cpp">
+      <Filter>MainGame\Object\Champ\ADCarry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
