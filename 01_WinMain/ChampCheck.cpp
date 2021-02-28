@@ -2,6 +2,7 @@
 #include "ChampCheck.h"
 #include "Champ.h"
 #include "Staff.h"
+#include "Battle.h"
 
 ChampCheck::ChampCheck() : UI("ChampCheck")
 {
@@ -32,6 +33,18 @@ void ChampCheck::Update()
 	{
 		ObjectManager::GetInstance()->FindObject("ChampCheck")->SetIsActive(false);
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false);
+		Battle* battle = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+		auto myTeam = BData->GetSelectChampList(BData->GetPlayerTeam());
+		vector<Champ*> enemyTeam;
+		if (BData->GetPlayerTeam() == Team::Blue)
+		{
+			 enemyTeam = BData->GetSelectChampList(Team::Red);
+		}
+		else
+		{
+			enemyTeam = BData->GetSelectChampList(Team::Blue);
+		}
+		battle->SetTeams(myTeam, enemyTeam);
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 		SoundPlayer::GetInstance()->AllPause();
 		SoundPlayer::GetInstance()->Play(L"Airman", 0.2f);
@@ -39,6 +52,18 @@ void ChampCheck::Update()
 	mToggleButton(0, "ChampCheck", []() {	//배틀UI활성
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false); 
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
+		Battle* battle = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+		auto myTeam = BData->GetSelectChampList(BData->GetPlayerTeam());
+		vector<Champ*> enemyTeam;
+		if (BData->GetPlayerTeam() == Team::Blue)
+		{
+			enemyTeam = BData->GetSelectChampList(Team::Red);
+		}
+		else
+		{
+			enemyTeam = BData->GetSelectChampList(Team::Blue);
+		}
+		battle->SetTeams(myTeam, enemyTeam);
 		SoundPlayer::GetInstance()->AllPause();
 		SoundPlayer::GetInstance()->Play(L"Airman", 0.2f);
 	});

@@ -470,6 +470,24 @@ Director* BattleData::GetDirector(Team t)
 	return team.mDirector;
 }
 
+bool BattleData::IsWinning (Staff* staff)
+{
+	Director* dir = staff->GetMyDirector();
+	Director* enemy;
+	if (mBlueTeam.mDirector == dir)
+	{
+		enemy = mRedTeam.mDirector;
+	}
+	else
+	{
+		enemy = mBlueTeam.mDirector;
+	}
+
+	if (enemy->GetRound() < dir->GetRound()) { return true; }
+
+	return false;
+}
+
 Champ* BattleData::GetSelectChamp(Team t, int index)
 {
 	TeamData team;
@@ -483,5 +501,3 @@ Champ* BattleData::GetSelectChamp(Team t, int index)
 	}
 	return team.mSelectChamp[index]; 
 }
-
-

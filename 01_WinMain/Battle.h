@@ -10,6 +10,10 @@ class Battle : public UI
 
 	vector<Champ*> mMyTeam;
 	vector<Champ*> mEnemyTeam;
+	vector<Champ*> mWhole;
+
+	int mMyScore;
+	int mEnemyScore;
 
 
 public:
@@ -19,5 +23,8 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	void SetTeams(vector<Champ*> myTeam, vector<Champ*> enemyTeam);
+	void AllStop();
 };
 

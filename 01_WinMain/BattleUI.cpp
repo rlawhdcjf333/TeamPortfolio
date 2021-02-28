@@ -3,6 +3,7 @@
 #include "Staff.h"
 #include "Champ.h"
 #include "Director.h"
+#include "Battle.h"
 
 BattleUI::BattleUI() : UI("BattleUI")
 {
@@ -36,10 +37,12 @@ void BattleUI::Update()
 
 	if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())
 	{
-		if (mTime == 0 || Input::GetInstance()->GetKeyDown('G'))
+		if (mTime == 0 || Input::GetInstance()->GetKeyUp('G'))
 		{
 			//time == 0일때 킬수를 비교해서 킬을 많이한 팀이 그 경기 승리, 대회?는 2선승하면 승리 //연장전 어디가써
 			ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(false);
+			Battle* tmp = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			tmp->AllStop();
 			ObjectManager::GetInstance()->FindObject("BattleResult")->SetIsActive(true);
 			return;
 		}

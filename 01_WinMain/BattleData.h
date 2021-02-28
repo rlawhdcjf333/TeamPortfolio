@@ -126,9 +126,12 @@ public:
 	Team GetChampTeam(GameObject* pt);
 	Team GetStaffTeam(Staff* st);
 
-	bool IsWinning;
+	bool IsWinning(Staff* staff);
+
 };
 #define BData BattleData::GetInstance()
+
+
 /*
 	<함수>
 	1. 플레이어 팀 지정 -> SetPlayerTeam

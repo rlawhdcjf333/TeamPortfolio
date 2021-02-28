@@ -11,8 +11,8 @@ enum class ObjectLayer : int
 	Background = 0, 
 	Director = 1,
 	Staff = 2,
-	Champ = 3,
-	UI = 4,
+	UI = 3,
+	Champ = 4,
 	End
 };
 

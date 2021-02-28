@@ -13,7 +13,11 @@ enum class Motion
 };
 
 Champ::Champ(const string & name)
-	:GameObject(name), mIsAction(false), mIsDeath(false), mAggroTime(0), mIsAggro(false), mDeathCount(0) {}
+	:GameObject(name), mIsAction(false), mIsDeath(false), mAggroTime(0), mIsAggro(false), mDeathCount(0),
+	mIsDefPierce(false), mWinnerTrigger(false), mThornTrigger(false), mDistractionTrigger(false) 
+{
+	mIsActive = false;
+}
 
 Champ::Champ(const string& name, float x, float y) : GameObject(name)
 {
@@ -32,6 +36,8 @@ void Champ::Release()
 
 void Champ::Update()
 {
+	DefPierce();
+
 	//앵글의 방향에 포스만큼 날아간다 포스가 줄어들다 0이되면 멈춘다. 
 	if (mIsNuckback == true)
 	{
@@ -89,6 +95,15 @@ void Champ::Update()
 		}
 	}
 
+	if (mTarget) //Winner 특성 trigger 및 어시스트 계산
+	{
+		Champ* tmp = (Champ*)mTarget;
+		if (tmp->GetIsDeath() == true and mTargetStatus == false)
+		{
+			mAssistCount++; WinnerFunc();
+		}
+		mTargetStatus = tmp->GetIsDeath();
+	}
 
 	if (mIsAggro)
 	{
@@ -130,6 +145,8 @@ void Champ::Update()
 			mIsAggro = false;
 		}
 	}
+
+	Distraction();
 }
 
 void Champ::Render(HDC hdc)
@@ -138,9 +155,7 @@ void Champ::Render(HDC hdc)
 
 void Champ::UIRender(HDC hdc, int startX, int startY, int width, int height)
 {
-
 	mImage->ScaleFrameRender(hdc, startX, startY, 0, 0, width, height);
-
 }
 
 void Champ::ChampImageRender(HDC hdc, RECT rc)
@@ -155,6 +170,36 @@ void Champ::StaffOnChamp()
 
 	mAtk += staff->GetAtk();
 	mDef += staff->GetDef();
+
+	switch (staff->GetCondition())
+	{
+	case Condition::Bad:
+		mAtk -= 5;
+		mDef -= 5;
+		mMaxHP -= 10;
+		mHP -= 10;
+		break;
+	case Condition::LittleBad:
+		mAtk -= 3;
+		mDef -= 3;
+		mMaxHP -= 5;
+		mHP -= 3;
+		break;
+	case Condition::Nomal: //Nomal이 아니고 Normal임...
+		break;
+	case Condition::Good:
+		mAtk += 3;
+		mDef += 3;
+		mMaxHP += 5;
+		mHP += 3;
+		break;
+	case Condition::Best:
+		mAtk += 5;
+		mDef += 5;
+		mMaxHP += 10;
+		mHP += 5;
+		break;
+	}
 
 	auto list = staff->GetMostChamp();
 	
@@ -180,6 +225,7 @@ void Champ::StaffOnChamp()
 		break;
 		
 	case Character::Distraction:
+		mDistractionTrigger = true;
 		break;
 
 	case Character::Fast:
@@ -187,27 +233,123 @@ void Champ::StaffOnChamp()
 		break;
 
 	case Character::Glass:
-		
+		if (BData->IsWinning(staff))
+		{
+			mAtk += 10;
+			mDef += 10;
+			mHP += 10;
+			mMaxHP += 10;
+			mSpeed += 10;
+			mRange += 10;
+			mHealPr += 10;
+		}
+		else
+		{
+			mAtk -= 10;
+			mDef -= 10;
+			mHP -= 10;
+			mMaxHP -= 10;
+			mSpeed -= 10;
+			mRange -= 10;
+			mHealPr -= 10;
+		}
 		break;
 
 	case Character::Hero:
+		if (BData->IsWinning(staff))
+		{
+			mAtk -= 10;
+			mDef -= 10;
+			mHP -= 10;
+			mMaxHP -= 10;
+			mSpeed -= 10;
+			mRange -= 10;
+			mHealPr -= 10;
+		}
+		else
+		{
+			mAtk += 10;
+			mDef += 10;
+			mHP += 10;
+			mMaxHP += 10;
+			mSpeed += 10;
+			mRange += 10;
+			mHealPr += 10;
+		}
 		break;
 	case Character::Spear:
+		mIsDefPierce = true;
+
 		break;
 
 	case Character::Winner:
+		mWinnerTrigger = true;
 		break;
 
 	case Character::None:
 		break;
 
 	case Character::Thorn:
+		mThornTrigger = true;
 		break;
 
 	}
 
 
 }
+
+void Champ::DefPierce()
+{
+	if (mTarget!=nullptr and mIsDefPierce)
+	{
+		Champ* tmp = (Champ*)mTarget;
+		tmp->SetDef(tmp->GetInitDef() - 10);
+	}
+}
+
+void Champ::WinnerFunc()
+{
+	if (mWinnerTrigger) mHP += 10;
+}
+
+void Champ::ThornFunc()
+{
+	if (mThornTrigger and mTarget!=nullptr)
+	{
+		Champ* tmp = (Champ*)mTarget;
+		tmp->SetHealPr(tmp->GetInitHealPr()-10);
+	}
+}
+
+void Champ::Distraction()
+{
+	if (mDistractionTrigger)
+	{
+		mProvocateur = true;
+		mDistractionTrigger -= Time::GetInstance()->DeltaTime();
+
+		if (mDistractionDuration < 0) {
+			int cycle = 0;
+			while (1)
+			{
+				cycle++;
+				mTarget = mEnemyList[Random::GetInstance()->RandomInt(0, 2)];
+				Champ* target = (Champ*)mTarget;
+				if (cycle > 3 or target->GetIsDeath() == false) break;
+			}
+			mDistractionDuration = 5.f;
+		}
+	}
+}
+
+void Champ::SetXY(int x, int y)
+{
+	mX = x;
+	mRespawnX = x;
+	mY = y;
+	mRespawnY = y;
+}
+
 
 //void Champ::GetStaff(string staff)
 //{

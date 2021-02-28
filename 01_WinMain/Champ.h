@@ -73,6 +73,17 @@ protected:
 	bool mProvocateur;		//도발 함수
 	float mAggroTime;
 
+	bool mIsDefPierce; //방어 관통 함수
+
+	bool mTargetStatus; //타겟 생사여부 캐싱
+	int mAssistCount; //어시스트 계산
+	bool mWinnerTrigger; //승자 특성
+
+	bool mThornTrigger; //가시 특성
+
+	float mDistractionDuration; //산만 특성
+	bool mDistractionTrigger;
+
 	Image* mHPBar;
 	Image* mHPImage;
 	Image* mMPImage;
@@ -108,8 +119,9 @@ public:
 	void SetProvocateur(bool aggro) { mProvocateur = aggro; }
 	void SetDef(float def) { mDef = def; }
 	void SetGetDefBuff(float def) { mGetDefBuff = def; }
-	void SetEnemyList(vector <GameObject*> list) { mEnemyList = list; }
-	void SetFriendList(vector <GameObject*> list) { mFriendList = list; }
+	void SetEnemyList(vector <GameObject*> list) { mEnemyList.assign(list.begin(),list.end()); }
+	void SetFriendList(vector <GameObject*> list) { mFriendList.assign(list.begin(), list.end()); }
+	void SetHealPr(float val) { mHealPr = val; }
 
 
 	float GetHP() { return mHP; } //HP값 조정
@@ -120,7 +132,9 @@ public:
 	float GetSpeed() { return mSpeed; }
 	bool GetIsDeath() { return mIsDeath; }
 	float GetSkillCool() { return mSkill1Cool; }
-
+	float GetHealPr() { return mHealPr; }
+	float GetInitHealPr() { return mInitHealPr; }
+	int GetDeathCount() { return mDeathCount; }
 
 	GameObject* GetStaff() { return mStaff; } //staff값 조정
 	vector<GameObject*> GetPlayerList() { return mFriendList; }
@@ -137,8 +151,14 @@ public:
 	wstring GetSpecialSkillEx() const { return mSpecialSkillEx; }
 	
 
-	void StaffOnChamp();
+	void StaffOnChamp(); //경기 시작전 챔프를 스태프의 특성값으로 업데이트하는 함수
+	void DefPierce();
+	float GetInitDef() { return mInitDef; }
 
+	void WinnerFunc();
 
+	void ThornFunc();
+	void Distraction();
 
+	void SetXY(int x, int y);
 };
