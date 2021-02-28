@@ -18,6 +18,11 @@ class ChampSelect : public UI
 	Image *mBackFrame;
 	vector<GameObject*> mChampList;
 	SelectState mState;
+	
+	Champ* mCurrentChamp;
+	RECT mCurrentRect;
+
+
 public:
 	ChampSelect();
 
@@ -30,5 +35,8 @@ public:
 
 	int SetIndexX(GameObject* pt);	//mBackFrame xFrameindex 바꾸려고 만듬, pt : 챔프 포인터
 	void NextState();
+	void ChampRender(HDC hdc, int x , int y, vector<GameObject*> list, int i);
+
+	int SetIndexX();
 };
 

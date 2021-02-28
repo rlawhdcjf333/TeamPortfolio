@@ -25,6 +25,7 @@ void ChampCheck::Update()
 
 	if (Input::GetInstance()->GetKeyDown('F'))
 	{
+
 		ObjectManager::GetInstance()->FindObject("ChampCheck")->SetIsActive(false);
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false);
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
@@ -32,6 +33,8 @@ void ChampCheck::Update()
 	mToggleButton(1, "ChampCheck", []() {	//πË∆≤UI»∞º∫
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false); 
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
+		SoundPlayer::GetInstance()->AllPause();
+		SoundPlayer::GetInstance()->Play(L"Warsong", 0.2f);
 	});
 
 	// mButtonList[2~4] : Blue∆¿,  mButtonList[5~7] : Red∆¿

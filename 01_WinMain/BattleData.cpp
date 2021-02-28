@@ -56,7 +56,7 @@ TeamData BattleData::LoadStaffList(Director* dir)
 	{
 		if (i < 3)
 			t.mSelectStaff[i] = t.mStaffList[i];
-		else if(i > 3 && i < 5)
+		else if(i >= 3 && i < 5)
 			t.mWaitStaff[i-3] = t.mStaffList[i];
 	}
 	t.mKillCount = 0;
@@ -78,13 +78,11 @@ void BattleData::StaffSwap(Staff * waittoselect, Staff * selecttowait)
 		{
 			if (mBlueTeam.mSelectStaff[i] == selecttowait)
 				mBlueTeam.mSelectStaff[i] = waittoselect;
-			break;
 		}
 		for (int i = 0; i < 2; ++i)
 		{
 			if (mBlueTeam.mWaitStaff[i] == waittoselect)
 				mBlueTeam.mWaitStaff[i] = selecttowait;
-			break;
 		}
 		break;
 	case Team::Red:
@@ -92,13 +90,11 @@ void BattleData::StaffSwap(Staff * waittoselect, Staff * selecttowait)
 		{
 			if (mRedTeam.mSelectStaff[i] == selecttowait)
 				mRedTeam.mSelectStaff[i] = waittoselect;
-			break;
 		}
 		for (int i = 0; i < 2; ++i)
 		{
 			if (mRedTeam.mWaitStaff[i] == waittoselect)
 				mRedTeam.mWaitStaff[i] = selecttowait;
-			break;
 		}
 		break;
 	} 
@@ -294,27 +290,6 @@ void BattleData::SetResult()
 	}
 }
 
-void BattleData::SetStaffSelect()
-{
-	StaffSelect* tmp = (StaffSelect*)ObjectManager::GetInstance()->FindObject("StaffSelect");
-
-	if (mPlayerTeam == Team::Blue)
-	{
-		tmp->SetImage(IMAGEMANAGER->FindImage(L"BlueSelect"));
-	}
-	else if(mPlayerTeam==Team::Red)
-	{
-		tmp->SetImage(IMAGEMANAGER->FindImage(L"RedSelect"));
-	}
-	else
-	{
-		wstring alert = L"플레이어 팀이 지정되지 않았거나 잘못된 값이 설정되었습니다.";
-		wstring caption = L"오류!";
-		MessageBox(_hWnd, alert.c_str(), caption.c_str(), MB_OK);
-		assert(false);
-		
-	}
-}
 
 vector<Staff*> BattleData::GetEnemyStaff()
 {
