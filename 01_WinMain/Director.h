@@ -39,6 +39,7 @@ public:
 	void UpRound() { mRound++; }
 	void SetMonth(int month) { mMonth = month; }
 	void SetWeek(int week) { mWeek = week; }
+	void PlusWeek() { mWeek++; }
 	void SetGold(int gold) { mGold = gold; }
 
 	int GetRound() { return mRound; }

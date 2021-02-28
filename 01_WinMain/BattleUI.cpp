@@ -39,6 +39,18 @@ void BattleUI::Update()
 	{
 		if (mTime == 0 || Input::GetInstance()->GetKeyUp('G'))
 		{
+			Battle* battle = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			int myScore = battle->GetMyScore();
+			int enemyScore = battle->GetEnemyScore();
+			if (myScore > enemyScore)
+			{
+				BData->PlusWincount(BData->GetPlayerTeam());
+			}
+			else if (myScore == enemyScore) {mTime+=20;}
+			else if (myScore < enemyScore)
+			{
+				BData->PlusWincount(BData->GetEnemyTeam());
+			}
 			//time == 0일때 킬수를 비교해서 킬을 많이한 팀이 그 경기 승리, 대회?는 2선승하면 승리 //연장전 어디가써
 			ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(false);
 			Battle* tmp = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
@@ -137,6 +149,17 @@ void BattleUI::DrawStaff(HDC hdc, int x, int y, vector<Staff*> list, int i)
 
 	//선수 i번 얼굴
 	list[i]->UIRender(hdc, x + 1, y + 35, 52, 49);
+	auto vec = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Champ);
+	for (GameObject* elem : vec)
+	{
+		Champ* champ = (Champ*)elem;
+		if (champ->GetStaff() == list[i])
+		{
+			RECT rc = RectMake(x + 1, y + 35, 52, 49);
+			CallBrush(hdc, RGB(32, 37, 40), [hdc, rc]() {RenderRect(hdc,rc);});
+			champ->UIRender(hdc, x + 1, y + 35, 52, 49);
+		}
+	}
 
 	//선수 i번 특성
 	wstring enemyStaffChar = list[i]->GetCharComment(1);

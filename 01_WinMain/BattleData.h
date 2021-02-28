@@ -33,7 +33,7 @@ private:
 
 	Team mPlayerTeam;//팀색깔 -> switch용 //
 
-	//mTeamData 구조체 사용; //개나이스 cto 싱글턴 쓰는게 굿
+	//mTeamData 구조체 사용; 
 	TeamData mBlueTeam;
 	TeamData mRedTeam;
 
@@ -49,7 +49,7 @@ public:
 
 	void SetPlayerTeam(Team t) { mPlayerTeam = t; }
 	Team GetPlayerTeam() { return mPlayerTeam; }
-	Team GetEnmeyTeam()
+	Team GetEnemyTeam()
 	{
 		if (mPlayerTeam == Team::Red) return Team::Blue;
 		else return Team::Red;
@@ -103,6 +103,7 @@ public:
 	void UpdateCondition(TeamData t, int con);
 
 	void SetResult();
+	void PlusWincount(Team t);
 
 	Staff* GetSelectStaff(int index) {
 		if (mPlayerTeam == Team::Blue)
@@ -126,6 +127,7 @@ public:
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
 	Director* GetEnemyDirector();
+	Director* GetMyDirector();
 	Director* GetDirector(Team t);
 
 	Team GetChampTeam(GameObject* pt);

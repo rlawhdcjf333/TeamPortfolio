@@ -293,6 +293,9 @@ void Champ::StaffOnChamp()
 		mThornTrigger = true;
 		break;
 
+	case Character::Mother:
+		mInitHealPr += 10;
+		mHealPr += 10;
 	}
 
 
@@ -326,7 +329,7 @@ void Champ::Distraction()
 	if (mDistractionTrigger)
 	{
 		mProvocateur = true;
-		mDistractionTrigger -= Time::GetInstance()->DeltaTime();
+		mDistractionDuration -= Time::GetInstance()->DeltaTime();
 
 		if (mDistractionDuration < 0) {
 			int cycle = 0;

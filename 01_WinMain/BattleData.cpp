@@ -326,7 +326,7 @@ bool BattleData::IsSelectChamp(Champ* select)
 {
 	for (int i = 0; i < mSelectChamp.size(); ++i)
 	{
-		if (mSelectChamp[i] == select)
+		if (mSelectChamp[i]->GetName() == select->GetName())
 			return true;
 	}
 	return false;
@@ -379,6 +379,26 @@ vector<Staff*> BattleData::GetEnemyStaff()
 	}
 
 	return result;
+}
+
+void BattleData::PlusWincount(Team t)
+{
+	if (t == Team::Red)
+	{
+		mRedTeam.mWinCount++;
+		mRedTeam.mDirector->SetRound(mRedTeam.mDirector->GetRound() + 1);
+	}
+	else if (t == Team::Blue)
+	{
+		mBlueTeam.mWinCount++;
+		mBlueTeam.mDirector->SetRound(mBlueTeam.mDirector->GetRound() + 1);
+
+	}
+	else
+	{
+		assert(false);
+		MessageBox(_hWnd, L"½Â¸® ÆÀ ÁöÁ¤ ½ÇÆÐ", L"¿À·ù", MB_OK);
+	}
 }
 
 void BattleData::TeamChange()
@@ -468,6 +488,18 @@ Director* BattleData::GetDirector(Team t)
 		team = mBlueTeam;
 	}
 	return team.mDirector;
+}
+
+Director* BattleData::GetMyDirector()
+{
+	if (mPlayerTeam == Team::Red)
+	{
+		return mRedTeam.mDirector;
+	}
+	else
+	{
+		return mBlueTeam.mDirector;
+	}
 }
 
 bool BattleData::IsWinning (Staff* staff)

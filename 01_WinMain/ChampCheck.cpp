@@ -47,7 +47,7 @@ void ChampCheck::Update()
 		battle->SetTeams(myTeam, enemyTeam);
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 		SoundPlayer::GetInstance()->AllPause();
-		SoundPlayer::GetInstance()->Play(L"Airman", 0.2f);
+		SoundPlayer::GetInstance()->Play(L"Warsong", 0.2f);
 	}
 	mToggleButton(0, "ChampCheck", []() {	//πË∆≤UI»∞º∫
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false); 
@@ -65,7 +65,7 @@ void ChampCheck::Update()
 		}
 		battle->SetTeams(myTeam, enemyTeam);
 		SoundPlayer::GetInstance()->AllPause();
-		SoundPlayer::GetInstance()->Play(L"Airman", 0.2f);
+		SoundPlayer::GetInstance()->Play(L"Warsong", 0.2f);
 	});
 
 	// mButtonList[1~3] : Blue∆¿,  mButtonList[4~6] : Red∆¿

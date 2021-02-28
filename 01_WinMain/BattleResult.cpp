@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "BattleResult.h"
+#include "Director.h"
+#include "Battle.h"
 
 BattleResult::BattleResult() : UI("BattleResult")
 {
@@ -21,6 +23,7 @@ void BattleResult::Update()
 	function<void(void)> func;
 	if (BData->IsEnd())
 	{
+		BData->GetDirector(BData->GetPlayerTeam())->PlusWeek();
 		func = []() {SceneManager::GetInstance()->LoadScene(L"Home"); };
 		return;
 	}
@@ -44,5 +47,33 @@ void BattleResult::Update()
 void BattleResult::Render(HDC hdc)
 {
 	if (mIsActive)
+	{
 		mImage->Render(hdc, 0, 0);
+
+		Battle* battle = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+		int myScore = battle->GetMyScore();
+		int enemyScore = battle->GetEnemyScore();
+		if (myScore > enemyScore)
+		{
+			wstring a = L"승리";
+			CallFont(hdc, 35, [hdc,a]() {TextOut(hdc, 609,276,a.c_str(), a.length());});
+		}
+		else
+		{
+			wstring a = L"패배";
+			CallFont(hdc, 35, [hdc, a]() {TextOut(hdc, 609, 276, a.c_str(), a.length());});
+		}
+
+		BData->GetMyDirector()->TeamImageRender(hdc, 485, 381, 60, 60);
+		wstring myRound = to_wstring(BData->GetWinCount(BData->GetPlayerTeam()));
+		RECT myRc = RectMake(590, 390, 40, 40);
+		CallFont(hdc, 40, [&myRc, myRound, hdc]() {DrawText(hdc, myRound.c_str(), myRound.size(), &myRc, DT_VCENTER|DT_SINGLELINE|DT_CENTER);});
+		
+		BData->GetEnemyDirector()->TeamImageRender(hdc, 1280 - 485 - 60, 381, 60, 60);
+		wstring enemyRound = to_wstring(BData->GetWinCount(BData->GetEnemyTeam()));
+		RECT enemyRc = RectMake(650, 390, 40, 40);
+		CallFont(hdc, 40, [&enemyRc, enemyRound, hdc]() {DrawText(hdc, enemyRound.c_str(), enemyRound.size(), &enemyRc, DT_VCENTER | DT_SINGLELINE | DT_CENTER);});
+
+		 
+	}
 }
