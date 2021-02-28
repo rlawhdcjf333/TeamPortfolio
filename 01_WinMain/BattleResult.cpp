@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "BattleResult.h"
 
 BattleResult::BattleResult() : UI("BattleResult")
@@ -17,16 +17,17 @@ void BattleResult::Update()
 {
 	if (!mIsActive)
 		return;
-	//¸¸¾à 2¹ø ½Â¸®ÇÑ ÆÀÀÌ ÀÖ°Å³ª ÁøÇàÇÑ °æ±â°¡ 3ÆÇÀÌ¸é È¨À¸·Î µ¹¾Æ°¨
+	//ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½Â¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½â°¡ 3ï¿½ï¿½ï¿½Ì¸ï¿½ È¨ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½
 	function<void(void)> func;
 	if (BData->IsEnd())
 	{
 		func = []() {SceneManager::GetInstance()->LoadScene(L"Home"); };
 		return;
 	}
-	else //2½ÂÇÑ ÆÀÀÌ ¾øÀ¸¸é ÇÇµå¹éUIÈ°¼ºÈ­
+	else //2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½ï¿½UIÈ°ï¿½ï¿½È­
 	{
-		func = []() {
+		func = []()
+		{
 			ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
 			ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
 		};

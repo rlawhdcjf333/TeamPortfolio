@@ -19,6 +19,11 @@ void Background::Init()
 		IMAGEMANAGER->LoadFromFile(L"TitleClearBuffer", Resources(L"TitleClearBuffer.bmp"), 1280, 720, false);
 	}
 
+	if (mFileName == L"Audiences")
+	{
+		IMAGEMANAGER->LoadFromFile(L"redAud", Resources(L"redAud.bmp"), 1280, 720, false);
+	}
+
 }
 
 void Background::Release()
@@ -27,6 +32,15 @@ void Background::Release()
 
 void Background::Update()
 {
+	if (mFileName == L"Audiences") {
+
+		if (BData->GetPlayerTeam() == Team::Red)
+		{
+			mImage = IMAGEMANAGER->FindImage(L"redAud");
+		}
+	}
+
+
 }
 
 void Background::Render(HDC hdc)
