@@ -6,6 +6,14 @@
 Pixie::Pixie()
 	:Champ("Pixie") {}
 
+
+Pixie::Pixie(const string& name)
+	: Champ(name)
+{
+	mChampName = L"Pixie";
+	mClassType = ClassType::Magician;
+}
+
 Pixie::Pixie(string str, float x, float y)
 	: Champ(str)
 {
@@ -14,8 +22,6 @@ Pixie::Pixie(string str, float x, float y)
 	mRespawnX = x;
 	mRespawnY = y;
 }
-Pixie::Pixie(string str)
-	:Champ(str){}
 
 void Pixie::Init()
 {
@@ -28,6 +34,9 @@ void Pixie::Init()
 	IMAGEMANAGER->LoadFromFile(L"exclamation", Resources(L"exclamation.bmp"), 40, 40, true);
 	IMAGEMANAGER->LoadFromFile(L"Def", Resources(L"Def.bmp"), 20, 20, true);
 	IMAGEMANAGER->LoadFromFile(L"MagicCircle", Resources(L"MagicCircle.bmp"), 1400, 200, 7, 1, true);
+	IMAGEMANAGER->LoadFromFile(L"PixieSkill", Resources(L"SkillIcon/PixieSkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"PixieSpecialSkill", Resources(L"SkillIcon/PixieSpecialSkill.bmp"), 62, 62, true);
+
 	mImage = IMAGEMANAGER->FindImage(L"Pixie");
 	mHPBar = IMAGEMANAGER->FindImage(L"HPBar");
 	mHPImage = IMAGEMANAGER->FindImage(L"HP");
@@ -35,6 +44,12 @@ void Pixie::Init()
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
 	mMagicCircle = IMAGEMANAGER->FindImage(L"MagicCircle");
+	mSkillImage = IMAGEMANAGER->FindImage(L"PixieSkill");
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"PixieSpecialSkill");
+
+	mChampEx = L"귀여운 스타 픽시. 마법사이자 원거리 광역 crwod cc에 특화된 챔프.";
+	mSkillEx = L"좁은 범위의 마법탄을 쏴 상대를 조금 넉백시키고 데미지를 입힌다.";
+	mSpecialSkillEx = L"어둠의 힘을 개방하여 넓은 범위의 마법진을 그려 상대를 넉백시키고 큰 데미지를 입힌다.";
 	//변수 초기화
 	mMaxHP = 90;
 	mMaxMP = 100;

@@ -8,8 +8,8 @@ class LoveMonkey : public Champ
 public:
 
 	LoveMonkey();
+	LoveMonkey(const string& name);
 	LoveMonkey(string str, float  x, float y);
-	LoveMonkey(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;

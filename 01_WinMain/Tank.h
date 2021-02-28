@@ -12,8 +12,8 @@ class Tank : public Champ
 public:
 
 	Tank();
+	Tank(const string& name);
 	Tank(string str, float  x, float y);
-	Tank(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;

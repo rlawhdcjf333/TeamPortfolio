@@ -8,8 +8,8 @@ class Cornian : public Champ
 public:
 
 	Cornian();
+	Cornian(const string& name);
 	Cornian(string str, float  x, float y);
-	Cornian(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;

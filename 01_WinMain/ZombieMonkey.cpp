@@ -6,6 +6,13 @@
 ZombieMonkey::ZombieMonkey()
 	:Champ("ZombieMonkey") {}
 
+ZombieMonkey::ZombieMonkey(const string& name)
+	: Champ(name) 
+{
+	mChampName = L"ZombieMonkey";
+	mClassType = ClassType::Supporter;
+}
+
 ZombieMonkey::ZombieMonkey(string str, float x, float y)
 	: Champ(str)
 {
@@ -15,15 +22,11 @@ ZombieMonkey::ZombieMonkey(string str, float x, float y)
 	mRespawnY = y;
 }
 
-ZombieMonkey::ZombieMonkey(string str)
-	:Champ(str) {}
-
-
 void ZombieMonkey::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 1040, 1440, 8, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 2210, 2040, 13, 12, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
@@ -36,10 +39,10 @@ void ZombieMonkey::Init()
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
 
-	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkeySkill", Resources(L"SkillIcon/ZombieMonkeySkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"ZombieMonkeySkill", Resources(L"SkillIcon/ZombieMonkeySkill.bmp"), 62, 62, true);
 	mSkillImage = IMAGEMANAGER->FindImage(L"ZombieMonkeySkill");
 
-	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkeySpecialSkill", Resources(L"SkillIcon/ZombieMonkeySpecialSkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"ZombieMonkeySpecialSkill", Resources(L"SkillIcon/ZombieMonkeySpecialSkill.bmp"), 62, 62, true);
 	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"ZombieMonkeySpecialSkill");
 
 	mChampEx = L"깊은 원한 속에서 성불해버린 원숭이. 신기하게도 저주가 아니라 회복능력에 특화되어 있다.";
