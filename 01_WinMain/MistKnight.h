@@ -8,8 +8,8 @@ class MistKnight : public Champ
 public:
 
 	MistKnight();
+	MistKnight(const string& name);
 	MistKnight(string str, float  x, float y);
-	MistKnight(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;

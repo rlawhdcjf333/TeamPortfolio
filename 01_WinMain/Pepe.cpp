@@ -15,9 +15,12 @@ Pepe::Pepe(string str, float x, float y)
 	mRespawnY = y;
 }
 
-Pepe::Pepe(string str)
-	:Champ(str){}
-
+Pepe::Pepe(const string& name) 
+	:Champ(name)
+{
+	mChampName = L"Pepe";
+	mClassType = ClassType::Warrior;
+}
 
 void Pepe::Init()
 {
@@ -29,12 +32,22 @@ void Pepe::Init()
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"exclamation", Resources(L"exclamation.bmp"), 40, 40, true);
 	IMAGEMANAGER->LoadFromFile(L"Def", Resources(L"Def.bmp"), 20, 20, true);
+	IMAGEMANAGER->LoadFromFile(L"PepeSkill", Resources(L"SkillIcon/PepeSkill.bmp"), 62, 62, true);
+	IMAGEMANAGER->LoadFromFile(L"PepeSpecialSkill", Resources(L"SkillIcon/PepeSpecialSkill.bmp"), 62, 62, true);
+
 	mImage = IMAGEMANAGER->FindImage(L"Pepe");
 	mHPBar = IMAGEMANAGER->FindImage(L"HPBar");
 	mHPImage = IMAGEMANAGER->FindImage(L"HP");
 	mMPImage = IMAGEMANAGER->FindImage(L"MP");
 	mExclamation = IMAGEMANAGER->FindImage(L"exclamation");
 	mDefImage = IMAGEMANAGER->FindImage(L"Def");
+	mSkillImage = IMAGEMANAGER->FindImage(L"PepeSkill");
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"PepeSpecialSkill");
+
+	mChampEx = L"헬멧을 뒤집어 쓴 펭귄. 이유는 모르겠지만 도발적이다.";
+	mSkillEx = L"자신 주변의 상대를 3초간 도발한다.";
+	mSpecialSkillEx = L"남극지방 전통춤을 추어 모든 아군의 방어력을 일정시간 올린다.";
+
 	//변수 초기화
 	mMaxHP = 150;
 	mMaxMP = 100;

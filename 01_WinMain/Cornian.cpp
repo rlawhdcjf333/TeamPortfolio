@@ -6,6 +6,13 @@
 Cornian::Cornian()
 	:Champ("Cornian") {}
 
+Cornian::Cornian(const string& name)
+	: Champ(name)
+{
+	mChampName = L"Cornian";
+	mClassType = ClassType::Assassin;
+}
+
 Cornian::Cornian(string str, float x, float y)
 	: Champ(str)
 {
@@ -15,15 +22,11 @@ Cornian::Cornian(string str, float x, float y)
 	mRespawnY = y;
 }
 
-Cornian::Cornian(string str)
-	:Champ(str) {}
-
-
 void Cornian::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"Cornian", Resources(L"Cornian.bmp"), 1040, 1440, 8, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"Cornian", Resources(L"Cornian.bmp"), 2380, 2720, 7, 16, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);

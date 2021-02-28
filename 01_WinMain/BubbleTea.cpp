@@ -6,6 +6,13 @@
 BubbleTea::BubbleTea()
 	:Champ("BubbleTea") {}
 
+BubbleTea::BubbleTea(const string& name)
+	: Champ(name) 
+{
+	mChampName = L"BubbleTea";
+	mClassType = ClassType::ADCarry;
+}
+
 BubbleTea::BubbleTea(string str, float x, float y)
 	: Champ(str)
 {
@@ -14,10 +21,6 @@ BubbleTea::BubbleTea(string str, float x, float y)
 	mRespawnX = x;
 	mRespawnY = y;
 }
-
-BubbleTea::BubbleTea(string str)
-	:Champ(str) {}
-
 
 void BubbleTea::Init()
 {

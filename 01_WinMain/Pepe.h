@@ -9,7 +9,7 @@ public:
 
 	Pepe();
 	Pepe(string str, float  x, float y);
-	Pepe(string str);
+	Pepe(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;

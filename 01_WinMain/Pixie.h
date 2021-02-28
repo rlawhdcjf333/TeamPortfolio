@@ -8,8 +8,8 @@ class Pixie : public Champ
 public:
 
 	Pixie();
+	Pixie(const string& name);
 	Pixie(string str, float  x, float y);
-	Pixie(string str);
 	void Init()override;
 	void Release()override;
 	void Update()override;

@@ -6,6 +6,13 @@
 MistKnight::MistKnight()
 	:Champ("MistKnight") {}
 
+MistKnight::MistKnight(const string& name)
+	: Champ(name) 
+{
+	mChampName = L"MistKnight";
+	mClassType = ClassType::Assassin;
+}
+
 MistKnight::MistKnight(string str, float x, float y)
 	: Champ(str)
 {
@@ -15,15 +22,11 @@ MistKnight::MistKnight(string str, float x, float y)
 	mRespawnY = y;
 }
 
-MistKnight::MistKnight(string str)
-	:Champ(str) {}
-
-
 void MistKnight::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"MistKnight", Resources(L"MistKnight.bmp"), 1040, 1440, 8, 12, true);
+	IMAGEMANAGER->LoadFromFile(L"MistKnight", Resources(L"MistKnight.bmp"), 1680, 1680, 12, 12, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
