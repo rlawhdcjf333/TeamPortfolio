@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Staff.h"
 #include "Animation.h"
+#include "Director.h"
 
 Staff::Staff(const string& name, const string& staffName, const wstring& teamName)
 	:GameObject(name)
@@ -94,7 +95,7 @@ wstring Staff::GetCharComment(int Charnum)
 
 	switch (ch)
 	{
-	case Character::Nomal:
+	case Character::Normal:
 		comment = L"평범";	// 아무 특성 없음
 		break;
 	case Character::Hero:	//영웅 : 이기고 있을때 모든 능력치 -10, 지고 있을때 +10
@@ -115,7 +116,7 @@ wstring Staff::GetCharComment(int Charnum)
 	case Character::Distraction://주의산만 : 공격대상이 5초마다 무작위로 변경
 		comment = L"산만";
 		break;
-	case Character::Fest:	//쾌속 : 스킬 시전속도 10% 증가
+	case Character::Fast:	//쾌속 : 스킬 시전속도 10% 증가
 		comment = L"쾌속";
 		break;
 	case Character::Spear:	//꿰뚫는 창 : 방어력 관통효과 +10(상대방의 방어력을 10 무시한다)
@@ -143,7 +144,7 @@ wstring Staff::GetCharInfo(int Charnum)
 
 	switch (ch)
 	{
-	case Character::Nomal:
+	case Character::Normal:
 		comment = L"아무 특성 없음";
 		break;
 	case Character::Hero:	
@@ -164,7 +165,7 @@ wstring Staff::GetCharInfo(int Charnum)
 	case Character::Distraction:
 		comment = L"공격대상이 5초마다 무작위로 변경";
 		break;
-	case Character::Fest:	
+	case Character::Fast:	
 		comment = L"스킬 시전속도 10% 증가";
 		break;
 	case Character::Spear:
@@ -202,6 +203,21 @@ void Staff::SetConditionImage()
 	}
 }
 
+Director* Staff::GetMyDirector()
+{
+	auto dirs = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Director);
+	
+	for (GameObject* elem : dirs)
+	{
+		Director* tmp = (Director*)elem;
+		
+		if (tmp->GetTeamName() == mTeamName) return tmp;
+
+	}
+
+	return nullptr;
+}
+
 Staff::Staff(const Staff & copy)
 	:GameObject(copy)
 {
@@ -229,7 +245,6 @@ Staff::Staff(const Staff & copy)
 	mConditionImage = copy.mConditionImage;
 	mConditionX = copy.mConditionX;
 	mCost = copy.mCost;
-
 }
 
 Staff & Staff::operator=(const Staff & copy)

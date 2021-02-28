@@ -89,4 +89,8 @@ public:
 	//float GetChampAnm() { return }
 	float GetFullHP() { return mFullHP; }			//UI표시
 	void Recover() { mHP = mFullHP;  }				//죽었을때 이걸 쓰면 다시 풀체력
+
+	void StaffOnChamp();
+
+
 };

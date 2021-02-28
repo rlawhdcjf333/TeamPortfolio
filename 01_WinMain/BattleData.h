@@ -125,6 +125,8 @@ public:
 
 	Team GetChampTeam(GameObject* pt);
 	Team GetStaffTeam(Staff* st);
+
+	bool IsWinning;
 };
 #define BData BattleData::GetInstance()
 /*

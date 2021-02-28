@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "ChampCheck.h"
 #include "Champ.h"
+#include "Staff.h"
+
 ChampCheck::ChampCheck() : UI("ChampCheck")
 {
 	mIsActive = false;
@@ -32,13 +34,13 @@ void ChampCheck::Update()
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false);
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 		SoundPlayer::GetInstance()->AllPause();
-		SoundPlayer::GetInstance()->Play(L"Warsong", 0.2f);
+		SoundPlayer::GetInstance()->Play(L"Airman", 0.2f);
 	}
 	mToggleButton(0, "ChampCheck", []() {	//πË∆≤UI»∞º∫
 		ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(false); 
 		ObjectManager::GetInstance()->FindObject("Battle")->SetIsActive(true);
 		SoundPlayer::GetInstance()->AllPause();
-		SoundPlayer::GetInstance()->Play(L"Warsong", 0.2f);
+		SoundPlayer::GetInstance()->Play(L"Airman", 0.2f);
 	});
 
 	// mButtonList[1~3] : Blue∆¿,  mButtonList[4~6] : Red∆¿
@@ -123,3 +125,29 @@ void ChampCheck::ChampRender(HDC hdc, int x, int y, Champ* champ)
 	RECT nameBox = RectMake(x + 20, y + 90, 77, 30);
 	CallFont(hdc, 12, [hdc, champName, &nameBox]() {DrawText(hdc, champName.c_str(), champName.size(), &nameBox, DT_SINGLELINE | DT_VCENTER | DT_CENTER); });
 }
+
+void ChampCheck::ConfirmChamp()
+{
+	vector <Champ*> myTeam;
+	vector <Champ*> enemyTeam;
+
+	switch (BData->GetPlayerTeam())
+	{
+		case Team::Red:
+			myTeam = BData->GetSelectChampList(Team::Red);
+			enemyTeam = BData->GetSelectChampList(Team::Blue);
+			break;
+		case Team::Blue:
+			myTeam = BData->GetSelectChampList(Team::Red);
+			enemyTeam = BData->GetSelectChampList(Team::Blue);
+			break;
+	}
+	
+	
+
+
+
+}
+
+
+
