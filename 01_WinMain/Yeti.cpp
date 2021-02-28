@@ -425,17 +425,17 @@ void Yeti::Update()
 
 				if (PtInRect(&rc, pt))
 				{
-					temp[0]->NuckBack(600, Angle);
+					temp[0]->NuckBack(400, Angle);
 					temp[0]->SetHP(temp[0]->GetHP() - (mAtk *(1 - (temp[0]->GetDef() / (temp[0]->GetDef() + 30)))));
 				}
 				if (PtInRect(&rc, pt1))
 				{
-					temp[1]->NuckBack(600, Angle1);
+					temp[1]->NuckBack(400, Angle1);
 					temp[1]->SetHP(temp[1]->GetHP() - (mAtk *(1 - (temp[1]->GetDef() / (temp[1]->GetDef() + 30)))));
 				}
 				if (PtInRect(&rc, pt2))
 				{
-					temp[2]->NuckBack(600, Angle2);
+					temp[2]->NuckBack(400, Angle2);
 					temp[2]->SetHP(temp[2]->GetHP() - (mAtk *(1 - (temp[2]->GetDef() / (temp[2]->GetDef() + 30)))));
 				}
 				mIsAction = false;
@@ -454,11 +454,11 @@ void Yeti::Update()
 				float Angle2 = Math::GetAngle(mX, mY, temp[2]->GetX(), temp[2]->GetY());
 
 				if (PtInRect(&rc, pt))
-					temp[0]->NuckBack(400, mAngle);
+					temp[0]->NuckBack(300, mAngle);
 				if (PtInRect(&rc, pt1))
-					temp[1]->NuckBack(400, mAngle);
+					temp[1]->NuckBack(300, mAngle);
 				if (PtInRect(&rc, pt2))
-					temp[2]->NuckBack(400, mAngle);
+					temp[2]->NuckBack(300, mAngle);
 
 				AtkBuff(10, 5);
 				mIsAction = false;
@@ -468,7 +468,7 @@ void Yeti::Update()
 			{
 				mAttackCool = mMaxAttackCool;
 				tmp->SetHP(tmp->GetHP() - (mAtk *(1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
-				tmp->NuckBack(400, mAngle);
+				tmp->NuckBack(350, mAngle);
 				mIsAction = false;
 			}
 			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 2

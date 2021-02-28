@@ -633,6 +633,9 @@
     <ClInclude Include="BubbleTea.h">
       <Filter>MainGame\Object\Champ\ADCarry</Filter>
     </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -664,6 +667,9 @@
     </ClCompile>
     <ClCompile Include="BubbleTea.cpp">
       <Filter>MainGame\Object\Champ\ADCarry</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>MainGame\Object\UI\homeUI\SystemToggle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

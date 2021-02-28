@@ -36,6 +36,8 @@ public:
 	void Stop(const wstring& keyName);
 	void AllPause();
 
+	void SetVolume(const wstring& keyName, float volume);
+	float GetVolume(const wstring& keyName);  
 
 };
 

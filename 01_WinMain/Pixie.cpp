@@ -59,7 +59,7 @@ void Pixie::Init()
 	mAtk = mInitAtk;
 	mInitDef = 5;
 	mDef = mInitDef;
-	mSpeed = 100;
+	mSpeed = 70;
 	mRange = 180;
 	mMaxAttackCool = 2;
 	mAttackCool = 0;

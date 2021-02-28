@@ -152,6 +152,7 @@
     <ClCompile Include="LoveMonkey.cpp" />
     <ClCompile Include="MistKnight.cpp" />
     <ClCompile Include="Pixie.cpp" />
+    <ClCompile Include="System.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="Yeti.cpp" />
     <ClCompile Include="ZombieMonkey.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Schedule.h" />
     <ClInclude Include="StaffResult.h" />
+    <ClInclude Include="System.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="TrainingDetail.h" />
     <ClInclude Include="Home.h" />
