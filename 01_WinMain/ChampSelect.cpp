@@ -11,11 +11,11 @@ ChampSelect::ChampSelect()
 void ChampSelect::Init()
 {
 	LoadFromFile("ChampFrame");//0~9 : 챔프, 10~11 : 밴된 챔프
-	IMAGEMANAGER->LoadFromFile(L"BackFrame", Resources(L"ChampBack"), 308, 105, 4, 1, true);
-	mBackFrame = IMAGEMANAGER->FindImage(L"BackFrmae");
-	mChampList = ChampManager::GetInstance()->GetChampList();
+	IMAGEMANAGER->LoadFromFile(L"BackFrame", Resources(L"ChampBack.bmp"), 308, 105, 4, 1, true);
+	mBackFrame = IMAGEMANAGER->FindImage(L"BackFrame");
 	mState = SelectState::BlueBan;
 
+	mChampList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Champ);
 	mCurrentChamp = nullptr;
 
 }
@@ -50,10 +50,6 @@ void ChampSelect::Update()
 	//6. RedPick2 : 플레이 할 챔프 1명 선택
 	//7. 위 과정이 끝나면 ChampCheckUI활성 + 플레이어의 팀 스태프끼리 챔피언을 바꿀 수 있는 시간이 주어지고,
 	}
-
-
-
-
 }
 
 void ChampSelect::Render(HDC hdc)
@@ -73,8 +69,8 @@ void ChampSelect::Render(HDC hdc)
 		mBackFrame->FrameRender(hdc, mButtonList[8].left, mButtonList[8].top, 0, 0);
 		mBackFrame->FrameRender(hdc, mButtonList[9].left, mButtonList[9].top, 0, 0);
 
-		mBackFrame->FrameRender(hdc, mButtonList[10].left, mButtonList[10].top, 1, 0);//벤 프레임은 고정이니깐 1
-		mBackFrame->FrameRender(hdc, mButtonList[11].left, mButtonList[11].top, 1, 0);
+		mBackFrame->FrameRender(hdc, 600, 300, 1, 0);//벤 프레임은 고정이니깐 1
+		mBackFrame->FrameRender(hdc, 600, 980, 1, 0);
 
 		//챔프 출력
 		for (int i = 0; i < mChampList.size(); i++)
@@ -121,18 +117,10 @@ void ChampSelect::NextState()
 
 void ChampSelect::ChampRender(HDC hdc, int x , int y, vector<GameObject*> list, int i)
 {
-
-	RECT outBox = RectMake(x, y, 77, 103);
-	CallBrush(hdc, RGB(16, 18, 22), [hdc, outBox]() {RenderRect(hdc, outBox);});
-
-	RECT inBox = RectMake(x + 2, y + 2, 72, 72);
-	CallBrush(hdc, RGB(55, 57, 61), [hdc, inBox]() {RenderRect(hdc, inBox);});
-
 	Champ* champ = (Champ*)list[i];
 	champ->UIRender(hdc, x+2, y+2, 70, 70);
 
 	wstring champName = champ->GetChampName();
 	RECT nameBox = RectMake(x, y + 74, 77, 30);
 	CallFont(hdc, 12, [hdc, champName, &nameBox]() {DrawText(hdc, champName.c_str(), champName.size(), &nameBox, DT_SINGLELINE | DT_VCENTER | DT_CENTER);});
-
 }
