@@ -121,6 +121,12 @@ bool BattleData::ChampSelect(Staff * st, Champ * c)
 	return true;
 }
 
+int BattleData::BanCount()
+{
+	if (mBanChamp[0] == nullptr) return 0;
+	else if (mBanChamp[1] == nullptr) return 1;
+	else if (mBanChamp[1]) return 2;
+}
 void BattleData::ChampSwap(Staff * st1, Staff * st2)
 {
 	//플레이어의 selectstaff인지 확인(혹시 몰라서 만듬)
@@ -172,7 +178,7 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 		return;
 
 	//확인이 끝났으니 스왑
-	Champ* temp;
+	Staff* temp;
 	Champ* champ1 = nullptr;
 	Champ* champ2 = nullptr;
 	for (int i = 0; i < mSelectChamp.size(); ++i)
@@ -182,9 +188,9 @@ void BattleData::ChampSwap(Staff * st1, Staff * st2)
 		if (mSelectChamp[i]->GetStaff() == st2)
 			champ2 = mSelectChamp[i];
 	}
-	temp = champ1;
-	champ1 = champ2;
-	champ2 = temp;
+	temp = (Staff*)champ1->GetStaff();
+	champ1->SetStaff(champ2->GetStaff());
+	champ2->SetStaff(temp);
 }
 
 void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
