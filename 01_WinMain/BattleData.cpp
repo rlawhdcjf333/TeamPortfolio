@@ -125,6 +125,9 @@ void BattleData::ChampSelect(Staff * st, Champ * c)
 	{
 		mSelectChamp.push_back(c);
 		c->SetStaff(st);
+
+		SOUNDPLAYER->Play(L"Pick", 0.2f);
+
 		Team temp = GetStaffTeam(st);
 		switch (temp)
 		{

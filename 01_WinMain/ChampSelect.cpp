@@ -50,7 +50,7 @@ void ChampSelect::Update()
 		}
 		if (BData->BanCount() == 1)
 		{
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
+			SOUNDPLAYER->Play(L"Pick", 0.2f);
 			DelayReset();
 			NextState();
 		}
@@ -74,7 +74,7 @@ void ChampSelect::Update()
 		}
 		if (BData->BanCount() == 2)
 		{
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
+			SOUNDPLAYER->Play(L"Pick", 0.2f);
 			DelayReset();
 			NextState();
 		}
@@ -99,7 +99,6 @@ void ChampSelect::Update()
 		}
 		if (BData->GetSelectSize() == 1)
 		{
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
 			DelayReset();
 			NextState();
 		}
@@ -130,7 +129,7 @@ void ChampSelect::Update()
 
 				if (BData->GetSelectSize() == 2)
 				{
-					SOUNDPLAYER->Play(L"Pick", 0.4f), DelayReset(); return;
+					DelayReset(); return;
 				}
 			}
 			else if (BData->GetSelectSize() == 2)
@@ -138,7 +137,6 @@ void ChampSelect::Update()
 		}
 		if (BData->GetSelectSize() == 3)
 		{
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
 			DelayReset();
 			NextState();
 		}
@@ -169,16 +167,15 @@ void ChampSelect::Update()
 				BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
 				if (BData->GetSelectSize() == 4)
 				{
-					SOUNDPLAYER->Play(L"Pick", 0.4f), DelayReset(); return;
+					 DelayReset(); return;
 				}
 			}
 			else if (BData->GetSelectSize() == 4)
-				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]), SOUNDPLAYER->Play(L"Pick", 0.4f), DelayReset();
+				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]), DelayReset();
 
 		}
 		if (BData->GetSelectSize() == 5)
 		{
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
 			DelayReset();
 			NextState();
 		}
@@ -204,7 +201,6 @@ void ChampSelect::Update()
 		}
 		if (BData->GetSelectSize() == 6)
 		{
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
 			DelayReset();
 			NextState();
 		}

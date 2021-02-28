@@ -62,10 +62,14 @@ void BattleUI::Render(HDC hdc)
 	{
 		mImage->Render(hdc, 0, 0);
 
+		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive() == false)
+		{
+			wstring leagueName = L"2021 경일 리그 " + (to_wstring)(mPlayer->GetWeek()) + L"라운드";
+			RECT nameBox = RectMake(550,58,180,22);
+			CallFont(hdc, 15, [leagueName, hdc, &nameBox]() {DrawText(hdc, leagueName.c_str(), leagueName.size(), &nameBox, DT_VCENTER | DT_CENTER | DT_SINGLELINE);});
+		}
 
-
-
-
+		TeamRender(hdc);
 
 		StaffInfoRender(hdc);
 
@@ -168,17 +172,52 @@ void BattleUI::TeamRender(HDC hdc)
 {
 	if (BData->GetPlayerTeam() == Team::Blue)
 	{
+		mPlayer->TeamImageRender(hdc, 10, 4, 60, 60);
+
+		wstring myTeam = mPlayer->GetTeamName();
+		RECT myNameBox = RectMake(70, 0, 410, 70);
+		CallFont(hdc, 30, [this, hdc, myTeam, &myNameBox]() {DrawText(hdc, myTeam.c_str(), myTeam.size(), &myNameBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+		
+		wstring myScore = (to_wstring)(mPlayer->GetRound());
+		RECT myScoreBox = RectMake(484, 4, 134, 50);
+		CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
 
 		
+		mEnemy->TeamImageRender(hdc, 1210, 4, 60, 60);
 
+		wstring enemyTeam = mEnemy->GetTeamName();
+		RECT enemyNameBox = RectMake(800, 0, 410, 70);
+		CallFont(hdc, 30, [this, hdc, enemyTeam, &enemyNameBox]() {DrawText(hdc, enemyTeam.c_str(), enemyTeam.size(), &enemyNameBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
-
-
-
-
+		wstring enemyScore = (to_wstring)(mEnemy->GetRound());
+		RECT enemyScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
+		CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
 	}
+	else if(BData->GetPlayerTeam() == Team::Red)
+	{
+		mEnemy->TeamImageRender(hdc, 10, 4, 60, 60);
 
+		wstring enemyTeam = mEnemy->GetTeamName();
+		RECT enemyNameBox = RectMake(70, 0, 410, 70);
+		CallFont(hdc, 30, [this, hdc, enemyTeam, &enemyNameBox]() {DrawText(hdc, enemyTeam.c_str(), enemyTeam.size(), &enemyNameBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+
+		wstring enemyScore = (to_wstring)(mEnemy->GetRound());
+		RECT enemyScoreBox = RectMake(484, 4, 134, 50);
+		CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+
+
+		mPlayer->TeamImageRender(hdc, 1210, 4, 60, 60);
+
+		wstring myTeam = mPlayer->GetTeamName();
+		RECT myNameBox = RectMake(800, 0, 410, 70);
+		CallFont(hdc, 30, [this, hdc, myTeam, &myNameBox]() {DrawText(hdc, myTeam.c_str(), myTeam.size(), &myNameBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+
+		wstring myScore = (to_wstring)(mPlayer->GetRound());
+		RECT myScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
+		CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+
+	}
 
 
 }
