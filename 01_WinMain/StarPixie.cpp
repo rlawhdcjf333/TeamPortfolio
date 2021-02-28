@@ -14,7 +14,15 @@ void StarPixie::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"StarPixie", Resources(L"StarPixie.bmp"), 900, 1440, 10, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"StarPixie");
 
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"PixieSkill", Resources(L"SkillIcon/PixieSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"PixieSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"PixieSpecialSkill", Resources(L"SkillIcon/PixieSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"PixieSpecialSkill");
+
 	mChampEx = L"귀여운 스타 픽시. 마법사이자 원거리 광역 crwod cc에 특화된 챔프.";
+	mSkillEx = L"좁은 범위의 마법탄을 쏴 상대를 조금 넉백시키고 데미지를 입힌다.";
+	mSpecialSkillEx = L"어둠의 힘을 개방하여 넓은 범위의 마법진을 그려 상대를 넉백시키고 큰 데미지를 입힌다.";
 
 	mFullHP = 100;
 	mHP = mFullHP;

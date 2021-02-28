@@ -14,26 +14,34 @@ void Yeti::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Yeti", Resources(L"Yeti.bmp"), 2700, 2760, 9, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"Yeti");
 
-	mFullHP = 100;
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"YetiSkill", Resources(L"SkillIcon/YetiSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"YetiSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"YetiSpecialSkill", Resources(L"SkillIcon/YetiSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"YetiSpecialSkill");
+
+	mFullHP = 150;
 	mHP = mFullHP;
 	mMP = 0;
-	mAtk = 100;
-	mDef = 100;
+	mAtk = 15;
+	mDef = 30;
 	mDistance1 = 100.f;
 	mDistance2 = 100.f;
 	mDistance3 = 100.f;
 	mTargetDistance = 100.f;
 	mAngle = 1.f;
 	mRange = 100.f;
-	mSpeed = 100.f;
+	mSpeed = 200.f;
 
 	mAttackCool = 1.f;
-	mSkill1Cool = 100.f;
+	mSkill1Cool = 7.f;
 	mDeathCool = 3.f;
 	mSkill = 0;									//지역변수 선언 
 	mSpecialSkill = 100;
 
 	mChampEx = L"엘나스에서 평화롭게 지내던 설인. 튼튼한 체력과 넉백으로 아군을 지켜준다.";
+	mSkillEx = L"자신 주변의 상대를 넉백시키고 일정시간동안 자신의 공격력을 증가시킨다.";
+	mSpecialSkillEx = L"차가운 바람의 기운을 모아 자신 주변의 상대를 강하게 넉백하고 범위공격을 한다.";
 
 	//애니메이션
 	Animation* RightIdle = new Animation();

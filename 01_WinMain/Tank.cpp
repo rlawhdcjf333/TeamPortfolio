@@ -13,8 +13,16 @@ void Tank::Init()
 {
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Tank", Resources(L"Tank.bmp"), 750, 700, 5, 10, true);
 	mImage = IMAGEMANAGER->FindImage(L"Tank");
-	
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"TankSkill", Resources(L"SkillIcon/TankSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"TankSkill");
+
+	IMAGEMANAGER->GetInstance()->LoadFromFile(L"TankSpecialSkill", Resources(L"SkillIcon/TankSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"TankSpecialSkill");
+
 	mChampEx = L"우스꽝스러운 디자인으로 제작된 전차. 위력은 결코 우스꽝스럽지 않다.";
+	mSkillEx = L"하나의 적에게 따끔한 공격을 가한다.";
+	mSpecialSkillEx = L"대살상모드를 가동하여 사거리가 늘어나고 공격력이 상승한다. 또한 공격이 범위공격으로 바뀌고 스킬사용시 넉백을 시킨다.";
 
 
 	mFullHP = 100;

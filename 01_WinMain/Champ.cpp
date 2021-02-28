@@ -52,6 +52,16 @@ void Champ::ChampImageRender(HDC hdc, RECT rc)
 	mImage->ScaleFrameRender(hdc, rc.left, rc.top, 0, 0, rc.right - rc.left, rc.bottom - rc.top);
 }
 
+void Champ::SkillImageRender(HDC hdc, RECT rc)
+{
+	mSkillImage->ScaleRender(hdc, rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+}
+
+void Champ::SpecialSkillImageRender(HDC hdc, RECT rc)
+{
+	mSpecialSkillImage->ScaleRender(hdc, rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+}
+
 //void Champ::GetStaff(string staff)
 //{
 //	//mStaff = ObjectManager::GetInstance()->FindObject(ObjectLayer::Staff, staff);

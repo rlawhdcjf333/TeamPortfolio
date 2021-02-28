@@ -16,7 +16,15 @@ void BubbleTea::Init()
 	IMAGEMANAGER->LoadFromFile(L"BubbleTea", Resources(L"BubbleTea.bmp"), 840, 1680, 7, 14,  true);
 	mImage= IMAGEMANAGER->FindImage(L"BubbleTea");
 
+	IMAGEMANAGER->LoadFromFile(L"BubbleTeaSkill", Resources(L"SkillIcon/BubbleTeaSkill.bmp"), 62, 62, true);
+	mSkillImage = IMAGEMANAGER->FindImage(L"BubbleTeaSkill");
+
+	IMAGEMANAGER->LoadFromFile(L"BubbleTeaSpecialSkill", Resources(L"SkillIcon/BubbleTeaSpecialSkill.bmp"), 62, 62, true);
+	mSpecialSkillImage = IMAGEMANAGER->FindImage(L"BubbleTeaSpecialSkill");
+
 	mChampEx = L"살아 움직이는 버블티. 일설에 의하면 항상 새로운 타피오카 펄을 찾아다닌다고.";
+	mSkillEx = L"상대방과 거리를 벌린다.";
+	mSpecialSkillEx = L"공격속도가 증가한다.";
 
 	//변수 초기화
 	mFullHP = 80;

@@ -15,11 +15,16 @@ class Champ : public GameObject
 {
 protected:
 	Image* mImage;
+	Image* mSkillImage;
+	Image* mSpecialSkillImage;
 
 	Animation* mCurrentAnm;
 	map<wstring ,Animation*> mAnimationList;
 	wstring mChampName;
 	wstring mChampEx;
+	wstring mSkillEx;
+	wstring mSpecialSkillEx;
+	
 
 	ClassType mClassType;
 
@@ -68,6 +73,8 @@ public:
 	void UIRender(HDC  hdc, int startX, int startY, int width, int height); //UI용 렌더
 
 	void ChampImageRender(HDC hdc, RECT rc);
+	void SkillImageRender(HDC hdc, RECT rc);
+	void SpecialSkillImageRender(HDC hdc, RECT rc);
 
 	void SetStaff(GameObject* staff) { mStaff = staff; } //staff 불러오기
 	void SetHP(float hp) { mHP = hp; } //HP값 불러오기
@@ -78,6 +85,8 @@ public:
 	float GetRange() { return mRange; }
 	float GetDef() { return mDef; }
 	float GetSpeed() { return mSpeed; }
+	float GetSkillCool() { return mSkill1Cool; }
+	float GetSpecialSkillCool() { return mSpecialSkill; }
 
 	GameObject* GetStaff() { return mStaff; } //staff값 조정
 	vector<GameObject*> GetPlayerList() { return mPlayerList; }
@@ -85,6 +94,8 @@ public:
 	ClassType GetClassType() const { return mClassType; }
 	wstring GetChampName() const { return mChampName; }
 	wstring GetChampEx() const& { return mChampEx; }
+	wstring GetSkillEx() const { return mSkillEx; }
+	wstring GetSpecialSkillEx() const { return mSpecialSkillEx; }
 	
 	//float GetChampAnm() { return }
 	float GetFullHP() { return mFullHP; }			//UI표시
