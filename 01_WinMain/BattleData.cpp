@@ -351,3 +351,4 @@ Team BattleData::GetChampTeam(GameObject * pt)
 
 	return Team::None;
 }
+

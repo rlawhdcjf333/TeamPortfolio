@@ -20,6 +20,7 @@ struct TeamData
 
 	int mKillCount = 0;				//한 라운드의 킬 수
 	int mWinCount = 0;				//판 승리수
+
 };
 
 
@@ -107,6 +108,10 @@ public:
 	Director* GetEnemyDirector();
 	
 	Team GetChampTeam(GameObject* pt);
+
+
+
+
 };
 #define BData BattleData::GetInstance()
 /*
