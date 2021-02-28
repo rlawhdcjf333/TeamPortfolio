@@ -9,8 +9,11 @@ class StaffSelect : public UI
 	Director* player;
 	Director* enemy;
 
-	int startX;
-	int startY;
+	Staff* firstClick;
+	Staff* secondClick;
+
+	RECT firstClickRect;
+	RECT secondClickRect;
 
 public:
 	StaffSelect();
@@ -20,8 +23,7 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
-	void RenderStaffList(HDC hdc, int x, int y, int index);
-	void RenderWatingList(HDC hdc, int x, int y, int index);
+	void DrawStaff(HDC  hdc, int x, int y, vector<Staff*> list, int i);
 
 };
 

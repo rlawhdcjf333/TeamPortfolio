@@ -10,6 +10,7 @@ void UI::PickBattleUIInit()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPick);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampCheck);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BanPickGuide);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampSelect);
 	//3번째 : 배틀
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new Battle);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new BattleResult);

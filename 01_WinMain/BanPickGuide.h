@@ -20,6 +20,7 @@ public:
 		{
 			mFrameY = 0;
 			mIsActive = false;
+			ObjectManager::GetInstance()->FindObject("ChampSelect")->SetIsActive(false);
 			ObjectManager::GetInstance()->FindObject("ChampCheck")->SetIsActive(true);
 		}
 	}

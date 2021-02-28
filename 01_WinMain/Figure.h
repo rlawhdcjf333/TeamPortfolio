@@ -120,3 +120,18 @@ inline void CallBrush(HDC hdc, COLORREF color, function <void(void)> func)
 	DeleteObject(newB);
 
 }
+
+inline void CallEdge(HDC hdc, RECT rc)
+{
+	HBRUSH newB = (HBRUSH)GetStockObject(NULL_BRUSH);
+	HBRUSH oldB = (HBRUSH)SelectObject(hdc, newB);
+	HPEN newP = CreatePen(PS_SOLID, 5, RGB(95, 223, 0));
+	HPEN oldP = (HPEN)SelectObject(hdc, newP);
+
+	RenderRect(hdc,rc);
+
+	SelectObject(hdc, oldB);
+	DeleteObject(newB);
+	SelectObject(hdc, oldP);
+	DeleteObject(newP);
+}

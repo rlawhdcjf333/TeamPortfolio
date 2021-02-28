@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "BattleUI.h"
+#include "Staff.h"
+#include "Champ.h"
 
 BattleUI::BattleUI() : UI("BattleUI")
 {
@@ -54,11 +56,99 @@ void BattleUI::Render(HDC hdc)
 	if (mIsActive)
 	{
 		mImage->Render(hdc, 0, 0);
+		StaffInfoRender(hdc);
 
 		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())	//배틀중일때
 		{
-
 			TextOut(hdc, 640, 60, to_wstring(mTime).c_str(), to_wstring(mTime).size());
 		}
 	}
+}
+
+void BattleUI::StaffInfoRender(HDC hdc)
+{
+	if (BData->GetPlayerTeam() == Team::Blue)
+	{
+		vector <Staff*> myTeam;
+		myTeam.emplace_back(BData->GetSelectStaff(0));
+		myTeam.emplace_back(BData->GetSelectStaff(1));
+		myTeam.emplace_back(BData->GetSelectStaff(2));
+
+		DrawStaff(hdc, 3, 80, myTeam, 0);
+		DrawStaff(hdc, 3, 240, myTeam, 1);
+		DrawStaff(hdc, 3, 400, myTeam, 2);
+
+		vector <Staff*> enemyTeam;
+		enemyTeam = BData->GetEnemyStaff();
+
+		DrawStaff(hdc, 1125, 80, enemyTeam, 0);
+		DrawStaff(hdc, 1125, 240, enemyTeam, 1);
+		DrawStaff(hdc, 1125, 400, enemyTeam, 2);
+	}
+	else if (BData->GetPlayerTeam() == Team::Red)
+	{
+		vector <Staff*> myTeam;
+		myTeam.emplace_back(BData->GetSelectStaff(0));
+		myTeam.emplace_back(BData->GetSelectStaff(1));
+		myTeam.emplace_back(BData->GetSelectStaff(2));
+
+		DrawStaff(hdc, 1125, 80, myTeam, 0);
+		DrawStaff(hdc, 1125, 240, myTeam, 1);
+		DrawStaff(hdc, 1125, 400, myTeam, 2);
+
+		vector <Staff*> enemyTeam;
+		enemyTeam = BData->GetEnemyStaff();
+
+		DrawStaff(hdc, 3, 80, enemyTeam, 0);
+		DrawStaff(hdc, 3, 240, enemyTeam, 1);
+		DrawStaff(hdc, 3, 400, enemyTeam, 2);
+
+	}
+
+
+}
+
+void BattleUI::DrawStaff(HDC hdc, int x, int y, vector<Staff*> list, int i)
+{
+	//선수 i번 이름
+	wstring enemyStaffName = StoW(list[i]->GetStaffName());
+	CallFont(hdc, 30, [hdc, this, enemyStaffName, x, y]() {TextOut(hdc, x, y, enemyStaffName.c_str(), enemyStaffName.size()); });
+
+	//선수 i번 컨디션
+	list[i]->ConditionRender(hdc, 123 + x, 1 + y, 34, 29);
+
+	//선수 i번 얼굴
+	list[i]->UIRender(hdc, x + 1, y + 35, 52, 49);
+
+	//선수 i번 특성
+	wstring enemyStaffChar = list[i]->GetCharComment(1);
+	CallFont(hdc, 15, [hdc, this, enemyStaffChar, x, y]() {TextOut(hdc, 89 + x, 42 + y, enemyStaffChar.c_str(), enemyStaffChar.size()); });
+
+	//선수 i번 공격력
+	wstring enemyStaffAtk = to_wstring(list[i]->GetAtk());
+	CallFont(hdc, 17, [hdc, this, enemyStaffAtk, x, y]() {TextOut(hdc, 31 + x, 89 + y, enemyStaffAtk.c_str(), enemyStaffAtk.size()); });
+
+	//선수 i번 방어력
+	wstring enemyStaffDef = to_wstring(list[i]->GetDef());
+	CallFont(hdc, 17, [hdc, this, enemyStaffDef, x, y]() {TextOut(hdc, 105 + x, 89 + y, enemyStaffDef.c_str(), enemyStaffDef.size()); });
+
+	auto champList = list[i]->GetMostChamp();
+	//선수 i번 모스트1
+	CallBrush(hdc, RGB(33, 35, 39), [hdc, this, x, y]() {RenderRect(hdc, RectMake(x + 4, y + 115, 35, 35));});
+	Champ* most1 = (Champ*)ObjectManager::GetInstance()->FindObject(champList.begin()->first);
+	most1->UIRender(hdc, x + 4, y + 115, 35, 35);
+	RECT ptBox1 = RectMake(x + 24, y + 115, 15, 15);
+	CallBrush(hdc, RGB(11, 13, 17), [hdc, this, ptBox1, x, y]() {RenderRect(hdc, ptBox1);});
+	wstring most1Pt = to_wstring(champList.begin()->second);
+	CallFont(hdc, 15, [hdc, this, most1Pt, &ptBox1, x, y]() {DrawText(hdc, most1Pt.c_str(), most1Pt.size(), &ptBox1, DT_VCENTER | DT_SINGLELINE | DT_CENTER);});
+
+	//선수 i번 모스트2
+	CallBrush(hdc, RGB(33, 35, 39), [hdc, this, x, y]() {RenderRect(hdc, RectMake(x + 44, y + 115, 35, 35));});
+	Champ* most2 = (Champ*)ObjectManager::GetInstance()->FindObject(champList.rbegin()->first);
+	most2->UIRender(hdc, x + 44, y + 115, 35, 35);
+	RECT ptBox2 = RectMake(x + 64, y + 115, 15, 15);
+	CallBrush(hdc, RGB(11, 13, 17), [hdc, this, ptBox2, x, y]() {RenderRect(hdc, ptBox2);});
+	wstring most2Pt = to_wstring(champList.rbegin()->second);
+	CallFont(hdc, 15, [hdc, this, most2Pt, &ptBox2, x, y]() {DrawText(hdc, most2Pt.c_str(), most2Pt.size(), &ptBox2, DT_VCENTER | DT_SINGLELINE | DT_CENTER);});
+
 }

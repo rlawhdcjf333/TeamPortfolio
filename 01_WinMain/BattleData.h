@@ -101,8 +101,6 @@ public:
 			return mRedTeam.mWaitStaff[index];
 	}
 
-	void SetStaffSelect();
-
 	vector<Staff*> GetEnemyStaff();
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
