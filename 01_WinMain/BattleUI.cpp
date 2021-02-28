@@ -2,6 +2,7 @@
 #include "BattleUI.h"
 #include "Staff.h"
 #include "Champ.h"
+#include "Director.h"
 
 BattleUI::BattleUI() : UI("BattleUI")
 {
@@ -15,6 +16,10 @@ void BattleUI::Init()
 	
 	mTime = 60;
 	mDeltaTime = 0.f;
+
+	mPlayer = (Director*)ObjectManager::GetInstance()->FindObject("Director1");
+	mEnemy = (Director*)ScheduleManager::GetInstance()->GetEnemy(mPlayer->GetWeek());
+
 }
 
 void BattleUI::Release()
@@ -56,6 +61,12 @@ void BattleUI::Render(HDC hdc)
 	if (mIsActive)
 	{
 		mImage->Render(hdc, 0, 0);
+
+
+
+
+
+
 		StaffInfoRender(hdc);
 
 		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())	//배틀중일때
@@ -150,5 +161,24 @@ void BattleUI::DrawStaff(HDC hdc, int x, int y, vector<Staff*> list, int i)
 	CallBrush(hdc, RGB(11, 13, 17), [hdc, this, ptBox2, x, y]() {RenderRect(hdc, ptBox2);});
 	wstring most2Pt = to_wstring(champList.rbegin()->second);
 	CallFont(hdc, 15, [hdc, this, most2Pt, &ptBox2, x, y]() {DrawText(hdc, most2Pt.c_str(), most2Pt.size(), &ptBox2, DT_VCENTER | DT_SINGLELINE | DT_CENTER);});
+
+}
+
+void BattleUI::TeamRender(HDC hdc)
+{
+	if (BData->GetPlayerTeam() == Team::Blue)
+	{
+
+		
+
+
+
+
+
+
+
+	}
+
+
 
 }
