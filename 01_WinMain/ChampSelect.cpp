@@ -96,10 +96,10 @@ void ChampSelect::Update()
 
 			int index = Random::GetInstance()->RandomInt(0,8);//9마리
 			BData->ChampSelect(BData->GetEnemyStaff(0),(Champ*) mChampList[index]);
+			DelayReset();
 		}
 		if (BData->GetSelectSize() == 1)
 		{
-			DelayReset();
 			NextState();
 		}
 		break;
@@ -206,12 +206,27 @@ void ChampSelect::Update()
 		}
 		break;
 	}
+
+	for (int i = 0; i < mChampList.size(); i++)
+	{
+		if (PtInRect(&mButtonList[i], _mousePosition))
+		{
+			mCurrentChamp = (Champ*)mChampList[i];
+		}
+		else
+		{
+			//mCurrentChamp = nullptr;
+		}
+	}
+
+
 }
 
 void ChampSelect::Render(HDC hdc)
 {
 	if (mIsActive)
 	{
+
 		//챔프 출력
 		for (int i = 0; i < mChampList.size(); i++)
 		{
@@ -220,16 +235,19 @@ void ChampSelect::Render(HDC hdc)
 
 		//4번째 인자인 x Frame은 Champ를 성공적으로 불러오면 SetIndexX(챔프의 포인터)를 넣어서 인덱스 세팅
 		//예시 -> mBackFrame->FrameRender(hdc,mButtonList[0].left, mButtonList[0].top, SetIndexX(mChampList[0]),0);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[0].left, mButtonList[0].top, SetIndexX(mChampList[0]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[1].left, mButtonList[1].top, SetIndexX(mChampList[1]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[2].left, mButtonList[2].top, SetIndexX(mChampList[2]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[3].left, mButtonList[3].top, SetIndexX(mChampList[3]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[4].left, mButtonList[4].top, SetIndexX(mChampList[4]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[5].left, mButtonList[5].top, SetIndexX(mChampList[5]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[6].left, mButtonList[6].top, SetIndexX(mChampList[6]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[7].left, mButtonList[7].top, SetIndexX(mChampList[7]), 0, 0.3f);
-		mBackFrame->AlphaFrameRender(hdc, mButtonList[8].left, mButtonList[8].top, SetIndexX(mChampList[8]), 0, 0.3f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[0].left, mButtonList[0].top, SetIndexX(mChampList[0]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[1].left, mButtonList[1].top, SetIndexX(mChampList[1]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[2].left, mButtonList[2].top, SetIndexX(mChampList[2]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[3].left, mButtonList[3].top, SetIndexX(mChampList[3]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[4].left, mButtonList[4].top, SetIndexX(mChampList[4]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[5].left, mButtonList[5].top, SetIndexX(mChampList[5]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[6].left, mButtonList[6].top, SetIndexX(mChampList[6]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[7].left, mButtonList[7].top, SetIndexX(mChampList[7]), 0, 0.5f);
+		mBackFrame->AlphaFrameRender(hdc, mButtonList[8].left, mButtonList[8].top, SetIndexX(mChampList[8]), 0, 0.5f);
 		//mBackFrame->FrameRender(hdc, mButtonList[9].left, mButtonList[9].top, SetIndexX(mChampList[9]), 0);
+
+
+		ChampInfoRender(hdc, mCurrentChamp);
 
 		//mBackFrame->FrameRender(hdc, 325, 615, 1, 0);
 		BanRender(hdc, 325, 610, BData->GetBanCp(0));
@@ -311,7 +329,7 @@ GameObject* ChampSelect::ToggleButton(int index)
 
 		if (Input::GetInstance()->GetKeyUp(VK_LBUTTON)) {
 
-			SOUNDPLAYER->Play(L"Pick", 0.4f);
+			SOUNDPLAYER->Play(L"Pick", 0.2f);
 			return mChampList[index];
 		}
 	}
@@ -360,4 +378,61 @@ void ChampSelect::BanRender(HDC hdc, int x, int y, Champ* champ)
 	wstring champName = champ->GetChampName();
 	RECT nameBox = RectMake(x, y + 74, 77, 30);
 	CallFont(hdc, 12, [hdc, champName, &nameBox]() {DrawText(hdc, champName.c_str(), champName.size(), &nameBox, DT_SINGLELINE | DT_VCENTER | DT_CENTER); });
+}
+
+void ChampSelect::ChampInfoRender(HDC hdc, Champ* champ)
+{
+	if (champ)
+	{
+		champ->UIRender(hdc, 235, 438, 95, 80);
+	
+		wstring champName = champ->GetChampName();
+		RECT nameBox = RectMake(234,519,98,30);
+		CallFont(hdc, 20, [&nameBox, champName, hdc]() {DrawText(hdc, champName.c_str(), champName.size(), &nameBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+
+		wstring atk = (to_wstring)(champ->GetAtk());
+		RECT atkBox = RectMake(454, 416, 87, 22);
+		wstring def = (to_wstring)(champ->GetDef());
+		RECT defBox = RectMake(454, 444, 87, 22);
+		wstring heal = (to_wstring)(champ->GetHealPr());
+		RECT healBox = RectMake(454, 472, 87, 22);
+		wstring range = (to_wstring)(champ->GetRange());
+		RECT rangeBox = RectMake(454, 500, 87, 22);
+		wstring speed = (to_wstring)(champ->GetSpeed());
+		RECT speedBox = RectMake(454, 528, 87, 22);
+
+		CallFont(hdc, 20, [atk, &atkBox, hdc]() {DrawText(hdc, atk.c_str(), atk.size(), &atkBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		CallFont(hdc, 20, [def, &defBox, hdc]() {DrawText(hdc, def.c_str(), def.size(), &defBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		CallFont(hdc, 20, [heal, &healBox, hdc]() {DrawText(hdc, heal.c_str(), heal.size(), &healBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		CallFont(hdc, 20, [range, &rangeBox, hdc]() {DrawText(hdc, range.c_str(), range.size(), &rangeBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		CallFont(hdc, 20, [speed, &speedBox, hdc]() {DrawText(hdc, speed.c_str(), speed.size(), &speedBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+
+		RECT skillrc = RectMake(556, 423, 50, 50);
+		champ->SkillImageRender(hdc, skillrc);
+		wstring skillCool = (to_wstring)(champ->GetSkillCool());
+		RECT scBox = RectMake(633, 452, 55, 20);
+		CallFont(hdc, 20, [skillCool, hdc, &scBox]() {DrawText(hdc, skillCool.c_str(), skillCool.size(), &scBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+
+		RECT ultrc = RectMake(556, 493, 50, 50);
+		champ->SpecialSkillImageRender(hdc, ultrc);
+		wstring ultCool = L"Full Mana";
+		RECT ultBox = RectMake(633, 520, 55, 20);
+		CallFont(hdc, 20, [ultCool, hdc, &ultBox]() {DrawText(hdc, ultCool.c_str(), ultCool.size(), &ultBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+
+		wstring skillex = champ->GetSkillEx();
+		RECT exBox = RectMake(720, 423, 300, 50);
+		CallFont(hdc, 15, [skillex, &exBox, hdc]() {DrawText(hdc, skillex.c_str(), skillex.size(), &exBox, DT_WORDBREAK|DT_LEFT);});
+
+		wstring ultex = champ->GetSpecialSkillEx();
+		RECT ultexBox = RectMake(720, 493, 300, 50);
+		CallFont(hdc, 15, [ultex, &ultexBox, hdc]() {DrawText(hdc, ultex.c_str(), ultex.size(), &ultexBox, DT_WORDBREAK | DT_LEFT);});
+
+	}
+
+
+
+
+
+
+
 }

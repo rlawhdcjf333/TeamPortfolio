@@ -23,8 +23,11 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+	void ScoreRender(HDC hdc);
 
 	void SetTeams(vector<Champ*> myTeam, vector<Champ*> enemyTeam);
 	void AllStop();
+	int GetMyScore() { return mMyScore; }
+	int GetEnemyScore() { return mEnemyScore; }
 };
 

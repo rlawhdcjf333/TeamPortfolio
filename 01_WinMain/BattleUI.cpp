@@ -181,10 +181,20 @@ void BattleUI::TeamRender(HDC hdc)
 		RECT myNameBox = RectMake(70, 0, 410, 70);
 		CallFont(hdc, 30, [this, hdc, myTeam, &myNameBox]() {DrawText(hdc, myTeam.c_str(), myTeam.size(), &myNameBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
 		
-		wstring myScore = (to_wstring)(mPlayer->GetRound());
-		RECT myScoreBox = RectMake(484, 4, 134, 50);
-		CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())
+		{
+			Battle* tmp = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			wstring myScore = to_wstring(tmp->GetMyScore());
+			RECT myScoreBox = RectMake(484, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
+		}
+		else
+		{
+			wstring myScore = (to_wstring)(mPlayer->GetRound());
+			RECT myScoreBox = RectMake(484, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+		}
 		
 		mEnemy->TeamImageRender(hdc, 1210, 4, 60, 60);
 
@@ -192,10 +202,20 @@ void BattleUI::TeamRender(HDC hdc)
 		RECT enemyNameBox = RectMake(800, 0, 410, 70);
 		CallFont(hdc, 30, [this, hdc, enemyTeam, &enemyNameBox]() {DrawText(hdc, enemyTeam.c_str(), enemyTeam.size(), &enemyNameBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
-		wstring enemyScore = (to_wstring)(mEnemy->GetRound());
-		RECT enemyScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
-		CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())
+		{
+			Battle* tmp = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			wstring enemyScore = to_wstring(tmp->GetEnemyScore());
+			RECT enemyScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
+		}
+		else
+		{
+			wstring enemyScore = (to_wstring)(mEnemy->GetRound());
+			RECT enemyScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		}
 	}
 	else if(BData->GetPlayerTeam() == Team::Red)
 	{
@@ -205,10 +225,20 @@ void BattleUI::TeamRender(HDC hdc)
 		RECT enemyNameBox = RectMake(70, 0, 410, 70);
 		CallFont(hdc, 30, [this, hdc, enemyTeam, &enemyNameBox]() {DrawText(hdc, enemyTeam.c_str(), enemyTeam.size(), &enemyNameBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
-		wstring enemyScore = (to_wstring)(mEnemy->GetRound());
-		RECT enemyScoreBox = RectMake(484, 4, 134, 50);
-		CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())
+		{
+			Battle* tmp = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			wstring enemyScore = (to_wstring)(tmp->GetEnemyScore());
+			RECT enemyScoreBox = RectMake(484, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
+		}
+		else
+		{
+			wstring enemyScore = (to_wstring)(mEnemy->GetRound());
+			RECT enemyScoreBox = RectMake(484, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, enemyScore, &enemyScoreBox]() {DrawText(hdc, enemyScore.c_str(), enemyScore.size(), &enemyScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		}
 
 		mPlayer->TeamImageRender(hdc, 1210, 4, 60, 60);
 
@@ -216,10 +246,20 @@ void BattleUI::TeamRender(HDC hdc)
 		RECT myNameBox = RectMake(800, 0, 410, 70);
 		CallFont(hdc, 30, [this, hdc, myTeam, &myNameBox]() {DrawText(hdc, myTeam.c_str(), myTeam.size(), &myNameBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
-		wstring myScore = (to_wstring)(mPlayer->GetRound());
-		RECT myScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
-		CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
 
+		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())
+		{	
+			Battle* tmp = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			wstring myScore = (to_wstring)(tmp->GetMyScore());
+			RECT myScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		}
+		else
+		{
+			wstring myScore = (to_wstring)(mPlayer->GetRound());
+			RECT myScoreBox = RectMake(1280 - 484 - 134, 4, 134, 50);
+			CallFont(hdc, 35, [this, hdc, myScore, &myScoreBox]() {DrawText(hdc, myScore.c_str(), myScore.size(), &myScoreBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
+		}
 	}
 
 

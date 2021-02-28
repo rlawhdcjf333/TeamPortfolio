@@ -49,6 +49,11 @@ public:
 
 	void SetPlayerTeam(Team t) { mPlayerTeam = t; }
 	Team GetPlayerTeam() { return mPlayerTeam; }
+	Team GetEnmeyTeam()
+	{
+		if (mPlayerTeam == Team::Red) return Team::Blue;
+		else return Team::Red;
+	}
 
 	int GetKillCount(Team t) { 
 		if(t == Team::Blue)

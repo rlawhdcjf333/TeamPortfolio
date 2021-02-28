@@ -123,7 +123,7 @@ void BattleData::ChampSelect(Staff * st, Champ * c)
 {
 	if (!IsSelectChamp(c))//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
 	{
-		mSelectChamp.push_back(c);
+		mSelectChamp.emplace_back(c);
 		c->SetStaff(st);
 
 		SOUNDPLAYER->Play(L"Pick", 0.2f);
@@ -132,10 +132,10 @@ void BattleData::ChampSelect(Staff * st, Champ * c)
 		switch (temp)
 		{
 		case Team::Blue:
-			mBlueTeam.mSelectChamp.push_back(c);
+			mBlueTeam.mSelectChamp.emplace_back(c);
 			break;
 		case Team::Red:
-			mRedTeam.mSelectChamp.push_back(c);
+			mRedTeam.mSelectChamp.emplace_back(c);
 		}
 	}
 }
