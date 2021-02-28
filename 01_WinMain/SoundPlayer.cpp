@@ -163,3 +163,24 @@ void SoundPlayer::Release()
 	mSoundList.clear();
 
 }
+
+void SoundPlayer::SetVolume(const wstring & keyName, float volume)
+{
+	for (int i = 0; i < mActiveChannels.size(); i++) {
+		if (mActiveChannels[i].SoundName == keyName) {
+			mActiveChannels[i].Channel->setVolume(volume);
+			break;
+		}
+	}
+}
+
+float SoundPlayer::GetVolume(const wstring & keyName)
+{
+	for (int i = 0; i < mActiveChannels.size(); i++) {
+		if (mActiveChannels[i].SoundName == keyName) {
+			float volume = 0.f;
+			return mActiveChannels[i].Channel->getVolume(&volume);
+			
+		}
+	}
+}

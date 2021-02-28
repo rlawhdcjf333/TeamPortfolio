@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SystemToggle.h"
+#include "System.h"
 
 SystemToggle::SystemToggle()
 	:UI("SystemToggle")  
@@ -16,6 +17,8 @@ void SystemToggle::Init()
 
 	IMAGEMANAGER->LoadFromFile(L"SystemToggleClick", Resources(L"SystemToggleClick.bmp"), 162, 50, true);
 	mActive = IMAGEMANAGER->FindImage(L"SystemToggleClick");
+
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new System());
 }
 
 void SystemToggle::Release()
@@ -30,8 +33,9 @@ void SystemToggle::Update()
 		{
 			mIsActive = false;
 			ObjectManager::GetInstance()->FindObject("OnPatch")->SetIsActive(true);
+			ObjectManager::GetInstance()->FindObject("System")->SetIsActive(true);
 		};
-		mToggleButton(0, "OnPatch", func);
+		mToggleButton(0, "System", func);
 		mToggleButton(1, "OnPatch", func);
 		mSceneChangeButton(2, L"Title", false);
 
