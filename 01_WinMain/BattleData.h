@@ -21,6 +21,7 @@ struct TeamData
 	int mKillCount = 0;				//한 라운드의 킬 수
 	int mWinCount = 0;				//판 승리수
 
+	vector<Champ*>mSelectChamp;
 };
 
 
@@ -37,7 +38,8 @@ private:
 	TeamData mRedTeam;
 
 	Champ* mBanChamp[2];	//밴된 챔피언, GameObject*로 해야하나? //상관업음 Gameobject 이 더 편하긴함   mIsActive 껏다키는 거면
-	vector<Champ*> mSelectChamp;	//스태프(key,first)별 픽한 챔피언(value,second), key는 TeamData.mSelectStaff
+	vector<Champ*> mSelectChamp;
+
 
 	Staff* mStaff;	//위에 맵에 키값으로 넣을녀석을 담을 변수, 함수용으로 쓰일거같아 만듬 //currentStaff라고 하면 되겠네
 	Champ* mChamp;	//↑랑 동일, 여긴 map의 value를 담아서 //이건 currentPick
@@ -87,6 +89,7 @@ public:
 
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
 	void ChampSwap(Staff* st1, Staff* st2);
+	int GetSelectSize() { return mSelectChamp.size(); }
 
 	void Feedback(int i);
 	void UpdateCondition(TeamData t, int con);
@@ -105,17 +108,19 @@ public:
 		if (mPlayerTeam == Team::Red)
 			return mRedTeam.mWaitStaff[index];
 	}
-
+	Staff* GetEnemyStaff(int index) {
+		if (mPlayerTeam == Team::Blue)
+			return mRedTeam.mSelectStaff[index];
+		if (mPlayerTeam == Team::Red)
+			return mBlueTeam.mSelectStaff[index];
+	}
 	vector<Staff*> GetEnemyStaff();
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
 	Director* GetEnemyDirector();
 	
 	Team GetChampTeam(GameObject* pt);
-
-
-
-
+	Team GetStaffTeam(Staff* st);
 };
 #define BData BattleData::GetInstance()
 /*

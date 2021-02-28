@@ -32,26 +32,124 @@ void ChampSelect::Update()
 	{
 	case SelectState::BlueBan:
 		//1. BlueBan : ChampListUI 보여주고.. 거길누르면 그 챔프 밴되게 함, 만약 Blue 팀이 컴퓨터면 랜덤밴
-		temp = ChampToggle();
-		if(temp)
-			BData->ChampBan((Champ*)temp);
+		if (BData->GetPlayerTeam() == Team::Blue)
+		{
+			temp = ChampToggle();
+			if (temp)
+				BData->ChampBan((Champ*)temp);
+		}
+		else
+		{
+			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
+			BData->ChampBan((Champ*)mChampList[index]);
+		}
 		if (BData->BanCount() == 1)
 			NextState();
 		break;
 	case SelectState::RedBan:
 		//2. RedBan : 위랑 마찬가지, 밴 된 챔프는 선택 불가
-		temp = ChampToggle();
-		if (temp)
-			if (BData->GetBanOb(0) != temp)
-				BData->ChampBan((Champ*)temp);
+		if (BData->GetPlayerTeam() == Team::Red)
+		{
+			temp = ChampToggle();
+			if (temp)
+				if (BData->GetBanOb(0) != temp)
+					BData->ChampBan((Champ*)temp);
+		}
+		else
+		{
+			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
+			BData->ChampBan((Champ*)mChampList[index]);
+		}
 		if (BData->BanCount() == 2)
 			NextState();
 		break;
-	//3. BluePick1 : 플레이 할 챔프 1명 선택	->	클릭이 일어나면... 챔프 내부의 스테프 변수 설정?
-	//4. RedPick2 : 플레이 할 챔프 2명 선택
-	//5. BluePick2 : 플레이 할 챔프 2명 선택
-	//6. RedPick2 : 플레이 할 챔프 1명 선택
-	//7. 위 과정이 끝나면 ChampCheckUI활성 + 플레이어의 팀 스태프끼리 챔피언을 바꿀 수 있는 시간이 주어지고,
+	case SelectState::BluePick1:
+		//3. BluePick1 : 플레이 할 챔프 1명 선택	->	클릭이 일어나면... 챔프 내부의 스테프 변수 설정?
+		if (BData->GetPlayerTeam() == Team::Blue)
+		{
+			temp = ChampToggle();
+			if (temp)
+			{
+				BData->ChampSelect(BData->GetSelectStaff(0),(Champ*)temp);
+			}
+		}
+		else//플레이어 팀이 아닐경우 자동 픽
+		{
+			int index = Random::GetInstance()->RandomInt(0,8);//9마리
+			BData->ChampSelect(BData->GetEnemyStaff(0),(Champ*) mChampList[index]);
+		}
+		if (BData->GetSelectSize() == 1)
+			NextState();
+		break;
+	case SelectState::RedPick1: case SelectState::RedPick2:
+		//4. RedPick1,2 : 플레이 할 챔프 2명 선택
+		if (BData->GetPlayerTeam() == Team::Red)
+		{
+			temp = ChampToggle();
+			if (temp)
+			{
+				if (BData->GetSelectSize() == 1)
+					BData->ChampSelect(BData->GetSelectStaff(0), (Champ*)temp);
+				else if (BData->GetSelectSize() == 2)
+					BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp);
+			}
+
+		}
+		else//플레이어 팀이 아닐경우 자동 픽
+		{
+			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
+			if (BData->GetSelectSize() == 1)
+				BData->ChampSelect(BData->GetEnemyStaff(0), (Champ*)mChampList[index]);
+			else if (BData->GetSelectSize() == 2)
+				BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
+		}
+		if (BData->GetSelectSize() == 3)
+			NextState();
+		break;
+	//5. BluePick2,3 : 플레이 할 챔프 2명 선택
+	case SelectState::BluePick2: case SelectState::BluePick3:
+		//4. RedPick1,2 : 플레이 할 챔프 2명 선택
+		if (BData->GetPlayerTeam() == Team::Blue)
+		{
+			temp = ChampToggle();
+			if (temp)
+			{
+				if (BData->GetSelectSize() == 3)
+					BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp);
+				else if (BData->GetSelectSize() == 4)
+					BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp);
+			}
+
+		}
+		else//플레이어 팀이 아닐경우 자동 픽
+		{
+			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
+			if (BData->GetSelectSize() == 3)
+				BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
+			else if (BData->GetSelectSize() == 4)
+				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]);
+
+		}
+		if (BData->GetSelectSize() == 5)
+			NextState();
+		break;
+	//6. RedPick3 : 플레이 할 챔프 1명 선택
+	case SelectState::RedPick3:
+		if (BData->GetPlayerTeam() == Team::Red)
+		{
+			temp = ChampToggle();
+			if (temp)
+			{
+				BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp);
+			}
+		}
+		else//플레이어 팀이 아닐경우 자동 픽
+		{
+			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
+			BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]);
+		}
+		if (BData->GetSelectSize() == 6)
+			NextState();
 	}
 }
 
@@ -146,7 +244,7 @@ int ChampSelect::SetIndexX(GameObject* pt)
 void ChampSelect::NextState()
 {
 	mState = (SelectState)(1 + (int)mState);
-	if (mState != SelectState::RedPick1 && mState != SelectState::BluePick2)//조건에 들어가는 단계들은 Guide UI가 변경되지않아야됨
+	if (mState != SelectState::RedPick2 && mState != SelectState::BluePick3)//조건에 들어가는 단계들은 Guide UI가 변경되지않아야됨
 	{
 		BanPickGuide* tptr = (BanPickGuide*)ObjectManager::GetInstance()->FindObject("BanPickGuide");
 		tptr->NextFrame();//BanPickGuide클래스 내부 함수...에 접근하려고 ↑에서 다운캐스팅

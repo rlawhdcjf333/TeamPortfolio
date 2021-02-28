@@ -13,6 +13,13 @@ void BattleData::RoundReset()
 	}
 	mSelectChamp.clear();
 	mSelectChamp.shrink_to_fit();
+	
+	mBlueTeam.mSelectChamp.clear();
+	mBlueTeam.mSelectChamp.shrink_to_fit();
+
+	mRedTeam.mSelectChamp.clear();
+	mRedTeam.mSelectChamp.shrink_to_fit();
+
 	mBanChamp[0] = nullptr;
 	mBanChamp[1] = nullptr;
 }
@@ -118,6 +125,16 @@ bool BattleData::ChampSelect(Staff * st, Champ * c)
 		return false;
 
 	mSelectChamp.push_back(c);
+	c->SetStaff(st);
+	Team temp = GetStaffTeam(st);
+	switch (temp)
+	{
+	case Team::Blue:
+		mBlueTeam.mSelectChamp.push_back(c);
+		break;
+	case Team::Red:
+		mRedTeam.mSelectChamp.push_back(c);
+	}
 	return true;
 }
 
@@ -355,6 +372,24 @@ Team BattleData::GetChampTeam(GameObject * pt)
 	if (mRedTeam.mSelectStaff[2] == champ->GetStaff())
 		return Team::Red;
 
+	return Team::None;
+}
+
+Team BattleData::GetStaffTeam(Staff* st)
+{
+	if (mBlueTeam.mSelectStaff[0] == st)
+		return Team::Blue;
+	if (mBlueTeam.mSelectStaff[1] == st)
+		return Team::Blue;
+	if (mBlueTeam.mSelectStaff[2] == st)
+		return Team::Blue;
+
+	if (mRedTeam.mSelectStaff[0] == st)
+		return Team::Red;
+	if (mRedTeam.mSelectStaff[1] == st)
+		return Team::Red;
+	if (mRedTeam.mSelectStaff[2] == st)
+		return Team::Red;
 	return Team::None;
 }
 
