@@ -90,7 +90,7 @@ public:
 	void ChampSelect(Staff* st, Champ* c);
 	void ChampSwap(Champ* cp1, Champ* cp2);
 	int GetSelectSize() { return mSelectChamp.size(); }
-	vector<Champ*> GetSelectChampList(TeamData t) { return t.mSelectChamp; }
+	vector<Champ*> GetSelectChampList(Team t);
 	Champ* GetSelectChamp(Team t, int index);
 	bool IsSelectChamp(Champ* select);
 
@@ -121,7 +121,8 @@ public:
 
 	void TeamChange();//라운드 종료 후 레드와 블루팀 교체
 	Director* GetEnemyDirector();
-	
+	Director* GetDirector(Team t);
+
 	Team GetChampTeam(GameObject* pt);
 	Team GetStaffTeam(Staff* st);
 };

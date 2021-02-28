@@ -239,6 +239,20 @@ void BattleData::ChampSwap(Champ* cp1, Champ * cp2)
 	}
 }
 
+vector<Champ*> BattleData::GetSelectChampList(Team t)
+{
+	TeamData team;
+	switch (t)
+	{
+	case Team::Red:
+		team = mRedTeam;
+		break;
+	case Team::Blue:
+		team = mBlueTeam;
+	}
+	return team.mSelectChamp;
+}
+
 void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
 {
 	//버튼별로 숫자를 지정해서 함수를 호출
@@ -430,6 +444,20 @@ Team BattleData::GetStaffTeam(Staff* st)
 	if (mRedTeam.mSelectStaff[2] == st)
 		return Team::Red;
 	return Team::None;
+}
+
+Director* BattleData::GetDirector(Team t)
+{
+	TeamData team;
+	switch (t)
+	{
+	case Team::Red:
+		team = mRedTeam;
+		break;
+	case Team::Blue:
+		team = mBlueTeam;
+	}
+	return team.mDirector;
 }
 
 Champ* BattleData::GetSelectChamp(Team t, int index)
