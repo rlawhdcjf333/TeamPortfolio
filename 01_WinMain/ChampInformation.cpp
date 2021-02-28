@@ -109,8 +109,8 @@ void ChampInformation::Render(HDC hdc)
 		SelectObject(hdc, oldF);
 		DeleteObject(newF);
 
-		wstring ChampEx = L"챔프 설명은 랙트리스트 10번을 이용해주세요 아마 따로따로 적어서 함수로 불러내는 식으로 해야 될듯 ?? 편하대로 적어서 해주시기 바랍니다. 그럼 20000";
-
+		//챔프 설명
+		wstring ChampEx = mCurrentChamp->GetChampEx();
 		newF = CreateFont(15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		oldF = (HFONT)SelectObject(hdc, newF);
 		DrawText(hdc, ChampEx.c_str(), ChampEx.length(), &mRectList[10], DT_TOP | DT_LEFT | DT_WORDBREAK);

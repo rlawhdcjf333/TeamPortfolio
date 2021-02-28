@@ -13,6 +13,8 @@ void MistKnight::Init()
 {
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"MistKnight", Resources(L"MistKnight.bmp"), 1680, 1680, 12, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"MistKnight");
+
+	mChampEx = L"검은 천을 뒤집어 쓴 암살귀. 그의 눈을 본 사람은 보통 오래 살지 못한다고 한다.";
 	
 	mFullHP = 100;
 	mHP = mFullHP;

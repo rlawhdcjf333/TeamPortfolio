@@ -14,6 +14,8 @@ void ZombieMonkey::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"ZombieMonkey", Resources(L"ZombieMonkey.bmp"), 2210, 2040, 13, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"ZombieMonkey");
 
+	mChampEx = L"깊은 원한 속에서 성불해버린 원숭이. 신기하게도 저주가 아니라 회복능력에 특화되어 있다.";
+
 	mFullHP = 100;
 	mHP = mFullHP;
 	mMP = 0;

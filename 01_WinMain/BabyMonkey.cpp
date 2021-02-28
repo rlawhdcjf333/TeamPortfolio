@@ -13,6 +13,9 @@ void BabyMonkey::Init()
 {
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"BabyMonkey", Resources(L"BabyMonkey.bmp"), 480, 600, 6, 10, true);
 	mImage = IMAGEMANAGER->FindImage(L"BabyMonkey");
+
+	mChampEx = L"큐피트가 되고 싶은 아기 원숭이. 아군을 치유하는데 열심이다.";
+
 	
 	mFullHP = 100;
 	mHP = mFullHP;

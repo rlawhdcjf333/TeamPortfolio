@@ -33,6 +33,8 @@ void Yeti::Init()
 	mSkill = 0;									//지역변수 선언 
 	mSpecialSkill = 100;
 
+	mChampEx = L"엘나스에서 평화롭게 지내던 설인. 튼튼한 체력과 넉백으로 아군을 지켜준다.";
+
 	//애니메이션
 	Animation* RightIdle = new Animation();
 	RightIdle->InitFrameByStartEnd(0, 6, 2, 6, true);

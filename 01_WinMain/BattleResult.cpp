@@ -17,14 +17,14 @@ void BattleResult::Update()
 {
 	if (!mIsActive)
 		return;
-	//���� 2�� �¸��� ���� �ְų� ������ ��Ⱑ 3���̸� Ȩ���� ���ư�
+	//배틀 씬 종료 트리거
 	function<void(void)> func;
 	if (BData->IsEnd())
 	{
 		func = []() {SceneManager::GetInstance()->LoadScene(L"Home"); };
 		return;
 	}
-	else //2���� ���� ������ �ǵ��UIȰ��ȭ
+	else //배틀 씬 반복 트리거
 	{
 		func = []()
 		{

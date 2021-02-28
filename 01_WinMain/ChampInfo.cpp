@@ -51,6 +51,13 @@ void ChampInfo::Update()
 
 	if (mIsActive)
 	{
+		ObjectManager::GetInstance()->FindObject("GameToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("HomeToBattle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("LeagueToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("OperationToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("SystemToggle")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("TeamToggle")->SetIsActive(false);
+
 		mChampInformation->Update();
 
 		auto func1 = [this]() {	LoadAllChampList();	};
@@ -69,6 +76,8 @@ void ChampInfo::Update()
 			mToggleButton(4, "None", func5);
 			mToggleButton(5, "None", func6);
 			mToggleButton(6, "None", func7);
+
+			
 		}
 
 		mCurrentRectList.clear();

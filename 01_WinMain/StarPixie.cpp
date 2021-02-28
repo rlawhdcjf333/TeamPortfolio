@@ -14,6 +14,8 @@ void StarPixie::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"StarPixie", Resources(L"StarPixie.bmp"), 900, 1440, 10, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"StarPixie");
 
+	mChampEx = L"귀여운 스타 픽시. 마법사이자 원거리 광역 crwod cc에 특화된 챔프.";
+
 	mFullHP = 100;
 	mHP = mFullHP;
 	mMP = 0;

@@ -19,8 +19,11 @@ protected:
 	Animation* mCurrentAnm;
 	map<wstring ,Animation*> mAnimationList;
 	wstring mChampName;
+	wstring mChampEx;
 
 	ClassType mClassType;
+
+
 
 	float mFullHP;			//태어날 때 풀피로 태어나게 해주기 위함.
 	float mHP;				//나의 HP
@@ -71,6 +74,7 @@ public:
 	float GetHP() { return mHP; } //HP값 조정
 
 	float GetAtk() { return mAtk; }
+	float GetAtkCool() { return mAttackCool; }
 	float GetRange() { return mRange; }
 	float GetDef() { return mDef; }
 	float GetSpeed() { return mSpeed; }
@@ -80,6 +84,7 @@ public:
 	vector<GameObject*> GetEnemyList() { return mEnemyList; }
 	ClassType GetClassType() const { return mClassType; }
 	wstring GetChampName() const { return mChampName; }
+	wstring GetChampEx() const& { return mChampEx; }
 	
 	//float GetChampAnm() { return }
 	float GetFullHP() { return mFullHP; }			//UI표시

@@ -14,6 +14,8 @@ void Cornian::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Cornian", Resources(L"Cornian.bmp"), 2380, 2720, 7, 16, true);
 	mImage = IMAGEMANAGER->FindImage(L"Cornian");
 
+	mChampEx = L"팔시온을 휘두르는 도마뱀. 체구에 비해 굉장히 재빠른 것이 특징.";
+
 	mFullHP = 100;
 	mHP = mFullHP;
 	mMP = 0;

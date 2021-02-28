@@ -14,6 +14,9 @@ void Tank::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"Tank", Resources(L"Tank.bmp"), 750, 700, 5, 10, true);
 	mImage = IMAGEMANAGER->FindImage(L"Tank");
 	
+	mChampEx = L"우스꽝스러운 디자인으로 제작된 전차. 위력은 결코 우스꽝스럽지 않다.";
+
+
 	mFullHP = 100;
 	mHP = mFullHP;
 	mMP = 0;

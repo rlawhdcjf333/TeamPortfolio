@@ -21,25 +21,18 @@ void GameToggle::Init()
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, new ChampInfo);
 
-
-	mChampInfo = new ChampInfo();
-	mChampInfo->Init();
 }
 
 void GameToggle::Release()
 {
-	mChampInfo->Release();
-	SafeDelete(mChampInfo);
 }
 
 void GameToggle::Update()
 {
 	if (mIsActive)
 	{
-		auto func = [this]() { mChampInfo->SetIsActive(true); };
-		mToggleButton(0, "None", func);
+		mToggleButton(0, "ChampInfo");
 
-		mChampInfo->Update();
 	}
 
 }
@@ -53,7 +46,6 @@ void GameToggle::Render(HDC hdc)
 		MouseOver(hdc);
 		mActive->Render(hdc, 544, 648);
 		
-		mChampInfo->Render(hdc);
 	}
 
 }

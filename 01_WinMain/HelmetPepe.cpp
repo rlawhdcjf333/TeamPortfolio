@@ -13,6 +13,8 @@ void HelmetPepe::Init()
 	IMAGEMANAGER->GetInstance()->LoadFromFile(L"HelmetPepe", Resources(L"HelmetPepe.bmp"), 1040, 1440, 8, 12, true);
 	mImage = IMAGEMANAGER->FindImage(L"HelmetPepe");
 
+	mChampEx = L"헬멧을 뒤집어 쓴 펭귄. 이유는 모르겠지만 도발적이다.";
+
 	mFullHP = 100;
 	mHP = mFullHP;
 	mMP = 0;

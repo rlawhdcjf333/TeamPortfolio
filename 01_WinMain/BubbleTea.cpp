@@ -16,6 +16,8 @@ void BubbleTea::Init()
 	IMAGEMANAGER->LoadFromFile(L"BubbleTea", Resources(L"BubbleTea.bmp"), 840, 1680, 7, 14,  true);
 	mImage= IMAGEMANAGER->FindImage(L"BubbleTea");
 
+	mChampEx = L"살아 움직이는 버블티. 일설에 의하면 항상 새로운 타피오카 펄을 찾아다닌다고.";
+
 	//변수 초기화
 	mFullHP = 80;
 	mHP = mFullHP;
