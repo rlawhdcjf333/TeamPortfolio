@@ -119,9 +119,9 @@ void BattleData::ChampBan(Champ * ban)
 	}
 }
 
-bool BattleData::ChampSelect(Staff * st, Champ * c)
+void BattleData::ChampSelect(Staff * st, Champ * c)
 {
-	if (GetChampTeam(c) == Team::None)//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
+	if (!IsSelectChamp(c))//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
 	{
 		mSelectChamp.push_back(c);
 		c->SetStaff(st);
@@ -134,9 +134,7 @@ bool BattleData::ChampSelect(Staff * st, Champ * c)
 		case Team::Red:
 			mRedTeam.mSelectChamp.push_back(c);
 		}
-	return true;
 	}
-	return false;
 }
 
 int BattleData::BanCount()
@@ -305,6 +303,16 @@ void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
 		UpdateCondition(mRedTeam, con);
 		break;//case red
 	}//mPlayerTeam
+}
+
+bool BattleData::IsSelectChamp(Champ* select)
+{
+	for (int i = 0; i < mSelectChamp.size(); ++i)
+	{
+		if (mSelectChamp[i] == select)
+			return true;
+	}
+	return false;
 }
 
 void BattleData::UpdateCondition(TeamData t,int con)

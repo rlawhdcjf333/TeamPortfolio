@@ -208,6 +208,7 @@ void ChampSelect::Update()
 			DelayReset();
 			NextState();
 		}
+		break;
 	}
 }
 
