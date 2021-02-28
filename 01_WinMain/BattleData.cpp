@@ -125,6 +125,12 @@ bool BattleData::ChampSelect(Staff * st, Champ * c)
 	return true;
 }
 
+int BattleData::BanCount()
+{
+	if (mBanChamp[0] == nullptr) return 0;
+	else if (mBanChamp[1] == nullptr) return 1;
+	else if (mBanChamp[1]) return 2;
+}
 void BattleData::ChampSwap(Staff * st1, Staff * st2)
 {
 	//플레이어의 selectstaff인지 확인(혹시 몰라서 만듬)
