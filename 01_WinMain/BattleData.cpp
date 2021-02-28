@@ -410,7 +410,7 @@ Team BattleData::GetChampTeam(GameObject * pt)
 		return Team::Ban;
 	if (mBanChamp[1] == champ)
 		return Team::Ban;
-
+	/*
 	if (mBlueTeam.mSelectStaff[0] == (Staff*)champ->GetStaff())
 		return Team::Blue;
 	if (mBlueTeam.mSelectStaff[1] == (Staff*)champ->GetStaff())
@@ -424,7 +424,17 @@ Team BattleData::GetChampTeam(GameObject * pt)
 		return Team::Red;
 	if (mRedTeam.mSelectStaff[2] == (Staff*)champ->GetStaff())
 		return Team::Red;
-
+	*/
+	for (int i = 0; i < mBlueTeam.mSelectChamp.size(); ++i)
+	{
+		if (mBlueTeam.mSelectChamp[i] == champ)
+			return Team::Blue;
+	}
+	for (int i = 0; i < mRedTeam.mSelectChamp.size(); ++i)
+	{
+		if (mRedTeam.mSelectChamp[i] == champ)
+			return Team::Red;
+	}
 	return Team::None;
 }
 
