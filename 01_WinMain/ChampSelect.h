@@ -33,8 +33,11 @@ public:
 
 	GameObject* ChampToggle();
 
+	GameObject* ToggleButton(int index);
+
 	int SetIndexX(GameObject* pt);	//mBackFrame xFrameindex 바꾸려고 만듬, pt : 챔프 포인터
 	void NextState();
 	void ChampRender(HDC hdc, int x , int y, vector<GameObject*> list, int i);
+	void BanRender(HDC hdc, int x, int y, Champ* champ);
 };
 

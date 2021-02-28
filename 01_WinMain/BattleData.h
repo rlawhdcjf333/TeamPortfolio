@@ -81,7 +81,8 @@ public:
 	//void Pick(Champ* c, Staff* s) { GameObject* staff = (GameObject*)s; c->SetStaff(staff); }
 	void ChampBan(Champ* ban);
 	int BanCount();
-	GameObject* GetBan(int index) { return (GameObject*)mBanChamp[index]; }
+	GameObject* GetBanOb(int index) { return (GameObject*)mBanChamp[index]; }
+	Champ* GetBanCp(int index) { return mBanChamp[index]; }
 
 	bool ChampSelect(Staff* st, Champ* c);//이 함수를 호출하고 true를 받으면 다음 선수가 픽 하도록함
 	void ChampSwap(Staff* st1, Staff* st2);
