@@ -26,7 +26,7 @@ void LoveMonkey::Init()
 {
 	//is action 이 트루면 다른 행동 못하게 해야됨
 	//이미지 로드하고 넣기
-	IMAGEMANAGER->LoadFromFile(L"LoveMonkey", Resources(L"LoveMonkey.bmp"), 480, 600, 6, 10, true);
+	IMAGEMANAGER->LoadFromFile(L"LoveMonkey", Resources(L"LoveMonkey.bmp"), 480, 720, 6, 12, true);
 	IMAGEMANAGER->LoadFromFile(L"HPBar", Resources(L"hpmpbar.bmp"), 90, 15, true);
 	IMAGEMANAGER->LoadFromFile(L"HP", Resources(L"hp.bmp"), 88, 8, true);
 	IMAGEMANAGER->LoadFromFile(L"MP", Resources(L"mp.bmp"), 80, 8, true);
