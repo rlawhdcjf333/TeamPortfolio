@@ -94,6 +94,7 @@ public:
 
 	void Feedback(int i);
 	void UpdateCondition(TeamData t, int con);
+	void RandomCondition();
 
 	void SetResult();
 	void PlusWincount(Team t);

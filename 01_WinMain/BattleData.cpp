@@ -337,6 +337,27 @@ bool BattleData::IsSelectChamp(Champ* select)
 	return false;
 }
 
+void BattleData::RandomCondition()
+{
+	switch (mPlayerTeam)
+	{
+	case Team::Blue:
+		for (int i = 0; i < mBlueTeam.mStaffList.size(); ++i)
+		{
+			mBlueTeam.mStaffList[i]->RandomCondition();
+			mBlueTeam.mStaffList[i]->SetConditionImage();
+		}
+		break;
+	case Team::Red:
+		for (int i = 0; i < mRedTeam.mStaffList.size(); ++i)
+		{
+			mRedTeam.mStaffList[i]->RandomCondition();
+			mRedTeam.mStaffList[i]->SetConditionImage();
+		}
+		break;
+	}
+}
+
 void BattleData::UpdateCondition(TeamData t,int con)
 {
 	for (int i = 0; i < t.mStaffList.size(); ++i)

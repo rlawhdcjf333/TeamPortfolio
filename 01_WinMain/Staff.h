@@ -97,7 +97,8 @@ public:
 	void SetRenderSize(int x, int y) { mRenderSizeX = x, mRenderSizeY = y; }
 
 	void SetConditionImage();
-	
+	void RandomCondition() { mCondition = (Condition)Random::GetInstance()->RandomInt(4); };
+
 	map<string, int> GetMostChamp() { return mMostChamp; }
 
 	int GetTrainingPoint()const { return mTrainingPoint; }

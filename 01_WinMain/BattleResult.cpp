@@ -47,6 +47,7 @@ void BattleResult::Update()
 			ScheduleManager::GetInstance()->GetOutFight1(today)->CalLeagueScore();
 			ScheduleManager::GetInstance()->GetOutFight2(today)->CalLeagueScore();
 			player->PlusWeek();
+			BData->RandomCondition();//다음날이 되면 선수들의 컨디션 랜덤으로 세팅
 			SceneManager::GetInstance()->LoadScene(L"Home"); 
 		};
 	}
