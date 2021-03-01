@@ -31,18 +31,15 @@ class BattleData	//싱글턴으로 만들어 저장
 private:
 
 
-	Team mPlayerTeam;//팀색깔 -> switch용 //
+	Team mPlayerTeam;//팀색깔 -> switch용
 
 	//mTeamData 구조체 사용; 
 	TeamData mBlueTeam;
 	TeamData mRedTeam;
 
-	Champ* mBanChamp[2];	//밴된 챔피언, GameObject*로 해야하나? //상관업음 Gameobject 이 더 편하긴함   mIsActive 껏다키는 거면
+	Champ* mBanChamp[2];	//밴된 챔피언
 	vector<Champ*> mSelectChamp;
 
-
-	Staff* mStaff;	//위에 맵에 키값으로 넣을녀석을 담을 변수, 함수용으로 쓰일거같아 만듬 //currentStaff라고 하면 되겠네
-	Champ* mChamp;	//↑랑 동일, 여긴 map의 value를 담아서 //이건 currentPick
 
 public:
 	void RoundReset();	//밴과 픽 정보 초기화
