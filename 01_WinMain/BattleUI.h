@@ -5,6 +5,7 @@ class Director;
 class BattleUI : public UI
 {
 	Image* mImage;
+	Image* mWinImage;
 	int mTime;
 	float mDeltaTime;
 

@@ -15,6 +15,9 @@ void BattleUI::Init()
 	IMAGEMANAGER->LoadFromFile(L"BattleUI", Resources(L"battleUI.bmp"), 1280, 720, true);
 	mImage = IMAGEMANAGER->FindImage(L"BattleUI");
 	
+	IMAGEMANAGER->LoadFromFile(L"WinCount", Resources(L"WinCount.bmp"), 18, 17, true);
+	mWinImage = IMAGEMANAGER->FindImage(L"WinCount");
+	
 	mTime = 60;
 	mDeltaTime = 0.f;
 
@@ -90,6 +93,19 @@ void BattleUI::Render(HDC hdc)
 		if (ObjectManager::GetInstance()->FindObject("Battle")->GetIsActive())	//배틀중일때
 		{
 			TextOut(hdc, 640, 60, to_wstring(mTime).c_str(), to_wstring(mTime).size());
+		}
+
+		if (BData->GetWinCount(Team::Blue) >= 1)
+		{
+			mWinImage->Render(hdc,498,56);
+			if (BData->GetWinCount(Team::Blue) >= 2)
+				mWinImage->Render(hdc, 518, 56);
+		}
+		if (BData->GetWinCount(Team::Red) >= 1)
+		{
+			mWinImage->Render(hdc, 746, 56);
+			if (BData->GetWinCount(Team::Red) >= 2)
+				mWinImage->Render(hdc, 767, 56);
 		}
 	}
 }
