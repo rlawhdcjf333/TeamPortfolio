@@ -41,11 +41,15 @@ void Ranking::Render(HDC hdc)
 {
 	if (mIsActive) {
 
-		//auto funcc[]()
-		//{
-		//
-		//};
-		//sort(mDirectorList.begin(), mDirectorList.end(), funcc);
+		function <bool(Director* a, Director* b)> funcc = [](Director* a, Director* b)
+		{
+			if (a->GetLeagueScore() == b->GetLeagueScore())
+			{
+				return a->GetName() < b->GetName();
+			}
+			return a->GetLeagueScore() < b->GetLeagueScore();
+		};
+		sort(mDirectorList.begin(), mDirectorList.end(), funcc);
 
 		vector<RECT> largeBox;
 		vector<RECT> smallBox; // 랭킹 숫자 들어갈 랙트
