@@ -64,6 +64,7 @@ void BattleResult::Update()
 				newlist[i]->SetRank(i+1);
 			}
 			player->PlusWeek();
+			BData->RandomCondition();//다음날이 되면 선수들의 컨디션 랜덤으로 세팅
 			SceneManager::GetInstance()->LoadScene(L"Home"); 
 		};
 	}

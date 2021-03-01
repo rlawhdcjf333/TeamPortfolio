@@ -286,7 +286,7 @@ void ChampSelect::Render(HDC hdc)
 GameObject* ChampSelect::ChampToggle()
 {
 	GameObject* select = nullptr;
-	GameObject* temp;
+	GameObject* temp = nullptr;
 	//챔프가 10개인걸로 알고 만들어둠
 	temp = ToggleButton(0);
 	if (temp)
