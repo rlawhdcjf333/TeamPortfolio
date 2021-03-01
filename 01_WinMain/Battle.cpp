@@ -104,6 +104,8 @@ void Battle::SetTeams(vector<Champ*> myTeam, vector<Champ*> enemyTeam)
 		mEnemyTeam[2]->SetFriendList(enemyTeamList);
 	}
 
+	mWhole.clear();
+	mWhole.shrink_to_fit();
 	mWhole.emplace_back(mMyTeam[0]);
 	mWhole.emplace_back(mMyTeam[1]);
 	mWhole.emplace_back(mMyTeam[2]);
