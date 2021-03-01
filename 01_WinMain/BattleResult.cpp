@@ -23,6 +23,21 @@ void BattleResult::Update()
 	function<void(void)> func;
 	if (BData->IsEnd())
 	{
+		if (BData->GetMyDirector()->GetWeek() == 4) //마지막날 결승 플레이오프
+		{
+			if (BData->GetMyDirector()->GetRound() == 2) //플레이어 최종 우승
+			{
+				MessageBox(_hWnd, L"최종 우승!", L"우승", MB_OK);
+				BData->GetMyDirector()->SetWeek(1);
+				SceneManager::GetInstance()->LoadScene(L"Title");
+			}
+			else //북산 엔딩
+			{
+				MessageBox(_hWnd, L"북산 엔딩", L"하얗게 불태웠어...", MB_OK);
+				BData->GetMyDirector()->SetWeek(1);
+				SceneManager::GetInstance()->LoadScene(L"Title");
+			}
+		}
 		
 		func = []()
 		{
@@ -65,6 +80,11 @@ void BattleResult::Update()
 			}
 			player->PlusWeek();
 			BData->RandomCondition();//다음날이 되면 선수들의 컨디션 랜덤으로 세팅
+			if (today == 3)
+			{
+				ScheduleManager::GetInstance()->AddSchedule();
+			}
+
 			SceneManager::GetInstance()->LoadScene(L"Home"); 
 		};
 	}

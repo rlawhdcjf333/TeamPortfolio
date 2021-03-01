@@ -17,7 +17,8 @@ void ScheduleManager::Init()
 
 void ScheduleManager::AddSchedule()
 {
-
+	auto list = ObjectManager::GetInstance()->GetPlayOff();
+	mSchedule.insert(make_pair(4, list));
 }
 
 

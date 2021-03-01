@@ -67,12 +67,12 @@ void ChampInformation::Update()
 		mChampInformation = mChampName + L" 상세 정보";
 		mChampAtk = to_wstring((int)mCurrentChamp->GetAtk());
 		mChampAtkSpeed = to_wstring(0);
-		mChampRange = to_wstring(mCurrentChamp->GetRange());
-		mChampDef = to_wstring(mCurrentChamp->GetDef());
-		mChampHp = to_wstring(mCurrentChamp->GetHP());
-		mChampSpeed = to_wstring(mCurrentChamp->GetSpeed());
+		mChampRange = to_wstring((int)mCurrentChamp->GetRange());
+		mChampDef = to_wstring((int)mCurrentChamp->GetDef());
+		mChampHp = to_wstring((int)mCurrentChamp->GetHP());
+		mChampSpeed = to_wstring((int)mCurrentChamp->GetSpeed());
 		mChampEx = mCurrentChamp->GetChampEx();
-		mSkillCool = to_wstring(mCurrentChamp->GetSkillCool());
+		mSkillCool = to_wstring((int)mCurrentChamp->GetSkillCool());
 		mSpecialSkillCool = L"풀마나시 시전";
 		mChampSkill = mCurrentChamp->GetSkillEx();
 		mChampSpecialSkill = mCurrentChamp->GetSpecialSkillEx();

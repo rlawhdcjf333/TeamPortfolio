@@ -43,5 +43,7 @@ public:
 	void Zorder();
 	void ReInitChamp();
 	void ChampClear();
+
+	vector<string> GetPlayOff();
 };
 

@@ -38,7 +38,7 @@ void ChampSelect::Update()
 		{
 			temp = ChampToggle();
 			if (temp)
-				BData->ChampBan((Champ*)temp);
+				BData->ChampBan((Champ*)temp), DelayReset();
 		}
 		else
 		{
@@ -64,7 +64,7 @@ void ChampSelect::Update()
 			temp = ChampToggle();
 			if (temp)
 				if (BData->GetBanOb(0) != temp)
-					BData->ChampBan((Champ*)temp);
+					BData->ChampBan((Champ*)temp), DelayReset();
 		}
 		else
 		{
@@ -90,7 +90,7 @@ void ChampSelect::Update()
 			if (temp)
 			{
 				if (BData->IsSelectChamp((Champ*)temp) == false)
-					BData->ChampSelect(BData->GetSelectStaff(0),(Champ*)temp);
+					BData->ChampSelect(BData->GetSelectStaff(0),(Champ*)temp), DelayReset();
 			}
 		}
 		else//플레이어 팀이 아닐경우 자동 픽
@@ -119,14 +119,14 @@ void ChampSelect::Update()
 				{
 					if (BData->IsSelectChamp((Champ*)temp) == false)
 					{
-						 BData->ChampSelect(BData->GetSelectStaff(0), (Champ*)temp);
+						 BData->ChampSelect(BData->GetSelectStaff(0), (Champ*)temp), DelayReset();
 					}
 				}
 				else if (BData->GetSelectSize() == 2)
 				{
 					if (BData->IsSelectChamp((Champ*)temp) == false)
 					{
-						BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp);
+						BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp), DelayReset();
 					}
 				}
 			}
@@ -140,12 +140,9 @@ void ChampSelect::Update()
 			if (BData->GetSelectSize() == 1)
 			{
 				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
-					BData->ChampSelect(BData->GetEnemyStaff(0), (Champ*)mChampList[index]);
+					BData->ChampSelect(BData->GetEnemyStaff(0), (Champ*)mChampList[index]), DelayReset();
 
-				if (BData->GetSelectSize() == 2)
-				{
-					DelayReset(); return;
-				}
+				
 			}
 			else if (BData->GetSelectSize() == 2)
 				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
@@ -169,9 +166,9 @@ void ChampSelect::Update()
 			if (temp)
 			{
 				if (BData->GetSelectSize() == 3)
-					BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp);
+					BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp), DelayReset();
 				else if (BData->GetSelectSize() == 4)
-					BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp);
+					BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp), DelayReset();
 			}
 
 		}
@@ -184,11 +181,8 @@ void ChampSelect::Update()
 			if (BData->GetSelectSize() == 3)
 			{
 				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
-					BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
-				if (BData->GetSelectSize() == 4)
-				{
-					 DelayReset(); return;
-				}
+					BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]), DelayReset();
+				
 			}
 			else if (BData->GetSelectSize() == 4)
 				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
@@ -209,7 +203,7 @@ void ChampSelect::Update()
 			if (temp)
 			{
 				if (BData->IsSelectChamp((Champ*)temp) == false)
-					BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp);
+					BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp), DelayReset();
 			}
 		}
 		else//플레이어 팀이 아닐경우 자동 픽
@@ -219,7 +213,7 @@ void ChampSelect::Update()
 			
 			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
 			if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
-				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]);
+				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]), DelayReset();
 			
 		}
 		if (BData->GetSelectSize() == 6)
@@ -234,6 +228,7 @@ void ChampSelect::Update()
 		break;
 	}
 
+	mCurrentChamp = nullptr;
 	for (int i = 0; i < mChampList.size(); i++)
 	{
 		if (PtInRect(&mButtonList[i], _mousePosition))
@@ -268,7 +263,6 @@ void ChampSelect::Render(HDC hdc)
 		mBackFrame->AlphaFrameRender(hdc, mButtonList[7].left, mButtonList[7].top, SetIndexX(mChampList[7]), 0, 0.5f);
 		mBackFrame->AlphaFrameRender(hdc, mButtonList[8].left, mButtonList[8].top, SetIndexX(mChampList[8]), 0, 0.5f);
 		//mBackFrame->FrameRender(hdc, mButtonList[9].left, mButtonList[9].top, SetIndexX(mChampList[9]), 0);
-
 
 		ChampInfoRender(hdc, mCurrentChamp);
 
@@ -407,7 +401,7 @@ void ChampSelect::ClearCurrentChamp()
 
 void ChampSelect::ChampInfoRender(HDC hdc, Champ* champ)
 {
-	if (champ !=nullptr)
+	if (champ)
 	{
 		champ->UIRender(hdc, 235, 438, 95, 80);
 	
@@ -415,15 +409,15 @@ void ChampSelect::ChampInfoRender(HDC hdc, Champ* champ)
 		RECT nameBox = RectMake(234,519,98,30);
 		CallFont(hdc, 20, [&nameBox, champName, hdc]() {DrawText(hdc, champName.c_str(), champName.size(), &nameBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
 
-		wstring atk = (to_wstring)(champ->GetAtk());
+		wstring atk = (to_wstring)((int)champ->GetAtk());
 		RECT atkBox = RectMake(454, 416, 87, 22);
-		wstring def = (to_wstring)(champ->GetDef());
+		wstring def = (to_wstring)((int)champ->GetDef());
 		RECT defBox = RectMake(454, 444, 87, 22);
-		wstring heal = (to_wstring)(champ->GetHealPr());
+		wstring heal = (to_wstring)((int)champ->GetHealPr());
 		RECT healBox = RectMake(454, 472, 87, 22);
-		wstring range = (to_wstring)(champ->GetRange());
+		wstring range = (to_wstring)((int)champ->GetRange());
 		RECT rangeBox = RectMake(454, 500, 87, 22);
-		wstring speed = (to_wstring)(champ->GetSpeed());
+		wstring speed = (to_wstring)((int)champ->GetSpeed());
 		RECT speedBox = RectMake(454, 528, 87, 22);
 
 		CallFont(hdc, 20, [atk, &atkBox, hdc]() {DrawText(hdc, atk.c_str(), atk.size(), &atkBox, DT_CENTER | DT_VCENTER | DT_SINGLELINE);});
@@ -434,7 +428,7 @@ void ChampSelect::ChampInfoRender(HDC hdc, Champ* champ)
 
 		RECT skillrc = RectMake(556, 423, 50, 50);
 		champ->SkillImageRender(hdc, skillrc);
-		wstring skillCool = (to_wstring)(champ->GetSkillCool());
+		wstring skillCool = to_wstring((int)champ->GetSkillCool());
 		RECT scBox = RectMake(633, 452, 55, 20);
 		CallFont(hdc, 20, [skillCool, hdc, &scBox]() {DrawText(hdc, skillCool.c_str(), skillCool.size(), &scBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
 
@@ -442,7 +436,7 @@ void ChampSelect::ChampInfoRender(HDC hdc, Champ* champ)
 		champ->SpecialSkillImageRender(hdc, ultrc);
 		wstring ultCool = L"Full Mana";
 		RECT ultBox = RectMake(633, 520, 55, 20);
-		CallFont(hdc, 20, [ultCool, hdc, &ultBox]() {DrawText(hdc, ultCool.c_str(), ultCool.size(), &ultBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
+		CallFont(hdc, 15, [ultCool, hdc, &ultBox]() {DrawText(hdc, ultCool.c_str(), ultCool.size(), &ultBox, DT_CENTER|DT_VCENTER|DT_SINGLELINE);});
 
 		wstring skillex = champ->GetSkillEx();
 		RECT exBox = RectMake(720, 423, 300, 50);

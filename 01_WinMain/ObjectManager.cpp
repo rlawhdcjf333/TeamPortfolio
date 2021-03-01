@@ -264,6 +264,38 @@ void ObjectManager::ChampClear()
 
 }
 
+vector<string> ObjectManager::GetPlayOff()
+{
+	vector<Director*> result;
+
+	auto list = mObjectList[ObjectLayer::Director];
+
+	for (GameObject* elem : list)
+	{
+		Director* dir = (Director*)elem;
+		result.push_back(dir);
+	}
+
+	auto func = [](Director* a, Director* b)
+	{
+		if (a->GetLeagueScore() == b->GetLeagueScore())
+		{
+			return a->GetName() < b->GetName();
+		}
+		return a->GetLeagueScore() > b->GetLeagueScore();
+	};
+
+	sort(result.begin(), result.end(), func);
+	result.pop_back();
+	result.pop_back();
+
+	vector <string> realResult;
+	realResult.push_back(result[0]->GetName());
+	realResult.push_back(result[1]->GetName());
+
+	return realResult;
+}
+
 
 
 
