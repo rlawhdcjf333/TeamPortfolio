@@ -559,8 +559,7 @@ void Pixie::Render(HDC hdc)
 			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2, mY - 90, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 81, 108);
 	}
 
-	wstring atkCool = to_wstring(mHP);
-	TextOut(hdc, 50, 50, atkCool.c_str(), atkCool.size());
+	
 	if (mIsDeath != true)
 	{
 		mHPImage->Render(hdc, mX - 37, mY + 16, 0, 0, 88 * (mHP / mMaxHP), 8);

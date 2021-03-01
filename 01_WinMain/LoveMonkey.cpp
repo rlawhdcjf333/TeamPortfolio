@@ -519,8 +519,7 @@ void LoveMonkey::Render(HDC hdc)
 			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 6, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70);
 	}
 
-	wstring atkCool = to_wstring(mHP);
-	TextOut(hdc, 50, 50, atkCool.c_str(), atkCool.size());
+	
 	if (mIsDeath != true)
 	{
 		mHPImage->Render(hdc, mX - 45, mY + 13, 0, 0, 88 * (mHP / mMaxHP), 8);

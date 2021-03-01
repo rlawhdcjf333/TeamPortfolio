@@ -15,7 +15,7 @@ void ChampSelect::Init()
 	mBackFrame = IMAGEMANAGER->FindImage(L"BackFrame");
 	mState = SelectState::BlueBan;
 
-	mChampList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Champ);
+	mChampList = ChampManager::GetInstance()->GetChampList();
 	mCurrentChamp = nullptr;
 
 	DelayReset();
@@ -27,6 +27,7 @@ void ChampSelect::Release()
 
 void ChampSelect::Update()
 {
+	mChampList = ChampManager::GetInstance()->GetChampList();
 //블루 선밴 - 레드 후밴 - 블루 1픽 - 레드 1,2픽 - 블루 2,3픽 - 레드 3픽
 	GameObject* temp;
 	switch (mState)

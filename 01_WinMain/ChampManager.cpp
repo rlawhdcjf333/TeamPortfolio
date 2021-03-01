@@ -36,9 +36,29 @@ void ChampManager::SceneRelease()
 
 void ChampManager::Release()
 {
-	for (int i = 0; i < mChampList.size(); i++) {
-		mChampList[i]->Init();
+	mChampList.clear();
+	mChampList.shrink_to_fit();
+
+	ObjectManager::GetInstance()->ChampClear();
+
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Yeti("Champ1"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Pepe("Champ2"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Pixie("Champ3"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Tank("Champ4"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new BubbleTea("Champ5"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new ZombieMonkey("Champ6"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new LoveMonkey("Champ7"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new MistKnight("Champ8"));
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Champ, new Cornian("Champ9"));
+
+	ObjectManager::GetInstance()->ReInitChamp();
+
+	for (int i = 0; i < 9; i++) {
+		mChampList.push_back(ObjectManager::GetInstance()->FindObject("Champ" + to_string(i + 1)));
+		mChampList[i]->SetIsActive(false);
 	}
+
+
 }
 
 void ChampManager::Update()

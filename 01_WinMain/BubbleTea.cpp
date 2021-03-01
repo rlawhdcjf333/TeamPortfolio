@@ -496,8 +496,7 @@ void BubbleTea::Render(HDC hdc)
 			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70);
 	}
 
-	wstring atkCool = to_wstring(mDeathCount);
-	TextOut(hdc, 50, 75, atkCool.c_str(), atkCool.size());
+	
 	if (mIsDeath != true)
 	{
 		mHPImage->Render(hdc, mX - 35, mY + 10, 0, 0, 88 * (mHP / mMaxHP), 8);

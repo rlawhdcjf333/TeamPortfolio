@@ -243,6 +243,28 @@ void ObjectManager::Zorder()
 
 }
 
+void ObjectManager::ReInitChamp()
+{
+	for (GameObject* elem : mObjectList[ObjectLayer::Champ])
+	{
+		elem->Init();
+	}
+}
+
+void ObjectManager::ChampClear()
+{
+	for (GameObject*& elem : mObjectList[ObjectLayer::Champ])
+	{
+		elem->Release();
+		SafeDelete(elem);
+	}
+
+	mObjectList[ObjectLayer::Champ].clear();
+	mObjectList[ObjectLayer::Champ].shrink_to_fit();
+
+}
+
+
 
 
 

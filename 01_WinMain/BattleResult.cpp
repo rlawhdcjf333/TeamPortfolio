@@ -48,6 +48,8 @@ void BattleResult::Update()
 	{
 		func = []()
 		{
+			Battle* battle = (Battle*)ObjectManager::GetInstance()->FindObject("Battle");
+			battle->ResetScore();
 			ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(false);
 			ObjectManager::GetInstance()->FindObject("Feedback")->SetIsActive(true);
 		};
@@ -55,6 +57,7 @@ void BattleResult::Update()
 
 	if (Input::GetInstance()->GetKeyDown('F'))
 	{
+	
 		ObjectManager::GetInstance()->FindObject("BattleResult")->SetIsActive(false);
 		func();
 	}

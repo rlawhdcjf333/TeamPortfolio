@@ -515,7 +515,6 @@ void Yeti::Update()
 }
 void Yeti::Render(HDC hdc)
 {
-	//RenderRect(hdc, mRect);
 	if (mCurrentAnm->GetNowFrameY() >= 6)
 	{
 		if (mCurrentAnm->GetNowFrameY() == 11)

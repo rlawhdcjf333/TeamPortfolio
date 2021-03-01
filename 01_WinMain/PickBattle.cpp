@@ -49,6 +49,7 @@ void PickBattle::Init()
 void PickBattle::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	ChampManager::GetInstance()->SceneRelease();
 }
 
 void PickBattle::Update()

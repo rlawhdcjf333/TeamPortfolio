@@ -28,7 +28,6 @@ Champ::Champ(const string& name, float x, float y) : GameObject(name)
 
 void Champ::Init()
 {
-
 	mStaff = nullptr;
 }
 

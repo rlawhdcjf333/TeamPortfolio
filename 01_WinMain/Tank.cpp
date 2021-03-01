@@ -677,10 +677,7 @@ void Tank::Render(HDC hdc)
 			mImage->ScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 28, mY - 40, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 120, 56);
 	}
 
-	wstring atkCool = to_wstring(mRange);
-	TextOut(hdc, 50, 100, atkCool.c_str(), atkCool.size());
-	wstring atk = to_wstring(mAtk);
-	TextOut(hdc, 50, 100, atk.c_str(), atk.size());
+
 	if (mIsDeath != true)
 	{
 		mHPImage->Render(hdc, mX - 37, mY + 20, 0, 0, 88 * (mHP / mMaxHP), 8);

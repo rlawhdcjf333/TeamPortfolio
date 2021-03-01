@@ -111,7 +111,7 @@ void BattleData::ChampBan(Champ * ban)
 {
 	for (int i = 0; i < 2; ++i)
 	{
-		if (!mBanChamp[i])	//nullptr이 아니면
+		if (mBanChamp[i]==nullptr)	//nullptr 이면
 		{
 			mBanChamp[i] = ban;
 			return;
@@ -136,6 +136,7 @@ void BattleData::ChampSelect(Staff * st, Champ * c)
 			break;
 		case Team::Red:
 			mRedTeam.mSelectChamp.emplace_back(c);
+			break;
 		}
 	}
 }
