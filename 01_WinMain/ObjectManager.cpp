@@ -264,6 +264,7 @@ void ObjectManager::ChampClear()
 
 }
 
+
 vector<string> ObjectManager::GetPlayOff()
 {
 	vector<Director*> result;
@@ -292,6 +293,8 @@ vector<string> ObjectManager::GetPlayOff()
 	vector <string> realResult;
 	realResult.push_back(result[0]->GetName());
 	realResult.push_back(result[1]->GetName());
+	realResult.push_back(result[2]->GetName());
+	realResult.push_back(result[3]->GetName());
 
 	return realResult;
 }

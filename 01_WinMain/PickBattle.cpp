@@ -32,7 +32,7 @@ void PickBattle::Init()
 	int thisWeek = player->GetWeek();
 	Director* enemy = ScheduleManager::GetInstance()->GetEnemy(thisWeek);
 
-	if (thisWeek & 0)
+	if ((thisWeek & 1)==1)
 	{
 		BData->SetPlayerTeam(Team::Blue); 
 		BData->SetTeam(Team::Blue, player);

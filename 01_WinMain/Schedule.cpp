@@ -39,7 +39,7 @@ void Schedule::Render(HDC hdc)
 {
 	if (mIsActive) {
 		mImage->Render(hdc, 0, 0);
-	
+
 		vector<RECT> roundBox;
 		vector<RECT> rectList;
 
@@ -55,7 +55,7 @@ void Schedule::Render(HDC hdc)
 		//	}
 		//}
 
-		for (int i = 0; i < mScheduleList.size(); i++) {
+		for (int i = 0; i < 3; i++) {
 			roundBox.push_back(RectMake(36 + (i * 308), 157, 70, 15));
 			for (int j = 0; j < mDirectorList.size() / 2; j++) {
 				rectList.push_back(RectMake(42 + (i * 308), 186 + (j * 57), 26, 26));
@@ -77,7 +77,7 @@ void Schedule::Render(HDC hdc)
 		SelectObject(hdc, oldF);
 		DeleteObject(newF);
 
-		for (int i = 0; i < mScheduleList.size(); i++) {
+		for (int i = 0; i <3; i++) {
 			// 라운드 표시
 			wstring str = to_wstring(i + 1) + L" 라운드";
 
@@ -95,10 +95,10 @@ void Schedule::Render(HDC hdc)
 			SelectObject(hdc, oldB);
 			DeleteObject(newB);
 
-			
+
 		}
 
-		for (int i = 0; i < mScheduleList.size(); i++) {
+		for (int i = 0; i < 3; i++) {
 			vector<Director*>temp = mScheduleList.find(i + 1)->second;
 
 			for (int j = 0; j < temp.size(); j++) {
@@ -112,6 +112,27 @@ void Schedule::Render(HDC hdc)
 				DeleteObject(newF);
 			}
 		}
+
+
+		if (mDirector->GetWeek() == 4)
+		{
+			Director* dir1 = mScheduleList[4][0];
+			Director* dir2 = mScheduleList[4][1];
+
+			wstring team1 = dir1->GetTeamName();
+			RECT rc1 = RectMake(960, 240, 285, 70);
+			wstring team2 = dir2->GetTeamName();
+			RECT rc2 = RectMake(960, 360, 285, 70);
+
+			CallFont(hdc, 50, [hdc, team1, &rc1]() {DrawText(hdc, team1.c_str(), team1.size(), &rc1, DT_CENTER | DT_SINGLELINE | DT_VCENTER);});
+			CallFont(hdc, 50, [hdc, team2, &rc2]() {DrawText(hdc, team2.c_str(), team2.size(), &rc2, DT_CENTER|DT_SINGLELINE|DT_VCENTER);});
+
+			RECT rc3 = RectMake(1100, 335, 140, 50);
+			CallFont(hdc, 30, [hdc, &rc3]() {DrawText(hdc, L"VS", 4, &rc3, DT_VCENTER | DT_SINGLELINE | DT_CENTER);});
+
+
+		}
+
 	}
 }
 

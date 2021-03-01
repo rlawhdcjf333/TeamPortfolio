@@ -20,7 +20,7 @@ void BattleResult::Update()
 	if (!mIsActive)
 		return;
 	//배틀 씬 종료 트리거
-	function<void(void)> func;
+
 	if (BData->IsEnd())
 	{
 		if (BData->GetMyDirector()->GetWeek() == 4) //마지막날 결승 플레이오프

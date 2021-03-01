@@ -3,6 +3,8 @@
 class BattleResult : public UI
 {
 	Image *mImage;
+	function<void(void)> func;
+
 public:
 	BattleResult();
 
