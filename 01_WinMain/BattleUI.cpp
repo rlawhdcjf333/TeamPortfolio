@@ -15,7 +15,7 @@ void BattleUI::Init()
 	IMAGEMANAGER->LoadFromFile(L"BattleUI", Resources(L"battleUI.bmp"), 1280, 720, true);
 	mImage = IMAGEMANAGER->FindImage(L"BattleUI");
 	
-	IMAGEMANAGER->LoadFromFile(L"WinCount", Resources(L"WinCountbmp"), 18, 17, true);
+	IMAGEMANAGER->LoadFromFile(L"WinCount", Resources(L"WinCount.bmp"), 18, 17, true);
 	mWinImage = IMAGEMANAGER->FindImage(L"WinCount");
 	
 	mTime = 60;
