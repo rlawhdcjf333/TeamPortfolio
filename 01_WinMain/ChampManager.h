@@ -12,6 +12,7 @@ public:
 	void Release();
 	void Update();
 	void Render(HDC hdc);
+	void SceneRelease();
 	
 	vector<GameObject*> GetChampList() const { return mChampList; }
 };

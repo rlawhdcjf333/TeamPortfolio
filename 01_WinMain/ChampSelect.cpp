@@ -213,10 +213,6 @@ void ChampSelect::Update()
 		{
 			mCurrentChamp = (Champ*)mChampList[i];
 		}
-		else
-		{
-			//mCurrentChamp = nullptr;
-		}
 	}
 
 

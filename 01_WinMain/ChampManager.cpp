@@ -28,8 +28,17 @@ void ChampManager::Init()
 	}
 }
 
+void ChampManager::SceneRelease()
+{
+	mChampList.clear();
+	mChampList.shrink_to_fit();
+}
+
 void ChampManager::Release()
 {
+	for (int i = 0; i < mChampList.size(); i++) {
+		mChampList[i]->Init();
+	}
 }
 
 void ChampManager::Update()

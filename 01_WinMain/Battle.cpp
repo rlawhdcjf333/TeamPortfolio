@@ -24,15 +24,15 @@ void Battle::Update()
 {
 	int myScore=0;
 
-	myScore += mMyTeam[0]->GetDeathCount();
-	myScore += mMyTeam[1]->GetDeathCount();
-	myScore += mMyTeam[2]->GetDeathCount();
+	myScore += mEnemyTeam[0]->GetDeathCount();
+	myScore += mEnemyTeam[1]->GetDeathCount();
+	myScore += mEnemyTeam[2]->GetDeathCount();
 
 	int enemyScore=0;
 
-	enemyScore += mEnemyTeam[0]->GetDeathCount();
-	enemyScore += mEnemyTeam[1]->GetDeathCount();
-	enemyScore += mEnemyTeam[2]->GetDeathCount();
+	enemyScore += mMyTeam[0]->GetDeathCount();
+	enemyScore += mMyTeam[1]->GetDeathCount();
+	enemyScore += mMyTeam[2]->GetDeathCount();
 	
 	mMyScore = myScore;
 	mEnemyScore = enemyScore;

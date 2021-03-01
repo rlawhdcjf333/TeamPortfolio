@@ -55,8 +55,11 @@ public:
 
 	void SetRank(int rank) { mRank = rank; }
 	void SetWin(int win) { mWin = win; }
+	void PlusWin() { mWin++; }
 	void SetLose(int lose) { mLose = lose; }
+	void PlusLose() { mLose++; };
 	void SetLeagueScore(int leagueScore) { mLeagueScore = leagueScore; }
+	void CalLeagueScore() { mLeagueScore = mWin * 3 + mLose * 1; }
 	int GetRank() { return mRank; }
 	int GetWin() { return mWin; }
 	int GetLose() { return mLose; }

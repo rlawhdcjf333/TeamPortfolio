@@ -28,10 +28,19 @@ Champ::Champ(const string& name, float x, float y) : GameObject(name)
 
 void Champ::Init()
 {
+
+	mStaff = nullptr;
 }
 
 void Champ::Release()
 {
+	map <wstring, Animation*> ::iterator iter;
+	iter = mAnimationList.begin();
+	for (; iter!=mAnimationList.end(); iter++)
+	{
+		SafeDelete(iter->second);
+	}
+
 }
 
 void Champ::Update()

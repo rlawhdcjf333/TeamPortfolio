@@ -44,5 +44,8 @@ public:
 	void BanRender(HDC hdc, int x, int y, Champ* champ);
 
 	void DelayReset() { mDelay = 2.f; }
+
+
+	void SetState(SelectState state){ mState = state;}
 };
 

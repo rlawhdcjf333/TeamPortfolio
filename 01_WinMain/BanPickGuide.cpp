@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BanPickGuide.h"
+#include "ChampSelect.h"
 
 BanPickGuide::BanPickGuide() : UI("BanPickGuide")
 {
@@ -27,4 +28,19 @@ void BanPickGuide::Render(HDC hdc)
 {
 	if (mIsActive)
 		mImage->FrameRender(hdc, 162, 80,0,mFrameY);
+}
+
+void BanPickGuide::NextFrame()
+{
+	if (mIsActive)
+		mFrameY++;
+	if (mFrameY >= 6)
+	{
+		ChampSelect* hptr = (ChampSelect*)ObjectManager::GetInstance()->FindObject("ChampSelect");
+		hptr->SetState(SelectState::BlueBan);
+		mFrameY = 0;
+		mIsActive = false;
+		ObjectManager::GetInstance()->FindObject("ChampSelect")->SetIsActive(false);
+		ObjectManager::GetInstance()->FindObject("ChampCheck")->SetIsActive(true);
+	}
 }

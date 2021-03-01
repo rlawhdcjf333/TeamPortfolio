@@ -46,7 +46,7 @@ void BattleUI::Update()
 			{
 				BData->PlusWincount(BData->GetPlayerTeam());
 			}
-			else if (myScore == enemyScore) {mTime+=20;}
+			else if (myScore == enemyScore) { mTime = 20; return; }
 			else if (myScore < enemyScore)
 			{
 				BData->PlusWincount(BData->GetEnemyTeam());

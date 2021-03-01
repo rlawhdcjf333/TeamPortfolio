@@ -73,14 +73,7 @@ public:
 		if (mBlueTeam.mKillCount < mRedTeam.mKillCount)
 			mRedTeam.mWinCount++;
 	}
-	bool IsEnd() {	//PickBattle Scene 종료여부
-		if (mBlueTeam.mWinCount >= 2)
-			return true;
-		if (mRedTeam.mWinCount >= 2)
-			return true;
-		return false;
-	}
-
+	bool IsEnd();
 
 	void SetTeam(Team t, Director * dir);	//Team초기화, 이거 해야 GetEnemyDirector쓸수있음
 	TeamData LoadStaffList(Director* dir);	//SetTeam에서 호출할 StaffList초기화용 함수

@@ -64,3 +64,8 @@ void Feedback::Render(HDC hdc)
 	if (mIsActive)
 		mImage->Render(hdc, mButtonList[0].left, mButtonList[0].top);
 }
+
+void Feedback::ChampReset()
+{
+	
+}

@@ -30,6 +30,7 @@ void Home::Init()
 void Home::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	ChampManager::GetInstance()->SceneRelease();
 }
 
 void Home::Update()

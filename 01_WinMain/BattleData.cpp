@@ -401,8 +401,32 @@ void BattleData::PlusWincount(Team t)
 	}
 }
 
+bool BattleData::IsEnd() {	//PickBattle Scene 종료여부
+	if (mBlueTeam.mWinCount >= 2)
+	{
+		mBlueTeam.mDirector->PlusWin();
+		mRedTeam.mDirector->PlusLose();
+
+		return true;
+	}
+	if (mRedTeam.mWinCount >= 2)
+	{
+		mRedTeam.mDirector->PlusWin();
+		mBlueTeam.mDirector->PlusLose();
+
+		return true;
+	}
+	return false;
+}
 void BattleData::TeamChange()
 {
+	ChampManager::GetInstance()->Release();
+	mBlueTeam.mSelectChamp.clear();
+	mRedTeam.mSelectChamp.clear();
+	mBanChamp[0] = nullptr;
+	mBanChamp[1] = nullptr;
+	mSelectChamp.clear();
+
 	//바꿀거 mPlayerTeam,mBlueTeam<->mRedTeam
 	if (mPlayerTeam == Team::Blue)	//mPlayerTeam : 함수 내에서 팀 식별용으로 쓰이는 변수 반전
 		mPlayerTeam = Team::Red;
