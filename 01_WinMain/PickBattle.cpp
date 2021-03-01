@@ -14,6 +14,7 @@ void PickBattle::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 	
 	ChampManager::GetInstance()->Init();
+	BData->RoundReset();
 
 	UI* ui = new UI("pickbattleUI", "pickbattleUI");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);

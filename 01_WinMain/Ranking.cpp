@@ -41,6 +41,11 @@ void Ranking::Render(HDC hdc)
 {
 	if (mIsActive) {
 
+		//auto funcc[]()
+		//{
+		//
+		//};
+		//sort(mDirectorList.begin(), mDirectorList.end(), funcc);
 
 		vector<RECT> largeBox;
 		vector<RECT> smallBox; // 랭킹 숫자 들어갈 랙트

@@ -23,26 +23,29 @@ void BattleResult::Update()
 	function<void(void)> func;
 	if (BData->IsEnd())
 	{
-		Director* player = BData->GetMyDirector();
-		int today = player->GetWeek();
-		int x = Random::GetInstance()->RandomInt(0, 1);
-		if (x == 0)
+		
+		func = []()
 		{
-			ScheduleManager::GetInstance()->GetOutFight1(today)->PlusWin();
-			ScheduleManager::GetInstance()->GetOutFight2(today)->PlusLose();
-		}
-		else
-		{
-			ScheduleManager::GetInstance()->GetOutFight2(today)->PlusWin();
-			ScheduleManager::GetInstance()->GetOutFight1(today)->PlusLose();
-		}
-		ScheduleManager::GetInstance()->GetPlayer(today)->CalLeagueScore();
-		ScheduleManager::GetInstance()->GetEnemy(today)->CalLeagueScore();
-		ScheduleManager::GetInstance()->GetOutFight1(today)->CalLeagueScore();
-		ScheduleManager::GetInstance()->GetOutFight2(today)->CalLeagueScore();
-		player->PlusWeek();
-		func = []() {SceneManager::GetInstance()->LoadScene(L"Home"); };
-		return;
+			Director* player = BData->GetMyDirector();
+			int today = player->GetWeek();
+			int x = Random::GetInstance()->RandomInt(0, 1);
+			if (x == 0)
+			{
+				ScheduleManager::GetInstance()->GetOutFight1(today)->PlusWin();
+				ScheduleManager::GetInstance()->GetOutFight2(today)->PlusLose();
+			}
+			else
+			{
+				ScheduleManager::GetInstance()->GetOutFight2(today)->PlusWin();
+				ScheduleManager::GetInstance()->GetOutFight1(today)->PlusLose();
+			}
+			ScheduleManager::GetInstance()->GetPlayer(today)->CalLeagueScore();
+			ScheduleManager::GetInstance()->GetEnemy(today)->CalLeagueScore();
+			ScheduleManager::GetInstance()->GetOutFight1(today)->CalLeagueScore();
+			ScheduleManager::GetInstance()->GetOutFight2(today)->CalLeagueScore();
+			player->PlusWeek();
+			SceneManager::GetInstance()->LoadScene(L"Home"); 
+		};
 	}
 	else //배틀 씬 반복 트리거
 	{
