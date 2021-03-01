@@ -95,7 +95,6 @@ void Ranking::Render(HDC hdc)
 				newB = CreateSolidBrush(RGB(241, 202, 92));
 			else newB = CreateSolidBrush(RGB(255, 255, 255));
 			oldB = (HBRUSH)SelectObject(hdc, newB);
-			rank = to_wstring(i + 1);
 			HFONT newF = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			HFONT oldF = (HFONT)SelectObject(hdc, newF);
 			DrawText(hdc, rank.c_str(), rank.length(), &smallBox[i], DT_VCENTER | DT_CENTER | DT_SINGLELINE);

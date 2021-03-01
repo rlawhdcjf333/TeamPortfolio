@@ -46,6 +46,23 @@ void BattleResult::Update()
 			ScheduleManager::GetInstance()->GetEnemy(today)->CalLeagueScore();
 			ScheduleManager::GetInstance()->GetOutFight1(today)->CalLeagueScore();
 			ScheduleManager::GetInstance()->GetOutFight2(today)->CalLeagueScore();
+			vector<Director*> newlist;
+			newlist.push_back(ScheduleManager::GetInstance()->GetPlayer(today));
+			newlist.push_back(ScheduleManager::GetInstance()->GetEnemy(today));
+			newlist.push_back(ScheduleManager::GetInstance()->GetOutFight1(today));
+			newlist.push_back(ScheduleManager::GetInstance()->GetOutFight2(today));
+			auto funcc = [](Director* a, Director* b){
+				if (a->GetLeagueScore() == b->GetLeagueScore())
+				{
+					return a->GetName() < b->GetName();
+				}
+				return a->GetLeagueScore() > b->GetLeagueScore();
+			};
+			sort(newlist.begin(), newlist.end(), funcc);
+			for (int i = 0; i < 4; i++)
+			{
+				newlist[i]->SetRank(i+1);
+			}
 			player->PlusWeek();
 			SceneManager::GetInstance()->LoadScene(L"Home"); 
 		};
