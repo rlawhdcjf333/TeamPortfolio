@@ -269,9 +269,15 @@ void ChampSelect::Render(HDC hdc)
 		ChampInfoRender(hdc, mCurrentChamp);
 
 		//mBackFrame->FrameRender(hdc, 325, 615, 1, 0);
-		BanRender(hdc, 325, 610, BData->GetBanCp(0));
+		if (BData->GetBanCp(0) != nullptr)
+		{
+			BanRender(hdc, 325, 610, BData->GetBanCp(0));
+		}
 		//mBackFrame->FrameRender(hdc, 880, 615, 1, 0);
-		BanRender(hdc, 880, 610, BData->GetBanCp(1));
+		if (BData->GetBanCp(1) != nullptr)
+		{
+			BanRender(hdc, 880, 610, BData->GetBanCp(1));
+		}
 
 		MouseOver(hdc);
 	}
