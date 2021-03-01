@@ -115,6 +115,7 @@ Director::Director(const Director & copy)
 	mWin = copy.mWin;
 	mLose = copy.mLose;
 	mLeagueScore = copy.mLeagueScore;
+	mRank = copy.mRank;
 	
 	mStaffNameList.assign(copy.mStaffNameList.begin(), copy.mStaffNameList.end());
 
@@ -134,6 +135,7 @@ Director & Director::operator=(const Director & copy)
 	mWin = copy.mWin;
 	mLose = copy.mLose;
 	mLeagueScore = copy.mLeagueScore;
+	mRank = copy.mRank;
 
 	mStaffNameList.assign(copy.mStaffNameList.begin(), copy.mStaffNameList.end());
 

@@ -40,7 +40,8 @@ void BanPickGuide::NextFrame()
 		hptr->SetState(SelectState::BlueBan);
 		mFrameY = 0;
 		mIsActive = false;
-		ObjectManager::GetInstance()->FindObject("ChampSelect")->SetIsActive(false);
+		hptr->ClearCurrentChamp();
+		hptr->SetIsActive(false);
 		ObjectManager::GetInstance()->FindObject("ChampCheck")->SetIsActive(true);
 	}
 }
