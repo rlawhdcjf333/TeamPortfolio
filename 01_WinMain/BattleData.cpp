@@ -264,25 +264,25 @@ void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
 		switch (i)
 		{
 		case 1:
-			if (mBlueTeam.mWinCount >= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount > mRedTeam.mWinCount)
 				con = 1;
 			else
 				con = -1;
 			break;
 		case 2:
-			if (mBlueTeam.mWinCount >= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount > mRedTeam.mWinCount)
 				con = Random::GetInstance()->RandomInt(0, 1);
 			else
 				con = Random::GetInstance()->RandomInt(0, 2) - 1;
 			break;
 		case 3:
-			if (mBlueTeam.mWinCount >= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount > mRedTeam.mWinCount)
 				con = Random::GetInstance()->RandomInt(0, 2) - 1;
 			else
 				con = 1;
 			break;
 		case 4: default:
-			if (mBlueTeam.mWinCount >= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount > mRedTeam.mWinCount)
 				con = Random::GetInstance()->RandomInt(0, 1) - 2;
 			else
 				con = Random::GetInstance()->RandomInt(0, 4);
@@ -294,25 +294,25 @@ void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
 		switch (i)
 		{
 		case 1:
-			if (mBlueTeam.mWinCount <= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount < mRedTeam.mWinCount)
 				con = 1;
 			else
 				con = -1;
 			break;
 		case 2:
-			if (mBlueTeam.mWinCount <= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount < mRedTeam.mWinCount)
 				con = Random::GetInstance()->RandomInt(0, 1);
 			else
 				con = Random::GetInstance()->RandomInt(0, 2) - 1;
 			break;
 		case 3:
-			if (mBlueTeam.mWinCount <= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount < mRedTeam.mWinCount)
 				con = Random::GetInstance()->RandomInt(0, 2) - 1;
 			else
 				con = 1;
 			break;
 		case 4: default:
-			if (mBlueTeam.mWinCount <= mRedTeam.mWinCount)
+			if (mBlueTeam.mWinCount < mRedTeam.mWinCount)
 				con = Random::GetInstance()->RandomInt(0, 1) - 2;
 			else
 				con = Random::GetInstance()->RandomInt(0, 4);
@@ -348,6 +348,7 @@ void BattleData::UpdateCondition(TeamData t,int con)
 		if (tcon > 4)
 			tcon = 4;
 		t.mStaffList[i]->SetCondition((Condition)tcon);
+		t.mStaffList[i]->SetConditionImage();
 	}
 }
 
