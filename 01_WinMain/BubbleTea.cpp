@@ -87,7 +87,7 @@ void BubbleTea::Init()
 	mCurrentAnm->Play();
 
 	Animation* RightRun = new Animation();
-	RightRun->InitFrameByStartEnd(0, 2, 4, 2, true);
+	RightRun->InitFrameByStartEnd(0, 3, 4, 3, true);
 	RightRun->SetIsLoop(true);
 	RightRun->SetFrameUpdateTime(0.1f);
 	mAnimationList.insert(make_pair(L"RightRun", RightRun));
