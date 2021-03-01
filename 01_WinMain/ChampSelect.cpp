@@ -228,6 +228,10 @@ void ChampSelect::Update()
 			NextState();
 		}
 		break;
+	case SelectState::end: default:
+		mCurrentChamp = nullptr;
+		mState = SelectState::BlueBan;
+		break;
 	}
 
 	for (int i = 0; i < mChampList.size(); i++)
