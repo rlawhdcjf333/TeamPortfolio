@@ -29,7 +29,7 @@ void BattleResult::Update()
 			Director* player = BData->GetMyDirector();
 			Director* enemy = BData->GetEnemyDirector();
 			int today = player->GetWeek();
-			if (player->GetRound() == 2) { player->PlusWin(); enemy->PlusLose(); }
+			if (player->GetRound() == 2) { player->PlusWin(); enemy->PlusLose(); player->RandGold();}
 			else { player->PlusLose(); enemy->PlusWin(); }
 			int x = Random::GetInstance()->RandomInt(0, 1);
 			if (x == 0)
@@ -46,6 +46,23 @@ void BattleResult::Update()
 			ScheduleManager::GetInstance()->GetEnemy(today)->CalLeagueScore();
 			ScheduleManager::GetInstance()->GetOutFight1(today)->CalLeagueScore();
 			ScheduleManager::GetInstance()->GetOutFight2(today)->CalLeagueScore();
+			vector<Director*> newlist;
+			newlist.push_back(ScheduleManager::GetInstance()->GetPlayer(today));
+			newlist.push_back(ScheduleManager::GetInstance()->GetEnemy(today));
+			newlist.push_back(ScheduleManager::GetInstance()->GetOutFight1(today));
+			newlist.push_back(ScheduleManager::GetInstance()->GetOutFight2(today));
+			auto funcc = [](Director* a, Director* b){
+				if (a->GetLeagueScore() == b->GetLeagueScore())
+				{
+					return a->GetName() < b->GetName();
+				}
+				return a->GetLeagueScore() > b->GetLeagueScore();
+			};
+			sort(newlist.begin(), newlist.end(), funcc);
+			for (int i = 0; i < 4; i++)
+			{
+				newlist[i]->SetRank(i+1);
+			}
 			player->PlusWeek();
 			BData->RandomCondition();//다음날이 되면 선수들의 컨디션 랜덤으로 세팅
 			SceneManager::GetInstance()->LoadScene(L"Home"); 

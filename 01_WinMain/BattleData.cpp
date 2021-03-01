@@ -442,11 +442,12 @@ bool BattleData::IsEnd() {	//PickBattle Scene 종료여부
 void BattleData::TeamChange()
 {
 	ChampManager::GetInstance()->Release();
-	mBlueTeam.mSelectChamp.clear();
-	mRedTeam.mSelectChamp.clear();
+
+	vector <Champ*> ().swap(mBlueTeam.mSelectChamp); //빈 벡터로 스왑
+	vector <Champ*>().swap(mRedTeam.mSelectChamp);
 	mBanChamp[0] = nullptr;
 	mBanChamp[1] = nullptr;
-	mSelectChamp.clear();
+	vector <Champ*>().swap(mSelectChamp);
 
 	//바꿀거 mPlayerTeam,mBlueTeam<->mRedTeam
 	if (mPlayerTeam == Team::Blue)	//mPlayerTeam : 함수 내에서 팀 식별용으로 쓰이는 변수 반전
@@ -471,9 +472,9 @@ Team BattleData::GetChampTeam(GameObject * pt)
 {
 	Champ* champ = (Champ*)pt;
 	
-	if (mBanChamp[0] == champ)
+	if (mBanChamp[0] != nullptr and mBanChamp[0]->GetName() == champ->GetName())
 		return Team::Ban;
-	if (mBanChamp[1] == champ)
+	if (mBanChamp[1] != nullptr  and mBanChamp[1]->GetName() == champ->GetName())
 		return Team::Ban;
 	/*
 	if (mBlueTeam.mSelectStaff[0] == (Staff*)champ->GetStaff())
@@ -492,12 +493,12 @@ Team BattleData::GetChampTeam(GameObject * pt)
 	*/
 	for (int i = 0; i < mBlueTeam.mSelectChamp.size(); ++i)
 	{
-		if (mBlueTeam.mSelectChamp[i] == champ)
+		if (mBlueTeam.mSelectChamp[i]->GetName() == champ->GetName())
 			return Team::Blue;
 	}
 	for (int i = 0; i < mRedTeam.mSelectChamp.size(); ++i)
 	{
-		if (mRedTeam.mSelectChamp[i] == champ)
+		if (mRedTeam.mSelectChamp[i]->GetName() == champ->GetName())
 			return Team::Red;
 	}
 	return Team::None;

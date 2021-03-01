@@ -46,6 +46,7 @@ public:
 	int GetMonth() { return mMonth; }
 	int GetWeek() { return mWeek; }
 	int GetGold() { return mGold; }
+	void RandGold() { mGold += Random::GetInstance()->RandomInt(100, 300); }
 
 	void UIRender(HDC hdc, int startX, int startY, int width, int height, bool b = true);
 	void TeamImageRender(HDC hdc, int startX, int startY, int widht, int height);
