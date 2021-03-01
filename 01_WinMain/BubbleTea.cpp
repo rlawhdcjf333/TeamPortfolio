@@ -53,19 +53,19 @@ void BubbleTea::Init()
 
 
 	//변수 초기화
-	mMaxHP = 150;
+	mMaxHP = 80;
 	mMaxMP = 100;
 	mHP = mMaxHP;
 	mMP = 0;
-	mInitAtk = 15;
+	mInitAtk = 25;
 	mAtk = mInitAtk;
 	mInitDef = 30;
 	mDef = mInitDef;
-	mSpeed = 150;
-	mRange = 60;
+	mSpeed = 75;
+	mRange = 170;
 	mMaxAttackCool = 1.5;
 	mAttackCool = 0;
-	mMaxSkill1Cool = 7;
+	mMaxSkill1Cool = 4;
 	mSkill1Cool = mMaxSkill1Cool;
 	mDeathCool = 3;
 	mAlpha = 0.6;
@@ -79,7 +79,7 @@ void BubbleTea::Init()
 	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	//애니메이션
 	Animation* RightIdle = new Animation();
-	RightIdle->InitFrameByStartEnd(0, 6, 5, 6, true);
+	RightIdle->InitFrameByStartEnd(0, 1, 3, 1, true);
 	RightIdle->SetIsLoop(true);
 	RightIdle->SetFrameUpdateTime(0.1f);
 	mAnimationList.insert(make_pair(L"RightIdle", RightIdle));
@@ -87,67 +87,67 @@ void BubbleTea::Init()
 	mCurrentAnm->Play();
 
 	Animation* RightRun = new Animation();
-	RightRun->InitFrameByStartEnd(0, 7, 7, 7, true);
+	RightRun->InitFrameByStartEnd(0, 2, 4, 2, true);
 	RightRun->SetIsLoop(true);
 	RightRun->SetFrameUpdateTime(0.1f);
 	mAnimationList.insert(make_pair(L"RightRun", RightRun));
 
 	Animation* RightAttack = new Animation();
-	RightAttack->InitFrameByStartEnd(0, 8, 5, 8, true);
+	RightAttack->InitFrameByStartEnd(0, 5, 0, 5, true);
 	RightAttack->SetIsLoop(true);
 	RightAttack->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightAttack", RightAttack));
 
 	Animation* RightSkill1 = new Animation();
-	RightSkill1->InitFrameByStartEnd(0, 9, 4, 9, true);
+	RightSkill1->InitFrameByStartEnd(0, 9, 2, 9, true);
 	RightSkill1->SetIsLoop(true);
 	RightSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill1", RightSkill1));
 
 	Animation* RightSkill2 = new Animation();
-	RightSkill2->InitFrameByStartEnd(0, 10, 7, 10, true);
+	RightSkill2->InitFrameByStartEnd(0, 7, 6, 7, true);
 	RightSkill2->SetIsLoop(true);
 	RightSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightSkill2", RightSkill2));
 
 	Animation* RightDeath = new Animation();
-	RightDeath->InitFrameByStartEnd(0, 11, 7, 11, true);
+	RightDeath->InitFrameByStartEnd(0, 11, 4, 11, true);
 	RightDeath->SetIsLoop(true);
 	RightDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"RightDeath", RightDeath));
 
 	Animation* LeftIdle = new Animation();
-	LeftIdle->InitFrameByStartEnd(0, 0, 5, 0, false);
+	LeftIdle->InitFrameByStartEnd(0, 0, 3, 0, false);
 	LeftIdle->SetIsLoop(true);
 	LeftIdle->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftIdle", LeftIdle));
 
 	Animation* LeftRun = new Animation();
-	LeftRun->InitFrameByStartEnd(0, 1, 7, 1, false);
+	LeftRun->InitFrameByStartEnd(0, 2, 4, 2, false);
 	LeftRun->SetIsLoop(true);
 	LeftRun->SetFrameUpdateTime(0.1f);
 	mAnimationList.insert(make_pair(L"LeftRun", LeftRun));
 
 	Animation* LeftAttack = new Animation();
-	LeftAttack->InitFrameByStartEnd(0, 2, 5, 2, false);
+	LeftAttack->InitFrameByStartEnd(0, 4, 0, 4, false);
 	LeftAttack->SetIsLoop(true);
 	LeftAttack->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftAttack", LeftAttack));
 
 	Animation* LeftSkill1 = new Animation();
-	LeftSkill1->InitFrameByStartEnd(0, 3, 4, 3, false);
+	LeftSkill1->InitFrameByStartEnd(0, 8, 2, 8, false);
 	LeftSkill1->SetIsLoop(true);
 	LeftSkill1->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftSkill1", LeftSkill1));
 
 	Animation* LeftSkill2 = new Animation();
-	LeftSkill2->InitFrameByStartEnd(0, 4, 7, 4, false);
+	LeftSkill2->InitFrameByStartEnd(0, 6, 6, 6, false);
 	LeftSkill2->SetIsLoop(true);
 	LeftSkill2->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftSkill2", LeftSkill2));
 
 	Animation* LeftDeath = new Animation();
-	LeftDeath->InitFrameByStartEnd(0, 5, 7, 5, false);
+	LeftDeath->InitFrameByStartEnd(0, 10, 4, 10, false);
 	LeftDeath->SetIsLoop(true);
 	LeftDeath->SetFrameUpdateTime(0.2f);
 	mAnimationList.insert(make_pair(L"LeftDeath", LeftDeath));
@@ -184,7 +184,7 @@ void BubbleTea::Update()
 
 	if (mIsDeath == true)
 	{
-		if (mCurrentAnm->GetNowFrameY() >= 6 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
+		if (mCurrentAnm->GetNowFrameY()%2!=0 && mCurrentAnm != mAnimationList.find(L"RightDeath")->second)
 		{
 			mDeathCount++;
 			mCurrentAnm->Stop();
@@ -192,14 +192,14 @@ void BubbleTea::Update()
 			mCurrentAnm->Play();
 
 		}
-		if (mCurrentAnm->GetNowFrameY() < 6 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
+		if (mCurrentAnm->GetNowFrameY()%2==0 && mCurrentAnm != mAnimationList.find(L"LeftDeath")->second)
 		{
 			mDeathCount++;
 			mCurrentAnm->Stop();
 			mCurrentAnm = mAnimationList.find(L"LeftDeath")->second;
 			mCurrentAnm->Play();
 		}
-		if (mCurrentAnm->GetCurrentFrameIndex() != 6)
+		if (mCurrentAnm->GetCurrentFrameIndex() != 4)
 			mCurrentAnm->Update();
 		mAlpha -= 0.2*Time::GetInstance()->DeltaTime();
 		mDeathCool -= Time::GetInstance()->DeltaTime();
@@ -318,6 +318,15 @@ void BubbleTea::Update()
 							mCurrentAnm->Play();
 							mIsAction = true;	//액션을 트루로 바꾼다.
 						}
+						else if (mTargetDistance < mRange - 10)
+						{
+							mCurrentAnm->Stop();
+							mCurrentAnm = mAnimationList.find(L"LeftRun")->second;
+							mCurrentAnm->Play();
+
+							mX -= cosf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
+							mY += sinf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
+						}
 						else
 						{
 							mCurrentAnm->Stop();
@@ -355,6 +364,15 @@ void BubbleTea::Update()
 							mCurrentAnm = mAnimationList.find(L"LeftAttack")->second;//공격 모션을 실행한다.
 							mCurrentAnm->Play();
 							mIsAction = true;	//액션을 트루로 바꾼다.
+						}
+						else if (mTargetDistance < mRange - 10)
+						{
+							mCurrentAnm->Stop();
+							mCurrentAnm = mAnimationList.find(L"RightRun")->second;
+							mCurrentAnm->Play();
+
+							mX -= cosf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
+							mY += sinf(mAngle)*Time::GetInstance()->DeltaTime()*mSpeed;
 						}
 						else
 						{
@@ -408,31 +426,31 @@ void BubbleTea::Update()
 		//{{어떤 모션을 취했을 시
 		if (mIsAction == true)
 		{
-			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 7
-				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 7)
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 6
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill2")->second && mCurrentAnm->GetCurrentFrameIndex() == 6)
 			{
 				mMP = 0;
-				DefBuff(15, 5);
+				tmp->SetHP(tmp->GetHP() - (mAtk*2.5 *(1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
 				mIsAction = false;
 			}
-			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 4
-				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 4)
+			if (mCurrentAnm == mAnimationList.find(L"RightSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 2
+				|| mCurrentAnm == mAnimationList.find(L"LeftSkill1")->second && mCurrentAnm->GetCurrentFrameIndex() == 2)
 			{
 				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
-				Aggro(3);
+				AtkBuff(10, 5);
 				mSkill1Cool = mMaxSkill1Cool;
 				mIsAction = false;
 			}
-			if ((mCurrentAnm == mAnimationList.find(L"RightAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
-				|| (mCurrentAnm == mAnimationList.find(L"LeftAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 5))
+			if ((mCurrentAnm == mAnimationList.find(L"RightAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 0)
+				|| (mCurrentAnm == mAnimationList.find(L"LeftAttack")->second && mCurrentAnm->GetCurrentFrameIndex() == 0))
 			{
 				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
 				tmp->SetHP(tmp->GetHP() - (mAtk *(1 - (tmp->GetDef() / (tmp->GetDef() + 30)))));
 				mAttackCool = mMaxAttackCool;
 				mIsAction = false;
 			}
-			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 5
-				|| mCurrentAnm == mAnimationList.find(L"LeftIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 5)
+			if (mCurrentAnm == mAnimationList.find(L"RightIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 3
+				|| mCurrentAnm == mAnimationList.find(L"LeftIdle")->second && mCurrentAnm->GetCurrentFrameIndex() == 3)
 			{
 				//HP를 까던지 어떤 걸 행한 후에 이즈액션 폴스로
 				mIsAction = false;
@@ -444,14 +462,14 @@ void BubbleTea::Update()
 	//적이 모두 죽어있을 때 아이들 상태로 만든다.
 	if (temp[0]->GetIsDeath() == true && temp[1]->GetIsDeath() == true && temp[2]->GetIsDeath() == true)
 	{
-		if (mCurrentAnm->GetNowFrameY() >= 6 && mCurrentAnm != mAnimationList.find(L"RightIdle")->second)
+		if (mCurrentAnm->GetNowFrameY()%2!=0 && mCurrentAnm != mAnimationList.find(L"RightIdle")->second)
 		{
 			mCurrentAnm->Stop();
 			mCurrentAnm = mAnimationList.find(L"RightIdle")->second;
 			mCurrentAnm->Play();
 
 		}
-		else if (mCurrentAnm->GetNowFrameY() < 6 && mCurrentAnm != mAnimationList.find(L"LeftIdle")->second)
+		else if (mCurrentAnm->GetNowFrameY()%2==0 && mCurrentAnm != mAnimationList.find(L"LeftIdle")->second)
 		{
 			mCurrentAnm->Stop();
 			mCurrentAnm = mAnimationList.find(L"LeftIdle")->second;
@@ -477,9 +495,9 @@ void BubbleTea::Render(HDC hdc)
 {
 	//RenderRect(hdc, mRect);
 	//Rectangle(hdc,mX - 100, mY - 100, mX + 100, mY + 100);
-	if (mCurrentAnm->GetNowFrameY() >= 6)
+	if (mCurrentAnm->GetNowFrameY()%2!=0)
 	{
-		if (mCurrentAnm->GetNowFrameY() == 11)
+		if (mCurrentAnm->GetNowFrameY()==11)
 		{
 			mImage->AlphaScaleFrameRender(hdc, mX - 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70, mAlpha);
 		}
@@ -488,7 +506,7 @@ void BubbleTea::Render(HDC hdc)
 	}
 	else
 	{
-		if (mCurrentAnm->GetNowFrameY() == 5)
+		if (mCurrentAnm->GetNowFrameY() == 10)
 		{
 			mImage->AlphaScaleFrameRender(hdc, mX - mImage->GetFrameWidth() / 2 + 42, mY - 60, mCurrentAnm->GetNowFrameX(), mCurrentAnm->GetNowFrameY(), 80, 70, mAlpha);
 		}
@@ -505,14 +523,14 @@ void BubbleTea::Render(HDC hdc)
 	}
 	if (mProvocateur)
 	{
-		if (mCurrentAnm->GetNowFrameY() >= 5)
+		if (mCurrentAnm->GetNowFrameY()%2!=0)
 			mExclamation->Render(hdc, mX - 37, mY - 50);
 		else
 			mExclamation->Render(hdc, mX + 4, mY - 50);
 	}
 	if (mGetDefBuff)
 	{
-		if (mCurrentAnm->GetNowFrameY() >= 6)
+		if (mCurrentAnm->GetNowFrameY()%2!=0)
 			mDefImage->Render(hdc, mX - 36, mY - 10);
 		else
 			mDefImage->Render(hdc, mX + 34, mY - 10);
