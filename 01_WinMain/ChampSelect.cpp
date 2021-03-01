@@ -46,7 +46,8 @@ void ChampSelect::Update()
 			if (mDelay > 0) return;
 
 			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
-			BData->ChampBan((Champ*)mChampList[index]);
+			if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+				BData->ChampBan((Champ*)mChampList[index]);
 			
 		}
 		if (BData->BanCount() == 1)
@@ -70,7 +71,8 @@ void ChampSelect::Update()
 			mDelay -= Time::GetInstance()->DeltaTime();
 			if (mDelay > 0) return;
 			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
-			BData->ChampBan((Champ*)mChampList[index]);
+			if(BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+				BData->ChampBan((Champ*)mChampList[index]);
 			
 		}
 		if (BData->BanCount() == 2)
@@ -87,7 +89,8 @@ void ChampSelect::Update()
 			temp = ChampToggle();
 			if (temp)
 			{
-				BData->ChampSelect(BData->GetSelectStaff(0),(Champ*)temp);
+				if (BData->IsSelectChamp((Champ*)temp) == false)
+					BData->ChampSelect(BData->GetSelectStaff(0),(Champ*)temp);
 			}
 		}
 		else//플레이어 팀이 아닐경우 자동 픽
@@ -96,11 +99,12 @@ void ChampSelect::Update()
 			if (mDelay > 0) return;
 
 			int index = Random::GetInstance()->RandomInt(0,8);//9마리
-			BData->ChampSelect(BData->GetEnemyStaff(0),(Champ*) mChampList[index]);
-			DelayReset();
+			if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+				BData->ChampSelect(BData->GetEnemyStaff(0),(Champ*) mChampList[index]);
 		}
 		if (BData->GetSelectSize() == 1)
 		{
+			DelayReset();
 			NextState();
 		}
 		break;
@@ -112,11 +116,20 @@ void ChampSelect::Update()
 			if (temp)
 			{
 				if (BData->GetSelectSize() == 1)
-					BData->ChampSelect(BData->GetSelectStaff(0), (Champ*)temp);
+				{
+					if (BData->IsSelectChamp((Champ*)temp) == false)
+					{
+						 BData->ChampSelect(BData->GetSelectStaff(0), (Champ*)temp);
+					}
+				}
 				else if (BData->GetSelectSize() == 2)
-					BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp);
+				{
+					if (BData->IsSelectChamp((Champ*)temp) == false)
+					{
+						BData->ChampSelect(BData->GetSelectStaff(1), (Champ*)temp);
+					}
+				}
 			}
-
 		}
 		else//플레이어 팀이 아닐경우 자동 픽
 		{
@@ -126,7 +139,8 @@ void ChampSelect::Update()
 			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
 			if (BData->GetSelectSize() == 1)
 			{
-				BData->ChampSelect(BData->GetEnemyStaff(0), (Champ*)mChampList[index]);
+				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+					BData->ChampSelect(BData->GetEnemyStaff(0), (Champ*)mChampList[index]);
 
 				if (BData->GetSelectSize() == 2)
 				{
@@ -134,7 +148,11 @@ void ChampSelect::Update()
 				}
 			}
 			else if (BData->GetSelectSize() == 2)
-				BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]), SOUNDPLAYER->Play(L"Pick", 0.4f), DelayReset();
+				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+				{
+					BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
+					SOUNDPLAYER->Play(L"Pick", 0.4f), DelayReset();
+				}
 		}
 		if (BData->GetSelectSize() == 3)
 		{
@@ -165,14 +183,16 @@ void ChampSelect::Update()
 			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
 			if (BData->GetSelectSize() == 3)
 			{
-				BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
+				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+					BData->ChampSelect(BData->GetEnemyStaff(1), (Champ*)mChampList[index]);
 				if (BData->GetSelectSize() == 4)
 				{
 					 DelayReset(); return;
 				}
 			}
 			else if (BData->GetSelectSize() == 4)
-				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]), DelayReset();
+				if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+					BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]), DelayReset();
 
 		}
 		if (BData->GetSelectSize() == 5)
@@ -188,7 +208,8 @@ void ChampSelect::Update()
 			temp = ChampToggle();
 			if (temp)
 			{
-				BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp);
+				if (BData->IsSelectChamp((Champ*)temp) == false)
+					BData->ChampSelect(BData->GetSelectStaff(2), (Champ*)temp);
 			}
 		}
 		else//플레이어 팀이 아닐경우 자동 픽
@@ -197,7 +218,8 @@ void ChampSelect::Update()
 			if (mDelay > 0) return;
 			
 			int index = Random::GetInstance()->RandomInt(0, 8);//9마리
-			BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]);
+			if (BData->IsSelectChamp((Champ*)mChampList[index]) == false)
+				BData->ChampSelect(BData->GetEnemyStaff(2), (Champ*)mChampList[index]);
 			
 		}
 		if (BData->GetSelectSize() == 6)
@@ -263,56 +285,47 @@ GameObject* ChampSelect::ChampToggle()
 	temp = ToggleButton(0);
 	if (temp)
 	{
-		if(!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(1);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(2);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(3);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(4);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(5);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(6);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(7);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	temp = ToggleButton(8);
 	if (temp)
 	{
-		if (!BData->IsSelectChamp((Champ*)temp))
-			select = temp;
+		select = temp;
 	}
 	//mToggleButton(9, "None", [this]() {});
 	//if (temp)

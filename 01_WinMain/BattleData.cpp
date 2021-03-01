@@ -121,7 +121,7 @@ void BattleData::ChampBan(Champ * ban)
 
 void BattleData::ChampSelect(Staff * st, Champ * c)
 {
-	if (!IsSelectChamp(c))//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
+	if (GetChampTeam((GameObject*)c) == Team::None)//밴이 되거나 레드나 블루팀에서 선택한 챔피언이면
 	{
 		mSelectChamp.emplace_back(c);
 		c->SetStaff(st);
@@ -325,6 +325,10 @@ void BattleData::Feedback(int i)//i = 버튼 번호(1~4)
 
 bool BattleData::IsSelectChamp(Champ* select)
 {
+	if(mBanChamp[0] == select)
+		return true;
+	if (mBanChamp[1] == select)
+		return true;
 	for (int i = 0; i < mSelectChamp.size(); ++i)
 	{
 		if (mSelectChamp[i]->GetName() == select->GetName())
