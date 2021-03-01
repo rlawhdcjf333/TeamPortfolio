@@ -409,16 +409,10 @@ void BattleData::PlusWincount(Team t)
 bool BattleData::IsEnd() {	//PickBattle Scene 종료여부
 	if (mBlueTeam.mWinCount >= 2)
 	{
-		mBlueTeam.mDirector->PlusWin();
-		mRedTeam.mDirector->PlusLose();
-
 		return true;
 	}
 	if (mRedTeam.mWinCount >= 2)
 	{
-		mRedTeam.mDirector->PlusWin();
-		mBlueTeam.mDirector->PlusLose();
-
 		return true;
 	}
 	return false;

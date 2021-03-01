@@ -27,7 +27,10 @@ void BattleResult::Update()
 		func = []()
 		{
 			Director* player = BData->GetMyDirector();
+			Director* enemy = BData->GetEnemyDirector();
 			int today = player->GetWeek();
+			if (player->GetRound() == 2) { player->PlusWin(); enemy->PlusLose(); }
+			else { player->PlusLose(); enemy->PlusWin(); }
 			int x = Random::GetInstance()->RandomInt(0, 1);
 			if (x == 0)
 			{
