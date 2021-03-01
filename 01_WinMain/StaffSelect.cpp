@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "StaffSelect.h"
 #include "Staff.h"
 #include "Director.h"
 #include "Champ.h"
+#include "Child.h"
 
 StaffSelect::StaffSelect()
 	: UI("StaffSelect")
@@ -103,7 +103,9 @@ void StaffSelect::Update()
 			ObjectManager::GetInstance()->FindObject("StaffSelect")->SetIsActive(false);
 			ObjectManager::GetInstance()->FindObject("BanPick")->SetIsActive(true);
 			ObjectManager::GetInstance()->FindObject("BanPickGuide")->SetIsActive(true);
-			ObjectManager::GetInstance()->FindObject("ChampSelect")->SetIsActive(true);
+			ChampSelect* hptr = (ChampSelect*)ObjectManager::GetInstance()->FindObject("ChampSelect");
+			hptr->ClearCurrentChamp();
+			hptr->SetIsActive(true);
 			ObjectManager::GetInstance()->FindObject("BattleUI")->SetIsActive(true);
 		}
 		mToggleButton(5, "StaffSelect", []() 
