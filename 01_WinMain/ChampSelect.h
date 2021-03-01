@@ -47,5 +47,6 @@ public:
 
 
 	void SetState(SelectState state){ mState = state;}
+	void ClearCurrentChamp();
 };
 

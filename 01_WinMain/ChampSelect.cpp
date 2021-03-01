@@ -396,9 +396,14 @@ void ChampSelect::BanRender(HDC hdc, int x, int y, Champ* champ)
 	CallFont(hdc, 12, [hdc, champName, &nameBox]() {DrawText(hdc, champName.c_str(), champName.size(), &nameBox, DT_SINGLELINE | DT_VCENTER | DT_CENTER); });
 }
 
+void ChampSelect::ClearCurrentChamp()
+{
+	mCurrentChamp = nullptr;
+}
+
 void ChampSelect::ChampInfoRender(HDC hdc, Champ* champ)
 {
-	if (champ)
+	if (champ !=nullptr)
 	{
 		champ->UIRender(hdc, 235, 438, 95, 80);
 	
