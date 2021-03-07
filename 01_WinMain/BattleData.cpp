@@ -464,8 +464,10 @@ Director * BattleData::GetEnemyDirector()
 {
 	if (mPlayerTeam == Team::Blue)
 		return mRedTeam.mDirector;
-	if (mPlayerTeam == Team::Red)
+	else if (mPlayerTeam == Team::Red)
 		return mBlueTeam.mDirector;
+	else
+		return nullptr;
 }
 
 Team BattleData::GetChampTeam(GameObject * pt)
