@@ -233,7 +233,7 @@ void ObjectManager::Zorder()
 {
 	auto func = [](GameObject* a, GameObject* b)
 	{
-		if (a->GetX() == b->GetY()) //증말 흔치 않은 일이지만 이럴수도 있지
+		if (a->GetY() == b->GetY()) //증말 흔치 않은 일이지만 이럴수도 있지
 		{
 			return a->GetName() < a->GetName();
 		}
